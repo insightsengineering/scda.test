@@ -7,7 +7,6 @@
 * Added dependencies to `DESCRIPTION` file.
 
 ### Bug Fixes
-* Fixing calls to `tern` (`::`).
 
 ### Miscellaneous
 * Added `tern` to `staged.dependencies` file.
