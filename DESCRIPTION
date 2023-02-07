@@ -1,6 +1,6 @@
 Type: Package
-Package: Template Tests
-Title: scda.test
+Package: scda.test
+Title: Template Tests
 Version: 0.0.0.9001
 Date: 2023-02-02
 Authors@R:
