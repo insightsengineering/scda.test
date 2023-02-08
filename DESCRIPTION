@@ -1,11 +1,12 @@
 Type: Package
 Package: scda.test
-Title: scda.test
-Version: 0.0.0.9001
-Date: 2023-02-02
+Title: Template Tests
+Version: 0.0.0.9002
+Date: 2023-02-08
 Authors@R:
     person("insightsengineering", , , "insightsengineering@example.com", role = c("aut", "cre"))
-Description: scda.test.
+Description: Tests of sample templates from TLG Catalog using datasets
+    from the scda package.
 License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
