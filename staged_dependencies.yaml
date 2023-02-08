@@ -4,7 +4,7 @@ current_repo:
   repo: insightsengineering/scda.test
   host: https://github.com
 upstream_repos:
-  insightsengineering/nestcolor:
+  insightsengineering/tern:
     repo: insightsengineering/tern
     host: https://github.com
   insightsengineering/scda:
