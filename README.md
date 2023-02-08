@@ -1,10 +1,6 @@
 # scda.test
 
-Internal repository to store tests that utilize datasets from the `scda` package.
-
-Repository tests sample templates created using `tern` analysis functions taken from the TLG Catalog to verify functionality and correct output.
-
-Template tests were migrated here from the `tern` package in February 2023.
+Internal repository to store tests that utilize datasets from the `scda` package. Repository tests TLG sample templates to verify functionality and correct output. Template tests were migrated here from the `tern` package in February 2023.
 
 ## Installation
 
