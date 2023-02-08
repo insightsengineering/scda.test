@@ -21,16 +21,16 @@ raw_result <- basic_table() %>%
     grade_groups = gr_grp
   ) %>%
   split_rows_by("AEBODSYS",
-                split_fun = trim_levels_in_group("AETOXGR"),
-                child_labels = "visible", nested = TRUE
+    split_fun = trim_levels_in_group("AETOXGR"),
+    child_labels = "visible", nested = TRUE
   ) %>%
   summarize_occurrences_by_grade(
     var = "AETOXGR",
     grade_groups = gr_grp
   ) %>%
   split_rows_by("AEDECOD",
-                split_fun = trim_levels_in_group("AETOXGR"),
-                child_labels = "visible", nested = TRUE
+    split_fun = trim_levels_in_group("AETOXGR"),
+    child_labels = "visible", nested = TRUE
   ) %>%
   summarize_num_patients(
     var = "USUBJID",
@@ -301,93 +301,95 @@ testthat::test_that("AET04 variant 4 is produced correctly (Collapsing of Grades
 # variant 1 (just pre-processing the data).
 
 testthat::test_that(
-  "AET04 variant 6 is produced correctly (with an Incidence Rate of at Least 5%, totals restricted)", {
-  # Simple wrapper to return subset ADAE to a threshold of xx%.
-  get_adae_trimmed <- function(adsl, adae, cutoff_rate) {
-    n_per_arm <- adsl %>%
-      dplyr::count(ACTARM)
+  "AET04 variant 6 is produced correctly (with an Incidence Rate of at Least 5%, totals restricted)",
+  {
+    # Simple wrapper to return subset ADAE to a threshold of xx%.
+    get_adae_trimmed <- function(adsl, adae, cutoff_rate) {
+      n_per_arm <- adsl %>%
+        dplyr::count(ACTARM)
 
-    anl_terms <- adae %>%
-      dplyr::group_by(ACTARM, AEBODSYS, AEDECOD) %>%
-      dplyr::summarise(
-        unique_terms = dplyr::n_distinct(USUBJID)
+      anl_terms <- adae %>%
+        dplyr::group_by(ACTARM, AEBODSYS, AEDECOD) %>%
+        dplyr::summarise(
+          unique_terms = dplyr::n_distinct(USUBJID)
+        ) %>%
+        dplyr::ungroup()
+
+      anl_terms <- dplyr::left_join(
+        anl_terms,
+        n_per_arm,
+        by = "ACTARM"
       ) %>%
-      dplyr::ungroup()
+        dplyr::mutate(
+          ae_rate = unique_terms / n
+        ) %>%
+        dplyr::filter(ae_rate >= cutoff_rate) %>%
+        dplyr::select(AEDECOD) %>%
+        unique()
 
-    anl_terms <- dplyr::left_join(
-      anl_terms,
-      n_per_arm,
-      by = "ACTARM"
-    ) %>%
-      dplyr::mutate(
-        ae_rate = unique_terms / n
+      anl <- dplyr::left_join(
+        anl_terms,
+        adae,
+        by = "AEDECOD"
+      )
+      anl
+    }
+
+    adae <- get_adae_trimmed(adsl, adae, cutoff_rate = 0.4) %>%
+      dplyr::mutate(AETOXGR = droplevels(AETOXGR))
+
+    lyt <- basic_table() %>%
+      split_cols_by("ACTARM") %>%
+      add_colcounts() %>%
+      count_occurrences_by_grade(
+        var = "AETOXGR",
+        grade_groups = gr_grp
       ) %>%
-      dplyr::filter(ae_rate >= cutoff_rate) %>%
-      dplyr::select(AEDECOD) %>%
-      unique()
+      split_rows_by("AEBODSYS",
+        split_fun = trim_levels_in_group("AETOXGR"),
+        child_labels = "visible", nested = TRUE
+      ) %>%
+      summarize_occurrences_by_grade(
+        var = "AETOXGR",
+        grade_groups = gr_grp
+      ) %>%
+      split_rows_by("AEDECOD",
+        split_fun = trim_levels_in_group("AETOXGR"),
+        child_labels = "visible", nested = TRUE
+      ) %>%
+      summarize_num_patients(
+        var = "USUBJID",
+        .stats = "unique",
+        .labels = "- Any Grade -"
+      ) %>%
+      count_occurrences_by_grade(
+        var = "AETOXGR",
+        grade_groups = gr_grp[-1],
+        .indent_mods = -1L
+      )
 
-    anl <- dplyr::left_join(
-      anl_terms,
-      adae,
-      by = "AEDECOD"
+    result <- lyt %>%
+      build_table(adae, alt_counts_df = adsl) %>%
+      sort_at_path(
+        path = "AEBODSYS",
+        scorefun = cont_n_allcols,
+        decreasing = TRUE
+      ) %>%
+      sort_at_path(
+        path = c("AEBODSYS", "*", "AEDECOD"),
+        scorefun = cont_n_allcols,
+        decreasing = TRUE
+      )
+
+    res <- testthat::expect_silent(result)
+    testthat::expect_snapshot(res)
+
+    # Pagination works
+    testthat::expect_silent(
+      pag_result <- paginate_table(result, lpp = 15)
     )
-    anl
   }
-
-  adae <- get_adae_trimmed(adsl, adae, cutoff_rate = 0.4) %>%
-    dplyr::mutate(AETOXGR = droplevels(AETOXGR))
-
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARM") %>%
-    add_colcounts() %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEBODSYS",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEDECOD",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "- Any Grade -"
-    ) %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp[-1],
-      .indent_mods = -1L
-    )
-
-  result <- lyt %>%
-    build_table(adae, alt_counts_df = adsl) %>%
-    sort_at_path(
-      path = "AEBODSYS",
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    ) %>%
-    sort_at_path(
-      path = c("AEBODSYS", "*", "AEDECOD"),
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    )
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-
-  # Pagination works
-  testthat::expect_silent(
-    pag_result <- paginate_table(result, lpp = 15)
-  )
-})
+)
 
 # No test done for variant 7, Adverse Events by Highest NCI CTCAE Grade
 # (with an Incidence Rate of at Least X Patients, totals unrestriced).
