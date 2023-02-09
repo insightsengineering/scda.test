@@ -21,7 +21,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: insightsengineering \email{insightsengineering@example.com}
+\strong{Maintainer}: 
+
+Other contributors:
+\itemize{
+  \item F. Hoffmann-La Roche AG [copyright holder, funder]
+}
 
 }
 \keyword{internal}
