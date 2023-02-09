@@ -111,6 +111,10 @@ testthat::test_that("Specific PKCT01 features are present", {
   subtitles(result) <- paste("Analyte: ", unique(unique(adpc$PARAM)), "Treatment:", unique(unique(adpc$ACTARM)))
   main_footer(result) <- "NE: Not Estimable"
 
+  # Values are correct
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+
   # Comparing
   string_res <- strsplit(toString(matrix_form(result, TRUE)), "\n")
 
@@ -132,8 +136,4 @@ testthat::test_that("Specific PKCT01 features are present", {
   # Pagination works roughly
   pag_works <- paginate_table(result, verbose = FALSE, lpp = 20)
   testthat::expect_equal(length(pag_works), 11L)
-
-  # Values are correct
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
 })
