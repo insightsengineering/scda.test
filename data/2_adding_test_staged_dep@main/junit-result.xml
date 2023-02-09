@@ -1,773 +1,772 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="table_adat03" timestamp="2023-02-08T15:26:02Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="1.062">
-    <testcase time="0.911" classname="table_adat03" name="ADAT03_is_produced_correctly"/>
-    <testcase time="0.151" classname="table_adat03" name="ADAT03_is_produced_correctly">
+  <testsuite name="table_adat03" timestamp="2023-02-09T14:46:12Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="1.234">
+    <testcase time="1.064" classname="table_adat03" name="ADAT03_is_produced_correctly"/>
+    <testcase time="0.17" classname="table_adat03" name="ADAT03_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_adat03.R:71')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet01" timestamp="2023-02-08T15:26:03Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="2.251">
-    <testcase time="0.545" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected"/>
-    <testcase time="0.134" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected">
+  <testsuite name="table_aet01" timestamp="2023-02-09T14:46:14Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="2.528">
+    <testcase time="0.609" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected"/>
+    <testcase time="0.154999999999999" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_aet01.R:94')"/>
     </testcase>
-    <testcase time="0.497999999999999" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected"/>
-    <testcase time="0.0830000000000002" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected">
+    <testcase time="0.56" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected"/>
+    <testcase time="0.0969999999999995" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_aet01.R:214')"/>
     </testcase>
-    <testcase time="0.379" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected"/>
-    <testcase time="0.0619999999999994" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected">
+    <testcase time="0.420000000000001" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected"/>
+    <testcase time="0.0709999999999997" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_aet01.R:306')"/>
     </testcase>
-    <testcase time="0.468" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected"/>
-    <testcase time="0.0820000000000007" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected">
+    <testcase time="0.524999999999999" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected"/>
+    <testcase time="0.0910000000000002" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_aet01.R:419')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet02" timestamp="2023-02-08T15:26:05Z" hostname="952cdf3d903f" tests="24" skipped="12" failures="0" errors="0" time="7.699">
-    <testcase time="0.641" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
-    <testcase time="0.132" classname="table_aet02" name="AET02_variant_1_is_produced_correctly">
+  <testsuite name="table_aet02" timestamp="2023-02-09T14:46:16Z" hostname="eab6b138c032" tests="24" skipped="12" failures="0" errors="0" time="8.443">
+    <testcase time="0.712" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
+    <testcase time="0.145999999999999" classname="table_aet02" name="AET02_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:42')"/>
     </testcase>
-    <testcase time="0.752" classname="table_aet02" name="AET02_variant_2_is_produced_correctly"/>
-    <testcase time="0.129" classname="table_aet02" name="AET02_variant_2_is_produced_correctly">
+    <testcase time="0.824" classname="table_aet02" name="AET02_variant_2_is_produced_correctly"/>
+    <testcase time="0.146000000000001" classname="table_aet02" name="AET02_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:95')"/>
     </testcase>
-    <testcase time="0.871" classname="table_aet02" name="AET02_variant_3_is_produced_correctly"/>
-    <testcase time="0.195" classname="table_aet02" name="AET02_variant_3_is_produced_correctly">
+    <testcase time="0.946" classname="table_aet02" name="AET02_variant_3_is_produced_correctly"/>
+    <testcase time="0.218999999999999" classname="table_aet02" name="AET02_variant_3_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:149')"/>
     </testcase>
-    <testcase time="0.124000000000001" classname="table_aet02" name="AET02_variant_4_is_produced_correctly"/>
-    <testcase time="0.0519999999999996" classname="table_aet02" name="AET02_variant_4_is_produced_correctly">
+    <testcase time="0.144" classname="table_aet02" name="AET02_variant_4_is_produced_correctly"/>
+    <testcase time="0.0579999999999998" classname="table_aet02" name="AET02_variant_4_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:174')"/>
     </testcase>
-    <testcase time="0.484999999999999" classname="table_aet02" name="AET02_variant_5_is_produced_correctly"/>
-    <testcase time="0.122" classname="table_aet02" name="AET02_variant_5_is_produced_correctly">
+    <testcase time="0.529" classname="table_aet02" name="AET02_variant_5_is_produced_correctly"/>
+    <testcase time="0.127000000000001" classname="table_aet02" name="AET02_variant_5_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:214')"/>
     </testcase>
-    <testcase time="0.487" classname="table_aet02" name="AET02_variant_6_is_produced_correctly"/>
-    <testcase time="0.0400000000000009" classname="table_aet02" name="AET02_variant_6_is_produced_correctly">
+    <testcase time="0.535" classname="table_aet02" name="AET02_variant_6_is_produced_correctly"/>
+    <testcase time="0.0440000000000005" classname="table_aet02" name="AET02_variant_6_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:247')"/>
     </testcase>
-    <testcase time="0.863999999999999" classname="table_aet02" name="AET02_variant_7_is_produced_correctly"/>
-    <testcase time="0.0519999999999996" classname="table_aet02" name="AET02_variant_7_is_produced_correctly">
+    <testcase time="0.978" classname="table_aet02" name="AET02_variant_7_is_produced_correctly"/>
+    <testcase time="0.0540000000000003" classname="table_aet02" name="AET02_variant_7_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:294')"/>
     </testcase>
-    <testcase time="0.483000000000001" classname="table_aet02" name="AET02_variant_8_is_produced_correctly"/>
-    <testcase time="0.0500000000000007" classname="table_aet02" name="AET02_variant_8_is_produced_correctly">
+    <testcase time="0.524999999999999" classname="table_aet02" name="AET02_variant_8_is_produced_correctly"/>
+    <testcase time="0.048" classname="table_aet02" name="AET02_variant_8_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:327')"/>
     </testcase>
-    <testcase time="0.513999999999999" classname="table_aet02" name="AET02_variant_9_is_produced_correctly"/>
-    <testcase time="0.0440000000000005" classname="table_aet02" name="AET02_variant_9_is_produced_correctly">
+    <testcase time="0.561" classname="table_aet02" name="AET02_variant_9_is_produced_correctly"/>
+    <testcase time="0.0620000000000012" classname="table_aet02" name="AET02_variant_9_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:360')"/>
     </testcase>
-    <testcase time="0.497" classname="table_aet02" name="AET02_variant_10_is_produced_correctly"/>
-    <testcase time="0.0510000000000002" classname="table_aet02" name="AET02_variant_10_is_produced_correctly">
+    <testcase time="0.528" classname="table_aet02" name="AET02_variant_10_is_produced_correctly"/>
+    <testcase time="0.0559999999999992" classname="table_aet02" name="AET02_variant_10_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:393')"/>
     </testcase>
-    <testcase time="0.542" classname="table_aet02" name="AET02_variant_11_is_produced_correctly"/>
-    <testcase time="0.032" classname="table_aet02" name="AET02_variant_11_is_produced_correctly">
+    <testcase time="0.567" classname="table_aet02" name="AET02_variant_11_is_produced_correctly"/>
+    <testcase time="0.0340000000000007" classname="table_aet02" name="AET02_variant_11_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:426')"/>
     </testcase>
-    <testcase time="0.497999999999999" classname="table_aet02" name="AET02_variant_12_is_produced_correctly"/>
-    <testcase time="0.0419999999999998" classname="table_aet02" name="AET02_variant_12_is_produced_correctly">
+    <testcase time="0.542" classname="table_aet02" name="AET02_variant_12_is_produced_correctly"/>
+    <testcase time="0.0579999999999998" classname="table_aet02" name="AET02_variant_12_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02.R:475')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet02_smq" timestamp="2023-02-08T15:26:13Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.453">
-    <testcase time="0.15" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly"/>
-    <testcase time="0.0380000000000003" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly">
+  <testsuite name="table_aet02_smq" timestamp="2023-02-09T14:46:25Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.47">
+    <testcase time="0.148" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.0410000000000004" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02_smq.R:52')"/>
     </testcase>
-    <testcase time="0.214" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly"/>
-    <testcase time="0.0510000000000002" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly">
+    <testcase time="0.223999999999997" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly"/>
+    <testcase time="0.0570000000000022" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet02_smq.R:91')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet03" timestamp="2023-02-08T15:26:14Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="1.508">
-    <testcase time="1.258" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
-    <testcase time="0.25" classname="table_aet03" name="AET03_variant_1_is_produced_correctly">
+  <testsuite name="table_aet03" timestamp="2023-02-09T14:46:25Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="1.577">
+    <testcase time="1.307" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="0.27" classname="table_aet03" name="AET03_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet03.R:57')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet04" timestamp="2023-02-08T15:26:16Z" hostname="952cdf3d903f" tests="17" skipped="8" failures="0" errors="0" time="8.875">
-    <testcase time="2.503" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
-    <testcase time="0.254999999999999" classname="table_aet04" name="AET04_variant_1_is_produced_correctly">
+  <testsuite name="table_aet04" timestamp="2023-02-09T14:46:28Z" hostname="eab6b138c032" tests="17" skipped="8" failures="0" errors="0" time="9.717">
+    <testcase time="2.649" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.288" classname="table_aet04" name="AET04_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04.R:102')"/>
     </testcase>
-    <testcase time="1.083" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
-    <testcase time="0.255000000000003" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_">
+    <testcase time="1.19" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.285999999999998" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_">
       <skipped message="Reason: On CRAN ('test-table_aet04.R:167')"/>
     </testcase>
-    <testcase time="1.901" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
-    <testcase time="0.241" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_">
+    <testcase time="2.146" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.283000000000001" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_">
       <skipped message="Reason: On CRAN ('test-table_aet04.R:224')"/>
     </testcase>
-    <testcase time="1.188" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_"/>
-    <testcase time="0.253" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_">
+    <testcase time="1.275" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_"/>
+    <testcase time="0.298999999999999" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_">
       <skipped message="Reason: On CRAN ('test-table_aet04.R:292')"/>
     </testcase>
-    <testcase time="0.0990000000000002" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
-    <testcase time="0.577000000000002" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
-    <testcase time="0.128" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_">
-      <skipped message="Reason: On CRAN ('test-table_aet04.R:384')"/>
+    <testcase time="0.105" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
+    <testcase time="0.623000000000001" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
+    <testcase time="0.135999999999999" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_">
+      <skipped message="Reason: On CRAN ('test-table_aet04.R:385')"/>
     </testcase>
-    <testcase time="0.0179999999999971" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_"/>
-    <testcase time="0.093" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_">
-      <skipped message="Reason: On CRAN ('test-table_aet04.R:416')"/>
+    <testcase time="0.022000000000002" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_"/>
+    <testcase time="0.106999999999999" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_">
+      <skipped message="Reason: On CRAN ('test-table_aet04.R:418')"/>
     </testcase>
-    <testcase time="0.0229999999999997" classname="table_aet04" name="AET04_variant_9_is_produced_correctlyb_with_a_Difference_in_Incidence_Rate_of_at_Least_X_"/>
-    <testcase time="0.0910000000000011" classname="table_aet04" name="AET04_variant_9_is_produced_correctlyb_with_a_Difference_in_Incidence_Rate_of_at_Least_X_">
-      <skipped message="Reason: On CRAN ('test-table_aet04.R:432')"/>
+    <testcase time="0.0210000000000008" classname="table_aet04" name="AET04_variant_9_is_produced_correctlyb_with_a_Difference_in_Incidence_Rate_of_at_Least_X_"/>
+    <testcase time="0.101999999999997" classname="table_aet04" name="AET04_variant_9_is_produced_correctlyb_with_a_Difference_in_Incidence_Rate_of_at_Least_X_">
+      <skipped message="Reason: On CRAN ('test-table_aet04.R:434')"/>
     </testcase>
-    <testcase time="0.0190000000000019" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_"/>
-    <testcase time="0.148" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_">
-      <skipped message="Reason: On CRAN ('test-table_aet04.R:454')"/>
+    <testcase time="0.0280000000000022" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_"/>
+    <testcase time="0.157" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_">
+      <skipped message="Reason: On CRAN ('test-table_aet04.R:456')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet04_pi" timestamp="2023-02-08T15:26:24Z" hostname="952cdf3d903f" tests="18" skipped="9" failures="0" errors="0" time="7.134">
-    <testcase time="0.684999999999999" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly"/>
-    <testcase time="0.148" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly">
+  <testsuite name="table_aet04_pi" timestamp="2023-02-09T14:46:36Z" hostname="eab6b138c032" tests="18" skipped="9" failures="0" errors="0" time="8.429">
+    <testcase time="0.792999999999999" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly"/>
+    <testcase time="0.170999999999999" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:62')"/>
     </testcase>
-    <testcase time="0.731000000000002" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly"/>
-    <testcase time="0.108999999999998" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly">
+    <testcase time="0.798000000000002" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly"/>
+    <testcase time="0.140999999999998" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:84')"/>
     </testcase>
-    <testcase time="0.809000000000001" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly"/>
-    <testcase time="0.0569999999999986" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly">
+    <testcase time="0.905000000000001" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly"/>
+    <testcase time="0.0679999999999978" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:107')"/>
     </testcase>
-    <testcase time="0.717000000000002" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly"/>
-    <testcase time="0.0740000000000016" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly">
+    <testcase time="0.826000000000001" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly"/>
+    <testcase time="0.115000000000002" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:130')"/>
     </testcase>
-    <testcase time="0.719000000000001" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly"/>
-    <testcase time="0.0589999999999975" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly">
+    <testcase time="0.832999999999998" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly"/>
+    <testcase time="0.0640000000000001" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:154')"/>
     </testcase>
-    <testcase time="0.717000000000002" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly"/>
-    <testcase time="0.0879999999999974" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly">
+    <testcase time="0.835999999999999" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly"/>
+    <testcase time="0.115000000000002" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:178')"/>
     </testcase>
-    <testcase time="0.884" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly"/>
-    <testcase time="0.0950000000000024" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly">
+    <testcase time="1.075" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly"/>
+    <testcase time="0.116" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:229')"/>
     </testcase>
-    <testcase time="0.896999999999995" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly"/>
-    <testcase time="0.095000000000006" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly">
+    <testcase time="1.142" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly"/>
+    <testcase time="0.118000000000002" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:280')"/>
     </testcase>
-    <testcase time="0.149000000000001" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly"/>
-    <testcase time="0.100999999999999" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly">
+    <testcase time="0.173000000000002" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly"/>
+    <testcase time="0.140000000000001" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet04_pi.R:314')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet05" timestamp="2023-02-08T15:26:31Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.243">
-    <testcase time="0.097999999999999" classname="table_aet05" name="AET05_variant_1_is_produced_correctly"/>
-    <testcase time="0.0300000000000011" classname="table_aet05" name="AET05_variant_1_is_produced_correctly">
+  <testsuite name="table_aet05" timestamp="2023-02-09T14:46:45Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.298">
+    <testcase time="0.116" classname="table_aet05" name="AET05_variant_1_is_produced_correctly"/>
+    <testcase time="0.0349999999999966" classname="table_aet05" name="AET05_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet05.R:22')"/>
     </testcase>
-    <testcase time="0.0850000000000009" classname="table_aet05" name="AET05_variant_2_is_produced_correctly"/>
-    <testcase time="0.029999999999994" classname="table_aet05" name="AET05_variant_2_is_produced_correctly">
+    <testcase time="0.112000000000002" classname="table_aet05" name="AET05_variant_2_is_produced_correctly"/>
+    <testcase time="0.0349999999999966" classname="table_aet05" name="AET05_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet05.R:42')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet06" timestamp="2023-02-08T15:26:31Z" hostname="952cdf3d903f" tests="6" skipped="3" failures="0" errors="0" time="4.449">
-    <testcase time="0.868000000000002" classname="table_aet06" name="AET06_variant_1_is_produced_correctly"/>
-    <testcase time="0.167999999999999" classname="table_aet06" name="AET06_variant_1_is_produced_correctly">
+  <testsuite name="table_aet06" timestamp="2023-02-09T14:46:45Z" hostname="eab6b138c032" tests="6" skipped="3" failures="0" errors="0" time="4.999">
+    <testcase time="1.005" classname="table_aet06" name="AET06_variant_1_is_produced_correctly"/>
+    <testcase time="0.198" classname="table_aet06" name="AET06_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet06.R:81')"/>
     </testcase>
-    <testcase time="1.44" classname="table_aet06" name="AET06_variant_3_is_produced_correctly"/>
-    <testcase time="0.237000000000002" classname="table_aet06" name="AET06_variant_3_is_produced_correctly">
+    <testcase time="1.588" classname="table_aet06" name="AET06_variant_3_is_produced_correctly"/>
+    <testcase time="0.281999999999996" classname="table_aet06" name="AET06_variant_3_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet06.R:133')"/>
     </testcase>
-    <testcase time="1.471" classname="table_aet06" name="AET06_variant_5_is_produced_correctly"/>
-    <testcase time="0.265000000000001" classname="table_aet06" name="AET06_variant_5_is_produced_correctly">
+    <testcase time="1.613" classname="table_aet06" name="AET06_variant_5_is_produced_correctly"/>
+    <testcase time="0.313000000000002" classname="table_aet06" name="AET06_variant_5_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet06.R:177')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet06_smq" timestamp="2023-02-08T15:26:36Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="1.426">
-    <testcase time="0.571999999999996" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly"/>
-    <testcase time="0.132000000000005" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly">
+  <testsuite name="table_aet06_smq" timestamp="2023-02-09T14:46:50Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="1.594">
+    <testcase time="0.639000000000003" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.160999999999994" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet06_smq.R:73')"/>
     </testcase>
-    <testcase time="0.595999999999997" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly"/>
-    <testcase time="0.125999999999998" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly">
+    <testcase time="0.638000000000005" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly"/>
+    <testcase time="0.155999999999999" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet06_smq.R:160')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet07" timestamp="2023-02-08T15:26:37Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.254">
-    <testcase time="0.103000000000002" classname="table_aet07" name="AET07_variant_1_is_produced_correctly"/>
-    <testcase time="0.0240000000000009" classname="table_aet07" name="AET07_variant_1_is_produced_correctly">
+  <testsuite name="table_aet07" timestamp="2023-02-09T14:46:52Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.306">
+    <testcase time="0.101999999999997" classname="table_aet07" name="AET07_variant_1_is_produced_correctly"/>
+    <testcase time="0.0300000000000011" classname="table_aet07" name="AET07_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet07.R:51')"/>
     </testcase>
-    <testcase time="0.097999999999999" classname="table_aet07" name="AET07_variant_2_is_produced_correctly"/>
-    <testcase time="0.0290000000000035" classname="table_aet07" name="AET07_variant_2_is_produced_correctly">
+    <testcase time="0.140000000000001" classname="table_aet07" name="AET07_variant_2_is_produced_correctly"/>
+    <testcase time="0.0339999999999989" classname="table_aet07" name="AET07_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet07.R:82')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet09" timestamp="2023-02-08T15:26:38Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="1.262">
-    <testcase time="0.463000000000001" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug"/>
-    <testcase time="0.0969999999999942" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug">
+  <testsuite name="table_aet09" timestamp="2023-02-09T14:46:52Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="1.398">
+    <testcase time="0.495000000000005" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug"/>
+    <testcase time="0.125999999999998" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug">
       <skipped message="Reason: On CRAN ('test-table_aet09.R:43')"/>
     </testcase>
-    <testcase time="0.578000000000003" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_"/>
-    <testcase time="0.124000000000002" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_">
+    <testcase time="0.622" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_"/>
+    <testcase time="0.155000000000001" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_">
       <skipped message="Reason: On CRAN ('test-table_aet09.R:100')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet09_smq" timestamp="2023-02-08T15:26:39Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.616">
-    <testcase time="0.190999999999995" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly"/>
-    <testcase time="0.0399999999999991" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly">
+  <testsuite name="table_aet09_smq" timestamp="2023-02-09T14:46:53Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.69">
+    <testcase time="0.217999999999996" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly"/>
+    <testcase time="0.0429999999999993" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet09_smq.R:69')"/>
     </testcase>
-    <testcase time="0.323" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly"/>
-    <testcase time="0.0620000000000047" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly">
-      <skipped message="Reason: On CRAN ('test-table_aet09_smq.R:127')"/>
+    <testcase time="0.346000000000004" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly"/>
+    <testcase time="0.0829999999999984" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly">
+      <skipped message="Reason: On CRAN ('test-table_aet09_smq.R:128')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aet10" timestamp="2023-02-08T15:26:39Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.174">
-    <testcase time="0.132999999999996" classname="table_aet10" name="AET10_default_variant_is_produced_correctly"/>
-    <testcase time="0.0410000000000039" classname="table_aet10" name="AET10_default_variant_is_produced_correctly">
+  <testsuite name="table_aet10" timestamp="2023-02-09T14:46:54Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.161">
+    <testcase time="0.122" classname="table_aet10" name="AET10_default_variant_is_produced_correctly"/>
+    <testcase time="0.0390000000000015" classname="table_aet10" name="AET10_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aet10.R:23')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_aovt01" timestamp="2023-02-08T15:26:40Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="1.215">
-    <testcase time="0.363999999999997" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly"/>
-    <testcase time="0.0489999999999995" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly">
+  <testsuite name="table_aovt01" timestamp="2023-02-09T14:46:54Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="1.363">
+    <testcase time="0.411999999999999" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly"/>
+    <testcase time="0.0960000000000036" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aovt01.R:33')"/>
     </testcase>
-    <testcase time="0.682000000000002" classname="table_aovt01" name="AOVT01_variant_with_multiple_endpoints_is_produced_correctly"/>
+    <testcase time="0.734999999999999" classname="table_aovt01" name="AOVT01_variant_with_multiple_endpoints_is_produced_correctly"/>
     <testcase time="0.119999999999997" classname="table_aovt01" name="AOVT01_variant_with_multiple_endpoints_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_aovt01.R:52')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_cmt01" timestamp="2023-02-08T15:26:41Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="1.487">
-    <testcase time="0.323" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly"/>
-    <testcase time="0.0840000000000032" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly">
+  <testsuite name="table_cmt01" timestamp="2023-02-09T14:46:56Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.702">
+    <testcase time="0.372999999999998" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.0830000000000055" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_cmt01.R:36')"/>
     </testcase>
-    <testcase time="0.241" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly"/>
-    <testcase time="0.0570000000000022" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly">
+    <testcase time="0.256999999999998" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly"/>
+    <testcase time="0.0679999999999978" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_cmt01.R:71')"/>
     </testcase>
-    <testcase time="0.302" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly"/>
-    <testcase time="0.080999999999996" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly">
+    <testcase time="0.368000000000002" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.0799999999999983" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_cmt01.R:104')"/>
     </testcase>
-    <testcase time="0.313000000000002" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly"/>
-    <testcase time="0.0859999999999985" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly">
+    <testcase time="0.381999999999998" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.0910000000000011" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_cmt01.R:135')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_cmt02_pt" timestamp="2023-02-08T15:26:42Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.224">
-    <testcase time="0.158000000000001" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly"/>
-    <testcase time="0.0659999999999954" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly">
+  <testsuite name="table_cmt02_pt" timestamp="2023-02-09T14:46:57Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.281">
+    <testcase time="0.210999999999999" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly"/>
+    <testcase time="0.0700000000000003" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_cmt02_pt.R:26')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_coxt01" timestamp="2023-02-08T15:26:42Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="1.235">
-    <testcase time="0.212000000000003" classname="table_coxt01" name="1._Cox_Regression"/>
-    <testcase time="0.054000000000002" classname="table_coxt01" name="1._Cox_Regression">
+  <testsuite name="table_coxt01" timestamp="2023-02-09T14:46:58Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.474">
+    <testcase time="0.279000000000003" classname="table_coxt01" name="1._Cox_Regression"/>
+    <testcase time="0.046999999999997" classname="table_coxt01" name="1._Cox_Regression">
       <skipped message="Reason: On CRAN ('test-table_coxt01.R:43')"/>
     </testcase>
-    <testcase time="0.268000000000001" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_"/>
-    <testcase time="0.0599999999999952" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_">
+    <testcase time="0.319000000000003" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_"/>
+    <testcase time="0.0700000000000003" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_">
       <skipped message="Reason: On CRAN ('test-table_coxt01.R:64')"/>
     </testcase>
-    <testcase time="0.248000000000005" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_"/>
-    <testcase time="0.0670000000000002" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_">
+    <testcase time="0.289000000000001" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_"/>
+    <testcase time="0.0970000000000013" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_">
       <skipped message="Reason: On CRAN ('test-table_coxt01.R:87')"/>
     </testcase>
-    <testcase time="0.257999999999996" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_"/>
-    <testcase time="0.0680000000000049" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_">
+    <testcase time="0.298000000000002" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_"/>
+    <testcase time="0.0749999999999957" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_">
       <skipped message="Reason: On CRAN ('test-table_coxt01.R:115')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_coxt02" timestamp="2023-02-08T15:26:44Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.409">
-    <testcase time="0.18" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly"/>
-    <testcase time="0.0349999999999966" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly">
+  <testsuite name="table_coxt02" timestamp="2023-02-09T14:46:59Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.479">
+    <testcase time="0.218999999999994" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly"/>
+    <testcase time="0.0420000000000016" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_coxt02.R:44')"/>
     </testcase>
-    <testcase time="0.149000000000001" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly"/>
-    <testcase time="0.0450000000000017" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly">
+    <testcase time="0.181000000000004" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly"/>
+    <testcase time="0.036999999999999" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_coxt02.R:67')"/>
     </testcase>
-    <testcase time="0.113" classname="character(0)" name="_unnamed_"/>
   </testsuite>
-  <testsuite name="table_disclosures" timestamp="2023-02-08T15:26:44Z" hostname="952cdf3d903f" tests="14" skipped="6" failures="0" errors="0" time="2.325">
-    <testcase time="0.433999999999997" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly"/>
-    <testcase time="0.0560000000000045" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly">
+  <testsuite name="table_disclosures" timestamp="2023-02-09T14:47:00Z" hostname="eab6b138c032" tests="13" skipped="6" failures="0" errors="0" time="2.328">
+    <testcase time="0.263999999999996" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly"/>
+    <testcase time="0.0620000000000047" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:108')"/>
     </testcase>
-    <testcase time="0.316999999999993" classname="table_disclosures" name="Demographic_table_is_produced_correctly"/>
-    <testcase time="0.0990000000000038" classname="table_disclosures" name="Demographic_table_is_produced_correctly">
+    <testcase time="0.350999999999999" classname="table_disclosures" name="Demographic_table_is_produced_correctly"/>
+    <testcase time="0.111999999999995" classname="table_disclosures" name="Demographic_table_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:129')"/>
     </testcase>
-    <testcase time="0.109000000000002" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly"/>
-    <testcase time="0.0559999999999974" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly">
+    <testcase time="0.142000000000003" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly"/>
+    <testcase time="0.0630000000000024" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:141')"/>
     </testcase>
-    <testcase time="0.0700000000000003" classname="table_disclosures" name="Death_table_is_produced_correctly"/>
-    <testcase time="0.0249999999999986" classname="table_disclosures" name="Death_table_is_produced_correctly">
+    <testcase time="0.0850000000000009" classname="table_disclosures" name="Death_table_is_produced_correctly"/>
+    <testcase time="0.0329999999999941" classname="table_disclosures" name="Death_table_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:159')"/>
     </testcase>
-    <testcase time="0.392000000000003" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_"/>
-    <testcase time="0.070999999999998" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_">
+    <testcase time="0.468000000000004" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_"/>
+    <testcase time="0.0829999999999984" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:187')"/>
     </testcase>
-    <testcase time="0.078000000000003" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
-    <testcase time="0.418999999999997" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
-    <testcase time="0.0859999999999985" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly">
+    <testcase time="0.0900000000000034" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
+    <testcase time="0.478000000000002" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
+    <testcase time="0.0970000000000013" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_disclosures.R:209')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_dmt01" timestamp="2023-02-08T15:26:46Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.605">
-    <testcase time="0.466000000000001" classname="table_dmt01" name="DMT01_default_and_alternative_variants_are_produced_correctly"/>
-    <testcase time="0.139000000000003" classname="table_dmt01" name="DMT01_default_and_alternative_variants_are_produced_correctly">
+  <testsuite name="table_dmt01" timestamp="2023-02-09T14:47:02Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.687">
+    <testcase time="0.513999999999996" classname="table_dmt01" name="DMT01_default_and_alternative_variants_are_produced_correctly"/>
+    <testcase time="0.173000000000002" classname="table_dmt01" name="DMT01_default_and_alternative_variants_are_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dmt01.R:62')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_dort01" timestamp="2023-02-08T15:26:47Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="1.569">
-    <testcase time="0.369" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly"/>
-    <testcase time="0.0679999999999978" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly">
+  <testsuite name="table_dort01" timestamp="2023-02-09T14:47:03Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.782">
+    <testcase time="0.418999999999997" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.0800000000000054" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dort01.R:78')"/>
     </testcase>
-    <testcase time="0.332000000000001" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly"/>
-    <testcase time="0.0679999999999978" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly">
+    <testcase time="0.378999999999998" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly"/>
+    <testcase time="0.0790000000000006" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dort01.R:134')"/>
     </testcase>
-    <testcase time="0.295999999999999" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly"/>
-    <testcase time="0.0670000000000002" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly">
+    <testcase time="0.327999999999996" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly"/>
+    <testcase time="0.108000000000004" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dort01.R:190')"/>
     </testcase>
-    <testcase time="0.283000000000001" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly"/>
-    <testcase time="0.0859999999999985" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly">
+    <testcase time="0.313000000000002" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly"/>
+    <testcase time="0.0760000000000005" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dort01.R:244')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_dst01" timestamp="2023-02-08T15:26:49Z" hostname="952cdf3d903f" tests="6" skipped="3" failures="0" errors="0" time="1.494">
-    <testcase time="0.548000000000002" classname="table_dst01" name="DST01_default_variant_is_produced_correctly"/>
-    <testcase time="0.0470000000000041" classname="table_dst01" name="DST01_default_variant_is_produced_correctly">
+  <testsuite name="table_dst01" timestamp="2023-02-09T14:47:04Z" hostname="eab6b138c032" tests="6" skipped="3" failures="0" errors="0" time="1.846">
+    <testcase time="0.43" classname="table_dst01" name="DST01_default_variant_is_produced_correctly"/>
+    <testcase time="0.0579999999999998" classname="table_dst01" name="DST01_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dst01.R:83')"/>
     </testcase>
-    <testcase time="0.436" classname="table_dst01" name="DST01_variant_with_grouping_of_reasons_is_produced_correctly"/>
-    <testcase time="0.0569999999999951" classname="table_dst01" name="DST01_variant_with_grouping_of_reasons_is_produced_correctly">
+    <testcase time="0.558" classname="table_dst01" name="DST01_variant_with_grouping_of_reasons_is_produced_correctly"/>
+    <testcase time="0.0679999999999978" classname="table_dst01" name="DST01_variant_with_grouping_of_reasons_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dst01.R:102')"/>
     </testcase>
-    <testcase time="0.355000000000004" classname="table_dst01" name="DST01_variant_with_adding_other_optional_rows_is_produced_correctly"/>
-    <testcase time="0.0509999999999948" classname="table_dst01" name="DST01_variant_with_adding_other_optional_rows_is_produced_correctly">
+    <testcase time="0.672000000000004" classname="table_dst01" name="DST01_variant_with_adding_other_optional_rows_is_produced_correctly"/>
+    <testcase time="0.0599999999999952" classname="table_dst01" name="DST01_variant_with_adding_other_optional_rows_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dst01.R:119')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_dth01" timestamp="2023-02-08T15:26:50Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="2.236">
-    <testcase time="0.344000000000001" classname="table_dth01" name="DTH01_variant_1_is_produced_correctly"/>
-    <testcase time="0.0389999999999944" classname="table_dth01" name="DTH01_variant_1_is_produced_correctly">
+  <testsuite name="table_dth01" timestamp="2023-02-09T14:47:06Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.568">
+    <testcase time="0.146999999999998" classname="table_dth01" name="DTH01_variant_1_is_produced_correctly"/>
+    <testcase time="0.044000000000004" classname="table_dth01" name="DTH01_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dth01.R:22')"/>
     </testcase>
-    <testcase time="0.646000000000001" classname="table_dth01" name="DTH01_variant_2_is_produced_correctly"/>
-    <testcase time="0.109999999999999" classname="table_dth01" name="DTH01_variant_2_is_produced_correctly">
+    <testcase time="0.494" classname="table_dth01" name="DTH01_variant_2_is_produced_correctly"/>
+    <testcase time="0.130000000000003" classname="table_dth01" name="DTH01_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dth01.R:81')"/>
     </testcase>
-    <testcase time="0.439" classname="table_dth01" name="DTH01_variant_3_is_produced_correctly"/>
-    <testcase time="0.0480000000000018" classname="table_dth01" name="DTH01_variant_3_is_produced_correctly">
+    <testcase time="0.253999999999998" classname="table_dth01" name="DTH01_variant_3_is_produced_correctly"/>
+    <testcase time="0.054000000000002" classname="table_dth01" name="DTH01_variant_3_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dth01.R:140')"/>
     </testcase>
-    <testcase time="0.546000000000006" classname="table_dth01" name="DTH01_variant_4_is_produced_correctly"/>
-    <testcase time="0.0640000000000001" classname="table_dth01" name="DTH01_variant_4_is_produced_correctly">
+    <testcase time="0.361999999999995" classname="table_dth01" name="DTH01_variant_4_is_produced_correctly"/>
+    <testcase time="0.0830000000000055" classname="table_dth01" name="DTH01_variant_4_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_dth01.R:217')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_egt01" timestamp="2023-02-08T15:26:52Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.902">
-    <testcase time="0.723999999999997" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly"/>
-    <testcase time="0.177999999999997" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly">
+  <testsuite name="table_egt01" timestamp="2023-02-09T14:47:08Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="1.008">
+    <testcase time="0.802999999999997" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly"/>
+    <testcase time="0.204999999999998" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt01.R:22')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_egt02" timestamp="2023-02-08T15:26:53Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.56">
-    <testcase time="0.252000000000002" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline"/>
-    <testcase time="0.0510000000000019" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline">
+  <testsuite name="table_egt02" timestamp="2023-02-09T14:47:09Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.645">
+    <testcase time="0.274999999999999" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline"/>
+    <testcase time="0.0680000000000049" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline">
       <skipped message="Reason: On CRAN ('test-table_egt02.R:28')"/>
     </testcase>
-    <testcase time="0.205999999999996" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline"/>
-    <testcase time="0.0510000000000019" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline">
+    <testcase time="0.233999999999995" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline"/>
+    <testcase time="0.0680000000000049" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline">
       <skipped message="Reason: On CRAN ('test-table_egt02.R:51')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_egt03" timestamp="2023-02-08T15:26:54Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="1.209">
-    <testcase time="0.243000000000002" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly"/>
-    <testcase time="0.0850000000000009" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly">
+  <testsuite name="table_egt03" timestamp="2023-02-09T14:47:09Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.406">
+    <testcase time="0.272999999999996" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly"/>
+    <testcase time="0.0900000000000034" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt03.R:50')"/>
     </testcase>
-    <testcase time="0.204999999999998" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly"/>
-    <testcase time="0.0679999999999978" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly">
+    <testcase time="0.262999999999998" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly"/>
+    <testcase time="0.0990000000000038" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt03.R:91')"/>
     </testcase>
-    <testcase time="0.224000000000004" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly"/>
-    <testcase time="0.0670000000000002" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly">
+    <testcase time="0.247999999999998" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly"/>
+    <testcase time="0.0739999999999981" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt03.R:132')"/>
     </testcase>
-    <testcase time="0.242999999999995" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly"/>
-    <testcase time="0.0740000000000052" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly">
+    <testcase time="0.256" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly"/>
+    <testcase time="0.103000000000002" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt03.R:179')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_egt04" timestamp="2023-02-08T15:26:55Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.241">
-    <testcase time="0.189" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly"/>
-    <testcase time="0.0519999999999996" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly">
+  <testsuite name="table_egt04" timestamp="2023-02-09T14:47:11Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.275">
+    <testcase time="0.216999999999999" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly"/>
+    <testcase time="0.0579999999999998" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt04.R:51')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_egt05_qtcat" timestamp="2023-02-08T15:26:55Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="1.324">
-    <testcase time="1.123" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly"/>
-    <testcase time="0.201000000000001" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly">
+  <testsuite name="table_egt05_qtcat" timestamp="2023-02-09T14:47:11Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="1.117">
+    <testcase time="0.871000000000002" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly"/>
+    <testcase time="0.246000000000002" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_egt05_qtcat.R:57')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_ent" timestamp="2023-02-08T15:26:57Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="14.545">
-    <testcase time="3.636" classname="table_ent" name="ENT01_IT_is_produced_correctly"/>
-    <testcase time="0.501999999999995" classname="table_ent" name="ENT01_IT_is_produced_correctly">
+  <testsuite name="table_ent" timestamp="2023-02-09T14:47:12Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="16.427">
+    <testcase time="4.133" classname="table_ent" name="ENT01_IT_is_produced_correctly"/>
+    <testcase time="0.640000000000001" classname="table_ent" name="ENT01_IT_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ent.R:24')"/>
     </testcase>
-    <testcase time="2.446" classname="table_ent" name="ENT01a_IT_is_produced_correctly"/>
-    <testcase time="0.483000000000004" classname="table_ent" name="ENT01a_IT_is_produced_correctly">
+    <testcase time="2.76000000000001" classname="table_ent" name="ENT01a_IT_is_produced_correctly"/>
+    <testcase time="0.567999999999998" classname="table_ent" name="ENT01a_IT_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ent.R:40')"/>
     </testcase>
-    <testcase time="3.819" classname="table_ent" name="ENT02_IT_is_produced_correctly"/>
-    <testcase time="0.515000000000001" classname="table_ent" name="ENT02_IT_is_produced_correctly">
+    <testcase time="4.259" classname="table_ent" name="ENT02_IT_is_produced_correctly"/>
+    <testcase time="0.626999999999995" classname="table_ent" name="ENT02_IT_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ent.R:61')"/>
     </testcase>
-    <testcase time="2.63799999999999" classname="table_ent" name="ENT02a_IT_is_produced_correctly"/>
-    <testcase time="0.506" classname="table_ent" name="ENT02a_IT_is_produced_correctly">
+    <testcase time="2.857" classname="table_ent" name="ENT02a_IT_is_produced_correctly"/>
+    <testcase time="0.582999999999998" classname="table_ent" name="ENT02a_IT_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ent.R:79')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_ext01" timestamp="2023-02-08T15:27:11Z" hostname="952cdf3d903f" tests="6" skipped="3" failures="0" errors="0" time="1.226">
-    <testcase time="0.292000000000002" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly"/>
-    <testcase time="0.0930000000000035" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly">
+  <testsuite name="table_ext01" timestamp="2023-02-09T14:47:29Z" hostname="eab6b138c032" tests="6" skipped="3" failures="0" errors="0" time="1.381">
+    <testcase time="0.322000000000003" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly"/>
+    <testcase time="0.100999999999999" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ext01.R:58')"/>
     </testcase>
-    <testcase time="0.299999999999997" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters"/>
-    <testcase time="0.0940000000000083" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters">
+    <testcase time="0.356999999999999" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters"/>
+    <testcase time="0.085000000000008" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters">
       <skipped message="Reason: On CRAN ('test-table_ext01.R:147')"/>
     </testcase>
-    <testcase time="0.344999999999999" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses"/>
-    <testcase time="0.10199999999999" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses">
+    <testcase time="0.409999999999997" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses"/>
+    <testcase time="0.105999999999995" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses">
       <skipped message="Reason: On CRAN ('test-table_ext01.R:241')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_fstg02" timestamp="2023-02-08T15:27:12Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="3.041">
-    <testcase time="0.828000000000003" classname="table_fstg02" name="FSTG02_table_variant_1_Subgroup_Analysis_of_Survival_Duration_is_produced_correctly"/>
-    <testcase time="0.0700000000000074" classname="table_fstg02" name="FSTG02_table_variant_1_Subgroup_Analysis_of_Survival_Duration_is_produced_correctly">
+  <testsuite name="table_fstg02" timestamp="2023-02-09T14:47:30Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="3.511">
+    <testcase time="0.993000000000009" classname="table_fstg02" name="FSTG02_table_variant_1_Subgroup_Analysis_of_Survival_Duration_is_produced_correctly"/>
+    <testcase time="0.090999999999994" classname="table_fstg02" name="FSTG02_table_variant_1_Subgroup_Analysis_of_Survival_Duration_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_fstg02.R:43')"/>
     </testcase>
-    <testcase time="0.981999999999999" classname="table_fstg02" name="FSTG02_table_variant_2_specifying_class_variables_and_options_for_the_treatment_variable_"/>
+    <testcase time="0.893000000000001" classname="table_fstg02" name="FSTG02_table_variant_2_specifying_class_variables_and_options_for_the_treatment_variable_"/>
     <testcase time="0.0769999999999982" classname="table_fstg02" name="FSTG02_table_variant_2_specifying_class_variables_and_options_for_the_treatment_variable_">
       <skipped message="Reason: On CRAN ('test-table_fstg02.R:80')"/>
     </testcase>
-    <testcase time="0.265000000000001" classname="table_fstg02" name="FSTG02_table_variant_3_selecting_columns_and_changing_the_alpha_level_"/>
-    <testcase time="0.0439999999999969" classname="table_fstg02" name="FSTG02_table_variant_3_selecting_columns_and_changing_the_alpha_level_">
+    <testcase time="0.375" classname="table_fstg02" name="FSTG02_table_variant_3_selecting_columns_and_changing_the_alpha_level_"/>
+    <testcase time="0.0499999999999972" classname="table_fstg02" name="FSTG02_table_variant_3_selecting_columns_and_changing_the_alpha_level_">
       <skipped message="Reason: On CRAN ('test-table_fstg02.R:105')"/>
     </testcase>
-    <testcase time="0.701999999999998" classname="table_fstg02" name="FSTG02_table_variant_4_fixed_symbol_size_is_produced_correctly"/>
-    <testcase time="0.0730000000000075" classname="table_fstg02" name="FSTG02_table_variant_4_fixed_symbol_size_is_produced_correctly">
+    <testcase time="0.938000000000002" classname="table_fstg02" name="FSTG02_table_variant_4_fixed_symbol_size_is_produced_correctly"/>
+    <testcase time="0.0940000000000083" classname="table_fstg02" name="FSTG02_table_variant_4_fixed_symbol_size_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_fstg02.R:135')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt01" timestamp="2023-02-08T15:27:15Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.732">
-    <testcase time="0.589999999999989" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly"/>
-    <testcase time="0.14200000000001" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly">
+  <testsuite name="table_lbt01" timestamp="2023-02-09T14:47:33Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.982">
+    <testcase time="0.791999999999987" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly"/>
+    <testcase time="0.190000000000012" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt01.R:26')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt02" timestamp="2023-02-08T15:27:16Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.43">
-    <testcase time="0.322000000000003" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly"/>
-    <testcase time="0.10799999999999" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly">
+  <testsuite name="table_lbt02" timestamp="2023-02-09T14:47:34Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.783">
+    <testcase time="0.667999999999992" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly"/>
+    <testcase time="0.115000000000009" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt02.R:19')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt03" timestamp="2023-02-08T15:27:17Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.475">
-    <testcase time="0.376000000000005" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly"/>
-    <testcase time="0.0990000000000038" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly">
+  <testsuite name="table_lbt03" timestamp="2023-02-09T14:47:35Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.563">
+    <testcase time="0.436999999999998" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly"/>
+    <testcase time="0.125999999999991" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt03.R:29')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt04" timestamp="2023-02-08T15:27:17Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.243">
-    <testcase time="0.192999999999998" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly"/>
-    <testcase time="0.0499999999999972" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly">
+  <testsuite name="table_lbt04" timestamp="2023-02-09T14:47:36Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.282">
+    <testcase time="0.224000000000004" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly"/>
+    <testcase time="0.0580000000000069" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt04.R:25')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt05" timestamp="2023-02-08T15:27:17Z" hostname="952cdf3d903f" tests="6" skipped="3" failures="0" errors="0" time="119.158">
-    <testcase time="39.726" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly"/>
-    <testcase time="0.0810000000000031" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly">
+  <testsuite name="table_lbt05" timestamp="2023-02-09T14:47:36Z" hostname="eab6b138c032" tests="6" skipped="3" failures="0" errors="0" time="138.459">
+    <testcase time="46.613" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly"/>
+    <testcase time="0.106999999999999" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt05.R:108')"/>
     </testcase>
-    <testcase time="39.538" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly"/>
-    <testcase time="0.0869999999999891" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly">
+    <testcase time="45.952" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly"/>
+    <testcase time="0.0980000000000132" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt05.R:176')"/>
     </testcase>
-    <testcase time="39.655" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly"/>
-    <testcase time="0.0710000000000264" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly">
+    <testcase time="45.6" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly"/>
+    <testcase time="0.0889999999999986" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt05.R:249')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt06" timestamp="2023-02-08T15:29:16Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.64">
-    <testcase time="0.503999999999991" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly"/>
-    <testcase time="0.135999999999996" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly">
+  <testsuite name="table_lbt06" timestamp="2023-02-09T14:49:55Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.699">
+    <testcase time="0.537999999999982" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly"/>
+    <testcase time="0.161000000000001" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt06.R:24')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt07" timestamp="2023-02-08T15:29:17Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.605">
-    <testcase time="0.501000000000005" classname="table_lbt07" name="LBT07_is_produced_correctly"/>
-    <testcase time="0.103999999999985" classname="table_lbt07" name="LBT07_is_produced_correctly">
+  <testsuite name="table_lbt07" timestamp="2023-02-09T14:49:55Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.722">
+    <testcase time="0.603000000000009" classname="table_lbt07" name="LBT07_is_produced_correctly"/>
+    <testcase time="0.119" classname="table_lbt07" name="LBT07_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt07.R:77')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt08" timestamp="2023-02-08T15:29:18Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.545">
-    <testcase time="0.430000000000007" classname="table_lbt08" name="LBT08_produce_correctly"/>
-    <testcase time="0.115000000000009" classname="table_lbt08" name="LBT08_produce_correctly">
+  <testsuite name="table_lbt08" timestamp="2023-02-09T14:49:56Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.601">
+    <testcase time="0.486999999999995" classname="table_lbt08" name="LBT08_produce_correctly"/>
+    <testcase time="0.114000000000004" classname="table_lbt08" name="LBT08_produce_correctly">
       <skipped message="Reason: On CRAN ('test-table_lbt08.R:38')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lbt14" timestamp="2023-02-08T15:29:18Z" hostname="952cdf3d903f" tests="10" skipped="5" failures="0" errors="0" time="4.133">
-    <testcase time="0.704999999999984" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected"/>
-    <testcase time="0.105000000000018" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected">
+  <testsuite name="table_lbt14" timestamp="2023-02-09T14:49:57Z" hostname="eab6b138c032" tests="10" skipped="5" failures="0" errors="0" time="3.267">
+    <testcase time="0.527000000000015" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected"/>
+    <testcase time="0.120999999999981" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_lbt14.R:48')"/>
     </testcase>
-    <testcase time="0.687999999999988" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected"/>
-    <testcase time="0.099000000000018" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected">
+    <testcase time="0.498999999999995" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected"/>
+    <testcase time="0.118000000000023" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_lbt14.R:95')"/>
     </testcase>
-    <testcase time="0.691999999999979" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected"/>
-    <testcase time="0.0999999999999943" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected">
+    <testcase time="0.501999999999981" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected"/>
+    <testcase time="0.103000000000009" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_lbt14.R:141')"/>
     </testcase>
-    <testcase time="0.696000000000026" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected"/>
-    <testcase time="0.101999999999975" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected">
+    <testcase time="0.50800000000001" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected"/>
+    <testcase time="0.103999999999985" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected">
       <skipped message="Reason: On CRAN ('test-table_lbt14.R:189')"/>
     </testcase>
-    <testcase time="0.785000000000025" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected"/>
-    <testcase time="0.160999999999973" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected">
+    <testcase time="0.614000000000004" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected"/>
+    <testcase time="0.170999999999992" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected">
       <skipped message="Reason: On CRAN ('test-table_lbt14.R:236')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_lgrt02" timestamp="2023-02-08T15:29:22Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="2.748">
-    <testcase time="0.535000000000025" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly"/>
-    <testcase time="0.105999999999995" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly">
+  <testsuite name="table_lgrt02" timestamp="2023-02-09T14:50:00Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="2.955">
+    <testcase time="0.576999999999998" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly"/>
+    <testcase time="0.118000000000023" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lgrt02.R:52')"/>
     </testcase>
-    <testcase time="0.626000000000005" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly"/>
-    <testcase time="0.126999999999981" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly">
+    <testcase time="0.671999999999997" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly"/>
+    <testcase time="0.145999999999987" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lgrt02.R:78')"/>
     </testcase>
-    <testcase time="0.623000000000019" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly"/>
-    <testcase time="0.11699999999999" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly">
+    <testcase time="0.674000000000007" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly"/>
+    <testcase time="0.128999999999991" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lgrt02.R:104')"/>
     </testcase>
-    <testcase time="0.50800000000001" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly"/>
-    <testcase time="0.105999999999995" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly">
+    <testcase time="0.534999999999997" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly"/>
+    <testcase time="0.104000000000013" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_lgrt02.R:130')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_mht01" timestamp="2023-02-08T15:29:25Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="1.486">
-    <testcase time="0.322000000000003" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately"/>
-    <testcase time="0.09699999999998" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately">
+  <testsuite name="table_mht01" timestamp="2023-02-09T14:50:03Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="1.669">
+    <testcase time="0.367999999999995" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately"/>
+    <testcase time="0.0979999999999848" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately">
       <skipped message="Reason: On CRAN ('test-table_mht01.R:41')"/>
     </testcase>
-    <testcase time="0.143000000000001" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately"/>
-    <testcase time="0.0360000000000014" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately">
+    <testcase time="0.162000000000006" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately"/>
+    <testcase time="0.0409999999999968" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately">
       <skipped message="Reason: On CRAN ('test-table_mht01.R:82')"/>
     </testcase>
-    <testcase time="0.296999999999997" classname="table_mht01" name="MHT01_variant_3_is_produced_accurately"/>
+    <testcase time="0.349000000000018" classname="table_mht01" name="MHT01_variant_3_is_produced_accurately"/>
     <testcase time="0.0840000000000032" classname="table_mht01" name="MHT01_variant_3_is_produced_accurately">
       <skipped message="Reason: On CRAN ('test-table_mht01.R:120')"/>
     </testcase>
-    <testcase time="0.407000000000011" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately"/>
-    <testcase time="0.0999999999999943" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately">
+    <testcase time="0.438999999999993" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately"/>
+    <testcase time="0.127999999999986" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately">
       <skipped message="Reason: On CRAN ('test-table_mht01.R:163')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_onct05" timestamp="2023-02-08T15:29:27Z" hostname="952cdf3d903f" tests="8" skipped="4" failures="0" errors="0" time="2.631">
-    <testcase time="0.709000000000003" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly"/>
-    <testcase time="0.063999999999993" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly">
+  <testsuite name="table_onct05" timestamp="2023-02-09T14:50:04Z" hostname="eab6b138c032" tests="8" skipped="4" failures="0" errors="0" time="3.038">
+    <testcase time="0.801000000000016" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly"/>
+    <testcase time="0.0919999999999845" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_onct05.R:33')"/>
     </testcase>
-    <testcase time="0.717000000000013" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly"/>
-    <testcase time="0.078000000000003" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly">
+    <testcase time="0.823000000000008" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly"/>
+    <testcase time="0.0769999999999982" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_onct05.R:57')"/>
     </testcase>
-    <testcase time="0.248999999999995" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly"/>
-    <testcase time="0.0459999999999923" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly">
+    <testcase time="0.313999999999993" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly"/>
+    <testcase time="0.0510000000000161" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_onct05.R:75')"/>
     </testcase>
-    <testcase time="0.706000000000017" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly"/>
-    <testcase time="0.0619999999999834" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly">
+    <testcase time="0.786000000000001" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly"/>
+    <testcase time="0.0939999999999941" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_onct05.R:96')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pdt01" timestamp="2023-02-08T15:29:30Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.876">
-    <testcase time="0.777999999999992" classname="table_pdt01" name="PDT01_is_produced_correctly"/>
-    <testcase time="0.0980000000000132" classname="table_pdt01" name="PDT01_is_produced_correctly">
+  <testsuite name="table_pdt01" timestamp="2023-02-09T14:50:08Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.461">
+    <testcase time="0.332999999999998" classname="table_pdt01" name="PDT01_is_produced_correctly"/>
+    <testcase time="0.127999999999986" classname="table_pdt01" name="PDT01_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pdt01.R:38')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pdt02" timestamp="2023-02-08T15:29:31Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="0.713">
-    <testcase time="0.656000000000006" classname="table_pdt02" name="PDT02_is_produced_correctly"/>
-    <testcase time="0.0569999999999879" classname="table_pdt02" name="PDT02_is_produced_correctly">
+  <testsuite name="table_pdt02" timestamp="2023-02-09T14:50:08Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="0.26">
+    <testcase time="0.209000000000003" classname="table_pdt02" name="PDT02_is_produced_correctly"/>
+    <testcase time="0.0510000000000161" classname="table_pdt02" name="PDT02_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pdt02.R:33')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkct01" timestamp="2023-02-08T15:29:31Z" hostname="952cdf3d903f" tests="8" skipped="2" failures="2" errors="0" time="6.024">
-    <testcase time="0.473000000000013" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
-    <testcase time="0.0799999999999841" classname="table_pkct01" name="PKCT01_is_produced_correctly">
+  <testsuite name="table_pkct01" timestamp="2023-02-09T14:50:08Z" hostname="eab6b138c032" tests="8" skipped="2" failures="2" errors="0" time="6.693">
+    <testcase time="0.531000000000006" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
+    <testcase time="0.0859999999999843" classname="table_pkct01" name="PKCT01_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkct01.R:20')"/>
     </testcase>
-    <testcase time="1.536" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
+    <testcase time="1.75300000000001" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
       <failure type="failure" message="any(sapply(string_res, grepl, pattern = &quot;NA&quot;)) is not FALSE ('test-table_pkct01.R:120')">any(sapply(string_res, grepl, pattern = "NA")) is not FALSE
 
 `actual`:   TRUE 
 `expected`: FALSE</failure>
     </testcase>
-    <testcase time="0.0390000000000157" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
+    <testcase time="0.0249999999999773" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
       <failure type="failure" message="sum(sapply(string_res, grepl, pattern = &quot;NE&quot;)) (`actual`) not equal to 4L (`expected`). ('test-table_pkct01.R:121')">sum(sapply(string_res, grepl, pattern = "NE")) (`actual`) not equal to 4L (`expected`).
 
   `actual`: 2
 `expected`: 4</failure>
     </testcase>
-    <testcase time="3.40199999999999" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
-    <testcase time="0.349000000000018" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
-    <testcase time="0.00199999999998113" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
-    <testcase time="0.143000000000001" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
+    <testcase time="3.714" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.416000000000025" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.0029999999999859" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.164999999999992" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
       <skipped message="Reason: On CRAN ('test-table_pkct01.R:140')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt02" timestamp="2023-02-08T15:29:37Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.487">
-    <testcase time="0.215000000000003" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X"/>
-    <testcase time="0.0689999999999884" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X">
+  <testsuite name="table_pkpt02" timestamp="2023-02-09T14:50:15Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.572">
+    <testcase time="0.239000000000004" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.0769999999999982" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X">
       <skipped message="Reason: On CRAN ('test-table_pkpt02.R:42')"/>
     </testcase>
-    <testcase time="0.143000000000001" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_Y"/>
-    <testcase time="0.0600000000000023" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_Y">
+    <testcase time="0.168000000000006" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_Y"/>
+    <testcase time="0.0879999999999939" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_Y">
       <skipped message="Reason: On CRAN ('test-table_pkpt02.R:55')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt03" timestamp="2023-02-08T15:29:37Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.821">
-    <testcase time="0.449000000000012" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly"/>
-    <testcase time="0.0799999999999841" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly">
+  <testsuite name="table_pkpt03" timestamp="2023-02-09T14:50:16Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.975">
+    <testcase time="0.504999999999995" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly"/>
+    <testcase time="0.110000000000014" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt03.R:66')"/>
     </testcase>
-    <testcase time="0.239000000000004" classname="table_pkpt03" name="PKPT03_Drug_Y_is_produced_correctly"/>
-    <testcase time="0.0529999999999973" classname="table_pkpt03" name="PKPT03_Drug_Y_is_produced_correctly">
+    <testcase time="0.277999999999992" classname="table_pkpt03" name="PKPT03_Drug_Y_is_produced_correctly"/>
+    <testcase time="0.0819999999999936" classname="table_pkpt03" name="PKPT03_Drug_Y_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt03.R:80')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt04" timestamp="2023-02-08T15:29:38Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.614">
-    <testcase time="0.254000000000019" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X"/>
-    <testcase time="0.0879999999999939" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X">
+  <testsuite name="table_pkpt04" timestamp="2023-02-09T14:50:16Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.72">
+    <testcase time="0.284999999999997" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.121000000000009" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X">
       <skipped message="Reason: On CRAN ('test-table_pkpt04.R:42')"/>
     </testcase>
-    <testcase time="0.176999999999992" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_Y"/>
-    <testcase time="0.0949999999999989" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_Y">
+    <testcase time="0.228000000000009" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_Y"/>
+    <testcase time="0.0859999999999843" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_Y">
       <skipped message="Reason: On CRAN ('test-table_pkpt04.R:55')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt05" timestamp="2023-02-08T15:29:39Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="1.051">
-    <testcase time="0.581000000000017" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly"/>
-    <testcase time="0.10499999999999" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly">
+  <testsuite name="table_pkpt05" timestamp="2023-02-09T14:50:17Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="1.545">
+    <testcase time="0.695999999999998" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly"/>
+    <testcase time="0.14100000000002" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt05.R:65')"/>
     </testcase>
-    <testcase time="0.294000000000011" classname="table_pkpt05" name="PKPT05_Drug_Y_is_produced_correctly"/>
-    <testcase time="0.070999999999998" classname="table_pkpt05" name="PKPT05_Drug_Y_is_produced_correctly">
+    <testcase time="0.639999999999986" classname="table_pkpt05" name="PKPT05_Drug_Y_is_produced_correctly"/>
+    <testcase time="0.0680000000000121" classname="table_pkpt05" name="PKPT05_Drug_Y_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt05.R:80')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt06" timestamp="2023-02-08T15:29:40Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.262">
-    <testcase time="0.120999999999981" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X"/>
-    <testcase time="0.0410000000000252" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X">
+  <testsuite name="table_pkpt06" timestamp="2023-02-09T14:50:19Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.289">
+    <testcase time="0.138000000000005" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.0449999999999875" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X">
       <skipped message="Reason: On CRAN ('test-table_pkpt06.R:48')"/>
     </testcase>
-    <testcase time="0.070999999999998" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y"/>
-    <testcase time="0.0289999999999964" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y">
+    <testcase time="0.0759999999999934" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y"/>
+    <testcase time="0.0300000000000011" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y">
       <skipped message="Reason: On CRAN ('test-table_pkpt06.R:61')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_pkpt07" timestamp="2023-02-08T15:29:40Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.446">
-    <testcase time="0.22399999999999" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly"/>
-    <testcase time="0.061000000000007" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly">
+  <testsuite name="table_pkpt07" timestamp="2023-02-09T14:50:19Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.486">
+    <testcase time="0.246000000000009" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly"/>
+    <testcase time="0.063999999999993" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt07.R:72')"/>
     </testcase>
-    <testcase time="0.111999999999995" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly"/>
-    <testcase time="0.0490000000000066" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly">
+    <testcase time="0.12299999999999" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly"/>
+    <testcase time="0.0530000000000257" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_pkpt07.R:87')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_rspt01" timestamp="2023-02-08T15:29:41Z" hostname="952cdf3d903f" tests="12" skipped="6" failures="0" errors="0" time="2.352">
-    <testcase time="0.395999999999987" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response"/>
-    <testcase time="0.0750000000000171" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response">
+  <testsuite name="table_rspt01" timestamp="2023-02-09T14:50:20Z" hostname="eab6b138c032" tests="12" skipped="6" failures="0" errors="0" time="2.548">
+    <testcase time="0.435999999999979" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response"/>
+    <testcase time="0.0829999999999984" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:46')"/>
     </testcase>
-    <testcase time="0.258999999999986" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_"/>
-    <testcase time="0.0720000000000027" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_">
+    <testcase time="0.273000000000025" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_"/>
+    <testcase time="0.0879999999999939" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:73')"/>
     </testcase>
-    <testcase time="0.337999999999994" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_"/>
-    <testcase time="0.0730000000000075" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_">
+    <testcase time="0.365999999999985" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_"/>
+    <testcase time="0.0800000000000125" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:116')"/>
     </testcase>
-    <testcase time="0.361999999999995" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_"/>
-    <testcase time="0.0980000000000132" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_">
+    <testcase time="0.399000000000001" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_"/>
+    <testcase time="0.113" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:166')"/>
     </testcase>
-    <testcase time="0.290999999999997" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_"/>
-    <testcase time="0.0749999999999886" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_">
+    <testcase time="0.293999999999983" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_"/>
+    <testcase time="0.0940000000000225" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:198')"/>
     </testcase>
-    <testcase time="0.239000000000004" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_"/>
-    <testcase time="0.0740000000000123" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_">
+    <testcase time="0.254999999999995" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_"/>
+    <testcase time="0.0669999999999789" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_">
       <skipped message="Reason: On CRAN ('test-table_rspt01.R:248')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_ttet01" timestamp="2023-02-08T15:29:43Z" hostname="952cdf3d903f" tests="12" skipped="6" failures="0" errors="0" time="2.759">
-    <testcase time="0.461999999999989" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly"/>
-    <testcase time="0.109000000000009" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly">
+  <testsuite name="table_ttet01" timestamp="2023-02-09T14:50:22Z" hostname="eab6b138c032" tests="12" skipped="6" failures="0" errors="0" time="3.036">
+    <testcase time="0.505000000000024" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly"/>
+    <testcase time="0.105999999999995" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:79')"/>
     </testcase>
-    <testcase time="0.23399999999998" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display"/>
-    <testcase time="0.0759999999999934" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display">
+    <testcase time="0.272999999999996" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display"/>
+    <testcase time="0.0689999999999884" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:124')"/>
     </testcase>
-    <testcase time="0.348000000000013" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level"/>
-    <testcase time="0.0769999999999982" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level">
+    <testcase time="0.387" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level"/>
+    <testcase time="0.0860000000000127" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:190')"/>
     </testcase>
-    <testcase time="0.40100000000001" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis"/>
-    <testcase time="0.0999999999999943" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis">
+    <testcase time="0.450999999999993" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis"/>
+    <testcase time="0.099000000000018" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:251')"/>
     </testcase>
-    <testcase time="0.349999999999994" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point"/>
-    <testcase time="0.0790000000000077" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point">
+    <testcase time="0.394000000000005" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point"/>
+    <testcase time="0.0889999999999986" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:306')"/>
     </testcase>
-    <testcase time="0.437999999999988" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value"/>
-    <testcase time="0.085000000000008" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value">
+    <testcase time="0.483000000000004" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value"/>
+    <testcase time="0.0939999999999941" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value">
       <skipped message="Reason: On CRAN ('test-table_ttet01.R:379')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_vst01" timestamp="2023-02-08T15:29:46Z" hostname="952cdf3d903f" tests="2" skipped="1" failures="0" errors="0" time="1.369">
-    <testcase time="1.126" classname="table_vst01" name="VST01_default_variant_is_produced_correctly"/>
-    <testcase time="0.242999999999995" classname="table_vst01" name="VST01_default_variant_is_produced_correctly">
+  <testsuite name="table_vst01" timestamp="2023-02-09T14:50:25Z" hostname="eab6b138c032" tests="2" skipped="1" failures="0" errors="0" time="1.456">
+    <testcase time="1.202" classname="table_vst01" name="VST01_default_variant_is_produced_correctly"/>
+    <testcase time="0.253999999999962" classname="table_vst01" name="VST01_default_variant_is_produced_correctly">
       <skipped message="Reason: On CRAN ('test-table_vst01.R:66')"/>
     </testcase>
   </testsuite>
-  <testsuite name="table_vst02" timestamp="2023-02-08T15:29:47Z" hostname="952cdf3d903f" tests="4" skipped="2" failures="0" errors="0" time="0.804">
-    <testcase time="0.326999999999998" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_"/>
-    <testcase time="0.078000000000003" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_">
+  <testsuite name="table_vst02" timestamp="2023-02-09T14:50:27Z" hostname="eab6b138c032" tests="4" skipped="2" failures="0" errors="0" time="0.928">
+    <testcase time="0.355000000000018" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_"/>
+    <testcase time="0.124000000000024" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_">
       <skipped message="Reason: On CRAN ('test-table_vst02.R:18')"/>
     </testcase>
-    <testcase time="0.320999999999998" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_"/>
-    <testcase time="0.078000000000003" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_">
+    <testcase time="0.343999999999994" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_"/>
+    <testcase time="0.104999999999961" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_">
       <skipped message="Reason: On CRAN ('test-table_vst02.R:33')"/>
     </testcase>
   </testsuite>
