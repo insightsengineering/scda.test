@@ -3,8 +3,18 @@ Package: scda.test
 Title: Template Tests
 Version: 0.0.0.9004
 Date: 2023-02-08
-Authors@R:
+Authors@R: c(
+    person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
+    person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
+    person("Jana", "Stoilova", , "jana.stoilova@roche.com", role = "aut"),
+    person("Heng", "Wang", , "wang.heng@gene.com", role = "aut"),
+    person("Francois", "Collin", role = "aut"),
+    person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
+    person("Pawel", "Rucki", , "pawel.rucki@roche.com", role = "aut"),
+    person("Chendi", "Liao", , "chendi.liao@roche.com", role = "aut"),
+    person("Jennifer", "Li", , "li.jing@gene.com", role = "aut"),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
+  )
 Description: Tests of sample templates from TLG Catalog using data
     from the scda package.
 License: Apache License 2.0 | file LICENSE
