@@ -116,7 +116,7 @@ testthat::test_that("Specific PKCT01 features are present", {
   testthat::expect_snapshot(res)
 
   # Comparing
-  string_res <- strsplit(toString(matrix_form(result, TRUE)), "\n")
+  string_res <- strsplit(toString(matrix_form(result, TRUE)), "\n")[[1]]
 
   # Checking NAs are NEs
   testthat::expect_false(any(sapply(string_res, grepl, pattern = "NA")))
