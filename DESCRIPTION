@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9004
-Date: 2023-02-08
+Version: 0.0.0.9005
+Date: 2023-02-09
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -15,8 +15,8 @@ Authors@R: c(
     person("Jennifer", "Li", , "li.jing@gene.com", role = "aut"),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
-Description: Tests of sample templates from TLG Catalog using data
-    from the scda package.
+Description: Tests of sample templates from TLG Catalog using data from
+    the scda package.
 License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
@@ -37,8 +37,8 @@ Suggests:
     tidyr
 VignetteBuilder:
     knitr
-Config/testthat/edition: 3
 biocViews:
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
