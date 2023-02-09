@@ -1,5 +1,3 @@
-# Preparation of the test case
-
 adpc <- adpc_raw
 
 testthat::test_that("PKCT01 is produced correctly", {
