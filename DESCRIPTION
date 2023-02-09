@@ -4,7 +4,7 @@ Title: Template Tests
 Version: 0.0.0.9004
 Date: 2023-02-08
 Authors@R:
-    person("insightsengineering", , , "insightsengineering@example.com", role = c("aut", "cre"))
+    person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
 Description: Tests of sample templates from TLG Catalog using datasets
     from the scda package.
 License: Apache License 2.0 | file LICENSE
