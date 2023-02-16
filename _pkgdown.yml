@@ -1,6 +1,7 @@
 url: https://insightsengineering.github.io/scda.test
 
 template:
+  package: nesttemplate
   bootstrap: 5
   bootswatch: cerulean
   includes:
