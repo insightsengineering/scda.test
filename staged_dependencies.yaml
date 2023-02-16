@@ -13,4 +13,7 @@ upstream_repos:
   insightsengineering/tern:
     repo: insightsengineering/tern
     host: https://github.com
+  insightsengineering/rlistings:
+    repo: insightsengineering/rlistings
+    host: https://github.com
 downstream_repos:
