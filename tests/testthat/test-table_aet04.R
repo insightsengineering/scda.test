@@ -311,7 +311,8 @@ testthat::test_that(
       anl_terms <- adae %>%
         dplyr::group_by(ACTARM, AEBODSYS, AEDECOD) %>%
         dplyr::summarise(
-          unique_terms = dplyr::n_distinct(USUBJID)
+          unique_terms = dplyr::n_distinct(USUBJID),
+          .groups = "drop_last"
         ) %>%
         dplyr::ungroup()
 
@@ -330,7 +331,8 @@ testthat::test_that(
       anl <- dplyr::left_join(
         anl_terms,
         adae,
-        by = "AEDECOD"
+        by = "AEDECOD",
+        multiple = "all"
       )
       anl
     }
