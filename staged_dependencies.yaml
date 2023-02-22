@@ -4,6 +4,12 @@ current_repo:
   repo: insightsengineering/scda.test
   host: https://github.com
 upstream_repos:
+  insightsengineering/formatters:
+    repo: insightsengineering/formatters
+    host: https://github.com
+  insightsengineering/rtables:
+    repo: insightsengineering/rtables
+    host: https://github.com
   insightsengineering/scda:
     repo: insightsengineering/scda
     host: https://github.com
