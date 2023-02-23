@@ -10,5 +10,5 @@
 
 
 # Fix R CMD check notes
-#' @import tern scda scda.2022
+#' @import formatters rtables rlistings tern scda scda.2022
 NULL
