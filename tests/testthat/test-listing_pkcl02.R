@@ -53,8 +53,10 @@ testthat::test_that("PKCL02 listing is produced correctly", {
     out,
     key_cols = c("TRT01A", "USUBJID", "VISIT"),
     disp_cols = names(out),
-    main_title = paste0("Listing of ", drug_a, " Urine Concentration and Volumes following ",
-                        unique(adpc_x$REGIMEN)[1], " of ", drug_a, ", PK Population\nProtocol: xxnnnnn"),
+    main_title = paste0(
+      "Listing of ", drug_a, " Urine Concentration and Volumes following ",
+      unique(adpc_x$REGIMEN)[1], " of ", drug_a, ", PK Population\nProtocol: xxnnnnn"
+    ),
     subtitles = paste("Analyte:", drug_a)
   ), "sorting incoming data by key columns")
 
