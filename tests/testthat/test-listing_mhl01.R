@@ -9,7 +9,7 @@ testthat::test_that("MHL01 listing is produced correctly", {
     ) %>%
     select(ID, ASR, TRT01A, MHBODSYS, MHDECOD, TRTSDTM, ASTDTM, ASTDY, AENDTM, AENDY, ATIREL)
 
-  var_labels(out) <- c(
+  formatters::var_labels(out) <- c(
     ID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     TRT01A = "Treatment",
