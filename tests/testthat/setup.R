@@ -2,6 +2,7 @@
 library(dplyr)
 library(scda.2022)
 library(tern)
+library(lubridate)
 
 # Data loading for tests
 adsl_raw <- scda::synthetic_cdisc_dataset("rcd_2022_06_27", "adsl")

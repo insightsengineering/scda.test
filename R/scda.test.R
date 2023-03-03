@@ -12,5 +12,4 @@
 # Fix R CMD check notes
 #' @import formatters rtables tern scda scda.2022
 #' @importFrom rlistings as_listing
-#' @importFrom lubridate %--% as.period second minute hour day
 NULL
