@@ -1,6 +1,5 @@
 # Extra libraries (suggested) for tests
 library(dplyr)
-library(rlistings)
 library(scda.2022)
 library(tern)
 
