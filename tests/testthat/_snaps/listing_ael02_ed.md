@@ -1947,10 +1947,10 @@
                                                                                             dcd D.1.1.4.2     1011       19           7          30          2         No      MODERATE       No          5         No         2   
       —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       
-      (1) Outcome: 1 = fatal; 2 = not recovered/not resolved; 3 = recovered/resolved; 4 = recovered/resolved with sequelae; 5 =
-          recovering/resolving; 6 = unknown.
-      (2) Action taken with study drug: 1 = dose increased; 2 = dose not changed; 3 = dose reduced; 4 = drug interrupted; 5 = drug
-          withdrawn; 6 = not applicable; 7 = unknown.
+      (1) Outcome: 1 = fatal; 2 = not recovered/not resolved; 3 = recovered/resolved;
+         4 = recovered/resolved with sequelae; 5 = recovering/resolving; 6 = unknown.
+      (2) Action taken with study drug: 1 = dose increased; 2 = dose not changed; 3 = dose reduced; 4 = drug interrupted;
+         5 = drug withdrawn; 6 = not applicable; 7 = unknown.
       *  Study day derived from imputed onset date.
       ** Duration derived from imputed onset date and/or end date.
 
