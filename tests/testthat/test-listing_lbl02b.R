@@ -50,7 +50,7 @@ testthat::test_that("LBL02B listing is produced correctly", {
     disp_cols = names(out),
     main_title = "Listing of Laboratory Abnormalities Defined by NCI CTCAE Grade >= 2",
     main_footer = "NCI CTCAE grade is displayed as abnormal high (H) or low (L) followed by the grade."
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

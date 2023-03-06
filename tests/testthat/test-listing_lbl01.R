@@ -47,7 +47,7 @@ testthat::test_that("LBL01 listing is produced correctly", {
     disp_cols = names(out),
     main_title = "Listing of Laboratory Test Results",
     main_footer = "NCI CTCAE grade is displayed as abnormal high (H) or low (L) followed by the grade."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

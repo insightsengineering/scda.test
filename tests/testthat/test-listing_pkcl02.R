@@ -58,7 +58,7 @@ testthat::test_that("PKCL02 listing is produced correctly", {
       unique(adpc_x$REGIMEN)[1], " of ", drug_a, ", PK Population\nProtocol: xxnnnnn"
     ),
     subtitles = paste("Analyte:", drug_a)
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

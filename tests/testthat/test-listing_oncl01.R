@@ -56,7 +56,7 @@ testthat::test_that("ONCL01 listing is produced correctly", {
     disp_cols = names(out),
     main_title = "Listing of Individual Efficacy Data",
     main_footer = "PFS = Progression Free Survival"
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

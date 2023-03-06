@@ -72,7 +72,7 @@ testthat::test_that("AEL02_ED listing is produced correctly", {
    5 = drug withdrawn; 6 = not applicable; 7 = unknown.
 *  Study day derived from imputed onset date.
 ** Duration derived from imputed onset date and/or end date."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

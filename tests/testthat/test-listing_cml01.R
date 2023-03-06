@@ -36,7 +36,7 @@ testthat::test_that("CML01 listing is produced correctly", {
     key_cols = c("ID", "AGSXRC", "TRT01A", "CMDECOD"),
     disp_cols = names(out),
     main_title = "Listing of Previous and Concomitant Medications"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

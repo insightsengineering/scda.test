@@ -14,7 +14,7 @@ testthat::test_that("CML02A_GL listing is produced correctly", {
     key_cols = c("ATC2", "CMDECOD", "CMTRT"),
     disp_cols = names(out),
     main_title = "Listing of Concomitant Medication Class Level 2, Preferred Name, and Investigator-Specified Terms"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

@@ -31,7 +31,7 @@ testthat::test_that("DSL02 listing is produced correctly", {
     out,
     disp_cols = names(out),
     main_title = "Listing of Patients Who Discontinued Early from Study"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

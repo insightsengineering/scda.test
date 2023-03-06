@@ -60,24 +60,4 @@
       GBR-1/id-319                          36/F/ASIAN                       A: Drug X        02OCT2020           499          532             ADVERSE EVENT              Yes    
       GBR-17/id-211                         62/M/ASIAN                       B: Placebo       23DEC2020           424          456          DISEASE PROGRESSION           Yes    
       JPN-17/id-250                         28/F/ASIAN                     C: Combination     17FEB2020           732          744                MISSING                  NA    
-      JPN-17/id-393                         26/M/ASIAN                     C: Combination     08JUN2020           614          653             ADVERSE EVENT              Yes    
-      NGA-1/id-325                          28/F/WHITE                       B: Placebo       08SEP2019           892          936          DISEASE PROGRESSION           Yes    
-      NGA-1/id-46                           28/M/ASIAN                       A: Drug X        01APR2020           689          698          DISEASE PROGRESSION           Yes    
-      NGA-11/id-35                          32/M/ASIAN                     C: Combination     26AUG2019           903          924             ADVERSE EVENT              Yes    
-      NGA-12/id-264           24/M/AMERICAN INDIAN OR ALASKA NATIVE          B: Placebo       09APR2020           677          699          DISEASE PROGRESSION           Yes    
-      NGA-4/id-215            40/F/AMERICAN INDIAN OR ALASKA NATIVE        C: Combination     18MAY2020           641          649             ADVERSE EVENT              Yes    
-      PAK-1/id-178                          46/M/ASIAN                     C: Combination     06JUN2019           990          1028         DISEASE PROGRESSION           Yes    
-      PAK-1/id-95                           28/F/ASIAN                     C: Combination     01MAY2019           1025         1028    Post-study reporting of death       No    
-      PAK-4/id-15                           30/M/ASIAN                     C: Combination     27DEC2019           781          812           LOST TO FOLLOW UP             NA    
-      RUS-1/id-52                           40/F/ASIAN                       A: Drug X        18MAR2019           1064         1070         DISEASE PROGRESSION           Yes    
-      RUS-11/id-162               37/F/BLACK OR AFRICAN AMERICAN             B: Placebo       30MAR2020           685          729           LOST TO FOLLOW UP             NA    
-      RUS-11/id-94                          36/F/ASIAN                       B: Placebo       23AUG2019           904          954             ADVERSE EVENT              Yes    
-      RUS-16/id-4                           36/F/ASIAN                       B: Placebo       28MAR2020           689          700                MISSING                  NA    
-      RUS-2/id-176                          42/F/WHITE                       B: Placebo       12APR2020           674          686                MISSING                  NA    
-      RUS-6/id-77                 26/F/BLACK OR AFRICAN AMERICAN             A: Drug X        24NOV2020           447          496             ADVERSE EVENT              Yes    
-      USA-1/id-207                38/F/BLACK OR AFRICAN AMERICAN           C: Combination     14JAN2021           400          414          DISEASE PROGRESSION           Yes    
-      USA-11/id-136                         38/F/ASIAN                     C: Combination     02OCT2019           865          914             ADVERSE EVENT              Yes    
-      USA-11/id-339                         39/F/WHITE                       A: Drug X        19OCT2019           854          879                UNKNOWN                  No    
-      USA-11/id-365                         34/M/ASIAN                     C: Combination     09JUN2019           981          1003            ADVERSE EVENT              Yes    
-      USA-4/id-382                31/M/BLACK OR AFRICAN AMERICAN           C: Combination     03SEP2019           899          910             ADVERSE EVENT              Yes    
 

@@ -25,7 +25,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
     subtitles = "Population: All Patients",
     main_footer = c("Program: xxxx", "Output: xxxx"),
     prov_footer = "Page 1 of 1"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

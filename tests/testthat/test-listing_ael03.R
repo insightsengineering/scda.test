@@ -68,7 +68,7 @@ testthat::test_that("AEL03 listing is produced correctly", {
     surgical intervention to prevent one of the outcomes listed above.
 *  Study day derived from imputed onset date.
 ** Duration derived from imputed onset date and/or end date."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

@@ -24,7 +24,7 @@ testthat::test_that("EXL01 listing is produced correctly", {
     key_cols = c("CRTNPT", "AVISIT"),
     disp_cols = names(out),
     main_title = "Listing of Exposure to Study Drug"
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

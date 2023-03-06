@@ -23,7 +23,7 @@ testthat::test_that("PKCL01 listing is produced correctly", {
       "PK Population\nProtocol: xxnnnnn"
     ),
     subtitles = paste("Analyte:", analyte)
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

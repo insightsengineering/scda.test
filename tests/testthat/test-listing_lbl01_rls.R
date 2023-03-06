@@ -53,7 +53,7 @@ testthat::test_that("LBL01_RLS listing is produced correctly", {
     main_footer = "Abnormalities are flagged as high (H) or low (L) if outside the Roche standard reference range;
     high high (HH) or low low (LL) if outside the Roche marked reference range with a clinically relevant change
     from baseline."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

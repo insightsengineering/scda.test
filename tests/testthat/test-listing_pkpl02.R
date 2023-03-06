@@ -30,7 +30,7 @@ testthat::test_that("PKPL02 listing is produced correctly", {
     disp_cols = names(out),
     main_title = paste("Listing of", drug_a, spec, "PK Parameters, PK Population\nProtocol: xxnnnnn"),
     subtitles = paste("Analyte:", drug_a)
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

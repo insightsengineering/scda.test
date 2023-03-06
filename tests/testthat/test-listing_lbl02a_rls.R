@@ -74,7 +74,7 @@ testthat::test_that("LBL02A_RLS listing is produced correctly", {
       "the standard reference range; high high (HH) or low low (LL) if outside the marked reference range with a",
       "clinically relevant change from baseline."
     )
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

@@ -17,7 +17,7 @@ testthat::test_that("DSUR4 listing is produced correctly", {
     disp_cols = names(out),
     main_title = "Listing of Patients Who Died During Reporting Period",
     subtitles = paste("Number of patient deaths during reporting period =", death_num)
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

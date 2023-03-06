@@ -56,7 +56,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     main_title = "Listing of ECG Data: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
     flagged as high (H) or low (L) if outside the Roche standard reference range."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

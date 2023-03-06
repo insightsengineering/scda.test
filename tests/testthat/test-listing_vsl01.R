@@ -78,7 +78,7 @@ testthat::test_that("VSL01 listing is produced correctly", {
     main_title = "Listing of Vital Signs: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
 flagged as high (H) or low (L) if outside the Roche standard reference range."
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

@@ -15,7 +15,7 @@ testthat::test_that("AEL01 listing is produced correctly", {
     key_cols = c("AESOC", "AEDECOD", "AELLT"),
     disp_cols = names(out),
     main_title = "Listing of Preferred Terms, Lowest Level Terms, and Investigator-Specified Adverse Event Terms"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

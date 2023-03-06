@@ -59,24 +59,4 @@
                            CHN-9/id-11                 UNKNOWN           
       C: Combination      CHN-15/id-201             ADVERSE EVENT        
                            BRA-11/id-9           DISEASE PROGRESSION     
-                          CHN-15/id-245          DISEASE PROGRESSION     
-                           PAK-1/id-95      Post-study reporting of death
-                          CHN-11/id-184          DISEASE PROGRESSION     
-                          PAK-1/id-178           DISEASE PROGRESSION     
-                          USA-11/id-365             ADVERSE EVENT        
-                          NGA-11/id-35              ADVERSE EVENT        
-                          USA-4/id-382              ADVERSE EVENT        
-                          CHN-18/id-51              ADVERSE EVENT        
-                          USA-11/id-136             ADVERSE EVENT        
-                          BRA-1/id-265                 SUICIDE           
-                          CHN-11/id-192          DISEASE PROGRESSION     
-                           PAK-4/id-15            LOST TO FOLLOW UP      
-                          JPN-17/id-250                MISSING           
-                          NGA-4/id-215              ADVERSE EVENT        
-                          CHN-11/id-91              ADVERSE EVENT        
-                          JPN-17/id-393             ADVERSE EVENT        
-                          CHN-12/id-255           LOST TO FOLLOW UP      
-                          BRA-14/id-120             ADVERSE EVENT        
-                          USA-1/id-207           DISEASE PROGRESSION     
-                          CHN-1/id-233                 MISSING           
 

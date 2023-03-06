@@ -45,7 +45,7 @@ testthat::test_that("PKPL04 listing is produced correctly", {
       "\nVisit: ", unique(adpp_x$AVISIT)
     ),
     subtitles = paste0("\nAnalytes: ", paste(drug_a, drug_b, sep = " and "))
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

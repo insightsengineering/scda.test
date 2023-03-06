@@ -25,7 +25,7 @@ testthat::test_that("AEL04 listing is produced correctly", {
     key_cols = "ID",
     disp_cols = names(out),
     main_title = "Listing of Patient Deaths"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })

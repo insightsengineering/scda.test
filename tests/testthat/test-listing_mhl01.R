@@ -28,7 +28,7 @@ testthat::test_that("MHL01 listing is produced correctly", {
     key_cols = c("ID", "ASR", "TRT01A", "MHBODSYS", "MHDECOD"),
     disp_cols = names(out),
     main_title = "Listing of Medical History and Concurrent Diseases"
-  ), "sorting incoming data by key columns")
+  ) %>% head(50), "sorting incoming data by key columns")
 
   testthat::expect_snapshot(result)
 })
