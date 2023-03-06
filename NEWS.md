@@ -1,7 +1,8 @@
 # scda.test 0.0.0.9011
 
 ### New Features
-* Added tests from `tern`.
+* Added table tests from `tern`.
+* Added tests for listings.
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.
