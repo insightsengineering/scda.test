@@ -60,7 +60,13 @@ testthat::test_that("2. Cox Regression (with Interaction Term)", {
     summarize_coxreg(conf_level = .95, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
     build_table(df = df)
 
-  res <- testthat::expect_silent(result)
+  # Hack for hard-coded indentation
+  mf_res <- matrix_form(result)
+  ri_mf_res <- mf_rinfo(mf_res)
+  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
+    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
+
+  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
   testthat::expect_snapshot(res)
 })
 
@@ -83,7 +89,13 @@ testthat::test_that("3. Cox Regression (specifying covariates)", {
     summarize_coxreg(conf_level = .95, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
     build_table(df = df)
 
-  res <- testthat::expect_silent(result)
+  # Hack for hard-coded indentation
+  mf_res <- matrix_form(result)
+  ri_mf_res <- mf_rinfo(mf_res)
+  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
+    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
+
+  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
   testthat::expect_snapshot(res)
 })
 
@@ -111,6 +123,12 @@ testthat::test_that("4. Cox Regression (setting strata, ties, and alpha level)",
     summarize_coxreg(conf_level = conf_level, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
     build_table(df = df)
 
-  res <- testthat::expect_silent(result)
+  # Hack for hard-coded indentation
+  mf_res <- matrix_form(result)
+  ri_mf_res <- mf_rinfo(mf_res)
+  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
+    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
+
+  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
   testthat::expect_snapshot(res)
 })
