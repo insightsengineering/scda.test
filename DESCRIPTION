@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9011
-Date: 2023-02-23
+Version: 0.0.0.9012
+Date: 2023-03-06
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -35,6 +35,7 @@ Suggests:
     dplyr,
     forcats,
     knitr,
+    lubridate,
     stringr,
     testthat (>= 3.0),
     tibble,
