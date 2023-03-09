@@ -107,9 +107,10 @@ testthat::test_that("AET04 variant 1 further pagination tests", {
   pg_tbl_no_clw <- paginate_table(res, lpp = lpp_tmp)
   res1 <- toString(pg_tbl_no_clw[[1]], widths = clw)
   res2 <- toString(res[1:17,
-                       keep_titles = TRUE,
-                       keep_footers = TRUE,
-                       keep_topleft = TRUE], widths = clw)
+    keep_titles = TRUE,
+    keep_footers = TRUE,
+    keep_topleft = TRUE
+  ], widths = clw)
 
   testthat::expect_identical(res1, res2)
 
