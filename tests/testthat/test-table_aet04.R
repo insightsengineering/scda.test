@@ -55,55 +55,13 @@ raw_result <- basic_table() %>%
   )
 
 testthat::test_that("AET04 variant 1 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARM") %>%
-    add_colcounts() %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEBODSYS",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEDECOD",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "- Any Grade -"
-    ) %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp[-1],
-      .indent_mods = -1L
-    )
+  res <- testthat::expect_silent(raw_result)
 
-  result <- lyt %>%
-    build_table(adae, alt_counts_df = adsl) %>%
-    sort_at_path(
-      path = "AEBODSYS",
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    ) %>%
-    sort_at_path(
-      path = c("AEBODSYS", "*", "AEDECOD"),
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    )
-
-  res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 
   # Pagination also works (and sorting)
   testthat::expect_silent(
-    pag_result <- paginate_table(result, lpp = 15)
+    pag_result <- paginate_table(res, lpp = 15)
   )
 
   testthat::expect_identical(
@@ -114,6 +72,48 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
     to_string_matrix(pag_result[[1]])[3:4, 1],
     c("- Any Grade -", "Grade 1-2")
   )
+})
+
+testthat::test_that("AET04 variant 1 further pagination tests", {
+  # Standard, direct call
+  pag_res <- testthat::expect_silent(paginate_table(raw_result))
+  testthat::expect_equal(sapply(pag_res, nrow), c(55, 22))
+  testthat::expect_equal(sapply(pag_res, ncol), c(3, 3))
+
+  # With combo of rows and cols per page
+  std_col_widths <- formatters::propose_column_widths(raw_result)
+  # Min h-width: first value is the row label, second is the largest content, 3 is the inter-space
+  cpp_width <- std_col_widths[1] + max(std_col_widths[-1]) + 3
+  pag_res <- testthat::expect_silent(
+    paginate_table(raw_result, cpp = cpp_width, lpp = 12) # 12 is the minimum -> automatic way?
+  )
+  testthat::expect_equal(length(pag_res), 11 * 3) # 11 because 3 branches (out of 8) have 2 leaves
+  testthat::expect_snapshot(pag_res[9:10])
+
+
+  # More complicated table options (i.e. having wrapping on)
+  res <- testthat::expect_silent(raw_result)
+
+  main_title(res) <- "main title with some new \nline"
+  subtitles(res) <- c("sub", "-------", "titles")
+  main_footer(res) <- "main footer"
+  prov_footer(res) <- "prov \nfooter that has a lot of \nnew \nlines"
+  top_left(res) <- "SOME TOPLEFT"
+  table_inset(res) <- 5
+  clw <- c(10, 8, 8, 10)
+  lpp_tmp <- 36
+
+  pg_tbl_w_clw <- paginate_table(res, lpp = lpp_tmp, colwidths = clw)
+  pg_tbl_no_clw <- paginate_table(res, lpp = lpp_tmp)
+  res1 <- toString(pg_tbl_no_clw[[1]], widths = clw)
+  res2 <- toString(res[1:17,
+                       keep_titles = TRUE,
+                       keep_footers = TRUE,
+                       keep_topleft = TRUE], widths = clw)
+
+  testthat::expect_identical(res1, res2)
+
+  testthat::expect_snapshot(cat(res2))
 })
 
 testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment Groups)", {
@@ -179,6 +179,56 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
     to_string_matrix(pag_result[[1]])[3:4, 2],
     c("122 (91.0%)", "13 (9.7%)")
   )
+})
+
+testthat::test_that("AET04 variant 2 further pagination tests -> page_by", {
+  adae_tmp <- adae %>%
+    dplyr::filter(ACTARM == "A: Drug X")
+
+  lyt <- basic_table() %>%
+    split_cols_by("ACTARM") %>%
+    add_colcounts() %>%
+    split_rows_by("AEBODSYS",
+      split_fun = trim_levels_in_group("AETOXGR"),
+      child_labels = "visible", nested = TRUE,
+      page_by = TRUE
+    ) %>%
+    summarize_occurrences_by_grade(
+      var = "AETOXGR",
+      grade_groups = gr_grp
+    ) %>%
+    split_rows_by("AEDECOD",
+      split_fun = trim_levels_in_group("AETOXGR"),
+      child_labels = "visible", nested = TRUE
+    ) %>%
+    summarize_num_patients(
+      var = "USUBJID",
+      .stats = "unique",
+      .labels = "- Any Grade -"
+    ) %>%
+    count_occurrences_by_grade(
+      var = "AETOXGR",
+      grade_groups = gr_grp[-1],
+      .indent_mods = -1L
+    )
+
+  result <- lyt %>%
+    build_table(adae, alt_counts_df = adsl) %>%
+    sort_at_path(
+      path = "AEBODSYS",
+      scorefun = cont_n_allcols,
+      decreasing = TRUE
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEDECOD"),
+      scorefun = cont_n_allcols,
+      decreasing = TRUE
+    )
+
+  res <- testthat::expect_silent(result)
+  pag_res <- testthat::expect_silent(paginate_table(res))
+  testthat::expect_identical(names(pag_res), levels(adae$AEBODSYS))
+  testthat::expect_snapshot(pag_res[c(2, 5)])
 })
 
 testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)", {
