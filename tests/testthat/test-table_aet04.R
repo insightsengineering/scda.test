@@ -215,7 +215,7 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
 })
 
 testthat::test_that("AET04 variant 2 further pagination tests -> page_by", {
-  adae_tmp <- adae %>%
+  adae <- adae %>%
     dplyr::filter(ACTARM == "A: Drug X")
 
   lyt <- basic_table() %>%
