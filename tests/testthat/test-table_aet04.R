@@ -114,7 +114,39 @@ testthat::test_that("AET04 variant 1 further pagination tests", {
 
   testthat::expect_identical(res1, res2)
 
-  testthat::expect_snapshot(cat(res2))
+  testthat::expect_snapshot(cat(res1))
+  testthat::expect_snapshot(cat(toString(pg_tbl_no_clw[[3]], widths = clw)))
+
+  # Other parameters: page type
+  pag_res <- paginate_table(res, page_type = "letter")
+  testthat::expect_equal(sapply(pag_res, nrow), c(43, 39))
+  testthat::expect_snapshot(pag_res[2])
+  pag_res <- paginate_table(res, page_type = "a4")
+  testthat::expect_equal(sapply(pag_res, nrow), c(47, 47, 30, 30))
+  testthat::expect_snapshot(pag_res[4])
+  pag_res <- paginate_table(res, page_type = "legal")
+  testthat::expect_equal(sapply(pag_res, nrow), c(61, 16))
+  testthat::expect_snapshot(pag_res[3])
+
+  # Other parameters: page height and width
+  pag_res <- paginate_table(res, pg_width = 7, pg_height = 10)
+  testthat::expect_equal(sapply(pag_res, nrow), c(35, 35, 34, 34, 8, 8))
+  testthat::expect_snapshot(pag_res[2])
+
+  # Other parameters: all together
+  pag_res <- paginate_table(
+    res,
+    landscape = TRUE,
+    lineheight = 2,
+    font_size = 9,
+    font_family = "Courier",
+    margins = c(top = 1, bottom = 1, left = 3, right = 3)
+  )
+  testthat::expect_equal(
+    sapply(pag_res, nrow),
+    c(8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 8, 8, 9, 9, 8, 8, 6, 6, 8, 8, 8, 8)
+  )
+  testthat::expect_snapshot(pag_res[5:10])
 })
 
 testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment Groups)", {
