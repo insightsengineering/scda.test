@@ -21,16 +21,16 @@ raw_result <- basic_table() %>%
     grade_groups = gr_grp
   ) %>%
   split_rows_by("AEBODSYS",
-                split_fun = trim_levels_in_group("AETOXGR"),
-                child_labels = "visible", nested = TRUE
+    split_fun = trim_levels_in_group("AETOXGR"),
+    child_labels = "visible", nested = TRUE
   ) %>%
   summarize_occurrences_by_grade(
     var = "AETOXGR",
     grade_groups = gr_grp
   ) %>%
   split_rows_by("AEDECOD",
-                split_fun = trim_levels_in_group("AETOXGR"),
-                child_labels = "visible", nested = TRUE
+    split_fun = trim_levels_in_group("AETOXGR"),
+    child_labels = "visible", nested = TRUE
   ) %>%
   summarize_num_patients(
     var = "USUBJID",
@@ -138,17 +138,17 @@ testthat::test_that("AET04 variant 2 page_by pagination tests", {
     split_cols_by("ACTARM") %>%
     add_colcounts() %>%
     split_rows_by("AEBODSYS",
-                  split_fun = trim_levels_in_group("AETOXGR"),
-                  child_labels = "visible", nested = TRUE,
-                  page_by = TRUE
+      split_fun = trim_levels_in_group("AETOXGR"),
+      child_labels = "visible", nested = TRUE,
+      page_by = TRUE
     ) %>%
     summarize_occurrences_by_grade(
       var = "AETOXGR",
       grade_groups = gr_grp
     ) %>%
     split_rows_by("AEDECOD",
-                  split_fun = trim_levels_in_group("AETOXGR"),
-                  child_labels = "visible", nested = TRUE
+      split_fun = trim_levels_in_group("AETOXGR"),
+      child_labels = "visible", nested = TRUE
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
