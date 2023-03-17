@@ -84,7 +84,8 @@ main_footer(res) <- "main footer"
 prov_footer(res) <- "prov \nfooter that has a lot of \nnew \nlines"
 top_left(res) <- "SOME TOPLEFT"
 table_inset(res) <- 5
-rtables::fnotes_at_path(res,
+rtables::fnotes_at_path(
+  res,
   c(make_row_df(res)$path[[7]]),
   c("B: Placebo")
 ) <- "Some notes"
