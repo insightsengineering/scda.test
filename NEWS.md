@@ -3,6 +3,7 @@
 ### New Features
 * Added table tests from `tern`.
 * Added tests for listings.
+* Added pagination tests for tables.
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.
