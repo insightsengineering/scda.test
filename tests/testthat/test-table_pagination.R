@@ -87,7 +87,7 @@ table_inset(res) <- 5
 rtables::fnotes_at_path(
   res,
   c(make_row_df(res)$path[[7]]),
-  c("B: Placebo")
+  c("B: Placebo") #nolint
 ) <- "Some notes"
 
 testthat::test_that("Pagination works also if table is decorated", {
