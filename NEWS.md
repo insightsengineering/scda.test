@@ -4,6 +4,7 @@
 * Added table tests from `tern`.
 * Added tests for listings.
 * Added pagination tests for tables.
+* Added pagination tests for listings.
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.
