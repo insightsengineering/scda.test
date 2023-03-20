@@ -79,5 +79,5 @@ lst_res <- as_listing(
 testthat::test_that("Direct pagination works fine", {
   testthat::expect_equal(nrow(lst_res), 50) # head() worked
 
-  pg_lst <- testhat::expect_silent(paginate_listing(lst_res))
+  pg_lst <- testthat::expect_silent(paginate_listing(lst_res))
 })
