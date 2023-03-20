@@ -149,7 +149,8 @@ testthat::test_that("Pagination works for page types", {
 
 testthat::test_that("AET04 variant 2 page_by pagination tests", {
   adae <- adae %>%
-    dplyr::filter(ACTARM == "A: Drug X")
+    dplyr::filter(ACTARM == "A: Drug X") %>%
+    dplyr::mutate(AEBODSYS = factor(AEBODSYS))
 
   lyt <- basic_table() %>%
     split_cols_by("ACTARM") %>%
@@ -193,6 +194,9 @@ testthat::test_that("AET04 variant 2 page_by pagination tests", {
 
   res <- testthat::expect_silent(result)
   pag_res <- testthat::expect_silent(paginate_table(res))
-  testthat::expect_identical(names(pag_res), levels(adae$AEBODSYS))
+  testthat::expect_setequal(
+    sapply(pag_res, formatters::page_titles),
+    paste0("AEBODSYS: ", levels(adae$AEBODSYS))
+  )
   testthat::expect_snapshot(pag_res[c(2, 5)]) # randomly picked to have a comparison
 })
