@@ -55,55 +55,13 @@ raw_result <- basic_table() %>%
   )
 
 testthat::test_that("AET04 variant 1 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARM") %>%
-    add_colcounts() %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEBODSYS",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp
-    ) %>%
-    split_rows_by("AEDECOD",
-      split_fun = trim_levels_in_group("AETOXGR"),
-      child_labels = "visible", nested = TRUE
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "- Any Grade -"
-    ) %>%
-    count_occurrences_by_grade(
-      var = "AETOXGR",
-      grade_groups = gr_grp[-1],
-      .indent_mods = -1L
-    )
+  res <- testthat::expect_silent(raw_result)
 
-  result <- lyt %>%
-    build_table(adae, alt_counts_df = adsl) %>%
-    sort_at_path(
-      path = "AEBODSYS",
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    ) %>%
-    sort_at_path(
-      path = c("AEBODSYS", "*", "AEDECOD"),
-      scorefun = cont_n_allcols,
-      decreasing = TRUE
-    )
-
-  res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 
   # Pagination also works (and sorting)
   testthat::expect_silent(
-    pag_result <- paginate_table(result, lpp = 15)
+    pag_result <- paginate_table(res, lpp = 15)
   )
 
   testthat::expect_identical(
