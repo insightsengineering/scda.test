@@ -4,17 +4,7 @@ adsl <- adsl_raw
 adlb <- adlb_raw
 
 adlb_local <- local({
-  adlb <- adlb_raw # nolintr
-
-  # Data set is modified in order to have some parameters with grades only in one direction
-  # and simulate the real data.
-  adlb$ATOXGR[adlb$PARAMCD == "ALT" & adlb$ATOXGR %in% c("1", "2", "3", "4")] <- "-1"
-  adlb$ANRIND[adlb$PARAMCD == "ALT" & adlb$ANRIND == "HIGH"] <- "LOW"
-  adlb$WGRHIFL[adlb$PARAMCD == "ALT"] <- ""
-
-  adlb$ATOXGR[adlb$PARAMCD == "IGA" & adlb$ATOXGR %in% c("-1", "-2", "-3", "-4")] <- "1"
-  adlb$ANRIND[adlb$PARAMCD == "IGA" & adlb$ANRIND == "LOW"] <- "HIGH"
-  adlb$WGRLOFL[adlb$PARAMCD == "IGA"] <- ""
+  adlb <- adlb_raw
 
   # Here starts the real preprocessing.
   adlb_f <- adlb %>%

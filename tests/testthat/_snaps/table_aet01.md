@@ -14,7 +14,7 @@
         AE with fatal outcome                                      76 (56.7%)    70 (52.2%)      75 (56.8%)  
         Serious AE                                                 104 (77.6%)   101 (75.4%)     99 (75.0%)  
         Serious AE leading to withdrawal from treatment             9 (6.7%)      6 (4.5%)       11 (8.3%)   
-        Serious AE leading to dose modification/interruption       22 (16.4%)    26 (19.4%)      29 (22.0%)  
+        Serious AE leading to dose modification/interruption       22 (16.4%)    26 (19.4%)      30 (22.7%)  
         Related Serious AE                                         76 (56.7%)    70 (52.2%)      75 (56.8%)  
         AE leading to withdrawal from treatment                    27 (20.1%)    26 (19.4%)      30 (22.7%)  
         AE leading to dose modification/interruption               66 (49.3%)    76 (56.7%)      74 (56.1%)  
@@ -39,7 +39,7 @@
         AE with fatal outcome                                      76 (56.7%)    70 (52.2%)      75 (56.8%)  
         Serious AE                                                 104 (77.6%)   101 (75.4%)     99 (75.0%)  
         Serious AE leading to withdrawal from treatment             9 (6.7%)      6 (4.5%)       11 (8.3%)   
-        Serious AE leading to dose modification/interruption       22 (16.4%)    26 (19.4%)      29 (22.0%)  
+        Serious AE leading to dose modification/interruption       22 (16.4%)    26 (19.4%)      30 (22.7%)  
         Related Serious AE                                         76 (56.7%)    70 (52.2%)      75 (56.8%)  
         AE leading to withdrawal from treatment                    27 (20.1%)    26 (19.4%)      30 (22.7%)  
         AE leading to dose modification/interruption               66 (49.3%)    76 (56.7%)      74 (56.1%)  
@@ -100,7 +100,7 @@
         Grade 4/5                                                       3             3              3       
       Total number of adverse events which are                                                               
         Serious AE                                                     249           255            282      
-        AE leading to dose modification/interruption                   116           122            137      
+        AE leading to dose modification/interruption                   116           122            138      
         Related AE                                                     282           299            336      
         Grade 3-5 AE                                                   303           291            327      
         Grade 4/5                                                      172           174            197      

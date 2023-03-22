@@ -667,7 +667,7 @@
     Code
       pag_res[c(2, 5)]
     Output
-      [[1]]
+      $`cl D.1`
       
       AEBODSYS: cl D.1
       
@@ -687,7 +687,7 @@
           Grade 3-4       48 (35.8%)       0              0       
           3               48 (35.8%)       0              0       
       
-      [[2]]
+      $`cl D.2`
       
       AEBODSYS: cl D.2
       
