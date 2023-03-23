@@ -7,6 +7,7 @@
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.
+* Updated `scda` data timestamps to `"latest"`.
 
 ### Bug Fixes
 
