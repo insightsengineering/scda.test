@@ -6,7 +6,7 @@ library(lubridate)
 
 # Data loading for tests
 adsl_raw <- scda::synthetic_cdisc_dataset("latest", "adsl")
-adab_raw <- scda::synthetic_cdisc_dataset("latest", "adab")
+adab_raw <- scda::synthetic_cdisc_dataset("rcd_2022_10_13", "adab")
 adae_raw <- scda::synthetic_cdisc_dataset("latest", "adae")
 adaette_raw <- scda::synthetic_cdisc_dataset("latest", "adaette")
 adcm_raw <- scda::synthetic_cdisc_dataset("latest", "adcm")
@@ -15,14 +15,13 @@ adeg_raw <- scda::synthetic_cdisc_dataset("latest", "adeg")
 adex_raw <- scda::synthetic_cdisc_dataset("latest", "adex")
 adlb_raw <- scda::synthetic_cdisc_dataset("latest", "adlb")
 admh_raw <- scda::synthetic_cdisc_dataset("latest", "admh")
-adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
-adpp_raw <- scda::synthetic_cdisc_dataset("latest", "adpp")
-adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
+adpc_raw <- scda::synthetic_cdisc_dataset("rcd_2022_10_13", "adpc")
+adpp_raw <- scda::synthetic_cdisc_dataset("rcd_2022_10_13", "adpp")
 adqs_raw <- scda::synthetic_cdisc_dataset("latest", "adqs")
 adrs_raw <- scda::synthetic_cdisc_dataset("latest", "adrs")
 adsub_raw <- scda::synthetic_cdisc_dataset("latest", "adsub")
 adtte_raw <- scda::synthetic_cdisc_dataset("latest", "adtte")
-advs_raw <- scda::synthetic_cdisc_dataset("latest", "advs")
+advs_raw <- scda::synthetic_cdisc_dataset("rcd_2022_10_13", "advs")
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
