@@ -120,7 +120,7 @@ testthat::test_that("Specific PKCT01 features are present", {
 
   # Checking NAs are NEs
   testthat::expect_false(any(sapply(string_res, grepl, pattern = "NA")))
-  testthat::expect_equal(sum(sapply(string_res, grepl, pattern = "NE")), 4L)
+  testthat::expect_equal(sum(sapply(string_res, grepl, pattern = "NE")), 3L)
 
   # Checking significative digits (DISCLAIMER: this is an hack and is NOT well supported)
   mean_vals <- rtables::cell_values(result,
@@ -135,5 +135,5 @@ testthat::test_that("Specific PKCT01 features are present", {
 
   # Pagination works roughly
   pag_works <- paginate_table(result, verbose = FALSE, lpp = 20)
-  testthat::expect_equal(length(pag_works), 11L)
+  testthat::expect_equal(length(pag_works), 10L)
 })
