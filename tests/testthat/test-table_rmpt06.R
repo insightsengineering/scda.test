@@ -93,7 +93,7 @@ testthat::test_that("AET05_ALL variant 1 is produced correctly", {
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adsl,
-    result_adae[1:nrow(result_adae), ]
+    result_adae[seq_len(nrow(result_adae)), ]
   )
 
   res <- testthat::expect_silent(result)
@@ -143,7 +143,7 @@ testthat::test_that("RMPT06 variant 2 is produced correctly", {
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adsl,
-    result_adae[1:nrow(result_adae), ]
+    result_adae[seq_len(nrow(result_adae)), ]
   )
 
   res <- testthat::expect_silent(result)
@@ -208,7 +208,7 @@ testthat::test_that("RMPT06 variant 3 is produced correctly", {
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adsl,
-    result_adae[1:nrow(result_adae), ]
+    result_adae[seq_len(nrow(result_adae)), ]
   )
 
   res <- testthat::expect_silent(result)
@@ -276,7 +276,7 @@ testthat::test_that("RMPT06 variant 4 is produced correctly", {
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adsl,
-    result_adae[1:nrow(result_adae), ]
+    result_adae[seq_len(nrow(result_adae)), ]
   )
 
   res <- testthat::expect_silent(result)

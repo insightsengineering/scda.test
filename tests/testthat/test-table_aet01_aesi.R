@@ -116,8 +116,9 @@ testthat::test_that("AET01_AESI Variant 1 works as expected", {
 
 testthat::test_that("AET01_AESI Variant 2 works as expected", {
   aesi_vars <- c(
-    "WD", "DSM", "CONTRT", "ALL_RESOLVED", "ALL_RESOLVED_WD", "ALL_RESOLVED_DSM", "ALL_RESOLVED_CONTRT", "NOT_RESOLVED", "NOT_RESOLVED_WD", "NOT_RESOLVED_DSM", "NOT_RESOLVED_CONTRT", "SER", "SERWD", "SERDSM", "SERCONTRT",
-    "REL", "RELWD", "RELDSM", "RELCONTRT", "RELSER"
+    "WD", "DSM", "CONTRT", "ALL_RESOLVED", "ALL_RESOLVED_WD", "ALL_RESOLVED_DSM", "ALL_RESOLVED_CONTRT",
+    "NOT_RESOLVED", "NOT_RESOLVED_WD", "NOT_RESOLVED_DSM", "NOT_RESOLVED_CONTRT", "SER", "SERWD", "SERDSM",
+    "SERCONTRT", "REL", "RELWD", "RELDSM", "RELCONTRT", "RELSER"
   )
 
   lyt_adae <- basic_table(show_colcounts = TRUE) %>%
@@ -240,9 +241,9 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
       ALL_RESOLVED_DSM2 = "  No. of patients with dose of study drug 2 modified/interrupted due to resolved AE",
       ALL_RESOLVED_CONTRT = "  No. of patients with treatment received for resolved AE",
       NOT_RESOLVED_WD1 = "  No. of patients with study drug 1 withdrawn due to unresolved or ongoing AE",
-      NOT_RESOLVED_DSM1 = "  No. of patients with dose of study drug 1 modified/interrupted due to unresolved or ongoing AE",
+      NOT_RESOLVED_DSM1 = "  No. of patients with dose of study drug 1 modified/interrupted due to unresolved or ongoing AE", # nolint
       NOT_RESOLVED_WD2 = "  No. of patients with study drug 2 withdrawn due to unresolved or ongoing AE",
-      NOT_RESOLVED_DSM2 = "  No. of patients with dose of study drug 2 modified/interrupted due to unresolved or ongoing AE",
+      NOT_RESOLVED_DSM2 = "  No. of patients with dose of study drug 2 modified/interrupted due to unresolved or ongoing AE", # nolint
       NOT_RESOLVED_CONTRT = "  No. of patients with treatment received for unresolved or ongoing AE",
       SERWD1 = "  No. of patients with study drug 1 withdrawn due to serious AE",
       SERWD2 = "  No. of patients with study drug 2 withdrawn due to serious AE",
@@ -275,7 +276,10 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
     )
 
   aesi_vars <- c(
-    "WD1", "WD2", "DSM1", "DSM2", "CONTRT", "ALL_RESOLVED", "ALL_RESOLVED_WD1", "ALL_RESOLVED_WD2", "ALL_RESOLVED_DSM1", "ALL_RESOLVED_DSM2", "ALL_RESOLVED_CONTRT", "NOT_RESOLVED", "NOT_RESOLVED_WD1", "NOT_RESOLVED_WD2", "NOT_RESOLVED_DSM1", "NOT_RESOLVED_DSM2", "NOT_RESOLVED_CONTRT", "SER", "SERWD1", "SERWD2", "SERDSM1", "SERDSM2", "SERCONTRT", "REL1", "REL1WD1", "REL1WD2", "REL1DSM1", "REL1DSM2", "REL1CONTRT", "REL1SER",
+    "WD1", "WD2", "DSM1", "DSM2", "CONTRT", "ALL_RESOLVED", "ALL_RESOLVED_WD1", "ALL_RESOLVED_WD2",
+    "ALL_RESOLVED_DSM1", "ALL_RESOLVED_DSM2", "ALL_RESOLVED_CONTRT", "NOT_RESOLVED", "NOT_RESOLVED_WD1",
+    "NOT_RESOLVED_WD2", "NOT_RESOLVED_DSM1", "NOT_RESOLVED_DSM2", "NOT_RESOLVED_CONTRT", "SER", "SERWD1", "SERWD2",
+    "SERDSM1", "SERDSM2", "SERCONTRT", "REL1", "REL1WD1", "REL1WD2", "REL1DSM1", "REL1DSM2", "REL1CONTRT", "REL1SER",
     "REL2", "REL2WD1", "REL2WD2", "REL2DSM1", "REL2DSM2", "REL2CONTRT", "REL2SER"
   )
 
