@@ -19,14 +19,14 @@ adlb <- adlb %>%
 adlb <- adlb %>%
   mutate(
     ATOXGR_CAT = forcats::fct_collapse(ATOXGR,
-                              "LOW" = c("-3", "-4"),
-                              "MODERATE/NORMAL" = c("-2", "-1", "0", "1", "2"),
-                              "HIGH" = c("3", "4")
+      "LOW" = c("-3", "-4"),
+      "MODERATE/NORMAL" = c("-2", "-1", "0", "1", "2"),
+      "HIGH" = c("3", "4")
     ),
     BTOXGR_CAT = forcats::fct_collapse(BTOXGR,
-                              "LOW" = c("-3", "-4"),
-                              "MODERATE/NORMAL" = c("-2", "-1", "0", "1", "2"),
-                              "HIGH" = c("3", "4")
+      "LOW" = c("-3", "-4"),
+      "MODERATE/NORMAL" = c("-2", "-1", "0", "1", "2"),
+      "HIGH" = c("3", "4")
     )
   ) %>%
   filter(ONTRTFL == "Y")
@@ -34,14 +34,14 @@ adlb <- adlb %>%
 adlb_alt_cut <- adlb %>%
   mutate(
     ATOXGR_CAT = forcats::fct_collapse(ATOXGR,
-                              "LOW" = c("-2", "-3", "-4"),
-                              "MODERATE/NORMAL" = c("-1", "0", "1"),
-                              "HIGH" = c("2", "3", "4")
+      "LOW" = c("-2", "-3", "-4"),
+      "MODERATE/NORMAL" = c("-1", "0", "1"),
+      "HIGH" = c("2", "3", "4")
     ),
     BTOXGR_CAT = forcats::fct_collapse(BTOXGR,
-                              "LOW" = c("-2", "-3", "-4"),
-                              "MODERATE/NORMAL" = c("-1", "0", "1"),
-                              "HIGH" = c("2", "3", "4")
+      "LOW" = c("-2", "-3", "-4"),
+      "MODERATE/NORMAL" = c("-1", "0", "1"),
+      "HIGH" = c("2", "3", "4")
     )
   ) %>%
   filter(ONTRTFL == "Y")
