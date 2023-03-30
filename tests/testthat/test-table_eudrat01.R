@@ -22,7 +22,8 @@ get_adae_trimmed <- function(adsl, adae, cutoff_rate) {
   anl_terms <- dplyr::left_join(
     anl_terms,
     n_per_arm,
-    by = "ARM"
+    by = "ARM",
+    multiple = "all"
   ) %>%
     dplyr::mutate(
       ae_rate = unique_terms / n
@@ -34,7 +35,8 @@ get_adae_trimmed <- function(adsl, adae, cutoff_rate) {
   anl <- dplyr::left_join(
     anl_terms,
     adae,
-    by = "AEDECOD"
+    by = "AEDECOD",
+    multiple = "all"
   )
   anl
 }
@@ -47,7 +49,10 @@ testthat::test_that("EUDRAT01 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ARM") %>%
     summarize_patients_events_in_cols(
-      custom_label = "Total number of patients with at least one non-serious adverse event occuring at a relative frequency of >=5% and number of events"
+      custom_label = paste(
+        "Total number of patients with at least one non-serious adverse event",
+        "occuring at a relative frequency of >=5% and number of events"
+      )
     ) %>%
     split_rows_by("AEBODSYS",
       nested = FALSE,
@@ -56,7 +61,12 @@ testthat::test_that("EUDRAT01 is produced correctly", {
       label_pos = "topleft",
       split_label = obj_label(adae_trim$AEBODSYS)
     ) %>%
-    split_rows_by("AEDECOD", split_fun = split_fun, label_pos = "topleft", split_label = obj_label(adae_trim$AEDECOD)) %>%
+    split_rows_by(
+      "AEDECOD",
+      split_fun = split_fun,
+      label_pos = "topleft",
+      split_label = obj_label(adae_trim$AEDECOD)
+    ) %>%
     summarize_patients_events_in_cols(
       col_split = FALSE
     )
