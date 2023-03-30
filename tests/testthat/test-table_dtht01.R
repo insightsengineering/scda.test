@@ -1,8 +1,8 @@
-# Test variants of DTH01
+# Test variants of DTHT01
 
 adsl <- adsl_raw
 
-testthat::test_that("DTH01 variant 1 is produced correctly", {
+testthat::test_that("DTHT01 variant 1 is produced correctly", {
   adsl <- adsl %>%
     df_explicit_na()
 
@@ -22,7 +22,7 @@ testthat::test_that("DTH01 variant 1 is produced correctly", {
   testthat::expect_snapshot(res)
 })
 
-testthat::test_that("DTH01 variant 2 is produced correctly", {
+testthat::test_that("DTHT01 variant 2 is produced correctly", {
   adsl <- adsl %>%
     df_explicit_na()
 
@@ -81,7 +81,7 @@ testthat::test_that("DTH01 variant 2 is produced correctly", {
   testthat::expect_snapshot(res)
 })
 
-testthat::test_that("DTH01 variant 3 is produced correctly", {
+testthat::test_that("DTHT01 variant 3 is produced correctly", {
   adsl <- adsl %>%
     df_explicit_na()
 
@@ -140,7 +140,7 @@ testthat::test_that("DTH01 variant 3 is produced correctly", {
   testthat::expect_snapshot(res)
 })
 
-testthat::test_that("DTH01 variant 4 is produced correctly", {
+testthat::test_that("DTHT01 variant 4 is produced correctly", {
   adsl <- adsl %>%
     df_explicit_na()
 
