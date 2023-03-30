@@ -16,7 +16,6 @@ get_adlb <- function() {
     dplyr::left_join(qntls, by = "PARAMCD")
 
   adlb_f <- adlb %>%
-    dplyr::group_by(.data$USUBJID, .data$PARAMCD, .data$BASETYPE) %>%
     dplyr::mutate(
       ANRIND = factor(
         dplyr::case_when(
@@ -56,10 +55,6 @@ testthat::test_that("LBT05 variant 1 is produced correctly", {
     ) %>%
     dplyr::select(-"q1", -"q2")
 
-  # Let's remove all marked abrnormalities for ALT so that it can be demonstrated that
-  # just the `Any Abnormality` row is shown when there is no marked abonormality.
-  adlb$ANRIND[adlb$PARAMCD == "ALT"] <- "NORMAL"
-
   # Preprocessing steps
   adlb <- adlb %>%
     dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
@@ -72,13 +67,12 @@ testthat::test_that("LBT05 variant 1 is produced correctly", {
       levels = c("Low", "High")
     ))
 
-  map <- unique(
-    adlb[adlb$abn_dir %in% c("Low", "High") & adlb$AVALCAT1 != "", c("PARAMCD", "abn_dir")]
+  map <- expand.grid(
+    PARAM = levels(adlb$PARAM),
+    abn_dir = c("Low", "High"),
+    stringsAsFactors = FALSE
   ) %>%
-    lapply(as.character) %>%
-    as.data.frame() %>%
-    dplyr::arrange(PARAMCD, dplyr::desc(abn_dir)) %>%
-    tibble::add_row(PARAMCD = "ALT", abn_dir = "Low")
+    arrange(PARAM, desc(abn_dir))
 
   lyt <- basic_table() %>%
     split_cols_by("ACTARMCD") %>%
@@ -134,10 +128,6 @@ testthat::test_that("LBT05 variant 2 is produced correctly", {
     ) %>%
     dplyr::select(-"q1", -"q2")
 
-  # Let's remove all marked abrnormalities for ALT so that it can be demonstrated that
-  # just the `Any Abnormality` row is shown when there is no marked abonormality.
-  adlb$ANRIND[adlb$PARAMCD == "ALT"] <- "NORMAL"
-
   # Preprocessing steps
   adlb <- adlb %>%
     dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
@@ -150,13 +140,12 @@ testthat::test_that("LBT05 variant 2 is produced correctly", {
       levels = c("Low", "High")
     ))
 
-  map <- unique(
-    adlb[adlb$abn_dir %in% c("Low", "High") & adlb$AVALCAT1 != "", c("PARAMCD", "abn_dir")]
+  map <- expand.grid(
+    PARAM = levels(adlb$PARAM),
+    abn_dir = c("Low", "High"),
+    stringsAsFactors = FALSE
   ) %>%
-    lapply(as.character) %>%
-    as.data.frame() %>%
-    dplyr::arrange(PARAMCD, dplyr::desc(abn_dir)) %>%
-    tibble::add_row(PARAMCD = "ALT", abn_dir = "Low")
+    arrange(PARAM, desc(abn_dir))
 
   lyt <- basic_table() %>%
     split_cols_by("ACTARMCD") %>%
@@ -202,10 +191,6 @@ testthat::test_that("LBT05 variant 4 is produced correctly", {
     ) %>%
     dplyr::select(-"q1", -"q2")
 
-  # Let's remove all marked abrnormalities for ALT so that it can be demonstrated that
-  # ALT rows are removed
-  adlb$ANRIND[adlb$PARAMCD == "ALT"] <- "NORMAL"
-
   # Preprocessing steps
   adlb <- adlb %>%
     dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
@@ -218,12 +203,12 @@ testthat::test_that("LBT05 variant 4 is produced correctly", {
       levels = c("Low", "High")
     ))
 
-  map <- unique(
-    adlb[adlb$abn_dir %in% c("Low", "High") & adlb$AVALCAT1 != "", c("PARAMCD", "abn_dir")]
+  map <- expand.grid(
+    PARAM = levels(adlb$PARAM),
+    abn_dir = c("Low", "High"),
+    stringsAsFactors = FALSE
   ) %>%
-    lapply(as.character) %>%
-    as.data.frame() %>%
-    dplyr::arrange(PARAMCD, dplyr::desc(abn_dir))
+    arrange(PARAM, desc(abn_dir))
 
   lyt <- basic_table() %>%
     split_cols_by("ACTARMCD") %>%
