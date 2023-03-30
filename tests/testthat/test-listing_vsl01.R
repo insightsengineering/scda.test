@@ -71,14 +71,14 @@ testthat::test_that("VSL01 listing is produced correctly", {
       CHG_RESP = "Respiratory Rate\nChange from BL"
     )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("CRTNPT", "AGSXRC", "TRT01A", "AVISIT"),
     disp_cols = names(out),
     main_title = "Listing of Vital Signs: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
 flagged as high (H) or low (L) if outside the Roche standard reference range."
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })
