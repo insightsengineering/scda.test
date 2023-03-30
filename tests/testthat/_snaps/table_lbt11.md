@@ -15,7 +15,7 @@
         Range (censored)               1.0 to 731.0     1.0 to 728.0    1.0 to 722.0 
         Range (event)                  34.0 to 666.0   139.0 to 724.0   10.0 to 728.0
       Unstratified Analysis                                                          
-        p-value (log-rank)                                 0.0295          0.1688    
+        p-value (log-rank)                                 0.0295          0.1687    
         Hazard Ratio                                        0.43            0.58     
         95% CI                                          (0.19, 0.94)    (0.26, 1.27) 
 
@@ -53,7 +53,7 @@
         Range (censored)               1.0 to 731.0     1.0 to 728.0    1.0 to 722.0 
         Range (event)                  34.0 to 666.0   139.0 to 724.0   10.0 to 728.0
       Unstratified Analysis                                                          
-        p-value (log-rank)                                 0.0295          0.1688    
+        p-value (log-rank)                                 0.0295          0.1687    
         Hazard Ratio                                        0.43            0.58     
         95% CI                                          (0.19, 0.94)    (0.26, 1.27) 
       Stratified By: RACE, SEX                                                       
