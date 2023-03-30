@@ -54,8 +54,18 @@ adlb <- adlb %>% var_relabel(
 lyt <- basic_table(show_colcounts = TRUE) %>%
   split_cols_by(var = "ARM") %>%
   add_overall_col("All Patients") %>%
-  split_rows_by("PARCAT1", split_fun = drop_split_levels, label_pos = "topleft", split_label = obj_label(adlb$PARCAT1)) %>%
-  split_rows_by("PARAM", split_fun = drop_split_levels, label_pos = "topleft", split_label = obj_label(adlb$PARAM)) %>%
+  split_rows_by(
+    "PARCAT1",
+    split_fun = drop_split_levels,
+    label_pos = "topleft",
+    split_label = obj_label(adlb$PARCAT1)
+  ) %>%
+  split_rows_by(
+    "PARAM",
+    split_fun = drop_split_levels,
+    label_pos = "topleft",
+    split_label = obj_label(adlb$PARAM)
+  ) %>%
   count_abnormal(
     var = "ATOXGR_CAT",
     abnormal = list(low = "LOW", high = "HIGH"),

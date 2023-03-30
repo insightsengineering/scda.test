@@ -25,12 +25,14 @@ adhy_liver <- adhy_liver %>%
 # Create indicator and category variables.
 adhy_liver <- adhy_liver %>%
   mutate(
-    TBILI_CAT = factor( # Create TBILI_CAT categories variable - this is needed so we get the right nesting in the table.
+    TBILI_CAT = factor(
       case_when(
         PARAMCD %in% c(paramcd_tbili_alt[1], paramcd_tbili_ast[1]) ~ "Total Bilirubin <= 2xULN",
         PARAMCD %in% c(paramcd_tbili_alt[2], paramcd_tbili_ast[2]) ~ "Total Bilirubin > 2xULN",
-        PARAMCD %in% c(paramcd_tbili_alt[3], paramcd_tbili_ast[3]) ~ "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN",
-        PARAMCD %in% c(paramcd_tbili_alt[4], paramcd_tbili_ast[4]) ~ "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 5xULN"
+        PARAMCD %in% c(paramcd_tbili_alt[3], paramcd_tbili_ast[3]) ~
+          "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN",
+        PARAMCD %in% c(paramcd_tbili_alt[4], paramcd_tbili_ast[4]) ~
+          "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 5xULN"
       ),
       levels = c(
         "Total Bilirubin <= 2xULN",
@@ -39,7 +41,7 @@ adhy_liver <- adhy_liver %>%
         "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 5xULN"
       )
     ),
-    ALTAST_CAT = factor( # Create ALTAST_CAT categories variable - this will be the labels for different ALT/AST categories displayed in the table.
+    ALTAST_CAT = factor(
       case_when(
         PARAMCD %in% paramcd_tbili_alt & AVALC == ">3-5ULN" ~ "ALT >3 - <= 5xULN",
         PARAMCD %in% paramcd_tbili_alt & AVALC == ">5-10ULN" ~ "ALT >5 - <= 10xULN",
@@ -109,7 +111,10 @@ testthat::test_that("LBT09 variant 2 works as expected", {
   result <- basic_table() %>%
     split_cols_by("ARM") %>%
     split_cols_by("AVISIT") %>%
-    split_rows_by("TBILI_CAT", split_fun = remove_split_levels("Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN")) %>%
+    split_rows_by(
+      "TBILI_CAT",
+      split_fun = remove_split_levels("Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN")
+    ) %>%
     # below split helps us get the right denominator between ALT/AST but it can be hidden
     split_rows_by("ALTAST_ind", split_fun = trim_levels_to_map(map), child_labels = "hidden") %>%
     count_occurrences(
