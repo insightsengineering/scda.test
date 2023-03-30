@@ -22,16 +22,16 @@ testthat::test_that("EUDRAT02 is produced correctly", {
       custom_label = "Total number of patients with at least one serious adverse event"
     ) %>%
     split_rows_by("AEBODSYS",
-                  nested = FALSE,
-                  split_fun = split_fun,
-                  indent_mod = -1L,
-                  label_pos = "topleft",
-                  split_label = obj_label(adae_serious_arm$AEBODSYS)
+      nested = FALSE,
+      split_fun = split_fun,
+      indent_mod = -1L,
+      label_pos = "topleft",
+      split_label = obj_label(adae_serious_arm$AEBODSYS)
     ) %>%
     split_rows_by("AEDECOD",
-                  split_fun = split_fun,
-                  label_pos = "topleft",
-                  split_label = obj_label(adae_serious_arm$AEDECOD)
+      split_fun = split_fun,
+      label_pos = "topleft",
+      split_label = obj_label(adae_serious_arm$AEDECOD)
     ) %>%
     summarize_patients_events_in_cols(
       filters_list = filters_list,

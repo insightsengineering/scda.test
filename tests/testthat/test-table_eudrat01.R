@@ -50,11 +50,11 @@ testthat::test_that("EUDRAT01 is produced correctly", {
       custom_label = "Total number of patients with at least one non-serious adverse event occuring at a relative frequency of >=5% and number of events"
     ) %>%
     split_rows_by("AEBODSYS",
-                  nested = FALSE,
-                  split_fun = split_fun,
-                  indent_mod = -1L,
-                  label_pos = "topleft",
-                  split_label = obj_label(adae_trim$AEBODSYS)
+      nested = FALSE,
+      split_fun = split_fun,
+      indent_mod = -1L,
+      label_pos = "topleft",
+      split_label = obj_label(adae_trim$AEBODSYS)
     ) %>%
     split_rows_by("AEDECOD", split_fun = split_fun, label_pos = "topleft", split_label = obj_label(adae_trim$AEDECOD)) %>%
     summarize_patients_events_in_cols(
