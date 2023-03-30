@@ -79,8 +79,8 @@ testthat::test_that("RMPT03 variant 2 is produced correctly", {
       custom_label = "Total Number of Patients and Patient Time"
     ) %>%
     split_rows_by("AGEGR2",
-                  split_fun = drop_split_levels, # "< 18" dropped
-                  label_pos = "topleft", split_label = "Age group (years)"
+      split_fun = drop_split_levels, # "< 18" dropped
+      label_pos = "topleft", split_label = "Age group (years)"
     ) %>%
     summarize_patients_exposure_in_cols(
       var = "AVAL",

@@ -19,19 +19,19 @@ adae <- adae %>%
   ) %>%
   mutate(
     WTOXGR = forcats::fct_recode(WTOXGR,
-                                 "Grade 1" = "1",
-                                 "Grade 2" = "2",
-                                 "Grade 3" = "3",
-                                 "Grade 4" = "4",
-                                 "Grade 5" = "5"
+      "Grade 1" = "1",
+      "Grade 2" = "2",
+      "Grade 3" = "3",
+      "Grade 4" = "4",
+      "Grade 5" = "5"
     ),
     AEOUT = forcats::fct_recode(AEOUT,
-                                "Fatal outcome" = "FATAL",
-                                "Unresolved" = "NOT RECOVERED/NOT RESOLVED",
-                                "Recovered/Resolved" = "RECOVERED/RESOLVED",
-                                "Resolved with sequelae" = "RECOVERED/RESOLVED WITH SEQUELAE",
-                                "Recovering/Resolving" = "RECOVERING/RESOLVING",
-                                "Unknown outcome" = "UNKNOWN"
+      "Fatal outcome" = "FATAL",
+      "Unresolved" = "NOT RECOVERED/NOT RESOLVED",
+      "Recovered/Resolved" = "RECOVERED/RESOLVED",
+      "Resolved with sequelae" = "RECOVERED/RESOLVED WITH SEQUELAE",
+      "Recovering/Resolving" = "RECOVERING/RESOLVING",
+      "Unknown outcome" = "UNKNOWN"
     )
   ) %>%
   var_relabel(

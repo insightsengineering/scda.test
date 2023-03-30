@@ -71,11 +71,11 @@ adae <- adae %>%
 adae <- adae %>%
   mutate(
     AETOXGR = forcats::fct_recode(AETOXGR,
-                                  "Grade 1" = "1",
-                                  "Grade 2" = "2",
-                                  "Grade 3" = "3",
-                                  "Grade 4" = "4",
-                                  "Grade 5 (fatal outcome)" = "5"
+      "Grade 1" = "1",
+      "Grade 2" = "2",
+      "Grade 3" = "3",
+      "Grade 4" = "4",
+      "Grade 5 (fatal outcome)" = "5"
     )
   )
 
@@ -266,11 +266,11 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
   adae_mult <- adae_mult %>%
     mutate(
       AETOXGR = forcats::fct_recode(AETOXGR,
-                                    "Grade 1" = "1",
-                                    "Grade 2" = "2",
-                                    "Grade 3" = "3",
-                                    "Grade 4" = "4",
-                                    "Grade 5 (fatal outcome)" = "5"
+        "Grade 1" = "1",
+        "Grade 2" = "2",
+        "Grade 3" = "3",
+        "Grade 4" = "4",
+        "Grade 5 (fatal outcome)" = "5"
       )
     )
 
@@ -402,11 +402,11 @@ testthat::test_that("AET01_AESI Variant 4 works as expected", {
   adae_smq <- adae_smq %>%
     mutate(
       AETOXGR = forcats::fct_recode(AETOXGR,
-                                    "Grade 1" = "1",
-                                    "Grade 2" = "2",
-                                    "Grade 3" = "3",
-                                    "Grade 4" = "4",
-                                    "Grade 5 (fatal outcome)" = "5"
+        "Grade 1" = "1",
+        "Grade 2" = "2",
+        "Grade 3" = "3",
+        "Grade 4" = "4",
+        "Grade 5 (fatal outcome)" = "5"
       )
     )
 
