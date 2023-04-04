@@ -17,11 +17,12 @@ adlb_raw <- scda::synthetic_cdisc_dataset("latest", "adlb")
 admh_raw <- scda::synthetic_cdisc_dataset("latest", "admh")
 adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
 adpp_raw <- scda::synthetic_cdisc_dataset("latest", "adpp")
+adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
 adqs_raw <- scda::synthetic_cdisc_dataset("latest", "adqs")
 adrs_raw <- scda::synthetic_cdisc_dataset("latest", "adrs")
 adsub_raw <- scda::synthetic_cdisc_dataset("latest", "adsub")
 adtte_raw <- scda::synthetic_cdisc_dataset("latest", "adtte")
-advs_raw <- scda::synthetic_cdisc_dataset("rcd_2022_06_27", "advs")
+advs_raw <- scda::synthetic_cdisc_dataset("latest", "advs")
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr

@@ -4,6 +4,7 @@
 * Added table tests from `tern`.
 * Added tests for listings.
 * Added pagination tests for tables.
+* Updated `scda` data timestamps to `"latest"`.
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.
