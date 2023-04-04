@@ -13,7 +13,7 @@ testthat::test_that("VSL01 listing is produced correctly", {
   vs_u_rng <- get_param_unit_range(advs_raw)
 
   advs_sub <- advs_raw %>%
-    filter(!is.na(AVAL) & SAFFL == "Y" & ONTRTFL == "Y" & !is.na(VSSEQ)) %>%
+    filter(!is.na(AVAL) & SAFFL == "Y" & !is.na(VSSEQ)) %>%
     mutate(
       CRTNPT = paste(SITEID, sub("^.*-([[:alnum:]]+)$", "\\1", SUBJID), sep = "/"),
       AGSXRC = paste(AGE, SEX, RACE, sep = "/"),
