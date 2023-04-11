@@ -1,9 +1,10 @@
-# scda.test 0.0.0.9015
+# scda.test 0.0.0.9018
 
 ### New Features
 * Added table tests from `tern`.
 * Added tests for listings.
 * Added pagination tests for tables.
+* Updated `scda` data timestamps to `"latest"`.
 * Added pagination tests for listings.
 
 ### Enhancements
