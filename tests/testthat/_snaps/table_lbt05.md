@@ -8,9 +8,9 @@
       —————————————————————————————————————————————————————————————————
       ALT (n)                         134          134          132    
         Low                                                            
-          Single, not last           4 (3%)      3 (2.2%)     5 (3.8%) 
-          Last or replicated       50 (37.3%)   57 (42.5%)   49 (37.1%)
-          Any Abnormality          54 (40.3%)   60 (44.8%)   54 (40.9%)
+          Single, not last          3 (2.2%)     5 (3.7%)     5 (3.8%) 
+          Last or replicated       52 (38.8%)    59 (44%)    44 (33.3%)
+          Any Abnormality           55 (41%)    64 (47.8%)   49 (37.1%)
         High                                                           
           Any Abnormality              0            0            0     
       CRP (n)                         134          134          132    
@@ -40,9 +40,9 @@
       —————————————————————————————————————————————————————————————————
       ALT (n)                         134          134          132    
         Low                                                            
-          Single, not last           4 (3%)      3 (2.2%)     5 (3.8%) 
-          Last or replicated       50 (37.3%)   57 (42.5%)   49 (37.1%)
-          Any Abnormality          54 (40.3%)   60 (44.8%)   54 (40.9%)
+          Single, not last          3 (2.2%)     5 (3.7%)     5 (3.8%) 
+          Last or replicated       52 (38.8%)    59 (44%)    44 (33.3%)
+          Any Abnormality           55 (41%)    64 (47.8%)   49 (37.1%)
         High                                                           
           Single, not last             0            0            0     
           Last or replicated           0            0            0     
@@ -76,9 +76,9 @@
       —————————————————————————————————————————————————————————————————
       ALT (n)                         134          134          132    
         Low                                                            
-          Single, not last           4 (3%)      3 (2.2%)     5 (3.8%) 
-          Last or replicated       50 (37.3%)   57 (42.5%)   49 (37.1%)
-          Any Abnormality          54 (40.3%)   60 (44.8%)   54 (40.9%)
+          Single, not last          3 (2.2%)     5 (3.7%)     5 (3.8%) 
+          Last or replicated       52 (38.8%)    59 (44%)    44 (33.3%)
+          Any Abnormality           55 (41%)    64 (47.8%)   49 (37.1%)
       CRP (n)                         134          134          132    
         Low                                                            
           Single, not last          3 (2.2%)     7 (5.2%)     6 (4.5%) 
