@@ -24,7 +24,7 @@ testthat::test_that("LBL01 listing is produced correctly", {
   out <- adlb_x %>%
     arrange(CPID, ADY, PARAM_U, LBSEQ) %>%
     tidyr::pivot_wider(
-      id_cols = c(TRT01A, CPID, ADY, LBSEQ),
+      id_cols = c(TRT01A, CPID, ADY),
       names_from = PARAM_U,
       values_from = AVAL_GR
     ) %>%

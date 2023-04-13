@@ -4,8 +4,8 @@ adlb <- adlb_raw
 adlb <- adlb %>%
   dplyr::mutate(
     GRADDR = dplyr::case_when(
-      PARAMCD == "ALT" ~ "B",
-      PARAMCD == "CRP" ~ "L",
+      PARAMCD == "ALT" ~ "L",
+      PARAMCD == "CRP" ~ "B",
       PARAMCD == "IGA" ~ "H"
     )
   ) %>%

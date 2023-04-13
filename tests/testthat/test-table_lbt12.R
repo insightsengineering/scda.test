@@ -1,0 +1,51 @@
+adhy <- adhy_raw
+
+anl <- adhy
+anl$APERIODC <- as.factor(anl$APERIODC) # to ensure the table is built even if there is no patients after filtering
+anl$ACTARM <- as.factor(anl$ACTARM) # to ensure the table is built even if there is no patients after filtering
+
+anl <- anl %>%
+  filter(
+    SAFFL == "Y",
+    PARAMCD %in% c("ASTPULN", "ALTPULN", "ALTASTPU") & AVISIT == "POST-BASELINE"
+  ) %>%
+  mutate(
+    ARM_AVALC = factor(
+      case_when(
+        AVALC == "Y" ~ as.character(ACTARM),
+        TRUE ~ "Criteria not met"
+      ),
+      levels = c(levels(anl$ACTARM), "Criteria not met")
+    ),
+    PARAM = factor(
+      case_when(
+        PARAMCD == "ASTPULN" ~ "AST >3x ULN",
+        PARAMCD == "ALTPULN" ~ "ALT >3x ULN",
+        PARAMCD == "ALTASTPU" ~ "AST >3x ULN or ALT >x3 ULN"
+      ),
+      levels = c("AST >3x ULN", "ALT >3x ULN", "AST >3x ULN or ALT >x3 ULN")
+    ),
+    TITLE = factor("First Elevated Result Occurring During")
+  )
+
+anl <- df_explicit_na(anl)
+
+testthat::test_that("LBT12 works as expected", {
+  result <- basic_table() %>%
+    split_cols_by("TITLE") %>%
+    split_cols_by("APERIODC") %>%
+    split_rows_by("PARAM") %>%
+    split_rows_by("ACTARM", split_fun = drop_split_levels, child_labels = "hidden") %>%
+    count_occurrences("ARM_AVALC", .stats = "fraction", denom = "n", drop = TRUE) %>%
+    build_table(anl)
+
+  criteria_fun <- function(tr) {
+    row_label <- obj_label(tr)
+    dplyr::if_else(row_label == "Criteria not met", TRUE, FALSE)
+  }
+
+  result <- result %>% trim_rows(criteria = criteria_fun)
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})

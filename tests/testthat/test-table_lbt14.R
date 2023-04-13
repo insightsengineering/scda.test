@@ -3,7 +3,7 @@ adlb <- adlb_raw
 
 testthat::test_that("LBT14 variant 1: HIGH works as expected", {
   adlb_f <- adlb %>%
-    dplyr::filter(PARAMCD %in% "ALT") %>%
+    dplyr::filter(PARAMCD %in% "CRP") %>%
     droplevels()
   adsl_f <- adsl
 
@@ -50,7 +50,7 @@ testthat::test_that("LBT14 variant 1: HIGH works as expected", {
 
 testthat::test_that("LBT14 variant 2: LOW works as expected", {
   adlb_f <- adlb %>%
-    dplyr::filter(PARAMCD %in% "ALT") %>%
+    dplyr::filter(PARAMCD %in% "CRP") %>%
     droplevels()
   adsl_f <- adsl
 
@@ -97,7 +97,7 @@ testthat::test_that("LBT14 variant 2: LOW works as expected", {
 
 testthat::test_that("LBT14 variant 3: LOW without baseline missing works as expected", {
   adlb_f <- adlb %>%
-    dplyr::filter(PARAMCD %in% "ALT") %>%
+    dplyr::filter(PARAMCD %in% "CRP") %>%
     droplevels()
   adsl_f <- adsl
 
@@ -143,7 +143,7 @@ testthat::test_that("LBT14 variant 3: LOW without baseline missing works as expe
 
 testthat::test_that("LBT14 variant 4: LOW and force 1 missing both baseline and post-baseline, then force the missing baseline as 0 as expected", { # nolint
   adlb_f <- adlb %>%
-    dplyr::filter(PARAMCD %in% "ALT") %>%
+    dplyr::filter(PARAMCD %in% "CRP") %>%
     dplyr::filter(!USUBJID %in% c("AB12345-CHN-3-id-128")) %>%
     droplevels()
   adsl_f <- adsl
@@ -191,7 +191,7 @@ testthat::test_that("LBT14 variant 4: LOW and force 1 missing both baseline and 
 
 testthat::test_that("LBT14 variant 5: HIGH with fillings works as expected", {
   adlb_f <- adlb %>%
-    dplyr::filter(PARAMCD %in% "ALT") %>%
+    dplyr::filter(PARAMCD %in% "CRP") %>%
     droplevels()
   adsl_f <- adsl
 
