@@ -1,24 +1,19 @@
 adtte <- adtte_raw
 saved_labels <- formatters::var_labels(adtte)
-
-adtte_f <- subset(adtte, PARAMCD == "OS")
-adtte_f <- within(
-  data = subset(
-    adtte_f,
-    PARAMCD == "OS" &
-      ARMCD %in% c("ARM A", "ARM B") &
-      SEX %in% c("F", "M") &
-      RACE %in% c("ASIAN", "BLACK OR AFRICAN AMERICAN", "WHITE")
-  ),
-  expr = {
-    ARMCD <- droplevels(ARMCD)
-    ARMCD <- stats::relevel(ARMCD, "ARM B")
-    SEX <- droplevels(SEX)
-    RACE <- droplevels(RACE)
-  }
-)
-formatters::var_labels(adtte_f) <- saved_labels
-adtte_f$EVENT <- 1 - adtte_f$CNSR
+adtte_f <- adtte %>%
+  dplyr::filter(
+    PARAMCD == "OS",
+    ARMCD %in% c("ARM A", "ARM B"),
+    SEX %in% c("F", "M"),
+    RACE %in% c("ASIAN", "BLACK OR AFRICAN AMERICAN", "WHITE")
+  ) %>%
+  dplyr::mutate(
+    ARMCD = stats::relevel(droplevels(ARMCD), "ARM B"),
+    SEX = droplevels(SEX),
+    RACE = droplevels(RACE),
+    EVENT = 1 - CNSR
+  )
+formatters::var_labels(adtte_f) <- c(saved_labels, "Event")
 
 testthat::test_that("1. Cox Regression", {
   variables <- list(
