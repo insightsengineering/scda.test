@@ -1,134 +1,98 @@
-# nolint start
-
 adtte <- adtte_raw
 saved_labels <- formatters::var_labels(adtte)
-
-adtte_f <- subset(adtte, PARAMCD == "OS") # _f: filtered
-adtte_f <- within(
-  data = subset(
-    adtte_f,
-    PARAMCD == "OS" &
-      ARMCD %in% c("ARM A", "ARM B") &
-      SEX %in% c("F", "M") &
-      RACE %in% c("ASIAN", "BLACK OR AFRICAN AMERICAN", "WHITE")
-  ),
-  expr = {
-    ARMCD <- droplevels(ARMCD)
-    ARMCD <- stats::relevel(ARMCD, "ARM B")
-    SEX <- droplevels(SEX)
-    RACE <- droplevels(RACE)
-  }
-)
-formatters::var_labels(adtte_f) <- saved_labels
-adtte_f$event <- 1 - adtte_f$CNSR
-# nolint end
+adtte_f <- adtte %>%
+  dplyr::filter(
+    PARAMCD == "OS",
+    ARMCD %in% c("ARM A", "ARM B"),
+    SEX %in% c("F", "M"),
+    RACE %in% c("ASIAN", "BLACK OR AFRICAN AMERICAN", "WHITE")
+  ) %>%
+  dplyr::mutate(
+    ARMCD = stats::relevel(droplevels(ARMCD), "ARM B"),
+    SEX = droplevels(SEX),
+    RACE = droplevels(RACE),
+    EVENT = 1 - CNSR
+  )
+formatters::var_labels(adtte_f) <- c(saved_labels, "Event")
 
 testthat::test_that("1. Cox Regression", {
-  mod1 <- fit_coxreg_univar(
-    variables = list(
-      time = "AVAL", event = "event", arm = "ARMCD",
-      covariates = c("SEX", "RACE", "AGE")
-    ),
-    data = adtte_f
+  variables <- list(
+    time = "AVAL", event = "EVENT", arm = "ARMCD",
+    covariates = c("SEX", "RACE", "AGE")
   )
-  df <- broom::tidy(mod1)
 
   result <- basic_table() %>%
-    split_rows_by("effect") %>%
-    split_rows_by("term", child_labels = "hidden") %>%
-    summarize_coxreg(conf_level = .95) %>%
-    build_table(df = df)
+    summarize_coxreg(
+      variables = variables
+    ) %>%
+    build_table(df = adtte_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("2. Cox Regression (with Interaction Term)", {
-  mod2 <- fit_coxreg_univar(
-    variables = list(
-      time = "AVAL", event = "event", arm = "ARMCD",
-      covariates = c("SEX", "RACE", "AGE")
-    ),
-    data = adtte_f,
-    control = control_coxreg(interaction = TRUE)
+  variables <- list(
+    time = "AVAL", event = "EVENT", arm = "ARMCD",
+    covariates = c("SEX", "RACE", "AGE")
   )
-  df <- broom::tidy(mod2)
+  control <- control_coxreg(interaction = TRUE)
 
   result <- basic_table() %>%
-    split_rows_by("effect") %>%
-    split_rows_by("term", child_labels = "hidden") %>%
-    summarize_coxreg(conf_level = .95, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
-    build_table(df = df)
+    summarize_coxreg(
+      variables = variables,
+      control = control,
+      .stats = c("n", "hr", "ci", "pval", "pval_inter")
+    ) %>%
+    build_table(df = adtte_f)
 
-  # Hack for hard-coded indentation
-  mf_res <- matrix_form(result)
-  ri_mf_res <- mf_rinfo(mf_res)
-  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
-    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
-
-  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
+  res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
-
 testthat::test_that("3. Cox Regression (specifying covariates)", {
-  mod3 <- fit_coxreg_univar(
-    variables = list(
-      time = "AVAL", event = "event", arm = "ARMCD",
-      covariates = c("SEX", "RACE", "AGE")
-    ),
-    data = adtte_f,
-    control = control_coxreg(interaction = TRUE),
-    at = list(AGE = c(30, 40, 50))
+  variables <- list(
+    time = "AVAL", event = "EVENT", arm = "ARMCD",
+    covariates = c("SEX", "RACE", "AGE")
   )
-  df <- broom::tidy(mod3)
+  control <- control_coxreg(interaction = TRUE)
+  at <- list(AGE = c(30, 40, 50))
 
   result <- basic_table() %>%
-    split_rows_by("effect") %>%
-    split_rows_by("term", child_labels = "hidden") %>%
-    summarize_coxreg(conf_level = .95, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
-    build_table(df = df)
+    summarize_coxreg(
+      variables = variables,
+      control = control,
+      at = at,
+      .stats = c("n", "hr", "ci", "pval", "pval_inter")
+    ) %>%
+    build_table(df = adtte_f)
 
-  # Hack for hard-coded indentation
-  mf_res <- matrix_form(result)
-  ri_mf_res <- mf_rinfo(mf_res)
-  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
-    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
-
-  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
+  res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 
 testthat::test_that("4. Cox Regression (setting strata, ties, and alpha level)", {
-  conf_level <- 0.90
-  mod4 <- fit_coxreg_univar(
-    variables = list(
-      time = "AVAL", event = "event", arm = "ARMCD",
-      covariates = c("SEX", "RACE", "AGE")
-    ),
-    data = adtte_f,
-    control = control_coxreg(
-      interaction = TRUE,
-      conf_level = conf_level,
-      ties = "efron"
-    ),
-    at = list(AGE = c(30, 40, 50))
+  variables <- list(
+    time = "AVAL", event = "EVENT", arm = "ARMCD",
+    covariates = c("SEX", "RACE", "AGE")
   )
-  df <- broom::tidy(mod4)
+  control <- control_coxreg(
+    interaction = TRUE,
+    conf_level = 0.90,
+    ties = "efron"
+  )
+  at <- list(AGE = c(30, 40, 50))
 
   result <- basic_table() %>%
-    split_rows_by("effect") %>%
-    split_rows_by("term", child_labels = "hidden") %>%
-    summarize_coxreg(conf_level = conf_level, vars = c("n", "hr", "ci", "pval", "pval_inter")) %>%
-    build_table(df = df)
+    summarize_coxreg(
+      variables = variables,
+      control = control,
+      at = at,
+      .stats = c("n", "hr", "ci", "pval", "pval_inter")
+    ) %>%
+    build_table(df = adtte_f)
 
-  # Hack for hard-coded indentation
-  mf_res <- matrix_form(result)
-  ri_mf_res <- mf_rinfo(mf_res)
-  mf_rinfo(mf_res)$indent <- ri_mf_res$indent +
-    nchar(gsub("^([[:space:]]*).*", "\\1", ri_mf_res$label)) / mf_res$indent_size
-
-  res <- capture.output(cat(testthat::expect_silent(toString(mf_res))))
+  res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
