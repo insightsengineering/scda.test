@@ -93,7 +93,6 @@ rtables::fnotes_at_path(
 testthat::test_that("Pagination works also if table is decorated", {
   clw <- c(10, 8, 8, 10) # random values to have "some" wrapping
   lpp_tmp <- 41 # minimum for this table
-  formatters::propose_column_widths(res)
 
   pg_tbl_w_clw <- paginate_table(res, lpp = lpp_tmp, colwidths = clw)
   pg_tbl_no_clw <- paginate_table(res, lpp = lpp_tmp)
