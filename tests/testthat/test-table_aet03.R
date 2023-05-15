@@ -59,11 +59,23 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
   result_matrix <- to_string_matrix(result)
 
   # Pagination also works (and sorting)
-  pag_result <- paginate_table(result, lpp = 15)
+  lpp_test <- 17
+  testthat::expect_equal(
+    nrow(paginate_table(result, lpp = lpp_test)[[1]]) + 3, # 3 is the header
+    lpp_test
+  )
+
+  # With 8, it works perfectly for the first block but others have much more nesting
+  lpp_test <- 8
+  testthat::expect_error(
+    nrow(paginate_table(result, lpp = lpp_test)[[1]])
+  )
+
+  pag_result <- paginate_table(result, lpp = 16)
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[3, 1],
-    "cl A.1"
+    "cl B.2"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[3:4, 1],
