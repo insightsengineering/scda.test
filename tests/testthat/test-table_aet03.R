@@ -68,7 +68,7 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
   # With 8, it works perfectly for the first block but others have much more nesting
   lpp_test <- 8
   testthat::expect_error(
-    nrow(paginate_table(result, lpp = lpp_test)[[1]])
+    paginate_table(result, lpp = lpp_test)[[1]]
   )
 
   pag_result <- paginate_table(result, lpp = 16)
