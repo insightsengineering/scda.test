@@ -105,7 +105,7 @@ testthat::test_that("Pagination works also if table is decorated", {
     keep_topleft = TRUE
   ], widths = clw[1:3])
 
-  # testthat::expect_identical(res1, res2)
+  testthat::expect_identical(res1, res2)
   testthat::expect_equal(length(pg_tbl_no_clw), length(pg_tbl_w_clw) - 3)
 
   testthat::expect_snapshot(cat(res1))

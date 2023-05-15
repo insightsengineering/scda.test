@@ -45,8 +45,8 @@
       titles
       
            ————————————————————————————————
-                        A: Drug       B:   
-                           X       Placebo 
+           SOME         A: Drug       B:   
+           TOPLEFT         X       Placebo 
                         (N=134)    (N=134) 
            ————————————————————————————————
            - Any          122        123   
@@ -122,8 +122,8 @@
       titles
       
            ————————————————————————————————
-                        A: Drug       B:   
-                           X       Placebo 
+           SOME         A: Drug       B:   
+           TOPLEFT         X       Placebo 
                         (N=134)    (N=134) 
            ————————————————————————————————
            cl B.2                          
@@ -200,8 +200,8 @@
       titles
       
            —————————————————————————————————————————————
-                        A: Drug       B:      C: Combina
-                           X       Placebo       tion   
+           SOME         A: Drug       B:      C: Combina
+           TOPLEFT         X       Placebo       tion   
                         (N=134)    (N=134)     (N=132)  
            —————————————————————————————————————————————
            cl A.1                                       
@@ -254,7 +254,7 @@
       titles
       
            ————————————————————————————————————
-                                 C: Combination
+           SOME TOPLEFT          C: Combination
                                     (N=132)    
            ————————————————————————————————————
            - Any Grade -          120 (90.9%)  
@@ -322,7 +322,7 @@
       titles
       
            ————————————————————————————————————
-                                 C: Combination
+           SOME TOPLEFT          C: Combination
                                     (N=132)    
            ————————————————————————————————————
            cl D.1                              
@@ -394,7 +394,7 @@
       titles
       
            —————————————————————————————————————————————
-                                 A: Drug X    B: Placebo
+           SOME TOPLEFT          A: Drug X    B: Placebo
                                   (N=134)      (N=134)  
            —————————————————————————————————————————————
            cl B.1                                       
@@ -449,7 +449,7 @@
       titles
       
            ——————————————————————————————————————————————————————————————
-                                 A: Drug X    B: Placebo   C: Combination
+           SOME TOPLEFT          A: Drug X    B: Placebo   C: Combination
                                   (N=134)      (N=134)        (N=132)    
            ——————————————————————————————————————————————————————————————
            cl D.2                                                        
@@ -483,7 +483,7 @@
       titles
       
            ——————————————————————————————————————————————————————————————
-                                 A: Drug X    B: Placebo   C: Combination
+           SOME TOPLEFT          A: Drug X    B: Placebo   C: Combination
                                   (N=134)      (N=134)        (N=132)    
            ——————————————————————————————————————————————————————————————
            cl C.2                                                        
@@ -532,7 +532,7 @@
       titles
       
            ————————————————————————————————————
-                                 C: Combination
+           SOME TOPLEFT          C: Combination
                                     (N=132)    
            ————————————————————————————————————
            - Any Grade -          120 (90.9%)  
