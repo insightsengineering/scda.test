@@ -66,7 +66,7 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[3, 1],
-    "cl B.2"
+    "cl A.1"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[3:4, 1],
@@ -188,7 +188,7 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[3, 1],
-    "cl B.2"
+    "cl A.1"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[3:4, 2],
