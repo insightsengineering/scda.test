@@ -38,11 +38,11 @@ testthat::test_that("RMPT04 variant 1 is produced correctly", {
       .labels = c(n_patients = "Number of Patients", sum_exposure = "Patient Time*"),
       custom_label = "Total Number of Patients and Patient Time"
     ) %>%
-    split_rows_by("ETHNIC", label_pos = "topleft", split_label = "Ethnicity") %>%
-    summarize_patients_exposure_in_cols(
-      var = "AVAL",
+    analyze_patients_exposure_in_cols(
+      var = "ETHNIC",
       col_split = FALSE
-    )
+    ) %>%
+    append_topleft(c("", "Ethnicity"))
 
   result <- build_table(lyt, df = anl, alt_counts_df = adsl_f)
 

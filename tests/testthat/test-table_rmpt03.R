@@ -55,11 +55,11 @@ testthat::test_that("RMPT03 variant 1 is produced correctly", {
       .labels = c(n_patients = "Number of Patients", sum_exposure = "Patient Time*"),
       custom_label = "Total Number of Patients and Patient Time"
     ) %>%
-    split_rows_by("AGEGR1", label_pos = "topleft", split_label = "Age group (years)") %>%
-    summarize_patients_exposure_in_cols(
-      var = "AVAL",
+    analyze_patients_exposure_in_cols(
+      var = "AGEGR1",
       col_split = FALSE
-    )
+    ) %>%
+    append_topleft(c("", "Age group (years)"))
 
   result <- build_table(lyt, df = anl, alt_counts_df = adsl_f)
 
@@ -78,16 +78,14 @@ testthat::test_that("RMPT03 variant 2 is produced correctly", {
       .labels = c(n_patients = "Number of Patients", sum_exposure = "Patient Time*"),
       custom_label = "Total Number of Patients and Patient Time"
     ) %>%
-    split_rows_by("AGEGR2",
-      split_fun = drop_split_levels, # "< 18" dropped
-      label_pos = "topleft", split_label = "Age group (years)"
-    ) %>%
-    summarize_patients_exposure_in_cols(
-      var = "AVAL",
+    analyze_patients_exposure_in_cols(
+      var = "AGEGR2",
       col_split = FALSE
-    )
+    ) %>%
+    append_topleft(c("", "Age group (years)"))
 
-  result <- build_table(lyt, df = anl, alt_counts_df = adsl_f)
+  result <- build_table(lyt, df = anl, alt_counts_df = adsl_f) %>%
+    prune_table()
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
