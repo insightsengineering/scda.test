@@ -1,4 +1,4 @@
-# scda.test 0.0.0.9024
+# scda.test 0.0.0.9025
 
 ### New Features
 * Added table tests from `tern`.

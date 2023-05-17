@@ -1,7 +1,7 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9024
+Version: 0.0.0.9025
 Date: 2023-05-17
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
@@ -23,8 +23,8 @@ BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
     formatters (>= 0.4.1.9002),
     R (>= 3.6),
-    rtables (>= 0.6.0.9004),
     rlistings (>= 0.2.1.9003),
+    rtables (>= 0.6.0.9004),
     tern (>= 0.8.1.9009)
 Imports:
     scda (>= 0.1.6),
