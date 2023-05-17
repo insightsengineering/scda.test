@@ -37,11 +37,11 @@ testthat::test_that("RMPT05 is produced correctly", {
       var = "AVAL", col_split = TRUE,
       .labels = c(n_patients = "Patients", sum_exposure = "Person time*")
     ) %>%
-    split_rows_by("RACE", label_pos = "topleft", split_label = obj_label(adex$RACE)) %>%
-    summarize_patients_exposure_in_cols(
-      var = "AVAL",
+    analyze_patients_exposure_in_cols(
+      var = "RACE",
       col_split = FALSE
-    )
+    ) %>%
+    append_topleft(c("", obj_label(adex$RACE)))
 
   result <- build_table(lyt, df = anl, alt_counts_df = adsl_f)
 
