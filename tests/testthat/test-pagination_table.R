@@ -70,7 +70,7 @@ testthat::test_that("Pagination with specific column widths and minimum lines pe
   # Min h-width: first value is the row label, second is the largest content, 3 is the inter-space
   cpp_width <- std_col_widths[1] + max(std_col_widths[-1]) + 3
   pag_res <- testthat::expect_silent(
-    paginate_table(raw_result, cpp = cpp_width, lpp = 12) # 12 is the minimum -> automatic way?
+    paginate_table(raw_result, cpp = cpp_width, lpp = 13) # 13 is the minimum -> automatic way?
   )
   testthat::expect_equal(length(pag_res), 11 * 3) # 11 because 3 branches (out of 8) have 2 leaves
   testthat::expect_snapshot(pag_res[9:10]) # randomly picked to have a comparison
@@ -92,20 +92,36 @@ rtables::fnotes_at_path(
 
 testthat::test_that("Pagination works also if table is decorated", {
   clw <- c(10, 8, 8, 10) # random values to have "some" wrapping
-  lpp_tmp <- 36 # minimum for this table
 
-  pg_tbl_w_clw <- paginate_table(res, lpp = lpp_tmp, colwidths = clw)
-  pg_tbl_no_clw <- paginate_table(res, lpp = lpp_tmp)
+  # Std calculations for minimum lpp
+  # title (2) + subtitle (3) + empty line (1) + div (1) + header (3) +
+  # + nrows (x) + ref footnote (3) + footer (1+2 empty lines) + prov footer (4)
+  testthat::expect_silent(paginate_table(raw_result, lpp = 13))
+  testthat::expect_error(paginate_table(raw_result, lpp = 12))
+  # base is: 20 + x [x from paginate_table(raw_result) is min 13 - 3 (header)]
+  # -> 30
+  # for pagination with decoration and no wrapping we expect 27
+  lpp_min <- 27 # -3 less because of ref fnotes
+  cpp_min <- 72 # 70 is the std now, this table is 72
+  testthat::expect_silent(paginate_table(res, lpp = lpp_min, cpp = cpp_min))
+  testthat::expect_error(paginate_table(res, lpp = lpp_min - 1, cpp = cpp_min))
+
+  # for clw above this is 41 (14 more lines due to wrapping)
+  lpp_min <- 41
+  pg_tbl_no_clw <- paginate_table(res, lpp = lpp_min, cpp = cpp_min)
+  pg_tbl_w_clw <- paginate_table(res, lpp = lpp_min, colwidths = clw, cpp = cpp_min)
+  testthat::expect_error(paginate_table(res, lpp = lpp_tmp - 1, colwidths = clw, cpp = cpp_min))
+
   res1 <- toString(pg_tbl_no_clw[[1]], widths = clw)
   res2 <- toString(res[
-    1:17,
+    1:21, , # found manually
     keep_titles = TRUE,
     keep_footers = TRUE,
     keep_topleft = TRUE
   ], widths = clw)
 
   testthat::expect_identical(res1, res2)
-  testthat::expect_equal(length(pg_tbl_no_clw), length(pg_tbl_w_clw) - 5)
+  testthat::expect_equal(length(pg_tbl_no_clw), length(pg_tbl_w_clw) - 7)
 
   testthat::expect_snapshot(cat(res1))
 
@@ -139,12 +155,12 @@ testthat::test_that("Pagination works for page types", {
     res,
     landscape = TRUE,
     lineheight = 2,
-    font_size = 9,
+    font_size = 7,
     font_family = "Courier",
     margins = c(top = 1, bottom = 1, left = 3, right = 3)
   )
   testthat::expect_snapshot(sapply(pag_res, nrow))
-  testthat::expect_snapshot(pag_res[5:10]) # randomly picked to have a comparison
+  testthat::expect_snapshot(pag_res[5:6]) # randomly picked to have a comparison
 })
 
 testthat::test_that("AET04 variant 2 page_by pagination tests", {
