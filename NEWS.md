@@ -5,6 +5,7 @@
 * Added tests for listings.
 * Added pagination tests for tables.
 * Updated `scda` data timestamps to `"latest"`.
+* Added pagination tests for listings.
 
 ### Enhancements
 * Added dependencies to `DESCRIPTION` file.

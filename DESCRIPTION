@@ -24,9 +24,9 @@ Depends:
     formatters (>= 0.4.1.9002),
     R (>= 3.6),
     rtables (>= 0.6.0.9004),
+    rlistings (>= 0.2.1.9003),
     tern (>= 0.8.1.9009)
 Imports:
-    rlistings (>= 0.2.0),
     scda (>= 0.1.6),
     scda.2022 (>= 0.1.4)
 Suggests:
