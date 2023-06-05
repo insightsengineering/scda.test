@@ -9,7 +9,7 @@ testthat::test_that("PKCT01 is produced correctly", {
         "C: Combination"
       ))
     ) %>%
-    split_rows_by(var = "PARAM") %>%
+    split_rows_by(var = "PARAM", child_labels = "hidden") %>%
     analyze_vars_in_cols(vars = "AVAL")
 
   result <- build_table(l, df = adpc)
@@ -22,7 +22,7 @@ testthat::test_that("PKCT01 is produced correctly", {
       var = "ARM",
       split_fun = keep_split_levels(c("A: Drug X", "C: Combination"))
     ) %>%
-    split_rows_by(var = "PARAM") %>%
+    split_rows_by(var = "PARAM", child_labels = "hidden") %>%
     analyze_vars_in_cols(
       vars = "AVALC", var_type = "character", .stats = c("n_blq"),
       .labels = c(n_blq = "n_blq")
@@ -66,7 +66,8 @@ testthat::test_that("Specific PKCT01 features are present", {
     split_rows_by(
       var = "NRELTM1",
       split_label = "Norminal Time from First Dose",
-      label_pos = "topleft"
+      label_pos = "topleft",
+      child_labels = "hidden"
     )
 
   # Column results for numeric values
@@ -135,5 +136,5 @@ testthat::test_that("Specific PKCT01 features are present", {
 
   # Pagination works roughly
   pag_works <- paginate_table(result, verbose = FALSE, lpp = 20)
-  testthat::expect_equal(length(pag_works), 10L)
+  testthat::expect_equal(length(pag_works), 12L)
 })
