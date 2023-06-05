@@ -11,6 +11,7 @@
 * Added dependencies to `DESCRIPTION` file.
 
 ### Bug Fixes
+* Removed extra line for templates using `analyze_vars_in_col`.
 
 ### Miscellaneous
 * Added `tern` to `staged.dependencies` file.
