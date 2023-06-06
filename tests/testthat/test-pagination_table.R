@@ -59,7 +59,7 @@ raw_result <- basic_table() %>%
 
 testthat::test_that("Direct pagination with standard values", {
   # Standard, direct call
-  pag_res <- testthat::expect_silent(paginate_table(raw_result))
+  pag_res <- testthat::expect_silent(paginate_table(raw_result, font_size = 12))
   testthat::expect_equal(sapply(pag_res, nrow), c(55, 22))
   testthat::expect_equal(sapply(pag_res, ncol), c(3, 3))
 })

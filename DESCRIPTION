@@ -25,7 +25,7 @@ Depends:
     R (>= 3.6),
     rlistings (>= 0.2.1.9003),
     rtables (>= 0.6.0.9004),
-    tern (>= 0.8.1.9009)
+    tern (>= 0.8.2.9002)
 Imports:
     scda (>= 0.1.6),
     scda.2022 (>= 0.1.4)

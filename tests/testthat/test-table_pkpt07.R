@@ -24,7 +24,8 @@ l <- basic_table() %>%
   split_rows_by(
     var = "PKPARAM",
     label_pos = "topleft",
-    split_label = "PK Parameter"
+    split_label = "PK Parameter",
+    child_labels = "hidden"
   ) %>%
   analyze_vars_in_cols(
     vars = "AVAL",

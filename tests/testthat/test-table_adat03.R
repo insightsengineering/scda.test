@@ -49,7 +49,8 @@ testthat::test_that("ADAT03 is produced correctly", {
     split_rows_by(
       var = "VISIT",
       label_pos = "topleft",
-      split_label = "Visit"
+      split_label = "Visit",
+      child_labels = "hidden"
     ) %>%
     analyze_vars_in_cols(
       vars = c(rep("AVAL", 8), "AVAL_LT"),
