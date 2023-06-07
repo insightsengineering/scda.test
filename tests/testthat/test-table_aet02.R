@@ -160,10 +160,10 @@ testthat::test_that("AET02 variant 4 is produced correctly", {
         unique = "Total number of patients with at least one adverse event",
         nonunique = "Total number of events"
       ),
-      show_labels = "hidden",
-      indent_mod = -1L
+      show_labels = "hidden"
     ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = -1L))
+    count_occurrences(vars = "AEDECOD") %>%
+    append_varlabels(adae, "AEDECOD")
 
   result <- build_table(lyt, adae, alt_counts_df = adsl)
 
@@ -215,21 +215,27 @@ testthat::test_that("AET02 variant 5 is produced correctly", {
 })
 
 testthat::test_that("AET02 variant 6 is produced correctly", {
-  lyt <- basic_table() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible",
       nested = FALSE,
-      split_fun = drop_split_levels
+      indent_mod = -1L,
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
       .stats = "unique",
       .labels = "Total number of patients with at least one adverse event"
     ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = 1L))
+    count_occurrences(
+      vars = "AEDECOD",
+      .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
 
   result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
     sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols) %>%
@@ -248,15 +254,15 @@ testthat::test_that("AET02 variant 6 is produced correctly", {
 })
 
 testthat::test_that("AET02 variant 7 is produced correctly", {
-  lyt <- basic_table() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible",
       nested = TRUE,
-      indent_mod = -2L,
-      split_fun = drop_split_levels
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
@@ -267,27 +273,43 @@ testthat::test_that("AET02 variant 7 is produced correctly", {
       "AEHLT",
       child_labels = "visible",
       nested = TRUE,
-      indent_mod = 1L,
-      split_fun = drop_split_levels
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEHLT)
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
       .stats = "unique",
       .labels = "Total number of patients with at least one adverse event"
     ) %>%
-    count_occurrences(vars = "AEDECOD")
+    count_occurrences(vars = "AEDECOD") %>%
+    append_varlabels(adae, c("AEDECOD"), indent = 2L)
 
   result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols, decreasing = TRUE) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEHLT"), scorefun = cont_n_allcols, decreasing = TRUE) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEHLT", "*", "AEDECOD"), scorefun = score_occurrences, decreasing = TRUE)
+    prune_table() %>%
+    sort_at_path(
+      path = c("AEBODSYS"),
+      scorefun = cont_n_allcols,
+      decreasing = TRUE
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEHLT"),
+      scorefun = cont_n_allcols,
+      decreasing = TRUE
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEHLT", "*", "AEDECOD"),
+      scorefun = score_occurrences,
+      decreasing = TRUE
+    )
 
-  criteria_fun <- function(tr) {
-    inherits(tr, "ContentRow")
-  }
+  criteria_fun <- function(tr) is(tr, "ContentRow")
   result <- trim_rows(result, criteria = criteria_fun)
 
-  row_condition <- has_fraction_in_any_col(atleast = 0.40, col_names = names(table(adsl$ARM)))
+  row_condition <- has_fraction_in_any_col(
+    atleast = 0.05,
+    col_names = names(table(adsl$ARM))
+  )
   result <- prune_table(result, keep_rows(row_condition))
 
   res <- testthat::expect_silent(result)
@@ -295,147 +317,16 @@ testthat::test_that("AET02 variant 7 is produced correctly", {
 })
 
 testthat::test_that("AET02 variant 8 is produced correctly", {
-  lyt <- basic_table() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
-    split_rows_by(
-      "AEBODSYS",
-      child_labels = "visible",
-      nested = FALSE,
-      split_fun = drop_split_levels
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "Total number of patients with at least one adverse event"
-    ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = 1L))
-
-  result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEDECOD"), scorefun = score_occurrences)
-
-  criteria_fun <- function(tr) {
-    inherits(tr, "ContentRow")
-  }
-  result <- trim_rows(result, criteria = criteria_fun)
-
-  row_condition <- has_fraction_in_any_col(atleast = 0.40, col_names = names(table(adsl$ARM)))
-  result <- prune_table(result, keep_rows(row_condition))
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-testthat::test_that("AET02 variant 9 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
-    split_rows_by(
-      "AEBODSYS",
-      child_labels = "visible",
-      nested = FALSE,
-      split_fun = drop_split_levels
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "Total number of patients with at least one adverse event"
-    ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = 1L))
-
-  result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEDECOD"), scorefun = score_occurrences)
-
-  criteria_fun <- function(tr) {
-    inherits(tr, "ContentRow")
-  }
-  result <- trim_rows(result, criteria = criteria_fun)
-
-  row_condition <- has_count_in_any_col(atleast = 52, col_names = names(table(adsl$ARM)))
-  result <- prune_table(result, keep_rows(row_condition))
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-testthat::test_that("AET02 variant 10 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
-    split_rows_by(
-      "AEBODSYS",
-      child_labels = "visible",
-      nested = FALSE,
-      split_fun = drop_split_levels
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "Total number of patients with at least one adverse event"
-    ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = 1L))
-
-  result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEDECOD"), scorefun = score_occurrences)
-
-  criteria_fun <- function(tr) {
-    inherits(tr, "ContentRow")
-  }
-  result <- trim_rows(result, criteria = criteria_fun)
-
-  row_condition <- has_fractions_difference(atleast = 0.05, col_names = names(table(adsl$ARM)))
-  result <- prune_table(result, keep_rows(row_condition))
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-testthat::test_that("AET02 variant 11 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
-    split_rows_by(
-      "AEBODSYS",
-      child_labels = "visible",
-      nested = FALSE,
-      split_fun = drop_split_levels
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = "unique",
-      .labels = "Total number of patients with at least one adverse event"
-    ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = 1L))
-
-  result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("AEBODSYS"), scorefun = cont_n_allcols) %>%
-    sort_at_path(path = c("AEBODSYS", "*", "AEDECOD"), scorefun = score_occurrences)
-
-  criteria_fun <- function(tr) {
-    inherits(tr, "ContentRow")
-  }
-  result <- trim_rows(result, criteria = criteria_fun)
-
-  row_condition <- has_fraction_in_cols(atleast = 0.40, col_names = c("B: Placebo"))
-  result <- prune_table(result, keep_rows(row_condition))
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-testthat::test_that("AET02 variant 12 is produced correctly", {
-  lyt <- basic_table() %>%
-    split_cols_by(var = "ARM") %>%
-    add_colcounts() %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible",
       nested = FALSE,
       indent_mod = -1L,
-      split_fun = drop_split_levels
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
@@ -445,7 +336,209 @@ testthat::test_that("AET02 variant 12 is produced correctly", {
     count_occurrences(
       vars = "AEDECOD",
       .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
+
+  result <- build_table(
+    lyt,
+    df = adae,
+    alt_counts_df = adsl
+  ) %>%
+    prune_table() %>%
+    sort_at_path(
+      path = c("AEBODSYS"),
+      scorefun = cont_n_allcols
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEDECOD"),
+      scorefun = score_occurrences
     )
+
+  criteria_fun <- function(tr) is(tr, "ContentRow")
+  result <- trim_rows(result, criteria = criteria_fun)
+
+  row_condition <- has_fraction_in_any_col(
+    atleast = 0.10,
+    col_names = names(table(adsl$ARM))
+  )
+  result <- prune_table(result, keep_rows(row_condition))
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
+testthat::test_that("AET02 variant 9 is produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ARM") %>%
+    split_rows_by(
+      "AEBODSYS",
+      child_labels = "visible",
+      nested = FALSE,
+      indent_mod = -1L,
+      split_fun = drop_split_levels,
+      split_label = obj_label(adae$AEBODSYS),
+      label_pos = "topleft"
+    ) %>%
+    summarize_num_patients(
+      var = "USUBJID",
+      .stats = "unique",
+      .labels = "Total number of patients with at least one adverse event"
+    ) %>%
+    count_occurrences(
+      vars = "AEDECOD",
+      .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
+
+  result <- build_table(
+    lyt,
+    df = adae,
+    alt_counts_df = adsl
+  ) %>%
+    prune_table() %>%
+    sort_at_path(
+      path = c("AEBODSYS"),
+      scorefun = cont_n_allcols
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEDECOD"),
+      scorefun = score_occurrences
+    )
+
+  criteria_fun <- function(tr) is(tr, "ContentRow")
+  result <- trim_rows(result, criteria = criteria_fun)
+
+  row_condition <- has_count_in_any_col(
+    atleast = 3,
+    col_names = names(table(adsl$ARM))
+  )
+  result <- prune_table(result, keep_rows(row_condition))
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
+testthat::test_that("AET02 variant 10 is produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ARM") %>%
+    split_rows_by(
+      "AEBODSYS",
+      child_labels = "visible",
+      nested = FALSE,
+      indent_mod = -1L,
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
+    ) %>%
+    summarize_num_patients(
+      var = "USUBJID",
+      .stats = "unique",
+      .labels = "Total number of patients with at least one adverse event"
+    ) %>%
+    count_occurrences(
+      vars = "AEDECOD",
+      .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
+
+  result <- build_table(
+    lyt,
+    df = adae,
+    alt_counts_df = adsl
+  ) %>%
+    prune_table() %>%
+    sort_at_path(
+      path = c("AEBODSYS"),
+      scorefun = cont_n_allcols
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEDECOD"),
+      scorefun = score_occurrences
+    )
+
+  criteria_fun <- function(tr) is(tr, "ContentRow")
+  result <- trim_rows(result, criteria = criteria_fun)
+
+  row_condition <- has_fractions_difference(
+    atleast = 0.05,
+    col_names = levels(adsl$ARM)
+  )
+  result <- prune_table(result, keep_rows(row_condition))
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
+testthat::test_that("AET02 variant 11 is produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ARM") %>%
+    split_rows_by(
+      "AEBODSYS",
+      child_labels = "visible",
+      nested = FALSE,
+      indent_mod = -1L,
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
+    ) %>%
+    summarize_num_patients(
+      var = "USUBJID",
+      .stats = "unique",
+      .labels = "Total number of patients with at least one adverse event"
+    ) %>%
+    count_occurrences(
+      vars = "AEDECOD",
+      .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
+  result <- build_table(
+    lyt,
+    df = adae,
+    alt_counts_df = adsl
+  ) %>%
+    prune_table() %>%
+    sort_at_path(
+      path = c("AEBODSYS"),
+      scorefun = cont_n_allcols
+    ) %>%
+    sort_at_path(
+      path = c("AEBODSYS", "*", "AEDECOD"),
+      scorefun = score_occurrences
+    )
+  criteria_fun <- function(tr) is(tr, "ContentRow")
+  result <- trim_rows(result, criteria = criteria_fun)
+  row_condition <- has_fraction_in_cols(
+    atleast = 0.05,
+    col_names = c("B: Placebo")
+  )
+  result <- prune_table(result, keep_rows(row_condition))
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
+testthat::test_that("AET02 variant 12 is produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ARM") %>%
+    split_rows_by(
+      "AEBODSYS",
+      child_labels = "visible",
+      nested = FALSE,
+      indent_mod = -1L,
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
+    ) %>%
+    summarize_num_patients(
+      var = "USUBJID",
+      .stats = "unique",
+      .labels = "Total number of patients with at least one adverse event"
+    ) %>%
+    count_occurrences(
+      vars = "AEDECOD",
+      .indent_mods = c(count_fraction = 1L)
+    ) %>%
+    append_varlabels(adae, "AEDECOD", indent = 1L)
 
   result <- build_table(
     lyt,
