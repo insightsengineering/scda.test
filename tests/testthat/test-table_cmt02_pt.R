@@ -6,21 +6,34 @@ adcm <- adcm_raw
 testthat::test_that("CMT02_PT default variant is produced correctly", {
   adcm <- adcm %>%
     dplyr::mutate(
-      ASEQ = as.factor(ASEQ)
+      CMSEQ = as.factor(CMSEQ)
     )
 
-  result <- basic_table() %>%
-    split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
-    add_colcounts() %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      count_by = "ASEQ",
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ARM") %>%
+    add_overall_col("All Patients") %>%
+    analyze_num_patients(
+      vars = "USUBJID",
+      count_by = "CMSEQ",
       .stats = c("unique", "nonunique"),
-      .labels = c("Total number of patients with at least one event", "Total number of events")
+      .labels = c(
+        unique = "Total number of patients with at least one treatment",
+        nonunique = "Total number of treatments"
+      ),
+      show_labels = "hidden"
     ) %>%
     count_occurrences(vars = "CMDECOD") %>%
-    build_table(adcm, alt_counts_df = adsl) %>%
-    sort_at_path(path = c("CMDECOD"), scorefun = score_occurrences)
+    append_varlabels(adcm, "CMDECOD", indent = 0)
+
+  result <- build_table(
+    lyt = lyt,
+    df = adcm,
+    alt_counts_df = adsl
+  ) %>%
+    sort_at_path(
+      path = c("CMDECOD"),
+      scorefun = score_occurrences
+    )
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
