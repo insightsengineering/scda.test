@@ -32,12 +32,10 @@ testthat::test_that("AET07 variant 1 is produced correctly", {
       vars = "USUBJID",
       .stats = "unique",
       .labels = c(unique = "Total number of deaths"),
-      indent_mod = -1L,
       show_labels = "hidden"
     ) %>%
     count_occurrences(
-      vars = "SOC_PT",
-      .indent_mods = -1L
+      vars = "SOC_PT"
     )
 
   result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
@@ -62,12 +60,10 @@ testthat::test_that("AET07 variant 2 is produced correctly", {
       vars = "USUBJID",
       .stats = "unique",
       .labels = c(unique = "Total number of deaths"),
-      indent_mod = -1L,
       show_labels = "hidden"
     ) %>%
     count_occurrences(
-      vars = "SOC_PT",
-      .indent_mods = -1L
+      vars = "SOC_PT"
     )
 
   result <- build_table(lyt, adae, alt_counts_df = adsl) %>%
