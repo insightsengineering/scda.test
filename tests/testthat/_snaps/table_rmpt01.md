@@ -6,8 +6,8 @@
       Duration of Exposure: Safety-Evaluable Patients
       
       ——————————————————————————————————————————————————————————————————————————————
-      Duration of exposure                        Number of Patients   Patient Time*
-                                                       (N=400)            (N=400)   
+                                                  Number of Patients   Patient Time*
+      Duration of exposure                             (N=400)            (N=400)   
       ——————————————————————————————————————————————————————————————————————————————
       Total Number of Patients and Patient Time      217 (54.2%)           20641    
         < 1 month                                     28 (7.0%)             504     

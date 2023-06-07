@@ -6,8 +6,8 @@
       Extent of Exposure by Race: Safety-Evaluable Patients
       
       ————————————————————————————————————————————————————————————————————————
-      Race                                           Patients     Person time*
-                                                      (N=400)       (N=400)   
+                                                     Patients     Person time*
+      Race                                            (N=400)       (N=400)   
       ————————————————————————————————————————————————————————————————————————
       Total patients numbers/person time            217 (54.2%)      20641    
         ASIAN                                       113 (28.2%)      10239    
