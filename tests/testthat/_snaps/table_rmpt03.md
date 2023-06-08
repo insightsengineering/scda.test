@@ -6,8 +6,8 @@
       Extent of Exposure by Age Group and Gender: Safety-Evaluable Patients
       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Age group (years)                                         Female                                Male                                Total               
-                                                  Number of Patients   Patient Time*   Number of Patients   Patient Time*   Number of Patients   Patient Time*
+                                                                Female                                Male                                Total               
+      Age group (years)                           Number of Patients   Patient Time*   Number of Patients   Patient Time*   Number of Patients   Patient Time*
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Total Number of Patients and Patient Time      134 (58.0%)           12591           83 (49.1%)           8050           217 (54.2%)           20641    
         <65                                          134 (58.0%)           12591           82 (48.5%)           7970           216 (54.0%)           20561    
@@ -24,8 +24,8 @@
       Duration of Exposure: Safety-Evaluable Patients
       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Age group (years)                                         Female                                Male                                Total               
-                                                  Number of Patients   Patient Time*   Number of Patients   Patient Time*   Number of Patients   Patient Time*
+                                                                Female                                Male                                Total               
+      Age group (years)                           Number of Patients   Patient Time*   Number of Patients   Patient Time*   Number of Patients   Patient Time*
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Total Number of Patients and Patient Time      134 (58.0%)           12591           83 (49.1%)           8050           217 (54.2%)           20641    
         18 - 40                                      118 (51.1%)           11203           60 (35.5%)           5787           178 (44.5%)           16990    

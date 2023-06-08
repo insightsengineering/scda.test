@@ -14,7 +14,7 @@
         Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
       Duration of response (Months)                                                               
         Median                                         23.8             11.1             6.6      
-        95% CI                                     (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
+          95% CI                                   (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
         25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
         Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
         Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  
@@ -39,7 +39,7 @@
         Responders without subsequent event (%)    35 (51.5%)     22 (30.1%)      9 (14.5%)   
       Duration of response (Months)                                                           
         Median                                        23.8           11.1            6.6      
-        95% CI                                    (17.9, 39.6)   (8.3, 14.6)      (4.4, 9.2)  
+          95% CI                                  (17.9, 39.6)   (8.3, 14.6)      (4.4, 9.2)  
         25% and 75%-ile                            9.3, 44.3      6.2, 20.5       3.0, 15.7   
         Range (censored)                          1.6 to 64.5    0.1 to 43.8     0.2 to 39.6  
         Range (event)                             0.3 to 44.3    0.6 to 61.9     0.2 to 53.8  
@@ -64,7 +64,7 @@
         Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
       Duration of response (Months)                                                               
         Median                                         23.8             11.1             6.6      
-        90% CI                                     (17.9, 30.2)     (9.1, 14.0)       (4.4, 8.0)  
+          90% CI                                   (17.9, 30.2)     (9.1, 14.0)       (4.4, 8.0)  
         25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
         Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
         Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  
@@ -89,7 +89,7 @@
         Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
       Duration of response (Months)                                                               
         Median                                         23.8             11.1             6.6      
-        95% CI                                     (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
+          95% CI                                   (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
         25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
         Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
         Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  

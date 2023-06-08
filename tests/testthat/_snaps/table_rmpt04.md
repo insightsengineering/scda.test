@@ -6,8 +6,8 @@
       Extent of Exposure by Ethnic Origin: Safety-Evaluable Patients
       
       ——————————————————————————————————————————————————————————————————————————————
-      Ethnicity                                   Number of Patients   Patient Time*
-                                                       (N=400)            (N=400)   
+                                                  Number of Patients   Patient Time*
+      Ethnicity                                        (N=400)            (N=400)   
       ——————————————————————————————————————————————————————————————————————————————
       Total Number of Patients and Patient Time      217 (54.2%)           20641    
         NOT REPORTED                                  18 (4.5%)            2085     
