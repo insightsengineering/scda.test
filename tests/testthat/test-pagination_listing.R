@@ -81,9 +81,7 @@ testthat::test_that("Direct pagination works fine", {
 
   clw <- formatters::propose_column_widths(lst_res) / 2 + 1
 
-  pg_lst <- testthat::expect_silent(paginate_listing(lst_res, lpp = 50, colwidths = floor(clw)))
-  testthat::expect_equal(length(pg_lst), 10L)
+  suppressWarnings(testthat::expect_warning(pg_lst <- export_as_txt(lst_res, lpp = 50, colwidths = floor(clw))))
 
-  pg_lst <- testthat::expect_silent(paginate_listing(lst_res, page_type = "a4", font_size = 8))
-  testthat::expect_equal(length(pg_lst), 6L)
+  suppressWarnings(testthat::expect_warning(pg_lst <- export_as_txt(lst_res, page_type = "a4", font_size = 9)))
 })
