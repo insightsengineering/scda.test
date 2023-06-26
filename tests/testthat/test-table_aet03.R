@@ -1,47 +1,67 @@
 adsl <- adsl_raw
 adae <- adae_raw
 
+# Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
+adsl <- df_explicit_na(adsl)
+adae <- df_explicit_na(adae) %>%
+  var_relabel(
+    AEBODSYS = "MedDRA System Organ Class",
+    AEDECOD = "MedDRA Preferred Term"
+  ) %>%
+  filter(ANL01FL == "Y")
+
+adae <- adae %>% mutate(ASEV = as.character(AESEV))
+adae$ASEV[1:15] <- "LIFE THREATENING"
+adae <- adae %>% mutate(ASEV = factor(ASEV, levels = c("MILD", "MODERATE", "SEVERE", "LIFE THREATENING")))
+
 testthat::test_that("AET03 variant 1 is produced correctly", {
-  adae$AEDECOD <- as.character(adae$AEDECOD) # nolint
-  adae$AEBODSYS <- as.character(adae$AEBODSYS) # nolint
-  adae$ASEV <- as.character(adae$AESEV) # nolint
-  adae$ASEV[1:15] <- "LIFE THREATENING"
-  adae$ASEV <- factor(adae$ASEV, levels = c("MILD", "MODERATE", "SEVERE", "LIFE THREATENING")) # nolint
+  grade_groups <- list("- Any Intensity -" = c("MILD", "MODERATE", "SEVERE", "LIFE THREATENING"))
 
-  n_per_arm <- table(adsl$ACTARM)
+  split_fun <- trim_levels_in_group
 
-  gr_grp <- list(
-    "- Any Intensity -" = c("MILD", "MODERATE", "SEVERE", "LIFE THREATENING")
-  )
-
-  lyt <- basic_table() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
-    add_colcounts() %>%
     count_occurrences_by_grade(
       var = "ASEV",
-      grade_groups = gr_grp
+      grade_groups = grade_groups
     ) %>%
-    split_rows_by("AEBODSYS",
-      split_fun = trim_levels_in_group("ASEV"),
-      child_labels = "visible", nested = TRUE
+    split_rows_by(
+      "AEBODSYS",
+      child_labels = "visible",
+      nested = TRUE,
+      split_fun = split_fun("ASEV"),
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEBODSYS)
     ) %>%
     summarize_occurrences_by_grade(
       var = "ASEV",
-      grade_groups = gr_grp
+      grade_groups = grade_groups
     ) %>%
-    split_rows_by("AEDECOD",
-      split_fun = trim_levels_in_group("ASEV"),
-      child_labels = "visible", nested = TRUE, indent_mod = -1L
+    split_rows_by(
+      "AEDECOD",
+      child_labels = "visible",
+      nested = TRUE,
+      indent_mod = -1L,
+      split_fun = split_fun("ASEV"),
+      label_pos = "topleft",
+      split_label = obj_label(adae$AEDECOD)
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
       .stats = "unique",
       .labels = c("- Any Intensity -")
     ) %>%
-    count_occurrences_by_grade(var = "ASEV", .indent_mods = -1L)
+    count_occurrences_by_grade(
+      var = "ASEV",
+      .indent_mods = -1L
+    ) %>%
+    append_varlabels(adae, "AESEV", indent = 2L)
 
   result <- lyt %>%
-    build_table(adae, alt_counts_df = adsl) %>%
+    build_table(
+      adae,
+      alt_counts_df = adsl
+    ) %>%
     sort_at_path(
       path = "AEBODSYS",
       scorefun = cont_n_allcols,
@@ -59,9 +79,9 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
   result_matrix <- to_string_matrix(result)
 
   # Pagination also works (and sorting)
-  lpp_test <- 17
+  lpp_test <- 18
   testthat::expect_equal(
-    nrow(paginate_table(result, lpp = lpp_test)[[1]]) + 3, # 3 is the header
+    nrow(paginate_table(result, lpp = lpp_test)[[1]]) + 4, # 4 is the header
     lpp_test
   )
 
@@ -75,10 +95,10 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[3, 1],
-    "cl B.2"
+    "    Severity/Intensity"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[3:4, 1],
-    c("- Any Intensity -", "MILD")
+    c("    Severity/Intensity", "- Any Intensity -")
   )
 })
