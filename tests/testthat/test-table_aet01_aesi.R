@@ -308,35 +308,35 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_not_res[1]]),
-      denom = "N_col", table_names = "fl_res"
+      denom = "N_col", table_names = "fl_notres_main"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_not_res[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_ser[1]]),
-      denom = "N_col", table_names = "fl_res"
+      denom = "N_col", table_names = "fl_ser_main"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_ser[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel1[1]]),
-      denom = "N_col", table_names = "fl_res"
+      denom = "N_col", table_names = "fl_rel1_main"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel1[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      denom = "N_col", .indent_mods = 1L, table_names = "fl_rel1"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel2[1]]),
-      denom = "N_col", table_names = "fl_res"
+      denom = "N_col", table_names = "fl_rel2_main"
     ) %>%
     count_patients_with_flags(
       "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel2[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      denom = "N_col", .indent_mods = 1L, table_names = "fl_rel2"
     )
 
   result <- build_table(lyt_adae_mult, df = adae_mult, alt_counts_df = adsl)
@@ -394,25 +394,25 @@ testthat::test_that("AET01_AESI Variant 4 works as expected", {
       CONTRT = with_label(AECONTRT == "Y", "Total number of patients with treatment received for AE"),
       SER = with_label(AESER == "Y", "Total number of patients with at least one serious AE"),
       REL = with_label(AEREL == "Y", "Total number of patients with at least one related AE"),
-      ALL_RESOLVED_WD = with_label(WD == TRUE & ALL_RESOLVED == TRUE, "  No. of patients with study drug withdrawn due to resolved AE"),
-      ALL_RESOLVED_DSM = with_label(DSM == TRUE & ALL_RESOLVED == TRUE, "  No. of patients with dose modified/interrupted due to resolved AE"),
-      ALL_RESOLVED_CONTRT = with_label(CONTRT == TRUE & ALL_RESOLVED == TRUE, "  No. of patients with treatment received for resolved AE"),
-      NOT_RESOLVED_WD = with_label(WD == TRUE & NOT_RESOLVED == TRUE, "  No. of patients with study drug withdrawn due to unresolved or ongoing AE"),
-      NOT_RESOLVED_DSM = with_label(DSM == TRUE & NOT_RESOLVED == TRUE, "  No. of patients with dose modified/interrupted due to unresolved or ongoing AE"),
-      NOT_RESOLVED_CONTRT = with_label(CONTRT == TRUE & NOT_RESOLVED == TRUE, "  No. of patients with treatment received for unresolved or ongoing AE"),
-      SERWD = with_label(AESER == "Y" & AEACN == "DRUG WITHDRAWN", "  No. of patients with study drug withdrawn due to serious AE"),
-      SERCONTRT = with_label(AECONTRT == "Y" & AESER == "Y", "  No. of patients with treatment received for serious AE"),
+      ALL_RESOLVED_WD = with_label(WD == TRUE & ALL_RESOLVED == TRUE, "No. of patients with study drug withdrawn due to resolved AE"),
+      ALL_RESOLVED_DSM = with_label(DSM == TRUE & ALL_RESOLVED == TRUE, "No. of patients with dose modified/interrupted due to resolved AE"),
+      ALL_RESOLVED_CONTRT = with_label(CONTRT == TRUE & ALL_RESOLVED == TRUE, "No. of patients with treatment received for resolved AE"),
+      NOT_RESOLVED_WD = with_label(WD == TRUE & NOT_RESOLVED == TRUE, "No. of patients with study drug withdrawn due to unresolved or ongoing AE"),
+      NOT_RESOLVED_DSM = with_label(DSM == TRUE & NOT_RESOLVED == TRUE, "No. of patients with dose modified/interrupted due to unresolved or ongoing AE"),
+      NOT_RESOLVED_CONTRT = with_label(CONTRT == TRUE & NOT_RESOLVED == TRUE, "No. of patients with treatment received for unresolved or ongoing AE"),
+      SERWD = with_label(AESER == "Y" & AEACN == "DRUG WITHDRAWN", "No. of patients with study drug withdrawn due to serious AE"),
+      SERCONTRT = with_label(AECONTRT == "Y" & AESER == "Y", "No. of patients with treatment received for serious AE"),
       SERDSM = with_label(
         AESER == "Y" & AEACN %in% c("DRUG INTERRUPTED", "DOSE INCREASED", "DOSE REDUCED"),
-        "  No. of patients with dose modified/interrupted due to serious AE"
+        "No. of patients with dose modified/interrupted due to serious AE"
       ),
-      RELWD = with_label(AEREL == "Y" & AEACN == "DRUG WITHDRAWN", "  No. of patients with study drug withdrawn due to related AE"),
+      RELWD = with_label(AEREL == "Y" & AEACN == "DRUG WITHDRAWN", "No. of patients with study drug withdrawn due to related AE"),
       RELDSM = with_label(
         AEREL == "Y" & AEACN %in% c("DRUG INTERRUPTED", "DOSE INCREASED", "DOSE REDUCED"),
-        "  No. of patients with dose modified/interrupted due to related AE"
+        "No. of patients with dose modified/interrupted due to related AE"
       ),
-      RELCONTRT = with_label(AECONTRT == "Y" & AEREL == "Y", "  No. of patients with treatment received for related AE"),
-      RELSER = with_label(AESER == "Y" & AEREL == "Y", "  No. of patients with serious, related AE")
+      RELCONTRT = with_label(AECONTRT == "Y" & AEREL == "Y", "No. of patients with treatment received for related AE"),
+      RELSER = with_label(AESER == "Y" & AEREL == "Y", "No. of patients with serious, related AE")
     )
 
   adae_smq <- adae_smq %>%
@@ -453,7 +453,7 @@ testthat::test_that("AET01_AESI Variant 4 works as expected", {
     ) %>%
     count_occurrences_by_grade(
       var = "AETOXGR",
-      var_labels = "  Total number of patients with at least one AE by worst grade",
+      var_labels = "Total number of patients with at least one AE by worst grade",
       .show_labels = "visible"
     ) %>%
     count_patients_with_flags(

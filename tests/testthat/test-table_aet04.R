@@ -111,11 +111,11 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[3, 1],
+    to_string_matrix(pag_result[[3]])[4, 1],
     "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[3:4, 1],
+    to_string_matrix(pag_result[[1]])[5:6, 1],
     c("- Any Grade -", "Grade 1-2")
   )
 })
@@ -193,12 +193,12 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[3, 1],
-    "cl B.2"
+    to_string_matrix(pag_result[[3]])[4, 1],
+    "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[3:4, 2],
-    c("122 (91.0%)", "13 (9.7%)")
+    to_string_matrix(pag_result[[1]])[5:6, 2],
+    c("100 (74.6%)", "10 (7.5%)")
   )
 })
 
@@ -272,12 +272,12 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[3, 1],
+    to_string_matrix(pag_result[[3]])[4, 1],
     "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[3:4, 2],
-    c("122 (91.0%)", "13 (9.7%)")
+    to_string_matrix(pag_result[[1]])[5:6, 2],
+    c("100 (74.6%)", "10 (7.5%)")
   )
 })
 
@@ -490,7 +490,7 @@ testthat::test_that("AET04 variant 8 is produced correctly (with an Incidence Ra
 })
 
 # NOTE: STREAM logic will only stream at term level
-testthat::test_that("AET04 variant 9 is produced correctlyb(with a Difference in Incidence Rate of at Least X%)", {
+testthat::test_that("AET04 variant 9 is produced correctly (with a Difference in Incidence Rate of at Least X%)", {
   cutoff <- 0.1
   row_condition <- has_fractions_difference(atleast = cutoff, col_names = names(raw_table))
 

@@ -655,7 +655,7 @@
                                   Grade 3-4       36 (26.9%)    34 (25.4%)     36 (27.3%)  
                                   4               36 (26.9%)    34 (25.4%)     36 (27.3%)  
 
-# AET04 variant 9 is produced correctlyb(with a Difference in Incidence Rate of at Least X%)
+# AET04 variant 9 is produced correctly (with a Difference in Incidence Rate of at Least X%)
 
     Code
       res
