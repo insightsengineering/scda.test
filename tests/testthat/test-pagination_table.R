@@ -133,13 +133,13 @@ testthat::test_that("Pagination works for page types", {
   # Other parameters: page type
   pag_res <- paginate_table(res, page_type = "letter")
   testthat::expect_snapshot(sapply(pag_res, nrow))
-  testthat::expect_snapshot(pag_res[2])
+  testthat::expect_snapshot(pag_res[[2]])
   pag_res <- paginate_table(res, page_type = "a4")
   testthat::expect_snapshot(sapply(pag_res, nrow))
-  testthat::expect_snapshot(pag_res[4])
+  testthat::expect_snapshot(pag_res[[2]])
   pag_res <- paginate_table(res, page_type = "legal")
   testthat::expect_snapshot(sapply(pag_res, nrow))
-  testthat::expect_snapshot(pag_res[3])
+  testthat::expect_snapshot(pag_res[[1]])
 })
 
 testthat::test_that("Pagination works for page width and height", {

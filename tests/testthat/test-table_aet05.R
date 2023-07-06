@@ -17,7 +17,8 @@ testthat::test_that("AET05 variant 1 is produced correctly", {
       vars = "AVAL",
       n_events = "n_events",
       control = control_incidence_rate(num_pt_year = 100)
-    )
+    ) %>%
+    build_table(anl, alt_counts_df = adsl)
 
   result <- build_table(lyt, anl, alt_counts_df = adsl)
 
@@ -31,12 +32,9 @@ testthat::test_that("AET05 variant 2 is produced correctly", {
     estimate_incidence_rate(
       vars = "AVAL",
       n_events = "n_events",
-      control = control_incidence_rate(
-        conf_level = 0.95,
-        conf_type = "exact",
-        num_pt_year = 100
-      )
-    )
+      control = control_incidence_rate(conf_type = "exact", num_pt_year = 100)
+    ) %>%
+    build_table(anl, alt_counts_df = adsl)
 
   result <- build_table(lyt, anl, alt_counts_df = adsl)
 
