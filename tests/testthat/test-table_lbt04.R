@@ -17,9 +17,9 @@ testthat::test_that("LBT04 default variant is produced correctly", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
     split_rows_by("PARAM",
-                  split_fun = drop_split_levels,
-                  label_pos = "topleft",
-                  split_label = obj_label(adlb_f$PARAM)
+      split_fun = drop_split_levels,
+      label_pos = "topleft",
+      split_label = obj_label(adlb_f$PARAM)
     ) %>%
     count_abnormal(
       var = "ANRIND",

@@ -119,7 +119,7 @@ testthat::test_that("DMT01 variant 3 is produced correctly", {
       var_labels = c("Age", "Sex", "Race")
     ) %>%
     split_rows_by("STRATA1",
-                  split_fun = split_fun
+      split_fun = split_fun
     ) %>%
     summarize_vars("BMRKR1") %>%
     build_table(adsl)

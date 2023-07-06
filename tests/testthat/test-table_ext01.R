@@ -50,8 +50,10 @@ tndosmis <- adex %>%
 adex <- dplyr::bind_rows(adex, tdurd, tndosmis) %>%
   mutate(PARAM = factor(
     PARAM,
-    levels = c("Overall duration (days)", "Total dose administered", "Total number of doses administered",
-               "Total number of missed doses during study")
+    levels = c(
+      "Overall duration (days)", "Total dose administered", "Total number of doses administered",
+      "Total number of missed doses during study"
+    )
   ))
 
 testthat::test_that("EXT01 default variant with numeric parameters is produced correctly", {

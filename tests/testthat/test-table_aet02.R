@@ -491,7 +491,7 @@ testthat::test_that("AET02 variant 10 is produced correctly", {
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
-  result <- build_table(lyt, df = adae, alt_counts_df = adsl ) %>%
+  result <- build_table(lyt, df = adae, alt_counts_df = adsl) %>%
     prune_table() %>%
     sort_at_path(
       path = c("AEBODSYS"),

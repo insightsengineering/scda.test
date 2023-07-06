@@ -36,7 +36,7 @@ adlb <- adlb %>%
       levels = c("", c("LAST", "REPLICATED", "SINGLE"))
     ),
     PARCAT2 = factor(ifelse(ANRIND %in% c("HIGH HIGH", "LOW LOW"), "LS",
-                            sample(c("SI", "CV", "LS"), size = n(), replace = TRUE)
+      sample(c("SI", "CV", "LS"), size = n(), replace = TRUE)
     ))
   ) %>%
   select(-q1, -q2)

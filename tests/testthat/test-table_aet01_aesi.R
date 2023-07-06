@@ -122,34 +122,42 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, c(aesi_vars, aesi_resolved[1])]), denom = "N_col"
+      "USUBJID",
+      flag_variables = var_labels(adae[, c(aesi_vars, aesi_resolved[1])]), denom = "N_col"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_resolved[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_resolved[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_not_resolved[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_not_resolved[1]]),
       denom = "N_col", table_names = "fl_notres_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_not_resolved[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_not_resolved[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_ser[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_ser[1]]),
       denom = "N_col", table_names = "fl_ser_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_ser[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_ser[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_rel[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_rel[1]]),
       denom = "N_col", table_names = "fl_rel_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae[, aesi_rel[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae[, aesi_rel[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_rel"
     )
 
@@ -237,7 +245,7 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
         "No. of patients with dose of study drug 2 modified/interrupted due to serious AE"
       ),
       REL1WD1 = with_label(AEREL1 == "Y" & AEACN1 == "DRUG WITHDRAWN", "No. of patients with study drug 1 withdrawn due to AE related to study drug 1"),
-      REL1WD2 = with_label(AEREL1 == "Y" & AEACN2 == "DRUG WITHDRAWN","No. of patients with study drug 1 withdrawn due to AE related to study drug 2"),
+      REL1WD2 = with_label(AEREL1 == "Y" & AEACN2 == "DRUG WITHDRAWN", "No. of patients with study drug 1 withdrawn due to AE related to study drug 2"),
       REL2WD1 = with_label(AEREL1 == "Y" & AEACN1 == "DRUG WITHDRAWN", "No. of patients with study drug 2 withdrawn due to AE related to study drug 1"),
       REL2WD2 = with_label(AEREL1 == "Y" & AEACN2 == "DRUG WITHDRAWN", "No. of patients with study drug 2 withdrawn due to AE related to study drug 2"),
       REL1DSM1 = with_label(
@@ -300,42 +308,52 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, c(aesi_vars, aesi_res[1])]), denom = "N_col"
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, c(aesi_vars, aesi_res[1])]), denom = "N_col"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_res[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_res[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_not_res[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_not_res[1]]),
       denom = "N_col", table_names = "fl_notres_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_not_res[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_not_res[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_ser[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_ser[1]]),
       denom = "N_col", table_names = "fl_ser_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_ser[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_ser[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel1[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_rel1[1]]),
       denom = "N_col", table_names = "fl_rel1_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel1[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_rel1[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_rel1"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel2[1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_rel2[1]]),
       denom = "N_col", table_names = "fl_rel2_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID", flag_variables = var_labels(adae_mult[, aesi_rel2[-1]]),
+      "USUBJID",
+      flag_variables = var_labels(adae_mult[, aesi_rel2[-1]]),
       denom = "N_col", .indent_mods = 1L, table_names = "fl_rel2"
     )
 
@@ -418,11 +436,11 @@ testthat::test_that("AET01_AESI Variant 4 works as expected", {
   adae_smq <- adae_smq %>%
     mutate(
       AETOXGR = forcats::fct_recode(AETOXGR,
-                                    "Grade 1" = "1",
-                                    "Grade 2" = "2",
-                                    "Grade 3" = "3",
-                                    "Grade 4" = "4",
-                                    "Grade 5 (fatal outcome)" = "5"
+        "Grade 1" = "1",
+        "Grade 2" = "2",
+        "Grade 3" = "3",
+        "Grade 4" = "4",
+        "Grade 5 (fatal outcome)" = "5"
       )
     )
 
