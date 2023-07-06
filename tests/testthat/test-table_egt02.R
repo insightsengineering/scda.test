@@ -3,49 +3,53 @@
 adsl <- adsl_raw
 adeg <- adeg_raw
 
-testthat::test_that("(EGT02) 1. Regardless of Abnormality at Baseline", {
-  # Note: We exclude "SCREENING" and "BASELINE" visits here
-  # so to keep only post-baseline for analysis.
-  adeg <- adeg %>%
-    dplyr::filter(AVISIT != "SCREENING") %>%
-    dplyr::filter(AVISIT != "BASELINE") %>%
-    dplyr::mutate(AVISIT = droplevels(AVISIT))
+adsl <- df_explicit_na(adsl)
+adeg <- df_explicit_na(adeg)
 
-  result <- basic_table() %>%
-    split_cols_by("ARM") %>%
-    add_overall_col("All Patients") %>%
-    add_colcounts() %>%
+adeg_f <- adeg %>%
+  filter(ONTRTFL == "Y") %>%
+  filter(PARAM %in% c("Heart Rate", "QT Duration", "RR Duration")) %>%
+  filter(ANRIND != "<Missing>") %>%
+  var_relabel(
+    PARAM = "Assessment",
+    ANRIND = "Abnormality"
+  )
+
+testthat::test_that("(EGT02) 1. Regardless of Abnormality at Baseline", {
+  split_fun <- drop_split_levels
+
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ACTARM") %>%
     split_rows_by(
       "PARAM",
-      split_label = c("Parameter / Analysis Reference Range Indicator"),
-      split_fun = keep_split_levels(c("Heart Rate", "QT Duration", "RR Duration")),
-      label_pos = "visible"
+      split_fun = split_fun,
+      label_pos = "topleft",
+      split_label = obj_label(adeg_f$PARAM)
     ) %>%
     count_abnormal("ANRIND", abnormal = list(Low = "LOW", High = "HIGH"), exclude_base_abn = FALSE) %>%
-    build_table(df = adeg, alt_counts_df = adsl)
+    append_varlabels(adeg_f, "ANRIND", indent = 1L)
+
+  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("(EGT02) 2. Among Subjects Without Abnormality at Baseline", {
-  adeg <- adeg %>%
-    dplyr::filter(AVISIT != "SCREENING") %>%
-    dplyr::filter(AVISIT != "BASELINE") %>%
-    dplyr::mutate(AVISIT = droplevels(AVISIT))
+  split_fun <- drop_split_levels
 
-  result <- basic_table() %>%
-    split_cols_by("ARM") %>%
-    add_colcounts() %>%
-    add_overall_col("All Patients") %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(var = "ACTARM") %>%
     split_rows_by(
       "PARAM",
-      split_label = c("Parameter / Analysis Reference Range Indicator"),
-      label_pos = "visible",
-      split_fun = keep_split_levels(c("Heart Rate", "QT Duration", "RR Duration"))
+      split_fun = split_fun,
+      label_pos = "topleft",
+      split_label = obj_label(adeg_f$PARAM)
     ) %>%
     count_abnormal("ANRIND", abnormal = list(Low = "LOW", High = "HIGH"), exclude_base_abn = TRUE) %>%
-    build_table(df = adeg, alt_counts_df = adsl)
+    append_varlabels(adeg_f, "ANRIND", indent = 1L)
+
+  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

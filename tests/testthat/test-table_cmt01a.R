@@ -3,22 +3,21 @@ adcm <- adcm_raw
 
 adcm$CMSEQ <- as.factor(adcm$CMSEQ)
 
-# Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
 adsl <- df_explicit_na(adsl)
 adcm <- df_explicit_na(adcm)
 
-# Keep only safety-evaluable patients and concomitant medications
 adsl <- adsl %>%
   filter(SAFFL == "Y")
 
 adcm <- adcm %>%
-  filter(SAFFL == "Y" & ATIREL == "CONCOMITANT")
+  filter(SAFFL == "Y" & ATIREL == "CONCOMITANT") %>%
+  var_relabel(CMDECOD = "Other Treatment")
 
 testthat::test_that("CMT01A variant 1 is produced correctly", {
   split_fun <- drop_split_levels
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM") %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
       count_by = "CMSEQ",
@@ -48,11 +47,7 @@ testthat::test_that("CMT01A variant 1 is produced correctly", {
     count_occurrences(vars = "CMDECOD", .indent_mods = -1L) %>%
     append_varlabels(adcm, "CMDECOD", indent = 1L)
 
-  result <- build_table(
-    lyt = lyt,
-    df = adcm,
-    alt_counts_df = adsl
-  ) %>%
+  result <- build_table(lyt = lyt, df = adcm, alt_counts_df = adsl) %>%
     prune_table() %>%
     # Sort lowest level terms by descending frequency.
     sort_at_path(
@@ -68,7 +63,7 @@ testthat::test_that("CMT01A variant 2 is produced correctly", {
   split_fun <- drop_split_levels
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM") %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
       count_by = "CMSEQ",
@@ -98,11 +93,7 @@ testthat::test_that("CMT01A variant 2 is produced correctly", {
     count_occurrences(vars = "CMDECOD", .indent_mods = -1L) %>%
     append_varlabels(adcm, "CMDECOD", indent = 1L)
 
-  result <- build_table(
-    lyt = lyt,
-    df = adcm,
-    alt_counts_df = adsl
-  ) %>%
+  result <- build_table(lyt = lyt, df = adcm, alt_counts_df = adsl) %>%
     prune_table() %>%
     # Sort lowest level terms by descending frequency.
     sort_at_path(
@@ -118,7 +109,7 @@ testthat::test_that("CMT01A variant 3 is produced correctly", {
   split_fun <- drop_split_levels
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM") %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
       count_by = "CMSEQ",
@@ -148,11 +139,7 @@ testthat::test_that("CMT01A variant 3 is produced correctly", {
     count_occurrences(vars = "CMDECOD", .indent_mods = -1L) %>%
     append_varlabels(adcm, "CMDECOD", indent = 1L)
 
-  result <- build_table(
-    lyt = lyt,
-    df = adcm,
-    alt_counts_df = adsl
-  ) %>%
+  result <- build_table(lyt = lyt, df = adcm, alt_counts_df = adsl) %>%
     prune_table() %>%
     sort_at_path(path = c("ATC2"), scorefun = cont_n_allcols) %>%
     sort_at_path(path = c("ATC2", "*", "CMDECOD"), scorefun = score_occurrences)
@@ -165,7 +152,7 @@ testthat::test_that("CMT01A variant 4 is produced correctly", {
   split_fun <- drop_split_levels
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM") %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
       count_by = "CMSEQ",
@@ -194,11 +181,7 @@ testthat::test_that("CMT01A variant 4 is produced correctly", {
     count_occurrences(vars = "CMDECOD", .indent_mods = -1L) %>%
     append_varlabels(adcm, "CMDECOD", indent = 1L)
 
-  result <- build_table(
-    lyt = lyt,
-    df = adcm,
-    alt_counts_df = adsl
-  ) %>%
+  result <- build_table(lyt = lyt, df = adcm, alt_counts_df = adsl) %>%
     prune_table() %>%
     # Sort lowest level terms by descending frequency.
     sort_at_path(
