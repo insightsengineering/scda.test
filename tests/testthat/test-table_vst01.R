@@ -1,5 +1,6 @@
 # Test the single variant for VST01
 
+adsl <- adsl_raw
 advs <- advs_raw
 
 adsl <- df_explicit_na(adsl)
