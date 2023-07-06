@@ -12,7 +12,9 @@ set.seed(99)
 adae <- adae %>%
   mutate(
     AEDECOD = with_label(as.character(AEDECOD), "Dictionary-Derived Term"),
-    AESDTH = with_label(sample(c("N", "Y"), size = nrow(adae), replace = TRUE, prob = c(0.99, 0.01)), "Results in Death"),
+    AESDTH = with_label(
+      sample(c("N", "Y"), size = nrow(adae), replace = TRUE, prob = c(0.99, 0.01)), "Results in Death"
+    ),
     AEACN = with_label(sample(
       c("DOSE NOT CHANGED", "DOSE INCREASED", "DRUG INTERRUPTED", "DRUG WITHDRAWN"),
       size = nrow(adae),

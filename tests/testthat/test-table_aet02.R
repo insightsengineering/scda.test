@@ -111,7 +111,7 @@ testthat::test_that("AET02 variant 2 is produced correctly", {
       .indent_mods = c(count = -1L)
     )
 
-  result <- build_table(lyt, df = adae, alt_counts_df = adsl) %>% # col_count = c(table(adsl$ACTARM), sum(table(adsl$ACTARM)))
+  result <- build_table(lyt, df = adae, alt_counts_df = adsl) %>%
     prune_table() %>%
     sort_at_path(
       path = c("AEBODSYS", "*", "AEDECOD"),
