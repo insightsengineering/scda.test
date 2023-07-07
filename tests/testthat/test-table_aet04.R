@@ -478,7 +478,7 @@ testthat::test_that("AET04 variant 8 is produced correctly (with an Incidence Ra
   cutoff <- 58L
   row_condition <- has_count_in_any_col(atleast = cutoff, col_names = levels(adsl$ACTARM))
 
-  result <- prune_table(raw_table, keep_rows(my_row_condition(row_condition)))
+  result <- prune_table(raw_table, keep_content_rows(my_row_condition(row_condition)))
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -492,9 +492,9 @@ testthat::test_that("AET04 variant 8 is produced correctly (with an Incidence Ra
 # NOTE: STREAM logic will only stream at term level
 testthat::test_that("AET04 variant 9 is produced correctly (with a Difference in Incidence Rate of at Least X%)", {
   cutoff <- 0.1
-  row_condition <- has_fractions_difference(atleast = cutoff, col_names = names(raw_table))
+  row_condition <- has_fractions_difference(atleast = cutoff, col_names = levels(adsl$ACTARM))
 
-  result <- prune_table(raw_table, keep_rows(my_row_condition(row_condition)))
+  result <- prune_table(raw_table, keep_content_rows(my_row_condition(row_condition)))
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -516,7 +516,7 @@ testthat::test_that(
     cutoff <- 0.4
     row_condition <- has_fraction_in_any_col(atleast = cutoff, col_names = levels(adsl$ACTARM))
 
-    result <- prune_table(raw_table, keep_rows(my_row_condition(row_condition)))
+    result <- prune_table(raw_table, keep_content_rows(my_row_condition(row_condition)))
 
     res <- testthat::expect_silent(result)
     testthat::expect_snapshot(res)

@@ -10,6 +10,7 @@ adsl_gp_added <- adsl %>%
     DCSREAS == "<Missing>" ~ "<Missing>"
   ) %>% factor(levels = c("Safety", "Non-Safety", "<Missing>")))
 
+set.seed(1)
 adsl_eotstt_added <- adsl_gp_added %>%
   mutate(
     EOTSTT = sample(
