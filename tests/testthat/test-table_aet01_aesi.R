@@ -107,11 +107,7 @@ testthat::test_that("AET01_AESI Variant 1 works as expected", {
       var_labels = "Total number of patients with at least one AE by worst grade",
       show_labels = "visible"
     ) %>%
-    count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_vars]),
-      denom = "N_col"
-    )
+    count_patients_with_flags("USUBJID", flag_variables = aesi_vars, denom = "N_col")
 
   result <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)
 
@@ -147,43 +143,28 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, c(aesi_vars, aesi_resolved[1])]), denom = "N_col"
+      "USUBJID", flag_variables = c(aesi_vars, aesi_resolved[1]), denom = "N_col"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_resolved[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      "USUBJID", flag_variables = aesi_resolved[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_not_resolved[1]]),
-      denom = "N_col", table_names = "fl_notres_main"
+      "USUBJID", flag_variables = aesi_not_resolved[1], denom = "N_col", table_names = "fl_notres_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_not_resolved[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
+      "USUBJID", flag_variables = aesi_not_resolved[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_ser[1]]),
-      denom = "N_col", table_names = "fl_ser_main"
+      "USUBJID", flag_variables = aesi_ser[1], denom = "N_col", table_names = "fl_ser_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_ser[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
+      "USUBJID", flag_variables = aesi_ser[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_rel[1]]),
-      denom = "N_col", table_names = "fl_rel_main"
+      "USUBJID", flag_variables = aesi_rel[1], denom = "N_col", table_names = "fl_rel_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae[, aesi_rel[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_rel"
+      "USUBJID", flag_variables = aesi_rel[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_rel"
     )
 
   result <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)
@@ -379,53 +360,34 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, c(aesi_vars, aesi_res[1])]), denom = "N_col"
+      "USUBJID", flag_variables = c(aesi_vars, aesi_res[1]), denom = "N_col"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_res[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
+      "USUBJID", flag_variables = aesi_res[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_res"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_not_res[1]]),
-      denom = "N_col", table_names = "fl_notres_main"
+      "USUBJID", flag_variables = aesi_not_res[1], denom = "N_col", table_names = "fl_notres_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_not_res[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
+      "USUBJID", flag_variables = aesi_not_res[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_notres"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_ser[1]]),
-      denom = "N_col", table_names = "fl_ser_main"
+      "USUBJID", flag_variables = aesi_ser[1], denom = "N_col", table_names = "fl_ser_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_ser[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
+      "USUBJID", flag_variables = aesi_ser[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_ser"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_rel1[1]]),
-      denom = "N_col", table_names = "fl_rel1_main"
+      "USUBJID", flag_variables = aesi_rel1[1], denom = "N_col", table_names = "fl_rel1_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_rel1[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_rel1"
+      "USUBJID", flag_variables = aesi_rel1[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_rel1"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_rel2[1]]),
-      denom = "N_col", table_names = "fl_rel2_main"
+      "USUBJID", flag_variables = aesi_rel2[1], denom = "N_col", table_names = "fl_rel2_main"
     ) %>%
     count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_mult[, aesi_rel2[-1]]),
-      denom = "N_col", .indent_mods = 1L, table_names = "fl_rel2"
+      "USUBJID", flag_variables = aesi_rel2[-1], denom = "N_col", .indent_mods = 1L, table_names = "fl_rel2"
     )
 
   result <- build_table(lyt_adae_mult, df = adae_mult, alt_counts_df = adsl)
@@ -565,11 +527,8 @@ testthat::test_that("AET01_AESI Variant 4 works as expected", {
       var_labels = "Total number of patients with at least one AE by worst grade",
       .show_labels = "visible"
     ) %>%
-    count_patients_with_flags(
-      "USUBJID",
-      flag_variables = var_labels(adae_smq[, aesi_vars]),
-      denom = "N_col"
-    )
+    count_patients_with_flags("USUBJID", flag_variables = aesi_vars, denom = "N_col")
+
   result <- build_table(lyt_adae, df = adae_smq, alt_counts_df = adsl)
 
   res <- testthat::expect_silent(result)

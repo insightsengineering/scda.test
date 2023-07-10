@@ -77,7 +77,7 @@ testthat::test_that("RMPT06 variant 1 is produced correctly", {
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"])
+      flag_variables = "fl_ser"
     ) %>%
     count_occurrences(
       "AEOUT",
@@ -131,7 +131,7 @@ testthat::test_that("RMPT06 variant 2 is produced correctly", {
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     )
 
@@ -188,7 +188,7 @@ testthat::test_that("RMPT06 variant 3 is produced correctly", {
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     ) %>%
     count_occurrences(
@@ -254,7 +254,7 @@ testthat::test_that("RMPT06 variant 4 is produced correctly", {
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     ) %>%
     count_occurrences(

@@ -85,7 +85,7 @@ testthat::test_that("Safety Summary Variant 1 works as expected", {
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, aesi_vars]),
+      flag_variables = aesi_vars,
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
       show_labels = "visible"
@@ -143,14 +143,14 @@ testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) wo
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, aesi_vars]),
+      flag_variables = aesi_vars,
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, basket_vars]),
+      flag_variables = basket_vars,
       table_names = "table_aesi",
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
@@ -213,7 +213,7 @@ testthat::test_that("Safety Summary Variant 3 (with Modified Rows) works as expe
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, aesi_vars]),
+      flag_variables = aesi_vars,
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
       show_labels = "visible"
@@ -271,14 +271,14 @@ testthat::test_that("Safety Summary Variant 4 (with Rows Counting Events and Add
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, count_subj_vars]),
+      flag_variables = count_subj_vars,
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
       show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "AEDECOD",
-      flag_variables = var_labels(adae[, count_term_vars]),
+      flag_variables = count_term_vars,
       .stats = "count",
       .formats = c(count = "xx"),
       table_names = "table_term",
@@ -287,7 +287,7 @@ testthat::test_that("Safety Summary Variant 4 (with Rows Counting Events and Add
     ) %>%
     count_patients_with_flags(
       "USUBJID_AESEQ",
-      flag_variables = var_labels(adae[, count_ae_vars]),
+      flag_variables = count_ae_vars,
       .stats = "count",
       .formats = c(count = "xx"),
       table_names = "table_ae",
