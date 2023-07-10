@@ -1,6 +1,15 @@
-adsl <- adsl_raw %>% df_explicit_na()
-addv <- addv_raw %>% df_explicit_na()
-addv_pan <- addv %>% filter(AEPRELFL == "Y" & DVCAT == "MAJOR")
+adsl <- adsl_raw
+addv <- addv_raw
+
+adsl <- df_explicit_na(adsl)
+addv <- df_explicit_na(addv)
+
+addv_pan <- addv %>%
+  filter(AEPRELFL == "Y" & DVCAT == "MAJOR") %>%
+  var_relabel(
+    DVREAS = "Primary Reason",
+    DVTERM = "Description"
+  )
 
 testthat::test_that("PDT02 is produced correctly", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
@@ -22,7 +31,8 @@ testthat::test_that("PDT02 is produced correctly", {
     ) %>%
     summarize_num_patients(
       var = "USUBJID",
-      .stats = c("unique_count")
+      .stats = c("unique"),
+      .labels = "Site action due to epidemic/pandemic"
     ) %>%
     count_occurrences(vars = "DVTERM") %>%
     append_varlabels(addv_pan, "DVTERM", indent = 1L)

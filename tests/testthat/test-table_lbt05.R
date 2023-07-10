@@ -1,234 +1,130 @@
 adsl <- adsl_raw
+adlb <- adlb_raw
 
-get_adlb <- function() {
-  adlb <- adlb_raw # nolint
-  # Modify ANRIND and create AVALCAT1/PARCAT2
-  # PARCAT2 is just used for filtering, but in order to be the
-  # filtering as realistic as possible, will create the variable.
-  qntls <- adlb %>%
-    dplyr::group_by(.data$PARAMCD) %>%
-    dplyr::summarise(
-      q1 = stats::quantile(.data$AVAL, probs = c(0.1)),
-      q2 = stats::quantile(.data$AVAL, probs = c(0.9))
-    )
+adsl <- df_explicit_na(adsl)
+adlb <- df_explicit_na(adlb)
 
-  adlb <- adlb %>%
-    dplyr::left_join(qntls, by = "PARAMCD")
+qntls <- adlb %>%
+  group_by(PARAMCD) %>%
+  summarise(as_tibble(t(quantile(AVAL, probs = c(0.1, 0.9)))), .groups = "drop_last") %>%
+  rename(q1 = 2, q2 = 3)
 
-  adlb_f <- adlb %>%
-    dplyr::mutate(
-      ANRIND = factor(
-        dplyr::case_when(
-          .data$ANRIND == "LOW" & .data$AVAL <= .data$q1 ~ "LOW LOW",
-          .data$ANRIND == "HIGH" & .data$AVAL >= .data$q2 ~ "HIGH HIGH",
-          TRUE ~ as.character(ANRIND)
-        ),
-        levels = c("", "HIGH", "HIGH HIGH", "LOW", "LOW LOW", "NORMAL")
-      )
-    )
-  adlb_f
-}
+adlb <- adlb %>%
+  left_join(qntls, by = "PARAMCD")
 
-testthat::test_that("LBT05 variant 1 is produced correctly", {
-  adlb <- get_adlb()
+set.seed(1)
 
-  avalcat1 <- c("LAST", "REPLICATED", "SINGLE")
-
-  set.seed(1, kind = "Mersenne-Twister")
-
-  adlb <- adlb %>%
-    dplyr::mutate(
-      AVALCAT1 = factor(
-        dplyr::case_when(
-          .data$ANRIND %in% c("HIGH HIGH", "LOW LOW") ~
-            sample(
-              x = avalcat1,
-              size = dplyr::n(),
-              replace = TRUE,
-              prob = c(0.3, 0.6, 0.1)
-            ),
-          TRUE ~ ""
-        ),
-        levels = c("", avalcat1)
+# Modify ANRIND and create AVALCAT1/PARCAT2
+# PARCAT2 is just used for filtering, but in order to be the
+# filtering as realistic as possible, will create the variable.
+adlb <- adlb %>%
+  mutate(
+    ANRIND = factor(
+      case_when(
+        ANRIND == "LOW" & AVAL <= q1 ~ "LOW LOW",
+        ANRIND == "HIGH" & AVAL >= q2 ~ "HIGH HIGH",
+        TRUE ~ as.character(ANRIND)
       ),
-      PARCAT2 = factor("LS")
-    ) %>%
-    dplyr::select(-"q1", -"q2")
-
-  # Preprocessing steps
-  adlb <- adlb %>%
-    dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
-    dplyr::mutate(abn_dir = factor(
-      dplyr::case_when(
-        ANRIND == "LOW LOW" ~ "Low",
-        ANRIND == "HIGH HIGH" ~ "High",
+      levels = c("", "HIGH", "HIGH HIGH", "LOW", "LOW LOW", "NORMAL")
+    ),
+    AVALCAT1 = factor(
+      case_when(
+        ANRIND %in% c("HIGH HIGH", "LOW LOW") ~
+          sample(x = c("LAST", "REPLICATED", "SINGLE"), size = n(), replace = TRUE, prob = c(0.3, 0.6, 0.1)),
         TRUE ~ ""
       ),
-      levels = c("Low", "High")
+      levels = c("", c("LAST", "REPLICATED", "SINGLE"))
+    ),
+    PARCAT2 = factor(ifelse(ANRIND %in% c("HIGH HIGH", "LOW LOW"), "LS",
+      sample(c("SI", "CV", "LS"), size = n(), replace = TRUE)
     ))
-
-  map <- expand.grid(
-    PARAM = levels(adlb$PARAM),
-    abn_dir = c("Low", "High"),
-    stringsAsFactors = FALSE
   ) %>%
-    arrange(PARAM, desc(abn_dir))
+  select(-q1, -q2)
 
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARMCD") %>%
-    add_colcounts() %>%
-    split_rows_by("PARAMCD", label_pos = "topleft", split_label = "Laboratory Test") %>%
+# Pre-processing steps
+adlb_f <- adlb %>%
+  filter(ONTRTFL == "Y" & PARCAT2 == "LS" & SAFFL == "Y" & !is.na(AVAL)) %>%
+  mutate(abn_dir = factor(case_when(
+    ANRIND == "LOW LOW" ~ "Low",
+    ANRIND == "HIGH HIGH" ~ "High",
+    TRUE ~ ""
+  ), levels = c("Low", "High", ""))) %>%
+  df_explicit_na()
+
+# Construct analysis map
+map <- expand.grid(
+  PARAM = levels(adlb$PARAM),
+  abn_dir = c("Low", "High"),
+  stringsAsFactors = FALSE
+) %>%
+  arrange(PARAM, desc(abn_dir))
+
+testthat::test_that("LBT05 variant 1 is produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ACTARM") %>%
+    split_rows_by(
+      "PARAM",
+      label_pos = "topleft",
+      split_label = "Laboratory Test"
+    ) %>%
     summarize_num_patients(var = "USUBJID", .stats = "unique_count") %>%
-    append_topleft("  Direction of abnormality") %>%
     split_rows_by("abn_dir", split_fun = trim_levels_to_map(map)) %>%
     count_abnormal_by_marked(
       var = "AVALCAT1",
-      variables = list(id = "USUBJID", param = "PARAMCD", direction = "abn_dir")
-    )
+      variables = list(id = "USUBJID", param = "PARAM", direction = "abn_dir")
+    ) %>%
+    append_topleft("  Direction of Abnormality")
 
-  result <- build_table(lyt, df = adlb, alt_counts_df = adsl)
+  result <- build_table(lyt, df = adlb_f, alt_counts_df = adsl)
 
-  all_zero_or_na_not_any <- function(tr) {
-    if (!inherits(tr, "TableRow") || inherits(tr, "LabelRow") || obj_label(tr) == "Any Abnormality") {
-      return(FALSE)
-    }
-    rvs <- unlist(unname(row_values(tr)))
-    all(is.na(rvs) | rvs == 0 | !is.finite(rvs))
-  }
-
-  result <- trim_rows(result, criteria = all_zero_or_na_not_any)
+  has_lbl <- function(lbl) CombinationFunction(function(tr) obj_label(tr) == lbl || sum(unlist(row_values(tr))) != 0)
+  result <- prune_table(result, keep_rows(has_lbl("Any Abnormality")))
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("LBT05 variant 2 is produced correctly", {
-  adlb <- get_adlb()
-
-  avalcat1 <- c("LAST", "REPLICATED", "SINGLE")
-
-  set.seed(1, kind = "Mersenne-Twister")
-
-  adlb <- adlb %>%
-    dplyr::mutate(
-      AVALCAT1 = factor(
-        dplyr::case_when(
-          .data$ANRIND %in% c("HIGH HIGH", "LOW LOW") ~
-            sample(
-              x = avalcat1,
-              size = dplyr::n(),
-              replace = TRUE,
-              prob = c(0.3, 0.6, 0.1)
-            ),
-          TRUE ~ ""
-        ),
-        levels = c("", avalcat1)
-      ),
-      PARCAT2 = factor("LS")
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ACTARM") %>%
+    split_rows_by(
+      "PARAM",
+      label_pos = "topleft",
+      split_label = "Laboratory Test"
     ) %>%
-    dplyr::select(-"q1", -"q2")
-
-  # Preprocessing steps
-  adlb <- adlb %>%
-    dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
-    dplyr::mutate(abn_dir = factor(
-      dplyr::case_when(
-        ANRIND == "LOW LOW" ~ "Low",
-        ANRIND == "HIGH HIGH" ~ "High",
-        TRUE ~ ""
-      ),
-      levels = c("Low", "High")
-    ))
-
-  map <- expand.grid(
-    PARAM = levels(adlb$PARAM),
-    abn_dir = c("Low", "High"),
-    stringsAsFactors = FALSE
-  ) %>%
-    arrange(PARAM, desc(abn_dir))
-
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARMCD") %>%
-    add_colcounts() %>%
-    split_rows_by("PARAMCD", label_pos = "topleft", split_label = "Laboratory Test") %>%
     summarize_num_patients(var = "USUBJID", .stats = "unique_count") %>%
-    append_topleft("  Direction of abnormality") %>%
     split_rows_by("abn_dir", split_fun = trim_levels_to_map(map)) %>%
     count_abnormal_by_marked(
       var = "AVALCAT1",
-      variables = list(id = "USUBJID", param = "PARAMCD", direction = "abn_dir")
-    )
+      variables = list(id = "USUBJID", param = "PARAM", direction = "abn_dir")
+    ) %>%
+    append_topleft("  Direction of Abnormality")
 
-  result <- build_table(lyt, df = adlb, alt_counts_df = adsl)
+  result <- build_table(lyt, df = adlb_f, alt_counts_df = adsl)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("LBT05 variant 4 is produced correctly", {
-  adlb <- get_adlb()
-
-  avalcat1 <- c("LAST", "REPLICATED", "SINGLE")
-
-  set.seed(1, kind = "Mersenne-Twister")
-
-  adlb <- adlb %>%
-    dplyr::mutate(
-      AVALCAT1 = factor(
-        dplyr::case_when(
-          .data$ANRIND %in% c("HIGH HIGH", "LOW LOW") ~
-            sample(
-              x = avalcat1,
-              size = dplyr::n(),
-              replace = TRUE,
-              prob = c(0.3, 0.6, 0.1)
-            ),
-          TRUE ~ ""
-        ),
-        levels = c("", avalcat1)
-      ),
-      PARCAT2 = factor("LS")
-    ) %>%
-    dplyr::select(-"q1", -"q2")
-
-  # Preprocessing steps
-  adlb <- adlb %>%
-    dplyr::filter(.data$ONTRTFL == "Y" & .data$PARCAT2 == "LS" & .data$SAFFL == "Y" & !is.na(.data$AVAL)) %>%
-    dplyr::mutate(abn_dir = factor(
-      dplyr::case_when(
-        ANRIND == "LOW LOW" ~ "Low",
-        ANRIND == "HIGH HIGH" ~ "High",
-        TRUE ~ ""
-      ),
-      levels = c("Low", "High")
-    ))
-
-  map <- expand.grid(
-    PARAM = levels(adlb$PARAM),
-    abn_dir = c("Low", "High"),
-    stringsAsFactors = FALSE
-  ) %>%
-    arrange(PARAM, desc(abn_dir))
-
-  lyt <- basic_table() %>%
-    split_cols_by("ACTARMCD") %>%
-    add_colcounts() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ACTARM") %>%
     split_rows_by(
-      "PARAMCD",
-      split_fun = trim_levels_in_group("abn_dir", drop_outlevs = TRUE),
+      "PARAM",
       label_pos = "topleft",
-      split_label = "Laboratory Test"
+      split_label = "Laboratory Test",
+      split_fun = trim_levels_in_group("abn_dir", drop_outlevs = TRUE)
     ) %>%
     summarize_num_patients(var = "USUBJID", .stats = "unique_count") %>%
-    append_topleft("  Direction of abnormality") %>%
     split_rows_by("abn_dir") %>%
     count_abnormal_by_marked(
       var = "AVALCAT1",
-      variables = list(id = "USUBJID", param = "PARAMCD", direction = "abn_dir")
-    )
+      variables = list(id = "USUBJID", param = "PARAM", direction = "abn_dir")
+    ) %>%
+    append_topleft("  Direction of Abnormality")
 
-  result <- build_table(lyt, df = adlb, alt_counts_df = adsl) %>%
-    prune_table()
+  result <- build_table(lyt, df = adlb_f, alt_counts_df = adsl)
+  result <- result %>% prune_table()
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
