@@ -1,9 +1,9 @@
-adpc <- adpc_raw %>% select(USUBJID, NRELTM1, AVAL, AVALU, AVALC)
+adpc <- adpc_raw %>% select(USUBJID, NFRLT, AVAL, AVALU)
 anl <- adab_raw %>%
   filter(., PARAM == "ADA interpreted per sample result") %>%
-  select(-AVAL, AVALC, AVALU)
+  select(-AVAL, AVALU)
 
-anl <- merge(anl, adpc, by = c("USUBJID", "NRELTM1")) %>%
+anl <- merge(anl, adpc, by = c("USUBJID", "NFRLT")) %>%
   mutate(AVAL_LT = ifelse(AVAL <= 15, TRUE, FALSE))
 
 # parameters in columns

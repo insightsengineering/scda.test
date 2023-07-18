@@ -1,6 +1,6 @@
 testthat::test_that("ADAL02 listing is produced correctly", {
   adab <- adab_raw %>%
-    filter(NRELTM1 %% 1 == 0 & NRELTM1 > 0)
+    filter(NFRLT %% 1 == 0 & NFRLT > 0)
 
   trt <- "A: Drug X"
   drug_a <- "A: Drug X Antibody"
@@ -11,29 +11,30 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     filter(
       ARM == trt,
       PARCAT1 == drug_a,
-      ADAPBLFL == "Y"
+      ADPBLPFL == "Y"
     ) %>%
-    select(-PARAMCD, -AVALC, -AVALU, -ARELTM2, -NRELTM2) %>%
+    select(-PARAMCD, -AVALC, -AVALU, -ARRLT, -NRRLT) %>%
     unique() %>%
     tidyr::pivot_wider(
       names_from = PARAM,
       values_from = AVAL
     ) %>%
-    filter(`Treatment Emergent - Positive` == 1) %>%
+    filter(if_any(matches("Treatment Emergent - Positive"), ~ .x == 1)) %>%
+    # filter(`Treatment Emergent - Positive` == 1) %>%
     mutate(
       VISN = factor(paste0(
         VISIT, "\n(Day ",
         ifelse(
-          NRELTM1 %% 1 == 0,
-          NRELTM1,
-          as.character(format(round(NRELTM1, 2), nsmall = 2))
+          NFRLT %% 1 == 0,
+          NFRLT,
+          as.character(format(round(NFRLT, 2), nsmall = 2))
         ),
         ")"
       )),
       PTES = ifelse(
-        `Treatment induced ADA` == 1,
+        ifelse("Treatment induced ADA" %in% names(.), `Treatment induced ADA` == 1, FALSE),
         ifelse(
-          `Transient ADA` == 1,
+          "Transient ADA" %in% names(.) & `Transient ADA` == 1,
           "Induced (Transient)",
           "Induced (Persistent)"
         ),
@@ -42,16 +43,24 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     ) %>%
     mutate(
       AVAL = paste0(
-        ifelse(`ADA interpreted per sample result` == 0,
+        ifelse(
+          ifelse("ADA interpreted per sample result" %in% names(.), `ADA interpreted per sample result` == 0, FALSE),
           "NEGATIVE",
-          ifelse(is.na(`Antibody titer units`),
-            "---",
-            ifelse(`Antibody titer units` < min_titer,
+          ifelse(
+            ifelse("Antibody titer units" %in% names(.), !is.na(`Antibody titer units`), FALSE),
+            ifelse(
+              `Antibody titer units` < min_titer,
               paste0("<", format(min_titer, nsmall = 2)),
               as.character(format(round(`Antibody titer units`, 2), nsmall = 2))
-            )
+            ),
+            "---"
           )
-        ), ifelse(`NAB interpreted per sample result` == 1, "*", "")
+        ),
+        ifelse(
+          ifelse("NAB interpreted per sample result" %in% names(.), `NAB interpreted per sample result` == 1, FALSE),
+          "*",
+          ""
+        )
       )
     )
 
@@ -61,7 +70,7 @@ testthat::test_that("ADAL02 listing is produced correctly", {
       names_from = VISN,
       values_from = AVAL
     ) %>%
-    select(USUBJID, unique(adab_x$VISN[order(adab_x$NRELTM1)]), PTES)
+    select(USUBJID, unique(adab_x$VISN[order(adab_x$NFRLT)]), PTES)
 
   formatters::var_labels(out) <- names(out)
 
