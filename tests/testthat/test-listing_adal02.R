@@ -32,7 +32,7 @@ testthat::test_that("ADAL02 listing is produced correctly", {
         ")"
       )),
       PTES = ifelse(
-        ifelse("Treatment induced ADA" %in% names(.), `Treatment induced ADA` == 1, F),
+        ifelse("Treatment induced ADA" %in% names(.), `Treatment induced ADA` == 1, FALSE),
         ifelse(
           "Transient ADA" %in% names(.) & `Transient ADA` == 1,
           "Induced (Transient)",
@@ -44,10 +44,10 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     mutate(
       AVAL = paste0(
         ifelse(
-          ifelse("ADA interpreted per sample result" %in% names(.), `ADA interpreted per sample result` == 0, F),
+          ifelse("ADA interpreted per sample result" %in% names(.), `ADA interpreted per sample result` == 0, FALSE),
           "NEGATIVE",
           ifelse(
-            ifelse("Antibody titer units" %in% names(.), !is.na(`Antibody titer units`), F),
+            ifelse("Antibody titer units" %in% names(.), !is.na(`Antibody titer units`), FALSE),
             ifelse(
               `Antibody titer units` < min_titer,
               paste0("<", format(min_titer, nsmall = 2)),
@@ -57,7 +57,7 @@ testthat::test_that("ADAL02 listing is produced correctly", {
           )
         ),
         ifelse(
-          ifelse("NAB interpreted per sample result" %in% names(.), `NAB interpreted per sample result` == 1, F),
+          ifelse("NAB interpreted per sample result" %in% names(.), `NAB interpreted per sample result` == 1, FALSE),
           "*",
           ""
         )
