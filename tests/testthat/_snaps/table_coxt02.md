@@ -6,14 +6,14 @@
                                     Hazard Ratio      95% CI      p-value
       ———————————————————————————————————————————————————————————————————
       Treatment:                                                         
-        ARMCD (reference = ARM B)                                 <0.0001
-          ARM A                         0.72       (0.52, 0.99)   0.0417 
-          ARM C                         1.93       (1.44, 2.59)   <0.0001
+        ARMCD (reference = ARM B)                                 0.2643 
+          ARM A                         0.96       (0.66, 1.42)   0.8536 
+          ARM C                         1.27       (0.88, 1.83)   0.2010 
       Covariate:                                                         
         Sex (reference = F)                                              
-          M                             1.17       (0.91, 1.51)   0.2142 
+          M                             1.09       (0.80, 1.48)   0.5987 
         Age                                                              
-          All                           1.01       (0.99, 1.02)   0.4785 
+          All                           0.99       (0.97, 1.01)   0.5104 
 
 # COXT02 variant 5 is produced correctly
 
@@ -24,11 +24,11 @@
       —————————————————————————————————————————————————————————
       Treatment:                                               
         ARMCD (reference = ARM B)                              
-          ARM A                         0.72       (0.55, 0.95)
-          ARM C                         1.96       (1.52, 2.51)
+          ARM A                         0.97       (0.71, 1.35)
+          ARM C                         1.27       (0.93, 1.73)
       Covariate:                                               
         Sex (reference = F)                                    
-          M                             1.21       (0.98, 1.49)
+          M                             1.08       (0.83, 1.40)
         Age                                                    
-          All                           1.01       (0.99, 1.02)
+          All                           0.99       (0.98, 1.01)
 
