@@ -23,7 +23,7 @@ BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
     formatters (>= 0.5.0.9005),
     R (>= 3.6),
-    rlistings (>= 0.2.2.9001),
+    rlistings (>= 0.2.2.9002),
     rtables (>= 0.6.1.9007),
     tern (>= 0.8.4.9000)
 Imports:
