@@ -24,11 +24,11 @@ testthat::test_that("PKCT01 is produced correctly", {
     ) %>%
     split_rows_by(var = "PARAM", child_labels = "hidden") %>%
     analyze_vars_in_cols(
-      vars = "AVALC", var_type = "character", .stats = c("n_blq"),
+      vars = "AVALCAT1", var_type = "character", .stats = c("n_blq"),
       .labels = c(n_blq = "n_blq")
     )
 
-  adpc <- adpc %>% mutate(AVALC = as.factor(AVALC))
+  adpc <- adpc %>% mutate(AVALCAT1 = as.factor(AVALCAT1))
   result <- build_table(l2, df = adpc)
 
   res <- testthat::expect_silent(result)
@@ -44,12 +44,12 @@ testthat::test_that("Specific PKCT01 features are present", {
   # Setting up the data
   adpc_1 <- adpc %>%
     mutate(
-      NRELTM1 = as.factor(NRELTM1),
-      AVALC = as.factor(AVALC)
+      NFRLT = as.factor(NFRLT),
+      AVALCAT1 = as.factor(AVALCAT1)
     ) %>%
     filter(ACTARM %in% c("A: Drug X")) %>%
     mutate(ACTARM = factor(ACTARM, levels = c("A: Drug X"))) %>%
-    select(NRELTM1, ACTARM, VISIT, AVAL, PARAM, AVALC)
+    select(NFRLT, ACTARM, VISIT, AVAL, PARAM, AVALCAT1)
 
   # Row structure
   l_rows <- basic_table() %>%
@@ -64,7 +64,7 @@ testthat::test_that("Specific PKCT01 features are present", {
       label_pos = "topleft"
     ) %>%
     split_rows_by(
-      var = "NRELTM1",
+      var = "NFRLT",
       split_label = "Norminal Time from First Dose",
       label_pos = "topleft",
       child_labels = "hidden"
@@ -73,7 +73,7 @@ testthat::test_that("Specific PKCT01 features are present", {
   # Column results for numeric values
   lyt <- l_rows %>%
     analyze_vars_in_cols(
-      vars = c("AVAL", "AVALC", rep("AVAL", 8)),
+      vars = c("AVAL", "AVALCAT1", rep("AVAL", 8)),
       .stats = c(
         "n", "n_blq", "mean", "sd", "cv",
         "geom_mean", "geom_cv", # "geom_mean_ci",
