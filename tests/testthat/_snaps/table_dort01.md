@@ -3,75 +3,75 @@
     Code
       res
     Output
-                                                    A: Drug X        B: Placebo     C: Combination
-                                                     (N=134)          (N=134)          (N=132)    
-      ————————————————————————————————————————————————————————————————————————————————————————————
-      Responders                                        68               73               62      
-        Responders with subsequent event (%)        33 (48.5%)       51 (69.9%)       53 (85.5%)  
-          Earliest contributing event                                                             
-            Death                                       14               20               25      
-            Disease Progression                         19               31               28      
-        Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
-      Duration of response (Months)                                                               
-        Median                                         23.8             11.1             6.6      
-          95% CI                                   (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
-        25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
-        Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
-        Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  
-      12 Months duration                                                                          
-        Patients remaining at risk                      28               25               18      
-        Event Free Rate (%)                           63.41            43.82            33.72     
-        95% CI                                    (50.48, 76.34)   (31.28, 56.36)   (21.28, 46.15)
+                                                  A: Drug X    B: Placebo   C: Combination
+                                                   (N=134)      (N=134)        (N=132)    
+      ————————————————————————————————————————————————————————————————————————————————————
+      Responders                                      68           73             62      
+        Responders with subsequent event (%)      46 (67.6%)   39 (53.4%)     32 (51.6%)  
+          Earliest contributing event                                                     
+            Death                                     26           24             16      
+            Disease Progression                       20           15             16      
+        Responders without subsequent event (%)   22 (32.4%)   34 (46.6%)     30 (48.4%)  
+      Duration of response (Months)                                                       
+        Median                                       5.3          6.2            5.3      
+          95% CI                                  (4.6, 5.8)   (5.4, 6.3)     (4.6, 5.8)  
+        25% and 75%-ile                            3.8, 6.3     4.6, 6.4       4.0, 6.1   
+        Range (censored)                          3.6 to 6.3   3.3 to 6.5     3.3 to 6.4  
+        Range (event)                             0.5 to 6.4   0.9 to 6.5     0.6 to 6.6  
+      12 Months duration                                                                  
+        Patients remaining at risk                    NA           NA             NA      
+        Event Free Rate (%)                           NA           NA             NA      
+        95% CI                                        NA           NA             NA      
 
 # DORT01 variant 2 (selecting sectons) is produced correctly
 
     Code
       res
     Output
-                                                   A: Drug X      B: Placebo    C: Combination
-                                                    (N=134)        (N=134)         (N=132)    
-      ————————————————————————————————————————————————————————————————————————————————————————
-      Responders                                       68             73              62      
-        Responders with subsequent event (%)       33 (48.5%)     51 (69.9%)      53 (85.5%)  
-          Earliest contributing event                                                         
-            Death                                      14             20              25      
-            Disease Progression                        19             31              28      
-        Responders without subsequent event (%)    35 (51.5%)     22 (30.1%)      9 (14.5%)   
-      Duration of response (Months)                                                           
-        Median                                        23.8           11.1            6.6      
-          95% CI                                  (17.9, 39.6)   (8.3, 14.6)      (4.4, 9.2)  
-        25% and 75%-ile                            9.3, 44.3      6.2, 20.5       3.0, 15.7   
-        Range (censored)                          1.6 to 64.5    0.1 to 43.8     0.2 to 39.6  
-        Range (event)                             0.3 to 44.3    0.6 to 61.9     0.2 to 53.8  
-      Unstratified Analysis                                                                   
-        p-value (log-rank)                                          0.0029         <0.0001    
-        Hazard Ratio                                                 1.94            2.99     
-        95% CI                                                   (1.24, 3.02)    (1.92, 4.67) 
+                                                  A: Drug X     B: Placebo    C: Combination
+                                                   (N=134)       (N=134)         (N=132)    
+      ——————————————————————————————————————————————————————————————————————————————————————
+      Responders                                      68            73              62      
+        Responders with subsequent event (%)      46 (67.6%)    39 (53.4%)      32 (51.6%)  
+          Earliest contributing event                                                       
+            Death                                     26            24              16      
+            Disease Progression                       20            15              16      
+        Responders without subsequent event (%)   22 (32.4%)    34 (46.6%)      30 (48.4%)  
+      Duration of response (Months)                                                         
+        Median                                       5.3           6.2             5.3      
+          95% CI                                  (4.6, 5.8)    (5.4, 6.3)      (4.6, 5.8)  
+        25% and 75%-ile                            3.8, 6.3      4.6, 6.4        4.0, 6.1   
+        Range (censored)                          3.6 to 6.3    3.3 to 6.5      3.3 to 6.4  
+        Range (event)                             0.5 to 6.4    0.9 to 6.5      0.6 to 6.6  
+      Unstratified Analysis                                                                 
+        p-value (log-rank)                                        0.0223          0.6659    
+        Hazard Ratio                                               0.60            0.90     
+        95% CI                                                 (0.39, 0.93)    (0.57, 1.44) 
 
 # DORT01 variant 3 (modifying conftype and alpha level) is produced correctly
 
     Code
       res
     Output
-                                                    A: Drug X        B: Placebo     C: Combination
-                                                     (N=134)          (N=134)          (N=132)    
-      ————————————————————————————————————————————————————————————————————————————————————————————
-      Responders                                        68               73               62      
-        Responders with subsequent event (%)        33 (48.5%)       51 (69.9%)       53 (85.5%)  
-          Earliest contributing event                                                             
-            Death                                       14               20               25      
-            Disease Progression                         19               31               28      
-        Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
-      Duration of response (Months)                                                               
-        Median                                         23.8             11.1             6.6      
-          90% CI                                   (17.9, 30.2)     (9.1, 14.0)       (4.4, 8.0)  
-        25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
-        Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
-        Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  
-      12 Months duration                                                                          
-        Patients remaining at risk                      28               25               18      
-        Event Free Rate (%)                           63.41            43.82            33.72     
-        97.5% CI                                  (48.63, 78.19)   (29.48, 58.16)   (19.49, 47.94)
+                                                  A: Drug X    B: Placebo   C: Combination
+                                                   (N=134)      (N=134)        (N=132)    
+      ————————————————————————————————————————————————————————————————————————————————————
+      Responders                                      68           73             62      
+        Responders with subsequent event (%)      46 (67.6%)   39 (53.4%)     32 (51.6%)  
+          Earliest contributing event                                                     
+            Death                                     26           24             16      
+            Disease Progression                       20           15             16      
+        Responders without subsequent event (%)   22 (32.4%)   34 (46.6%)     30 (48.4%)  
+      Duration of response (Months)                                                       
+        Median                                       5.3          6.2            5.3      
+          90% CI                                  (4.6, 5.8)   (5.5, 6.3)     (4.6, 5.7)  
+        25% and 75%-ile                            3.8, 6.3     4.6, 6.4       4.0, 6.1   
+        Range (censored)                          3.6 to 6.3   3.3 to 6.5     3.3 to 6.4  
+        Range (event)                             0.5 to 6.4   0.9 to 6.5     0.6 to 6.6  
+      12 Months duration                                                                  
+        Patients remaining at risk                    NA           NA             NA      
+        Event Free Rate (%)                           NA           NA             NA      
+        97.5% CI                                      NA           NA             NA      
 
 # DORT01 variant 4 (modifying time point for the “xx duration”) is produced correctly
 
@@ -82,19 +82,19 @@
                                                      (N=134)          (N=134)          (N=132)    
       ————————————————————————————————————————————————————————————————————————————————————————————
       Responders                                        68               73               62      
-        Responders with subsequent event (%)        33 (48.5%)       51 (69.9%)       53 (85.5%)  
+        Responders with subsequent event (%)        46 (67.6%)       39 (53.4%)       32 (51.6%)  
           Earliest contributing event                                                             
-            Death                                       14               20               25      
-            Disease Progression                         19               31               28      
-        Responders without subsequent event (%)     35 (51.5%)       22 (30.1%)       9 (14.5%)   
+            Death                                       26               24               16      
+            Disease Progression                         20               15               16      
+        Responders without subsequent event (%)     22 (32.4%)       34 (46.6%)       30 (48.4%)  
       Duration of response (Months)                                                               
-        Median                                         23.8             11.1             6.6      
-          95% CI                                   (17.9, 39.6)     (8.3, 14.6)       (4.4, 9.2)  
-        25% and 75%-ile                             9.3, 44.3        6.2, 20.5        3.0, 15.7   
-        Range (censored)                           1.6 to 64.5      0.1 to 43.8      0.2 to 39.6  
-        Range (event)                              0.3 to 44.3      0.6 to 61.9      0.2 to 53.8  
+        Median                                         5.3              6.2              5.3      
+          95% CI                                    (4.6, 5.8)       (5.4, 6.3)       (4.6, 5.8)  
+        25% and 75%-ile                              3.8, 6.3         4.6, 6.4         4.0, 6.1   
+        Range (censored)                            3.6 to 6.3       3.3 to 6.5       3.3 to 6.4  
+        Range (event)                               0.5 to 6.4       0.9 to 6.5       0.6 to 6.6  
       6 Months duration                                                                           
-        Patients remaining at risk                      51               48               28      
-        Event Free Rate (%)                           83.63            76.14            50.57     
-        95% CI                                    (74.78, 92.48)   (65.92, 86.35)   (37.68, 63.46)
+        Patients remaining at risk                      10               18               7       
+        Event Free Rate (%)                           33.46            50.23            30.56     
+        95% CI                                    (20.88, 46.05)   (36.54, 63.92)   (13.56, 47.57)
 
