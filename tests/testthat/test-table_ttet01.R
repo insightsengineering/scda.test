@@ -355,7 +355,7 @@ testthat::test_that("TTET01 variant 6: requesting more than one p-value", {
       show_labels = "hidden",
       control = control_coxph(pval_method = "wald"),
       .stats = "pvalue",
-      .indent_mods = c(pvalue = 2L),
+      .indent_mods = c(pvalue = 1L),
       table_names = "coxph_wald_pvalue"
     ) %>%
     coxph_pairwise(
@@ -363,7 +363,7 @@ testthat::test_that("TTET01 variant 6: requesting more than one p-value", {
       is_event = "is_event",
       show_labels = "hidden",
       control = control_coxph(pval_method = "likelihood"),
-      .indent_mods = c(pvalue = 2L, hr = 2L, hr_ci = 4L),
+      .indent_mods = c(pvalue = 1L, hr = 2L, hr_ci = 3L),
       table_names = "coxph_likelihood_pvalue"
     ) %>%
     surv_timepoint(

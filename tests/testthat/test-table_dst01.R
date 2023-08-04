@@ -1,120 +1,93 @@
-# Tests all variants of DST01.
-get_adsl0 <- function() {
-  # This specific ADSL is currently not part of RCD.
-  set.seed(1, kind = "Mersenne-Twister")
+adsl <- adsl_raw
 
-  # nolint start
-  adsl0 <- adsl_raw %>%
-    dplyr::mutate(
-      COMPSTUD = sample(
-        c("Y", "N"),
-        size = nrow(adsl_raw),
-        replace = TRUE
-      ) %>% as.factor(),
-      STUDONS = sample(
-        c("Alive: On Treatment", "Alive: In Follow-up", NA),
-        size = nrow(adsl_raw),
-        replace = TRUE
-      ) %>% as.factor(),
-      STDDRS = sample(
-        c(
-          "Death", "Lost To Follow-Up",
-          "Protocol Violation", "Withdrawal By Subject",
-          "Other"
-        ),
-        size = nrow(adsl_raw),
-        replace = TRUE
-      ) %>% as.factor(),
-      GOTTRT = ifelse(!is.na(ACTARMCD), "Y", "N") %>%
-        as.factor(),
-      DISTRTFL = sample(
-        c("Y", "N"),
-        size = nrow(adsl_raw),
-        replace = TRUE
-      ) %>% as.factor(),
-      TRTDRS = sample(
-        c(
-          "ADVERSE EVENT", "PROGRESSIVE DISEASE",
-          "PHYSICIAN DECISION", "LACK OF EFFICACY",
-          "OTHER"
-        ),
-        size = nrow(adsl_raw),
-        replace = TRUE
-      ) %>% as.factor(),
-      STUDONS = dplyr::case_when(COMPSTUD == "N" ~ STUDONS),
-      STDDRS = dplyr::case_when(COMPSTUD == "N" & is.na(STUDONS) ~ STDDRS),
-      DISSTDFL = dplyr::case_when(!is.na(STDDRS) ~ "Y"),
-      DISTRTFL = dplyr::case_when(GOTTRT == "Y" ~ DISTRTFL),
-      TRTDRS = dplyr::case_when(DISTRTFL == "Y" ~ TRTDRS),
-      DRSCAT = dplyr::case_when(
-        TRTDRS %in% c("ADVERSE EVENT", "PHYSICIAN DECISION") ~ "Safety",
-        !is.na(TRTDRS) ~ "Other"
-      )
-    )
-  columns <- c("COMPSTUD", "STUDONS", "DISSTDFL", "STDDRS", "GOTTRT", "DISTRTFL", "TRTDRS", "DRSCAT")
-  labels <- c(
-    "Complete Study",
-    "On-study Status",
-    "Discontinued Study",
-    "Reason for Study \r\nDiscontinuation",
-    "Received Treatment",
-    "Discontinued Treatment",
-    "Reason for Treatment \r\nDiscontinuation",
-    "Subcategory for Treatment Discontinuation"
+adsl <- df_explicit_na(adsl) %>%
+  mutate(EOSSTT = factor(EOSSTT, levels = c("COMPLETED", "ONGOING", "DISCONTINUED")))
+
+adsl_gp_added <- adsl %>%
+  mutate(DCSREASGP = case_when(
+    DCSREAS %in% c("ADVERSE EVENT", "DEATH") ~ "Safety",
+    (DCSREAS != "<Missing>" & !DCSREAS %in% c("ADVERSE EVENT", "DEATH")) ~ "Non-Safety",
+    DCSREAS == "<Missing>" ~ "<Missing>"
+  ) %>% factor(levels = c("Safety", "Non-Safety", "<Missing>")))
+
+set.seed(1)
+adsl_eotstt_added <- adsl_gp_added %>%
+  mutate(
+    EOTSTT = sample(
+      c("ONGOING", "COMPLETED", "DISCONTINUED"),
+      size = nrow(adsl),
+      replace = TRUE
+    ) %>% factor(levels = c("COMPLETED", "ONGOING", "DISCONTINUED"))
   )
-  formatters::var_labels(adsl0)[columns] <- labels
-  # nolint end
-  adsl0
-}
 
 testthat::test_that("DST01 default variant is produced correctly", {
-  adsl0 <- get_adsl0()
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(
+      "ACTARM",
+      split_fun = add_overall_level("All Patients", first = FALSE)
+    ) %>%
+    count_occurrences(
+      "EOSSTT",
+      .stats = "count_fraction",
+      show_labels = "hidden"
+    ) %>%
+    summarize_vars(
+      "DCSREAS",
+      .stats = "count_fraction",
+      denom = "N_col",
+      show_labels = "hidden",
+      .indent_mods = c(count_fraction = 1L)
+    )
 
-  result <- basic_table() %>%
-    split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
-    add_colcounts() %>%
-    count_values("COMPSTUD", values = "Y", .labels = c(count_fraction = "Completed Study")) %>%
-    split_rows_by("DISSTDFL", split_fun = keep_split_levels("Y")) %>%
-    summarize_row_groups(label_fstr = "Discontinued Study") %>%
-    summarize_vars("STDDRS", .stats = "count_fraction") %>%
-    build_table(adsl0)
+  result1 <- build_table(lyt = lyt, df = adsl)
 
-  res <- testthat::expect_silent(result)
+  res <- testthat::expect_silent(result1)
   testthat::expect_snapshot(res)
 })
 
-testthat::test_that("DST01 variant with grouping of reasons is produced correctly", {
-  adsl0 <- get_adsl0()
+testthat::test_that("DST01 variants 2 and 3 are produced correctly", {
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(
+      "ACTARM",
+      split_fun = add_overall_level("All Patients", first = FALSE)
+    ) %>%
+    count_occurrences(
+      "EOSSTT",
+      .stats = "count_fraction",
+      show_labels = "hidden"
+    ) %>%
+    split_rows_by("DCSREASGP", indent_mod = 1L) %>%
+    summarize_vars(
+      "DCSREAS",
+      .stats = "count_fraction",
+      denom = "N_col",
+      show_labels = "hidden"
+    )
 
-  result <- basic_table() %>%
-    split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
-    add_colcounts() %>%
-    count_values("GOTTRT", values = "Y", .labels = c(count_fraction = "Received treatment")) %>%
-    split_rows_by("DISTRTFL", split_fun = keep_split_levels("Y")) %>%
-    summarize_row_groups(label_fstr = "Discontinued treatment") %>%
-    split_rows_by("DRSCAT", split_fun = reorder_split_levels(c("Safety", "Other"))) %>%
-    summarize_row_groups() %>%
-    summarize_vars("TRTDRS", .stats = "count_fraction") %>%
-    build_table(adsl0) %>%
-    prune_table()
+  tbl <- build_table(lyt = lyt, df = adsl_gp_added)
+  result2 <- prune_table(tbl) # remove rows containing all zeros
 
-  res <- testthat::expect_silent(result)
+  res <- testthat::expect_silent(result2)
   testthat::expect_snapshot(res)
-})
 
-testthat::test_that("DST01 variant with adding other optional rows is produced correctly", {
-  adsl0 <- get_adsl0()
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by(
+      "ACTARM",
+      split_fun = add_overall_level("All Patients", first = FALSE)
+    ) %>%
+    count_occurrences(
+      "EOTSTT",
+      .stats = "count_fraction",
+      show_labels = "hidden"
+    )
 
-  result <- basic_table() %>%
-    split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
-    add_colcounts() %>%
-    count_values("COMPSTUD", values = "Y", .labels = c(count_fraction = "Completed Study")) %>%
-    count_values("STUDONS", values = "Alive: In Follow-up", .labels = c(count_fraction = "Alive: In Follow-up")) %>%
-    split_rows_by("DISSTDFL", split_fun = keep_split_levels("Y")) %>%
-    summarize_row_groups(label_fstr = "Discontinued Study") %>%
-    summarize_vars("STDDRS", .stats = "count_fraction") %>%
-    build_table(adsl0)
+  tbl <- build_table(lyt = lyt, df = adsl_eotstt_added)
+  tbl <- prune_table(tbl) # remove rows containing all zeros
 
-  res <- testthat::expect_silent(result)
+  # Combine tables
+  col_info(result2) <- col_info(tbl)
+  result3 <- rbind(result2, tbl)
+
+  res <- testthat::expect_silent(result3)
   testthat::expect_snapshot(res)
 })

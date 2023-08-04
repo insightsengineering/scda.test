@@ -174,10 +174,10 @@
         Range (event)                    0.3 to 116.4     0.0 to 122.4      0.1 to 101.6  
       Unstratified Analysis                                                               
         p-value (log-rank)                                   0.0334           <0.0001     
-          p-value (wald)                                     0.0342           <0.0001     
-          p-value (likelihood)                               0.0341           <0.0001     
+        p-value (wald)                                       0.0342           <0.0001     
+        p-value (likelihood)                                 0.0341           <0.0001     
           Hazard Ratio                                        1.39              2.75      
-              95% CI                                      (1.03, 1.90)      (2.05, 3.70)  
+            95% CI                                        (1.03, 1.90)      (2.05, 3.70)  
       12 Months                                                                           
         Patients remaining at risk            92               83                56       
         Event Free Rate (%)                 78.03            70.32             46.39      

@@ -1,11 +1,20 @@
-adsl <- adsl_raw %>% df_explicit_na()
-addv <- addv_raw %>% df_explicit_na()
+adsl <- adsl_raw
+addv <- addv_raw
 
-split_fun <- drop_split_levels
+adsl <- df_explicit_na(adsl)
+addv <- df_explicit_na(addv)
+
+addv <- addv %>%
+  var_relabel(
+    DVDECOD = "Category",
+    DVTERM = "Description"
+  )
 
 testthat::test_that("PDT01 is produced correctly", {
+  split_fun <- drop_split_levels
+
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM") %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
       .stats = c("unique", "nonunique"),
@@ -16,9 +25,6 @@ testthat::test_that("PDT01 is produced correctly", {
     ) %>%
     split_rows_by(
       "DVDECOD",
-      child_labels = "visible",
-      nested = FALSE,
-      indent_mod = -1L,
       split_fun = split_fun,
       label_pos = "topleft",
       split_label = obj_label(addv$DVDECOD)
@@ -26,11 +32,7 @@ testthat::test_that("PDT01 is produced correctly", {
     count_occurrences(vars = "DVTERM") %>%
     append_varlabels(addv, "DVTERM", indent = 1L)
 
-  result <- build_table(
-    lyt = lyt,
-    df = addv,
-    alt_counts_df = adsl
-  ) %>%
+  result <- build_table(lyt = lyt, df = addv, alt_counts_df = adsl) %>%
     prune_table() %>%
     sort_at_path(path = c("DVDECOD", "*", "DVTERM"), scorefun = score_occurrences)
 

@@ -3,161 +3,128 @@
 adsl <- adsl_raw
 admh <- admh_raw
 
+adsl <- df_explicit_na(adsl)
+admh <- df_explicit_na(admh)
+
+adsl_f <- adsl %>%
+  filter(SAFFL == "Y") %>%
+  select(USUBJID, ACTARM)
+
+admh_f <- admh %>%
+  filter(SAFFL == "Y" & MHBODSYS != "" & MHDECOD != "") %>%
+  var_relabel(
+    MHBODSYS = "MedDRA System Organ Class",
+    MHDECOD = "MedDRA Preferred Term"
+  )
+
+split_fun <- drop_split_levels
+
+lyt <- basic_table(show_colcounts = TRUE) %>%
+  split_cols_by("ACTARM") %>%
+  analyze_num_patients(
+    vars = "USUBJID",
+    .stats = c("unique", "nonunique"),
+    .labels = c("Total number of patients with at least one condition", "Total number of conditions")
+  ) %>%
+  split_rows_by(
+    var = "MHBODSYS",
+    split_fun = split_fun,
+    label_pos = "topleft",
+    split_label = obj_label(admh_f$MHBODSYS)
+  ) %>%
+  analyze_num_patients(
+    var = "USUBJID",
+    .stats = c("unique", "nonunique"),
+    .labels = c("Total number of patients with at least one condition", "Total number of conditions"),
+    show_labels = "hidden"
+  ) %>%
+  count_occurrences(vars = "MHDECOD") %>%
+  append_varlabels(admh_f, "MHDECOD", indent = 1L)
+
 testthat::test_that("MHT01 variant 1 is produced accurately", {
-  adsl_f <- adsl %>%
-    dplyr::filter(SAFFL == "Y")
-
-  admh_f <- admh %>%
-    dplyr::filter(
-      SAFFL == "Y",
-      MHBODSYS != "",
-      MHDECOD != ""
-    )
-
-  lyt <- basic_table() %>%
-    split_cols_by("ARM") %>%
-    add_colcounts() %>%
-    analyze_num_patients(
-      vars = "USUBJID",
-      .stats = c("unique", "nonunique"),
-      .labels = c("Total number of patients with at least one event", "Total number of events")
-    ) %>%
-    split_rows_by(
-      var = "MHBODSYS",
-      split_fun = drop_split_levels,
-      child_labels = "visible",
-      nested = FALSE,
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = c("unique", "nonunique"),
-      .labels = c("Total number of patients with at least one event", "Total number of events")
-    ) %>%
-    count_occurrences(vars = "MHDECOD", .indent_mods = -1L)
-
-  result <- build_table(lyt, admh_f, alt_counts_df = adsl_f)
+  result <- build_table(lyt, admh_f, alt_counts_df = adsl_f) %>%
+    prune_table()
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("MHT01 variant 2 is produced accurately", {
-  adsl_f <- adsl %>%
-    dplyr::filter(SAFFL == "Y")
-
-  admh_f <- admh %>%
-    dplyr::filter(
-      SAFFL == "Y",
-      MHBODSYS != "",
-      MHDECOD != ""
-    )
-
   admh_f_prior <- admh_f %>%
-    dplyr::filter(ASTDY <= 0)
+    filter(ASTDY <= 0)
 
-  lyt <- basic_table() %>%
-    split_cols_by("ARM") %>%
-    add_colcounts() %>%
-    analyze_num_patients(
-      vars = "USUBJID",
-      .stats = c("unique", "nonunique"),
-      .labels = c("Total number of patients with at least one event", "Total number of events")
-    ) %>%
-    split_rows_by(
-      var = "MHBODSYS",
-      split_fun = drop_split_levels,
-      child_labels = "visible",
-      nested = FALSE,
-    ) %>%
-    summarize_num_patients(
-      var = "USUBJID",
-      .stats = c("unique", "nonunique"),
-      .labels = c("Total number of patients with at least one event", "Total number of events")
-    ) %>%
-    count_occurrences(vars = "MHDECOD", .indent_mods = -1L)
-
-  result <- build_table(lyt, admh_f_prior, alt_counts_df = adsl_f)
+  result <- build_table(lyt, admh_f_prior, alt_counts_df = adsl_f) %>%
+    prune_table()
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
 testthat::test_that("MHT01 variant 3 is produced accurately", {
-  adsl_f <- adsl %>%
-    dplyr::filter(SAFFL == "Y")
+  split_fun <- drop_split_levels
 
-  admh_f <- admh %>%
-    dplyr::filter(
-      SAFFL == "Y",
-      MHBODSYS != "",
-      MHDECOD != ""
-    )
-
-  lyt <- basic_table() %>%
-    split_cols_by("ARM") %>%
-    add_colcounts() %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ACTARM") %>%
     analyze_num_patients(
       vars = "USUBJID",
-      .stats = "unique",
-      .labels = c(unique = "Total number of patients with at least one event")
+      .stats = c("unique"),
+      .labels = c("Total number of patients with at least one condition")
     ) %>%
     split_rows_by(
       var = "MHBODSYS",
-      split_fun = drop_split_levels,
-      child_labels = "visible",
-      nested = FALSE,
+      split_fun = split_fun,
+      label_pos = "topleft",
+      split_label = obj_label(admh_f$MHBODSYS)
     ) %>%
-    summarize_num_patients(
+    analyze_num_patients(
       var = "USUBJID",
-      .stats = "unique",
-      .labels = c(unique = "Total number of patients with at least one event")
+      .stats = c("unique"),
+      .labels = c("Total number of patients with at least one condition"),
+      show_labels = "hidden"
     ) %>%
-    count_occurrences(vars = "MHDECOD", .indent_mods = -1L)
+    count_occurrences(vars = "MHDECOD") %>%
+    append_varlabels(admh_f, "MHDECOD", indent = 1L)
 
-  result <- build_table(lyt, admh_f, alt_counts_df = adsl_f)
+  result <- build_table(lyt, admh_f, alt_counts_df = adsl) %>%
+    prune_table()
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
 
-# MHT01 variant 4 can not be produced by current rtables
-# Medical History with total number of conditions per body system after the summary of patients
-# Not a blocker given it's just a cosmetic variant
-
 testthat::test_that("MHT01 variant 5 is produced accurately", {
-  adsl_f <- adsl %>%
-    dplyr::filter(SAFFL == "Y")
+  split_fun <- drop_split_levels
 
-  admh_f <- admh %>%
-    dplyr::filter(
-      SAFFL == "Y",
-      MHBODSYS != "",
-      MHDECOD != ""
-    )
-
-  lyt <- basic_table() %>%
-    split_cols_by("ARM") %>%
+  lyt <- basic_table(show_colcounts = TRUE) %>%
+    split_cols_by("ACTARM") %>%
     add_overall_col("All Patients") %>%
-    add_colcounts() %>%
     analyze_num_patients(
-      vars = "USUBJID",
+      "USUBJID",
       .stats = c("unique", "nonunique"),
-      .labels = c(unique = "Total number of patients with at least one event", nonunique = "Number of events")
+      .labels = c(unique = "Total number of patients with at least one event", nonunique = "Total number of conditions")
     ) %>%
     split_rows_by(
       var = "MHBODSYS",
-      split_fun = drop_split_levels,
+      split_fun = split_fun,
       child_labels = "visible",
-      nested = FALSE
+      label_pos = "topleft",
+      split_label = obj_label(admh_f$MHBODSYS)
     ) %>%
     summarize_num_patients(
-      var = "USUBJID",
+      "USUBJID",
       .stats = c("unique", "nonunique"),
-      .labels = c(unique = "Total number of patients with at least one event", nonunique = "Number of events")
+      .labels = c(unique = "Total number of patients with at least one event", nonunique = "Total number of conditions")
     ) %>%
-    count_occurrences(vars = "MHDECOD", .indent_mods = -1L)
+    count_occurrences(vars = "MHDECOD", .indent_mods = -1L) %>%
+    append_varlabels(admh_f, "MHDECOD", indent = 1L)
 
-  result <- build_table(lyt, admh_f, alt_counts_df = adsl_f)
+  scorefun_hlt <- cont_n_allcols
+  scorefun_llt <- score_occurrences_cols(col_indices = nlevels(adsl_f$ACTARM) + 1)
+
+  result <- build_table(lyt, admh_f, alt_counts_df = adsl_f) %>%
+    prune_table() %>%
+    sort_at_path(path = c("MHBODSYS"), scorefun = scorefun_hlt) %>%
+    sort_at_path(path = c("MHBODSYS", "*", "MHDECOD"), scorefun = scorefun_llt)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

@@ -1,7 +1,6 @@
 adsl <- adsl_raw
 adae <- adae_raw
 
-# Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
 adsl <- df_explicit_na(adsl)
 adae <- df_explicit_na(
   adae,
@@ -18,14 +17,16 @@ adae <- adae %>%
     fl_ser = AESER == "Y"
   ) %>%
   mutate(
-    WTOXGR = forcats::fct_recode(WTOXGR,
+    WTOXGR = forcats::fct_recode(
+      WTOXGR,
       "Grade 1" = "1",
       "Grade 2" = "2",
       "Grade 3" = "3",
       "Grade 4" = "4",
       "Grade 5" = "5"
     ),
-    AEOUT = forcats::fct_recode(AEOUT,
+    AEOUT = forcats::fct_recode(
+      AEOUT,
       "Fatal outcome" = "FATAL",
       "Unresolved" = "NOT RECOVERED/NOT RESOLVED",
       "Recovered/Resolved" = "RECOVERED/RESOLVED",
@@ -44,7 +45,7 @@ adsl1 <- adsl %>%
   mutate(AEFL = ifelse(USUBJID %in% adae$USUBJID, TRUE, FALSE)) %>%
   var_relabel(AEFL = "At least one AE")
 
-testthat::test_that("AET05_ALL variant 1 is produced correctly", {
+testthat::test_that("RMPT06 variant 1 is produced correctly", {
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
     estimate_proportion(
@@ -72,19 +73,17 @@ testthat::test_that("AET05_ALL variant 1 is produced correctly", {
     count_occurrences(
       "WTOXGR",
       var_labels = "Number of patients with at least one AE by worst grade",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"])
+      flag_variables = "fl_ser"
     ) %>%
     count_occurrences(
       "AEOUT",
       denom = "n",
       var_labels = "Number of patients with at least one AE by outcome",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     )
 
   result_adae <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)
@@ -128,12 +127,11 @@ testthat::test_that("RMPT06 variant 2 is produced correctly", {
     count_occurrences(
       "WTOXGR",
       var_labels = "Number of patients with at least one AE by worst grade",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     )
 
@@ -186,20 +184,18 @@ testthat::test_that("RMPT06 variant 3 is produced correctly", {
     count_occurrences(
       "WTOXGR",
       var_labels = "Number of patients with at least one AE by worst grade",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     ) %>%
     count_occurrences(
       "AEOUT",
       denom = "n",
       var_labels = "Number of patients with at least one AE by outcome",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     )
 
   result_adae <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)
@@ -254,20 +250,18 @@ testthat::test_that("RMPT06 variant 4 is produced correctly", {
     count_occurrences(
       "WTOXGR",
       var_labels = "Number of patients with at least one AE by worst grade",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     ) %>%
     count_patients_with_flags(
       "USUBJID",
-      flag_variables = var_labels(adae[, "fl_ser"]),
+      flag_variables = "fl_ser",
       denom = "N_col"
     ) %>%
     count_occurrences(
       "AEOUT",
       denom = "n",
       var_labels = "Number of patients with at least one AE by outcome",
-      show_labels = "visible",
-      .indent_mods = 1L
+      show_labels = "visible"
     )
 
   result_adae <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)

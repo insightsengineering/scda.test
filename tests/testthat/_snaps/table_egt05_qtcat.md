@@ -3,10 +3,11 @@
     Code
       res
     Output
-                                   A: Drug X    B: Placebo    C: Combination
-                                    (N=134)       (N=134)        (N=132)    
+      Parameter                                                             
+        Analysis Visit             A: Drug X    B: Placebo    C: Combination
+          Category                  (N=134)       (N=134)        (N=132)    
       ——————————————————————————————————————————————————————————————————————
-      Visit                                                                 
+      QT Duration                                                           
         BASELINE                                                            
           Value at Visit                                                    
             n                         134           134            132      
