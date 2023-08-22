@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9031
-Date: 2023-07-18
+Version: 0.0.0.9034
+Date: 2023-08-21
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -25,7 +25,7 @@ Depends:
     R (>= 3.6),
     rlistings (>= 0.2.2.9002),
     rtables (>= 0.6.1.9007),
-    tern (>= 0.8.4.9000)
+    tern (>= 0.8.4.9004)
 Imports:
     scda (>= 0.1.6.9003),
     scda.2022 (>= 0.1.4.9007)
