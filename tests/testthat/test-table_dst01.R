@@ -31,7 +31,7 @@ testthat::test_that("DST01 default variant is produced correctly", {
       .stats = "count_fraction",
       show_labels = "hidden"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "DCSREAS",
       .stats = "count_fraction",
       denom = "N_col",
@@ -57,7 +57,7 @@ testthat::test_that("DST01 variants 2 and 3 are produced correctly", {
       show_labels = "hidden"
     ) %>%
     split_rows_by("DCSREASGP", indent_mod = 1L) %>%
-    summarize_vars(
+    analyze_vars(
       "DCSREAS",
       .stats = "count_fraction",
       denom = "N_col",

@@ -76,7 +76,7 @@ testthat::test_that("DMT01 variant 1 is produced correctly", {
   result <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%
     add_overall_col("All Patients") %>%
-    summarize_vars(
+    analyze_vars(
       vars = vars,
       var_labels = var_labels
     ) %>%
@@ -99,7 +99,7 @@ testthat::test_that("DMT01 variant 2 is produced correctly", {
 
   result <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%
-    summarize_vars(
+    analyze_vars(
       vars = vars,
       var_labels = var_labels
     ) %>%
@@ -114,14 +114,14 @@ testthat::test_that("DMT01 variant 3 is produced correctly", {
 
   result <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("AGE", "SEX", "RACE"),
       var_labels = c("Age", "Sex", "Race")
     ) %>%
     split_rows_by("STRATA1",
       split_fun = split_fun
     ) %>%
-    summarize_vars("BMRKR1") %>%
+    analyze_vars("BMRKR1") %>%
     build_table(adsl)
 
   res <- testthat::expect_silent(result)
@@ -131,7 +131,7 @@ testthat::test_that("DMT01 variant 3 is produced correctly", {
 testthat::test_that("DMT01 variant 4 is produced correctly", {
   result <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("AGE", "SEX", "RACE", "DBP", "SBP"),
       var_labels = c(
         "Age (yr)",
@@ -150,7 +150,7 @@ testthat::test_that("DMT01 variant 4 is produced correctly", {
 testthat::test_that("DMT01 variant 5 is produced correctly", {
   result <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("AGE", "SEX", "RACE", "BBMISI"),
       var_labels = c(
         "Age (yr)",

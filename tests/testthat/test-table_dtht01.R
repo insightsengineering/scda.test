@@ -15,7 +15,7 @@ testthat::test_that("DTHT01 variant 1 is produced correctly", {
       .labels = c(count_fraction = "Total number of deaths"),
       .formats = c(count_fraction = "xx (xx.x%)")
     ) %>%
-    summarize_vars(vars = c("DTHCAT"), var_labels = c("Primary Cause of Death"))
+    analyze_vars(vars = c("DTHCAT"), var_labels = c("Primary Cause of Death"))
 
   result <- build_table(lyt, df = adsl)
 
@@ -32,15 +32,15 @@ testthat::test_that("DTHT01 variant 2 is produced correctly", {
       .labels = c(count_fraction = "Total number of deaths"),
       .formats = c(count_fraction = "xx (xx.x%)")
     ) %>%
-    summarize_vars(vars = c("DTHCAT"), var_labels = c("Primary Cause of Death")) %>%
+    analyze_vars(vars = c("DTHCAT"), var_labels = c("Primary Cause of Death")) %>%
     split_rows_by("DTHCAT", split_fun = keep_split_levels("OTHER"), child_labels = "hidden") %>%
-    summarize_vars(
+    analyze_vars(
       "DTHCAUS",
       .stats = "count_fraction",
       .indent_mods = c("count_fraction" = 2L),
       show_labels = "hidden"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = "LDDTHGR1",
       nested = FALSE,
       var_labels = "Days from last drug administration",
@@ -52,7 +52,7 @@ testthat::test_that("DTHT01 variant 2 is produced correctly", {
       split_label = "Primary cause by days from last study drug administration",
       label_pos = "visible"
     ) %>%
-    summarize_vars("DTHCAT")
+    analyze_vars("DTHCAT")
 
   result <- build_table(lyt, df = adsl) %>% prune_table()
 
@@ -71,7 +71,7 @@ testthat::test_that("DTHT01 variant 3 is produced correctly", {
       .labels = c(count_fraction = "Total number of deaths"),
       .formats = c(count_fraction = "xx (xx.x%)")
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("DTHCAT"),
       var_labels = c("Primary Cause of Death"),
       table_names = "primary_cause"
@@ -123,7 +123,7 @@ testthat::test_that("DTHT01 variant 4 is produced correctly", {
       .labels = c(count_fraction = "Total number of deaths"),
       .formats = c(count_fraction = "xx (xx.x%)")
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("DTHCAT"),
       var_labels = c("Primary Cause of Death"),
       table_names = "primary_cause"
@@ -145,7 +145,7 @@ testthat::test_that("DTHT01 variant 4 is produced correctly", {
       .indent_mods = c(count_fraction = 2L),
       table_names = "all_other_causes"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "DTHCAUS_other",
       .stats = "count_fraction",
       .indent_mods = c("count_fraction" = 3L),
