@@ -21,14 +21,14 @@ License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
-    formatters (>= 0.5.1),
+    formatters (>= 0.5.1.9005),
     R (>= 3.6),
-    rlistings (>= 0.2.2.9002),
-    rtables (>= 0.6.1.9007),
-    tern (>= 0.8.4.9004)
+    rlistings (>= 0.2.3.9003),
+    rtables (>= 0.6.2.9003),
+    tern (>= 0.8.5.9013)
 Imports:
-    scda (>= 0.1.6.9003),
-    scda.2022 (>= 0.1.4.9007)
+    scda (>= 0.1.6.9012),
+    scda.2022 (>= 0.1.5.9002)
 Suggests:
     broom,
     checkmate,
