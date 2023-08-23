@@ -19,7 +19,7 @@ full_table_aet04_pi <- function(adsl, adae_max) {
       .stats = "unique",
       .labels = "Total number of patients with at least one adverse event"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "AEDECOD",
       na.rm = TRUE,
       denom = "N_col",
@@ -200,7 +200,7 @@ testthat::test_that("AET04_PI variant 6 is produced correctly", {
       .stats = "unique",
       .labels = "Total number of patients with at least one adverse event"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "AEDECOD",
       na.rm = TRUE,
       denom = "N_col",
@@ -251,7 +251,7 @@ testthat::test_that("AET04_PI variant 7 is produced correctly", {
       .stats = "unique",
       .labels = "Total number of patients with at least one adverse event"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "AEDECOD",
       na.rm = TRUE,
       denom = "N_col",
@@ -291,7 +291,7 @@ testthat::test_that("AET04_PI variant 8 is produced correctly", {
   full_table <- basic_table() %>%
     split_cols_by("ACTARM") %>%
     split_cols_by_groups("MAXAETOXGR", groups = grade_groups) %>%
-    summarize_vars(
+    analyze_vars(
       "AEDECOD",
       na.rm = TRUE,
       denom = "N_col",

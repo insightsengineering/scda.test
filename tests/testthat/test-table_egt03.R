@@ -42,7 +42,7 @@ testthat::test_that("EGT03 variant 1 is produced correctly", {
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
     add_rowcounts() %>%
-    summarize_vars("BNRIND", denom = "N_row")
+    analyze_vars("BNRIND", denom = "N_row")
 
   result <- build_table(lyt = lyt, df = adeg_f)
 
@@ -83,7 +83,7 @@ testthat::test_that("EGT03 variant 2 is produced correctly", {
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
     add_rowcounts() %>%
-    summarize_vars("BNRIND", denom = "N_row")
+    analyze_vars("BNRIND", denom = "N_row")
 
   result <- build_table(lyt = lyt, df = adeg_f)
 
@@ -124,7 +124,7 @@ testthat::test_that("EGT03 variant 3 is produced correctly", {
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
     add_rowcounts() %>%
-    summarize_vars("BNRIND", denom = "N_row")
+    analyze_vars("BNRIND", denom = "N_row")
 
   result <- build_table(lyt = lyt, df = adeg_f)
 
@@ -171,7 +171,7 @@ testthat::test_that("EGT03 variant 4 is produced correctly", {
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
     add_rowcounts() %>%
-    summarize_vars("BNRIND", denom = "N_row")
+    analyze_vars("BNRIND", denom = "N_row")
 
   result <- build_table(lyt = lyt, df = adeg_f)
 

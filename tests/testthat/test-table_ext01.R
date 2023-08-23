@@ -63,7 +63,7 @@ testthat::test_that("EXT01 default variant with numeric parameters is produced c
     split_cols_by("ACTARM") %>%
     split_rows_by("PARCAT2", split_label = "\nParameter Category (Drug A/Drug B)", label_pos = "topleft") %>%
     split_rows_by("PARAM", split_fun = split_fun) %>%
-    summarize_vars(vars = "AVAL")
+    analyze_vars(vars = "AVAL")
 
   result <- build_table(lyt = lyt, df = adex, alt_counts_df = adsl)
 
@@ -104,7 +104,7 @@ testthat::test_that("EXT01 variant: with both numeric and categorical parameters
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
     split_rows_by("PARCAT2", split_label = "\nParameter Category (Drug A/Drug B)", label_pos = "topleft") %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("TDURD", "TDURDC", "TDOSE", "TNDOSE"),
       var_labels = var_labels(anl)[c("TDURD", "TDURDC", "TDOSE", "TNDOSE")]
     )
@@ -148,7 +148,7 @@ testthat::test_that("EXT01 variant: with user specified categories for missed do
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
     split_rows_by("PARCAT2", split_label = "\nParameter Category (Drug A/Drug B)", label_pos = "topleft") %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("TDURD", "TDURDC", "TDOSE", "TNDOSE"),
       var_labels = var_labels(anl)[c("TDURD", "TDURDC", "TDOSE", "TNDOSE")]
     ) %>%

@@ -70,7 +70,7 @@ testthat::test_that("EGT05_QTCAT default variant is produced correctly", {
       split_fun = split_fun,
       label_pos = "topleft"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = c("AVALCAT1", "CHGCAT1"),
       var_labels = c("Value at Visit", "Change from Baseline")
     ) %>%

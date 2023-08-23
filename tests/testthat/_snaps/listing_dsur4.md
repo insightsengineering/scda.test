@@ -9,7 +9,7 @@
       ———————————————————————————————————————————————————————————————————
       Treatment Group   Center/Patient ID          Cause of Death        
       ———————————————————————————————————————————————————————————————————
-      A: Drug X           CHN-3/id-128              ADVERSE EVENT        
+         A: Drug X        CHN-3/id-128              ADVERSE EVENT        
                            RUS-1/id-52           DISEASE PROGRESSION     
                           CHN-1/id-235              ADVERSE EVENT        
                           CHN-5/id-108                 MISSING           
@@ -34,7 +34,7 @@
                            CHN-1/id-62              ADVERSE EVENT        
                            RUS-6/id-77              ADVERSE EVENT        
                            CHN-2/id-22                 MISSING           
-      B: Placebo          CHN-1/id-307            LOST TO FOLLOW UP      
+        B: Placebo        CHN-1/id-307            LOST TO FOLLOW UP      
                           CHN-13/id-240             ADVERSE EVENT        
                           CHN-7/id-126              ADVERSE EVENT        
                           CAN-1/id-341                 SUICIDE           

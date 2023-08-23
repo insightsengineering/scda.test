@@ -13,6 +13,10 @@ testthat::test_that("AEL01_NOLLT listing is produced correctly", {
     out,
     key_cols = c("AESOC", "AEDECOD"),
     disp_cols = names(out),
+    default_formatting = list(
+      all = formatters::fmt_config(align = "left"),
+      numeric = formatters::fmt_config(align = "center")
+    ),
     main_title = "Listing of Preferred Terms and Investigator-Specified Adverse Event Terms"
   ) %>% head(50), "sorting incoming data by key columns")
 

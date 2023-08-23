@@ -96,7 +96,7 @@ testthat::test_that("Patient Disposition table is produced correctly", {
       .labels = c(count_fraction = "Discontinued Study"),
       .formats = "xx (xx.xx%)"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "DCSREAS",
       .stats = "count_fraction",
       show_labels = "hidden",
@@ -123,7 +123,7 @@ testthat::test_that("Demographic table is produced correctly", {
   result <- basic_table() %>%
     split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
     add_colcounts() %>%
-    summarize_vars(vars = vars, var_labels = var_labels) %>%
+    analyze_vars(vars = vars, var_labels = var_labels) %>%
     build_table(adsl) %>%
     prune_table()
 
@@ -136,7 +136,7 @@ testthat::test_that("Enrollment by Country Table is produced correctly", {
   result <- basic_table() %>%
     split_cols_by("ARM", split_fun = add_overall_level("All Patients", first = FALSE)) %>%
     add_colcounts() %>%
-    summarize_vars("COUNTRY", .formats = c(count_fraction = "xx (xx.xx%)")) %>%
+    analyze_vars("COUNTRY", .formats = c(count_fraction = "xx (xx.xx%)")) %>%
     build_table(adsl)
 
   res <- testthat::expect_silent(result)

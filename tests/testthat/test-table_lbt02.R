@@ -11,7 +11,7 @@ testthat::test_that("LBT02 default variant is produced correctly", {
     split_cols_by(var = "ARM") %>%
     split_rows_by(var = "AVISIT") %>%
     add_colcounts() %>%
-    summarize_vars(vars = "AVAL")
+    analyze_vars(vars = "AVAL")
 
   result <- build_table(l, df = adlb, alt_counts_df = adsl)
 

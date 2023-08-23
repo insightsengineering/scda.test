@@ -38,7 +38,7 @@ testthat::test_that("EGT04 default variant is produced correctly", {
     split_cols_by("AVALC") %>%
     split_rows_by("ARM") %>%
     add_rowcounts() %>%
-    summarize_vars(
+    analyze_vars(
       "BASEC",
       denom = "N_row",
       .stats = "count_fraction",

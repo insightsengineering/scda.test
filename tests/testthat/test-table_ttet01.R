@@ -29,7 +29,7 @@ testthat::test_that("TTET01 default variant is produced correctly", {
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
@@ -44,7 +44,7 @@ testthat::test_that("TTET01 default variant is produced correctly", {
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),
@@ -86,12 +86,12 @@ testthat::test_that("TTET01 variant 2: selecting sections to display", {
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
     ) %>%
-    summarize_vars(
+    analyze_vars(
       "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),
@@ -131,7 +131,7 @@ testthat::test_that("TTET01 variant 3: modifying analysis details like conftype,
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
@@ -146,7 +146,7 @@ testthat::test_that("TTET01 variant 3: modifying analysis details like conftype,
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),
@@ -197,7 +197,7 @@ testthat::test_that("TTET01 variant 4: with stratified analysis", {
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
@@ -212,7 +212,7 @@ testthat::test_that("TTET01 variant 4: with stratified analysis", {
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),
@@ -258,7 +258,7 @@ testthat::test_that("TTET01 variant 5: modifying time point", {
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
@@ -273,7 +273,7 @@ testthat::test_that("TTET01 variant 5: modifying time point", {
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),
@@ -313,7 +313,7 @@ testthat::test_that("TTET01 variant 6: requesting more than one p-value", {
   l <- basic_table() %>%
     split_cols_by("ARM", ref_group = "A: Drug X") %>%
     add_colcounts() %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients with event (%)")
@@ -328,7 +328,7 @@ testthat::test_that("TTET01 variant 6: requesting more than one p-value", {
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Patients without event (%)"),

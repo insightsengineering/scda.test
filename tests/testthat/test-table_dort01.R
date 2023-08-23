@@ -35,7 +35,7 @@ testthat::test_that("DORT01 variant 1 is produced correctly", {
       .labels = "Responders",
       .stats = "count"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders with subsequent event (%)"),
@@ -52,7 +52,7 @@ testthat::test_that("DORT01 variant 1 is produced correctly", {
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders without subsequent event (%)"),
@@ -90,7 +90,7 @@ testthat::test_that("DORT01 variant 2 (selecting sectons) is produced correctly"
       .labels = "Responders",
       .stats = "count"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders with subsequent event (%)"),
@@ -107,7 +107,7 @@ testthat::test_that("DORT01 variant 2 (selecting sectons) is produced correctly"
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders without subsequent event (%)"),
@@ -146,7 +146,7 @@ testthat::test_that("DORT01 variant 3 (modifying conftype and alpha level) is pr
       .labels = "Responders",
       .stats = "count"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders with subsequent event (%)"),
@@ -163,7 +163,7 @@ testthat::test_that("DORT01 variant 3 (modifying conftype and alpha level) is pr
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders without subsequent event (%)"),
@@ -202,7 +202,7 @@ testthat::test_that("DORT01 variant 4 (modifying time point for the “xx durati
       .labels = "Responders",
       .stats = "count"
     ) %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders with subsequent event (%)"),
@@ -219,7 +219,7 @@ testthat::test_that("DORT01 variant 4 (modifying time point for the “xx durati
     ) %>%
     split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
     summarize_row_groups(format = "xx") %>%
-    summarize_vars(
+    analyze_vars(
       vars = "is_not_event",
       .stats = "count_fraction",
       .labels = c(count_fraction = "Responders without subsequent event (%)"),
