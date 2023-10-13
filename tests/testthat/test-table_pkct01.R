@@ -103,7 +103,7 @@ testthat::test_that("Specific PKCT01 features are present", {
         min = "Minimum",
         max = "Maximum"
       ),
-      na_level = "NE"
+      na_str = "NE"
     )
   result <- build_table(lyt, df = adpc_1) %>% prune_table()
 

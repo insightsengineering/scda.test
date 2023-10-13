@@ -87,5 +87,9 @@ testthat::test_that("Direct pagination works fine", {
   pg_lst <- paginate_listing(lst_res, page_type = "a4", font_size = 9)
   testthat::expect_equal(length(pg_lst), 9L)
 
-  suppressWarnings(testthat::expect_warning(export_as_txt(lst_res, page_type = "a4", font_size = 9)))
+  testthat::expect_warning( # for footers \n
+    testthat::expect_error( # for internal \n
+      export_as_txt(lst_res, page_type = "a4", font_size = 9)
+    )
+  )
 })
