@@ -3,8 +3,9 @@
     Code
       res
     Output
-                                                       A: Drug X        B: Placebo      C: Combination 
-      Parameter Category (Drug A/Drug B)                (N=134)           (N=134)           (N=132)    
+                                                                                                       
+      Parameter Category (Drug A/Drug B)               A: Drug X        B: Placebo      C: Combination 
+                                                        (N=134)           (N=134)           (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————————————————
       Drug A                                                                                           
         Overall duration (days)                                                                        
@@ -54,8 +55,9 @@
     Code
       res
     Output
-                                                A: Drug X        B: Placebo      C: Combination 
-      Parameter Category (Drug A/Drug B)         (N=134)           (N=134)           (N=132)    
+                                                                                                
+      Parameter Category (Drug A/Drug B)        A: Drug X        B: Placebo      C: Combination 
+                                                 (N=134)           (N=134)           (N=132)    
       ——————————————————————————————————————————————————————————————————————————————————————————
       Drug A                                                                                    
         Overall duration (days)                                                                 
@@ -107,8 +109,9 @@
     Code
       res
     Output
-                                                A: Drug X        B: Placebo      C: Combination 
-      Parameter Category (Drug A/Drug B)         (N=134)           (N=134)           (N=132)    
+                                                                                                
+      Parameter Category (Drug A/Drug B)        A: Drug X        B: Placebo      C: Combination 
+                                                 (N=134)           (N=134)           (N=132)    
       ——————————————————————————————————————————————————————————————————————————————————————————
       Drug A                                                                                    
         Overall duration (days)                                                                 
