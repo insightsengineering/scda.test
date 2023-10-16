@@ -3,11 +3,9 @@
     Code
       res
     Output
+                                                                           
       MedDRA System Organ Class                                            
-        MedDRA Preferred Term                                              
-          Severity/Intensity       A: Drug X    B: Placebo   C: Combination
-      MedDRA System Organ Class                                            
-        MedDRA Preferred Term                                              
+        MedDRA Preferred Term      A: Drug X    B: Placebo   C: Combination
           Severity/Intensity        (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————
       - Any Intensity -           100 (74.6%)   98 (73.1%)    103 (78.0%)  
