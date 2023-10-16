@@ -3,12 +3,10 @@
     Code
       res
     Output
-                                                                                                                                 
-                                                                                                                                 
-      Analysis Visit                     A: Drug X                        B: Placebo                      C: Combination         
+                                         A: Drug X                        B: Placebo                      C: Combination         
                                                 Change from                       Change from                       Change from  
                               Value at Visit      Baseline      Value at Visit      Baseline      Value at Visit      Baseline   
-                                 (N=134)          (N=134)          (N=134)          (N=134)          (N=132)          (N=132)    
+      Analysis Visit             (N=134)          (N=134)          (N=134)          (N=134)          (N=132)          (N=132)    
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       SCREENING                                                                                                                  
         n                          134               0               134               0               132               0       
