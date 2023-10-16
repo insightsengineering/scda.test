@@ -88,9 +88,6 @@
       res
     Output
       MedDRA System Organ Class                                                                               
-        High Level Term                                                                                       
-          MedDRA Preferred Term                                                                               
-      MedDRA System Organ Class                                                                               
         High Level Term                                               A: Drug X    B: Placebo   C: Combination
           MedDRA Preferred Term                                        (N=134)      (N=134)        (N=132)    
       ————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -249,9 +246,6 @@
     Code
       res
     Output
-      MedDRA System Organ Class                                           
-        High Level Term                                                   
-          MedDRA Preferred Term                                           
       MedDRA System Organ Class                                           
         High Level Term           A: Drug X    B: Placebo   C: Combination
           MedDRA Preferred Term    (N=134)      (N=134)        (N=132)    

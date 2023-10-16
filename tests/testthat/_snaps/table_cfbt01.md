@@ -3,8 +3,8 @@
     Code
       res
     Output
-      Parameter                      A: Drug X                        B: Placebo                      C: Combination         
-                                            Change from                       Change from                       Change from  
+                                     A: Drug X                        B: Placebo                      C: Combination         
+      Parameter                             Change from                       Change from                       Change from  
         Analysis Visit    Value at Visit      Baseline      Value at Visit      Baseline      Value at Visit      Baseline   
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       BFI All Questions                                                                                                      

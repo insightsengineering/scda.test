@@ -3,7 +3,6 @@
     Code
       res
     Output
-                                                                           
       MedDRA System Organ Class                                            
         MedDRA Preferred Term      A: Drug X    B: Placebo   C: Combination
           Severity/Intensity        (N=134)      (N=134)        (N=132)    
