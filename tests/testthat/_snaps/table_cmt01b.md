@@ -6,12 +6,7 @@
       ATC Level 1 Text                                                                                         
         ATC Level 2 Text                                                                                       
           ATC Level 3 Text                                                                                     
-            ATC Level 4 Text                                                                                   
-              Other Treatment                                         A: Drug X    B: Placebo    C: Combination
-      ATC Level 1 Text                                                                                         
-        ATC Level 2 Text                                                                                       
-          ATC Level 3 Text                                                                                     
-            ATC Level 4 Text                                                                                   
+            ATC Level 4 Text                                          A: Drug X    B: Placebo    C: Combination
               Other Treatment                                          (N=134)       (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————————————————————————
       Total number of patients with at least one treatment           117 (87.3%)   116 (86.6%)    116 (87.9%)  
@@ -83,10 +78,7 @@
       res
     Output
       ATC Level 3 Text                                                                                     
-        ATC Level 2 Text                                                                                   
-          Other Treatment                                         A: Drug X    B: Placebo    C: Combination
-      ATC Level 3 Text                                                                                     
-        ATC Level 2 Text                                                                                   
+        ATC Level 2 Text                                          A: Drug X    B: Placebo    C: Combination
           Other Treatment                                          (N=134)       (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————————————————————
       Total number of patients with at least one treatment       117 (87.3%)   116 (86.6%)    116 (87.9%)  
@@ -144,12 +136,7 @@
       ATC Level 1 Text                                                                                       
         ATC Level 2 Text                                                                                     
           ATC Level 3 Text                                                                                   
-            ATC Level 4 Text                                                                                 
-              Other Treatment                                        A: Drug X    B: Placebo   C: Combination
-      ATC Level 1 Text                                                                                       
-        ATC Level 2 Text                                                                                     
-          ATC Level 3 Text                                                                                   
-            ATC Level 4 Text                                                                                 
+            ATC Level 4 Text                                         A: Drug X    B: Placebo   C: Combination
               Other Treatment                                         (N=134)      (N=134)        (N=132)    
       ———————————————————————————————————————————————————————————————————————————————————————————————————————
       ATCCLAS1 A                                                                                             
