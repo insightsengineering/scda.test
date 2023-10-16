@@ -46,8 +46,7 @@
       
            —————————————————————————————————————————————
                         A: Drug       B:      C: Combina
-                           X       Placebo       tion   
-           SOME                                         
+           SOME            X       Placebo       tion   
            TOPLEFT      (N=134)    (N=134)     (N=132)  
            —————————————————————————————————————————————
            - Any          122        123         120    
@@ -124,8 +123,7 @@
       
            —————————————————————————————————————————————
                         A: Drug       B:      C: Combina
-                           X       Placebo       tion   
-           SOME                                         
+           SOME            X       Placebo       tion   
            TOPLEFT      (N=134)    (N=134)     (N=132)  
            —————————————————————————————————————————————
            cl D.1                                       
@@ -204,8 +202,7 @@
       
            —————————————————————————————————————————————
                         A: Drug       B:      C: Combina
-                           X       Placebo       tion   
-           SOME                                         
+           SOME            X       Placebo       tion   
            TOPLEFT      (N=134)    (N=134)     (N=132)  
            —————————————————————————————————————————————
            cl A.1                                       

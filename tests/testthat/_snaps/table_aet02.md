@@ -89,9 +89,9 @@
     Output
       MedDRA System Organ Class                                                                               
         High Level Term                                                                                       
-          MedDRA Preferred Term                                       A: Drug X    B: Placebo   C: Combination
+          MedDRA Preferred Term                                                                               
       MedDRA System Organ Class                                                                               
-        High Level Term                                                                                       
+        High Level Term                                               A: Drug X    B: Placebo   C: Combination
           MedDRA Preferred Term                                        (N=134)      (N=134)        (N=132)    
       ————————————————————————————————————————————————————————————————————————————————————————————————————————
       Total number of patients with at least one adverse event       100 (74.6%)   98 (73.1%)    103 (78.0%)  
@@ -251,9 +251,9 @@
     Output
       MedDRA System Organ Class                                           
         High Level Term                                                   
-          MedDRA Preferred Term   A: Drug X    B: Placebo   C: Combination
+          MedDRA Preferred Term                                           
       MedDRA System Organ Class                                           
-        High Level Term                                                   
+        High Level Term           A: Drug X    B: Placebo   C: Combination
           MedDRA Preferred Term    (N=134)      (N=134)        (N=132)    
       ————————————————————————————————————————————————————————————————————
       cl A.1                                                              
