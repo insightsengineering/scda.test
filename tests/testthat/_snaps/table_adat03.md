@@ -3,9 +3,8 @@
     Code
       res
     Output
-      Treatment Group                                                                                                                             
                                Total Number                                                                                          Samples with 
-                               of Measurable                                                                                         Concentration
+      Treatment Group          of Measurable                                                                                         Concentration
         Visit                   Samples {1}      Mean         SD        Median      Minimum     Maximum    CV (%)   Geometric Mean   ≤ 15μg/mL {2}
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       A: Drug X (N=536)                                                                                                                           

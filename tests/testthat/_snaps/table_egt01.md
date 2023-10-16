@@ -3,10 +3,10 @@
     Code
       res
     Output
-      Parameter                        A: Drug X                              B: Placebo                            C: Combination            
+                                       A: Drug X                              B: Placebo                            C: Combination            
                                                Change from                             Change from                             Change from    
-        Analysis Visit    Value at Visit         Baseline         Value at Visit         Baseline         Value at Visit         Baseline     
-                             (N=134)             (N=134)             (N=134)             (N=134)             (N=132)             (N=132)      
+      Parameter           Value at Visit         Baseline         Value at Visit         Baseline         Value at Visit         Baseline     
+        Analysis Visit       (N=134)             (N=134)             (N=134)             (N=134)             (N=132)             (N=132)      
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Heart Rate                                                                                                                              
         BASELINE                                                                                                                              

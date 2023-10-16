@@ -4,7 +4,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -99,7 +102,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -194,7 +200,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -373,7 +382,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -471,7 +483,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -566,7 +581,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -661,7 +679,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
@@ -756,7 +777,10 @@
       res
     Output
       MedDRA System Organ Class                                                            
-        MedDRA Preferred Term                      A: Drug X    B: Placebo   C: Combination
+        MedDRA Preferred Term                                                              
+                                  Grade            A: Drug X    B: Placebo   C: Combination
+      MedDRA System Organ Class                                                            
+        MedDRA Preferred Term                                                              
                                   Grade             (N=134)      (N=134)        (N=132)    
       —————————————————————————————————————————————————————————————————————————————————————
       - Any adverse events -                                                               
