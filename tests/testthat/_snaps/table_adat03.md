@@ -4,9 +4,9 @@
       res
     Output
       Treatment Group                                                                                                                             
-        Visit                  Total Number                                                                                          Samples with 
+                               Total Number                                                                                          Samples with 
                                of Measurable                                                                                         Concentration
-                                Samples {1}      Mean         SD        Median      Minimum     Maximum    CV (%)   Geometric Mean   ≤ 15μg/mL {2}
+        Visit                   Samples {1}      Mean         SD        Median      Minimum     Maximum    CV (%)   Geometric Mean   ≤ 15μg/mL {2}
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       A: Drug X (N=536)                                                                                                                           
         Day 1                       402        0.000e+00   0.000e+00   0.000e+00   0.000e+00   0.000e+00     NA           NA          402 (100%)  

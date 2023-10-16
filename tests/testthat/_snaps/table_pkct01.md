@@ -49,9 +49,9 @@
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Cohort/Treatment                                                                                                                                        
         Visit                                                                                                                                                 
-          Norminal Time from First Dose           Number                                                                                                      
+                                                  Number                                                                                                      
                                                     of                                                                                                        
-                                           n    <LTR/BLQ>s    Mean      SD     CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
+          Norminal Time from First Dose    n    <LTR/BLQ>s    Mean      SD     CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       A: Drug X                                                                                                                                               
         Day 1                                                                                                                                                 
