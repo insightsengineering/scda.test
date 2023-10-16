@@ -79,6 +79,64 @@ testthat::test_that("TTET01 default variant is produced correctly", {
   testthat::expect_snapshot(res)
 })
 
+
+testthat::test_that("TTET01 default variant with Placebo arm", {
+  adtte <- adtte %>%
+    preproc_adtte()
+
+  l <- basic_table() %>%
+    split_cols_by("ARM", ref_group = "B: Placebo") %>%
+    add_colcounts() %>%
+    analyze_vars(
+      vars = "is_event",
+      .stats = "count_fraction",
+      .labels = c(count_fraction = "Patients with event (%)")
+    ) %>%
+    split_rows_by(
+      "EVNT1",
+      split_label = "Earliest contributing event",
+      split_fun = keep_split_levels("Patients with event (%)"),
+      label_pos = "visible",
+      child_labels = "hidden",
+      indent_mod = 1L,
+    ) %>%
+    split_rows_by("EVNTDESC", split_fun = drop_split_levels) %>%
+    summarize_row_groups(format = "xx") %>%
+    analyze_vars(
+      vars = "is_not_event",
+      .stats = "count_fraction",
+      .labels = c(count_fraction = "Patients without event (%)"),
+      nested = FALSE,
+      show_labels = "hidden"
+    ) %>%
+    surv_time(
+      vars = "AVAL",
+      var_labels = "Time to Event (Months)",
+      is_event = "is_event",
+      table_names = "time_to_event"
+    ) %>%
+    coxph_pairwise(
+      vars = "AVAL",
+      is_event = "is_event",
+      var_labels = c("Unstratified Analysis"),
+      control = control_coxph(pval_method = "log-rank"),
+      table_names = "coxph_unstratified"
+    ) %>%
+    surv_timepoint(
+      vars = "AVAL",
+      var_labels = "Months",
+      time_point = c(6, 12),
+      is_event = "is_event",
+      method = "both",
+      control = control_surv_timepoint()
+    )
+
+  result <- build_table(l, df = adtte, alt_counts_df = adsl)
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
 testthat::test_that("TTET01 variant 2: selecting sections to display", {
   adtte <- adtte %>%
     preproc_adtte()
