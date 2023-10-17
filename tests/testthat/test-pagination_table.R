@@ -101,7 +101,7 @@ testthat::test_that("Pagination works also if table is decorated", {
   # base is: 20 + x [x from paginate_table(raw_result) is min 13 - 3 (header)]
   # -> 30
   # for pagination with decoration and no wrapping we expect 27
-  lpp_min <- 27 # -3 less because of ref fnotes
+  lpp_min <- 28 # -2 less because of ref fnotes
   cpp_min <- 72 # 70 is the std now, this table is 72
   testthat::expect_silent(paginate_table(res, lpp = lpp_min, cpp = cpp_min))
   testthat::expect_error(paginate_table(res, lpp = lpp_min - 1, cpp = cpp_min))
