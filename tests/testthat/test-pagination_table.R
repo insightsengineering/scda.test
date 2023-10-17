@@ -106,8 +106,8 @@ testthat::test_that("Pagination works also if table is decorated", {
   testthat::expect_silent(paginate_table(res, lpp = lpp_min, cpp = cpp_min))
   testthat::expect_error(paginate_table(res, lpp = lpp_min - 1, cpp = cpp_min))
 
-  # for clw above this is 41 (14 more lines due to wrapping)
-  lpp_min <- 41
+  # for clw above this is 42 (15 more lines due to wrapping)
+  lpp_min <- 42
   pg_tbl_no_clw <- paginate_table(res, lpp = lpp_min, cpp = cpp_min)
   pg_tbl_w_clw <- paginate_table(res, lpp = lpp_min, colwidths = clw, cpp = cpp_min)
   testthat::expect_error(paginate_table(res, lpp = lpp_tmp - 1, colwidths = clw, cpp = cpp_min))
