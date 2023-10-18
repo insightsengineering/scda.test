@@ -135,6 +135,6 @@ testthat::test_that("Specific PKCT01 features are present", {
   testthat::expect_equal(tmp_result, as.character(signif(mean_vals, 3)))
 
   # Pagination works roughly
-  pag_works <- paginate_table(result, verbose = FALSE, lpp = 20) # only \n in title is out of lpp
+  pag_works <- paginate_table(result, verbose = FALSE, lpp = 21)
   testthat::expect_equal(length(pag_works), 6L)
 })
