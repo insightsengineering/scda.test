@@ -85,7 +85,8 @@ testthat::test_that("TTET01 default variant with Placebo arm", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "B: Placebo") %>%
+    split_cols_by("ARM", ref_group = "B: Placebo",
+                  split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
