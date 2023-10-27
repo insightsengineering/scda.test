@@ -27,7 +27,7 @@ testthat::test_that("TTET01 default variant is produced correctly", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
@@ -143,7 +143,7 @@ testthat::test_that("TTET01 variant 2: selecting sections to display", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
@@ -188,7 +188,7 @@ testthat::test_that("TTET01 variant 3: modifying analysis details like conftype,
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
@@ -254,7 +254,7 @@ testthat::test_that("TTET01 variant 4: with stratified analysis", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
@@ -315,7 +315,7 @@ testthat::test_that("TTET01 variant 5: modifying time point", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",
@@ -370,7 +370,7 @@ testthat::test_that("TTET01 variant 6: requesting more than one p-value", {
     preproc_adtte()
 
   l <- basic_table() %>%
-    split_cols_by("ARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     analyze_vars(
       vars = "is_event",

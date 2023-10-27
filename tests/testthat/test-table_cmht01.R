@@ -14,7 +14,7 @@ testthat::test_that("CMHT01 variant 1 is produced correctly", {
     mutate(strata = interaction(STRATA1, STRATA2, drop = TRUE))
 
   lyt_01 <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     estimate_proportion(vars = "is_rsp", table_names = "est_prop") %>%
     estimate_proportion_diff(
       var_labels = "Unstratified Analysis",
@@ -68,7 +68,7 @@ testthat::test_that("CMHT01 variant 2 is produced correctly", {
   split_fun <- drop_split_levels
 
   lyt_02 <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     split_rows_by(
       var = "PARAM",
       split_fun = split_fun,

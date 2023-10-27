@@ -27,7 +27,7 @@ testthat::test_that("DORT01 variant 1 is produced correctly", {
   adtte <- adtte_local
 
   result <- basic_table() %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     count_values(
       vars = "USUBJID",
@@ -82,7 +82,7 @@ testthat::test_that("DORT01 variant 2 (selecting sectons) is produced correctly"
   adtte <- adtte_local
 
   result <- basic_table() %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     count_values(
       vars = "USUBJID",
@@ -138,7 +138,7 @@ testthat::test_that("DORT01 variant 3 (modifying conftype and alpha level) is pr
   adtte <- adtte_local
 
   result <- basic_table() %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     count_values(
       vars = "USUBJID",
@@ -194,7 +194,7 @@ testthat::test_that("DORT01 variant 4 (modifying time point for the “xx durati
   adtte <- adtte_local
 
   result <- basic_table() %>%
-    split_cols_by(var = "ARM", ref_group = "A: Drug X") %>%
+    split_cols_by(var = "ARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     count_values(
       vars = "USUBJID",
