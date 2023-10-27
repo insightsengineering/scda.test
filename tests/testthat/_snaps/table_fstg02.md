@@ -3,8 +3,8 @@
     Code
       res
     Output
-      Baseline Risk Factors                          B: Placebo               A: Drug X                                    
-                                      Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
+                                                     B: Placebo               A: Drug X                                    
+      Baseline Risk Factors           Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
       —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       All Patients                      268     134         NA          134         NA              1.00       (0.69, 1.44)
       Sex                                                                                                                  
@@ -20,8 +20,8 @@
     Code
       res
     Output
-      Baseline Risk Factors                      Placebo                 Drug X                                      
-                                Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
+                                                 Placebo                 Drug X                                      
+      Baseline Risk Factors     Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————
       All Patients                268     134         NA          134         NA              1.00       (0.69, 1.44)
       Sex                                                                                                            
@@ -37,8 +37,8 @@
     Code
       res
     Output
-      Baseline Risk Factors                                                
-                                      Total n   Hazard Ratio   90% Wald CI 
+                                                                           
+      Baseline Risk Factors           Total n   Hazard Ratio   90% Wald CI 
       —————————————————————————————————————————————————————————————————————
       All Patients                      268         1.00       (0.74, 1.36)
       Sex                                                                  
@@ -54,8 +54,8 @@
     Code
       res
     Output
-      Baseline Risk Factors                          B: Placebo               A: Drug X                                    
-                                      Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
+                                                     B: Placebo               A: Drug X                                    
+      Baseline Risk Factors           Total n    n    Median (Months)    n    Median (Months)   Hazard Ratio   95% Wald CI 
       —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       All Patients                      268     134         NA          134         NA              1.00       (0.69, 1.44)
       Sex                                                                                                                  

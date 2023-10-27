@@ -47,11 +47,9 @@
       Analyte:  Plasma Drug Y Treatment: C: Combination
       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Cohort/Treatment                                                                                                                                        
-        Visit                                                                                                                                                 
-          Norminal Time from First Dose           Number                                                                                                      
-                                                    of                                                                                                        
-                                           n    <LTR/BLQ>s    Mean      SD     CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
+      Cohort/Treatment                            Number                                                                                                      
+        Visit                                       of                                                                                                        
+          Norminal Time from First Dose    n    <LTR/BLQ>s    Mean      SD     CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       A: Drug X                                                                                                                                               
         Day 1                                                                                                                                                 
