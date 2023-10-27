@@ -9,7 +9,7 @@ adqs_in <- adqs %>%
 
 testthat::test_that("AOVT03 is produced correctly", {
   result <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARMCD", ref_group = "ARM A") %>%
+    split_cols_by("ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     split_rows_by("PARAM", split_fun = drop_split_levels) %>%
     summarize_ancova(
       vars = "CHG",
