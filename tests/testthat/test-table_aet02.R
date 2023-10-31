@@ -170,7 +170,7 @@ testthat::test_that("AET02 variant 3 is produced correctly", {
         nonunique = "Total number of events"
       )
     ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = -1L)) %>%
+    count_occurrences(vars = "AEDECOD", .indent_mods = -1L) %>%
     append_varlabels(adae, c("AEDECOD"), indent = 2L)
 
   result <- build_table(lyt, df = adae, alt_counts_df = adsl) %>%
@@ -246,7 +246,7 @@ testthat::test_that("AET02 variant 5 is produced correctly", {
         nonunique = "Total number of events"
       )
     ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = -1L)) %>%
+    count_occurrences(vars = "AEDECOD", .indent_mods = -1L) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
   result <- build_table(lyt, df = adae_5, alt_counts_df = adsl) %>%
@@ -283,7 +283,7 @@ testthat::test_that("AET02 variant 6 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
@@ -393,7 +393,7 @@ testthat::test_that("AET02 variant 8 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
@@ -440,7 +440,7 @@ testthat::test_that("AET02 variant 9 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
@@ -487,7 +487,7 @@ testthat::test_that("AET02 variant 10 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
@@ -534,7 +534,7 @@ testthat::test_that("AET02 variant 11 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
@@ -581,7 +581,7 @@ testthat::test_that("AET02 variant 12 is produced correctly", {
     ) %>%
     count_occurrences(
       vars = "AEDECOD",
-      .indent_mods = c(count_fraction = 1L)
+      .indent_mods = 1L
     ) %>%
     append_varlabels(adae, "AEDECOD", indent = 1L)
 
