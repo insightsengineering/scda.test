@@ -150,7 +150,7 @@ testthat::test_that("RMPT06 variant 2 is produced correctly", {
 
 testthat::test_that("RMPT06 variant 3 is produced correctly", {
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ACTARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ACTARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     estimate_proportion(
       vars = "AEFL",
       method = "clopper-pearson",
@@ -213,7 +213,7 @@ testthat::test_that("RMPT06 variant 3 is produced correctly", {
 
 testthat::test_that("RMPT06 variant 4 is produced correctly", {
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ACTARM", ref_group = "A: Drug X") %>%
+    split_cols_by("ACTARM", ref_group = "A: Drug X", split_fun = ref_group_position("first")) %>%
     estimate_proportion(
       vars = "AEFL",
       conf_level = 0.90,

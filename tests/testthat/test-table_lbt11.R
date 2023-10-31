@@ -38,7 +38,7 @@ anl <- adsaftte %>%
 
 testthat::test_that("LBT11 variant 1 works as expected", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by(var = "ARMCD", ref_group = "ARM A") %>%
+    split_cols_by(var = "ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     count_occurrences(vars = "event_grp") %>%
     surv_time(
       vars = "AVAL",
@@ -62,7 +62,7 @@ testthat::test_that("LBT11 variant 1 works as expected", {
 
 testthat::test_that("LBT11 variant 2 works as expected", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by(var = "ARMCD", ref_group = "ARM A") %>%
+    split_cols_by(var = "ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     count_occurrences(vars = "event_grp") %>%
     surv_time(
       vars = "AVAL",
@@ -81,7 +81,7 @@ testthat::test_that("LBT11 variant 3 works as expected", {
   strata <- c("RACE", "SEX")
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by(var = "ARMCD", ref_group = "ARM A") %>%
+    split_cols_by(var = "ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     count_occurrences(vars = "event_grp") %>%
     surv_time(
       vars = "AVAL",

@@ -14,7 +14,7 @@ adqs_single <- adqs %>%
 
 testthat::test_that("AOVT02 is produced correctly", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARMCD", ref_group = "ARM A") %>%
+    split_cols_by("ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     append_varlabels(adqs_single, "PARAM") %>%
     summarize_ancova(
       vars = "CHG",

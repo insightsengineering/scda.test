@@ -6,7 +6,10 @@ anl <- df_explicit_na(anl)
 
 testthat::test_that("RATET01 is produced correctly", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
-    split_cols_by("ARM", ref_group = "B: Placebo") %>%
+    split_cols_by("ARM",
+      ref_group = "B: Placebo",
+      split_fun = ref_group_position("first")
+    ) %>%
     analyze_vars(
       "AVAL_f",
       var_labels = "Number of exacerbations per patient",

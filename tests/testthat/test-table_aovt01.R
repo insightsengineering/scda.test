@@ -12,7 +12,7 @@ testthat::test_that("AOVT01 variant with single endpoint is produced correctly",
     dplyr::mutate(CHG = ifelse(BMEASIFL == "Y", CHG, NA)) # only analyze evaluable population
 
   result <- basic_table() %>%
-    split_cols_by("ARMCD", ref_group = "ARM A") %>%
+    split_cols_by("ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     summarize_ancova(
       vars = "CHG",
@@ -38,7 +38,7 @@ testthat::test_that("AOVT01 variant with multiple endpoints is produced correctl
   n_per_arm <- table(adsl$ARM)
 
   result <- basic_table() %>%
-    split_cols_by("ARMCD", ref_group = "ARM A") %>%
+    split_cols_by("ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
     add_colcounts() %>%
     split_rows_by("PARAMCD") %>%
     summarize_ancova(
