@@ -86,7 +86,7 @@ testthat::test_that("AET09 variant 2 is produced correctly, AE related to study 
         nonunique = "Total number of events related to study drug"
       )
     ) %>%
-    count_occurrences(vars = "AEDECOD", .indent_mods = c(count_fraction = -1L))
+    count_occurrences(vars = "AEDECOD", .indent_mods = -1L)
 
   result <- build_table(lyt, adae_r, alt_counts_df = adsl) %>%
     prune_table()
