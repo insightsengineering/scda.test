@@ -27,8 +27,7 @@ Depends:
     rtables (>= 0.6.5.9004),
     tern (>= 0.9.2.9001)
 Imports:
-    scda (>= 0.1.6.9012),
-    scda.2022 (>= 0.1.5.9002)
+    random.cdisc.data (>= 0.3.14.9002)
 Suggests:
     broom,
     checkmate,
