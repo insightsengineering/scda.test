@@ -16,7 +16,7 @@ Authors@R: c(
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Tests of sample templates from TLG Catalog using data from
-    the scda package.
+    random.cdisc.data package.
 License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
