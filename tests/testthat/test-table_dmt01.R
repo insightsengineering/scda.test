@@ -4,7 +4,8 @@ set.seed(1)
 # adsl <- adsl_raw
 adsl <- pharmaverseadam::adsl
 adsl <- adsl %>%
-  mutate(BMRKR1 = rnorm(nrow(adsl), 3.5, 10))
+  mutate(BMRKR1 = rnorm(nrow(adsl), 3.5, 10)) %>%
+  mutate(STRATA1 = factor(sample(c("A", "B", "C"), nrow(adsl), TRUE)))
 advs <- pharmaverseadam::advs
 adsub <- adsub_raw
 # adsub <- pharmaverseadam::adsub # ??
@@ -123,7 +124,7 @@ testthat::test_that("DMT01 variant 3 is produced correctly", {
       vars = c("AGE", "SEX", "RACE"),
       var_labels = c("Age", "Sex", "Race")
     ) %>%
-    split_rows_by("ACTARMCD",
+    split_rows_by("STRATA1",
       split_fun = split_fun
     ) %>%
     analyze_vars("BMRKR1") %>%

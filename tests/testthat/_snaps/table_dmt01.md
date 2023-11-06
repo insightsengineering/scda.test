@@ -97,26 +97,21 @@
         ASIAN                                   0            2 (3.8%)               0                      0         
         BLACK OR AFRICAN AMERICAN            8 (9.3%)       6 (11.5%)           9 (12.5%)              6 (6.2%)      
         WHITE                               78 (90.7%)      43 (82.7%)          62 (86.1%)            90 (93.8%)     
-      Pbo                                                                                                            
-        n                                       86              0                   0                      0         
-        Mean (SD)                           3.0 (9.5)           NA                  NA                    NA         
-        Median                                 2.3              NA                  NA                    NA         
-        Min - Max                          -19.4 - 26.6         NA                  NA                    NA         
-      Scrnfail                                                                                                       
-        n                                       0               52                  0                      0         
-        Mean (SD)                               NA          1.5 (9.2)               NA                    NA         
-        Median                                  NA             1.8                  NA                    NA         
-        Min - Max                               NA         -20.5 - 21.5             NA                    NA         
-      Xan_Hi                                                                                                         
-        n                                       0               0                   72                     0         
-        Mean (SD)                               NA              NA              5.9 (9.7)                 NA         
-        Median                                  NA              NA                 5.7                    NA         
-        Min - Max                               NA              NA             -14.5 - 30.0               NA         
-      Xan_Lo                                                                                                         
-        n                                       0               0                   0                     96         
-        Mean (SD)                               NA              NA                  NA                4.7 (10.0)     
-        Median                                  NA              NA                  NA                    4.2        
-        Min - Max                               NA              NA                  NA               -25.4 - 27.5    
+      A                                                                                                              
+        n                                       27              18                  16                    43         
+        Mean (SD)                           0.6 (9.9)       0.9 (9.6)           3.1 (9.8)              4.6 (8.6)     
+        Median                                 -0.4            1.8                 4.7                    4.1        
+        Min - Max                          -16.4 - 26.6    -18.6 - 21.5        -14.5 - 18.6          -16.5 - 25.2    
+      B                                                                                                              
+        n                                       24              22                  33                    30         
+        Mean (SD)                           3.8 (8.0)       3.1 (8.5)           6.4 (8.3)             5.5 (10.4)     
+        Median                                 2.3             2.3                 5.7                    6.2        
+        Min - Max                          -8.4 - 23.3     -15.6 - 20.4        -9.0 - 25.6           -10.8 - 24.3    
+      C                                                                                                              
+        n                                       35              12                  23                    23         
+        Mean (SD)                           4.4 (10.2)      -0.6 (9.9)          7.2 (11.3)            4.0 (12.0)     
+        Median                                 3.1             -0.1                7.2                    3.0        
+        Min - Max                          -19.4 - 24.4    -20.5 - 14.8        -11.9 - 30.0          -25.4 - 27.5    
 
 # DMT01 variant 4 is produced correctly
 
