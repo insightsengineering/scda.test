@@ -1,14 +1,12 @@
 # Tests DMT01
 set.seed(1)
 
-# adsl <- adsl_raw
 adsl <- pharmaverseadam::adsl
 adsl <- adsl %>%
   mutate(BMRKR1 = rnorm(nrow(adsl), 3.5, 10)) %>%
   mutate(STRATA1 = factor(sample(c("A", "B", "C"), nrow(adsl), TRUE)))
 advs <- pharmaverseadam::advs
 adsub <- adsub_raw
-# adsub <- pharmaverseadam::adsub # ??
 
 adsl <- df_explicit_na(adsl)
 advs <- df_explicit_na(advs)
