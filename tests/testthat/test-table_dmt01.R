@@ -1,8 +1,13 @@
 # Tests DMT01
+set.seed(1)
 
-adsl <- adsl_raw
-advs <- advs_raw
+# adsl <- adsl_raw
+adsl <- pharmaverseadam::adsl
+adsl <- adsl %>%
+  mutate(BMRKR1 = rnorm(nrow(adsl), 3.5, 10))
+advs <- pharmaverseadam::advs
 adsub <- adsub_raw
+# adsub <- pharmaverseadam::adsub # ??
 
 adsl <- df_explicit_na(adsl)
 advs <- df_explicit_na(advs)
@@ -118,7 +123,7 @@ testthat::test_that("DMT01 variant 3 is produced correctly", {
       vars = c("AGE", "SEX", "RACE"),
       var_labels = c("Age", "Sex", "Race")
     ) %>%
-    split_rows_by("STRATA1",
+    split_rows_by("ACTARMCD",
       split_fun = split_fun
     ) %>%
     analyze_vars("BMRKR1") %>%
