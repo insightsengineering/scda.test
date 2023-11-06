@@ -97,14 +97,14 @@ testthat::test_that("Pagination works also if table is decorated", {
   # title (2) + subtitle (3) + empty line (1) + div (1) + header (3) +
   # + nrows (x) + ref footnote (3) + footer (1+2 empty lines) + prov footer (4)
   testthat::expect_silent(paginate_table(raw_result, lpp = 13))
-  testthat::expect_error(paginate_table(raw_result, lpp = 12))
+  testthat::expect_error(suppressMessages(paginate_table(raw_result, lpp = 12)))
   # base is: 20 + x [x from paginate_table(raw_result) is min 13 - 3 (header)]
   # -> 30
   # for pagination with decoration and no wrapping we expect 27
   lpp_min <- 28 # -2 less because of ref fnotes
   cpp_min <- 72 # 70 is the std now, this table is 72
   testthat::expect_silent(paginate_table(res, lpp = lpp_min, cpp = cpp_min))
-  testthat::expect_error(paginate_table(res, lpp = lpp_min - 1, cpp = cpp_min))
+  testthat::expect_error(suppressMessages(paginate_table(res, lpp = lpp_min - 1, cpp = cpp_min)))
 
   # for clw above this is 42 (15 more lines due to wrapping)
   lpp_min <- 42
