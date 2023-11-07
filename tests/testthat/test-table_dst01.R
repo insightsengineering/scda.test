@@ -28,7 +28,6 @@ testthat::test_that("DST01 default variant is produced correctly", {
     ) %>%
     count_occurrences(
       "EOSSTT",
-      .stats = "count_fraction",
       show_labels = "hidden"
     ) %>%
     analyze_vars(
@@ -53,7 +52,6 @@ testthat::test_that("DST01 variants 2 and 3 are produced correctly", {
     ) %>%
     count_occurrences(
       "EOSSTT",
-      .stats = "count_fraction",
       show_labels = "hidden"
     ) %>%
     split_rows_by("DCSREASGP", indent_mod = 1L) %>%
@@ -77,7 +75,6 @@ testthat::test_that("DST01 variants 2 and 3 are produced correctly", {
     ) %>%
     count_occurrences(
       "EOTSTT",
-      .stats = "count_fraction",
       show_labels = "hidden"
     )
 
