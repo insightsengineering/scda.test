@@ -10,6 +10,6 @@
 
 
 # Fix R CMD check notes
-#' @import formatters rtables tern random.cdisc.data
+#' @import formatters rtables tern random.cdisc.data pharmaverseadam
 #' @importFrom rlistings as_listing
 NULL
