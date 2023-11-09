@@ -2,6 +2,7 @@
 
 import(formatters)
 import(random.cdisc.data)
+import(pharmaverseadam)
 import(rtables)
 import(tern)
 importFrom(rlistings,as_listing)
