@@ -1,13 +1,18 @@
-adsl <- adsl_raw
-adae <- adae_raw
+set.seed(99)
+
+adsl <- pharmaverseadam::adsl %>%
+  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
+  filter(ACTARM != "Screen Failure")
+
+adae <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)))
 
 adsl <- df_explicit_na(adsl)
 adae <- df_explicit_na(
   adae,
   omit_columns = c("SMQ01NAM", "SMQ01SC", "SMQ02NAM", "SMQ02SC", "CQ01NAM", "STUDYID", "USUBJID")
 )
-
-set.seed(99)
 
 adae <- adae %>%
   mutate(
@@ -41,12 +46,13 @@ adae <- adae %>%
     ),
     CTC35 = with_label(AETOXGR %in% c("3", "4", "5"), "Grade 3-5 AE"),
     CTC45 = with_label(AETOXGR %in% c("4", "5"), "Grade 4/5 AE"),
-    SMQ01 = with_label(SMQ01NAM != "", aesi_label(adae$SMQ01NAM, adae$SMQ01SC)),
-    SMQ02 = with_label(SMQ02NAM != "", aesi_label(adae$SMQ02NAM, adae$SMQ02SC)),
-    CQ01 = with_label(CQ01NAM != "", aesi_label(adae$CQ01NAM)),
+    # SMQ01 = with_label(SMQ01NAM != "", aesi_label(adae$SMQ01NAM, adae$SMQ01SC)),
+    # SMQ02 = with_label(SMQ02NAM != "", aesi_label(adae$SMQ02NAM, adae$SMQ02SC)),
+    # CQ01 = with_label(CQ01NAM != "", aesi_label(adae$CQ01NAM)),
     USUBJID_AESEQ = paste(USUBJID, AESEQ, sep = "@@") # Create unique ID per AE in dataset.
-  ) %>%
-  filter(ANL01FL == "Y")
+  )
+# %>%
+#   filter(ANL01FL == "Y")
 
 testthat::test_that("Safety Summary Variant 1 works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "SEV")
@@ -105,9 +111,11 @@ testthat::test_that("Safety Summary Variant 1 works as expected", {
   testthat::expect_snapshot(res)
 })
 
+# NEEDS HELP HERE ----
+
 testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "CTC35")
-  basket_vars <- c("SMQ01", "SMQ02", "CQ01")
+  basket_vars <- c("SMQ01", "SMQ02", "CQ01") # dont have basket terms
 
   # Layout for variables from adsl dataset.
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%
@@ -163,7 +171,7 @@ testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) wo
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adae[1:2, ],
-    result_adsl,
+    result_adsl[, -2],
     result_adae[3:nrow(result_adae), ]
   )
 
