@@ -111,11 +111,11 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
     "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[5:6, 1],
+    trimws(to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 1]),
     c("- Any Grade -", "Grade 1-2")
   )
 })
@@ -193,11 +193,11 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
     "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[5:6, 2],
+    to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
     c("100 (74.6%)", "10 (7.5%)")
   )
 })
@@ -272,11 +272,11 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
     "cl A.1"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[5:6, 2],
+    to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
     c("100 (74.6%)", "10 (7.5%)")
   )
 })
