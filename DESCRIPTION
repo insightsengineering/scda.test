@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9043
-Date: 2023-11-07
+Version: 0.0.0.9044
+Date: 2023-12-12
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -16,19 +16,19 @@ Authors@R: c(
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Tests of sample templates from TLG Catalog using data from
-    the scda package.
+    the `random.cdisc.data` package.
 License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
-    formatters (>= 0.5.4.9002),
+    formatters (>= 0.5.5),
     R (>= 4.2),
-    rlistings (>= 0.2.6.9005),
-    rtables (>= 0.6.5.9004),
-    tern (>= 0.9.2.9001)
+    rlistings (>= 0.2.7),
+    rtables (>= 0.6.6),
+    tern (>= 0.9.3)
 Imports:
-    scda (>= 0.1.6.9012),
-    scda.2022 (>= 0.1.5.9002)
+    pharmaverseadam (>= 0.1.1),
+    random.cdisc.data (>= 0.3.14.9002)
 Suggests:
     broom,
     checkmate,

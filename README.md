@@ -1,16 +1,15 @@
 # scda.test
 
-Internal repository to store tests that utilize datasets from the `scda` package. Repository tests TLG sample templates to verify functionality and correct output. Template tests were migrated here from the `tern` package in February 2023.
+Internal repository to store tests that utilize datasets from the `random.cdisc.data` package. Repository tests TLG sample templates to verify functionality and correct output. Template tests were migrated here from the `tern` package in February 2023.
 
 ## Installation
 
 ### Installing Package Dependencies
 
-The `scda.test` package has several dependencies required to run the tests within this package. Before installing the `scda.test` repository, please ensure you have the latest versions of the `tern`, `scda`, and `scda.2022` packages installed. Installation instructions are provided for each at these links:
+The `scda.test` package has several dependencies required to run the tests within this package. Before installing the `scda.test` repository, please ensure you have the latest versions of the `tern` and `random.cdisc.data` packages installed. Installation instructions are provided for each at these links:
 
 - [`tern`](https://github.com/insightsengineering/tern#installation)
-- [`scda`](https://github.com/insightsengineering/scda#installation)
-- [`scda.2022`](https://github.com/insightsengineering/scda.2022#installation)
+- [`random.cdisc.data`](https://github.com/insightsengineering/random.cdisc.data#installation)
 
 ### Installing scda.test
 

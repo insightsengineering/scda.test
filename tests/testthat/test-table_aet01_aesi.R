@@ -182,8 +182,8 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
 })
 
 testthat::test_that("AET01_AESI Variant 3 works as expected", {
-  adsl <- synthetic_cdisc_dataset("latest", "adsl")
-  adae_mult <- synthetic_cdisc_dataset("latest", "adae")
+  adsl <- adsl_raw
+  adae_mult <- adae_raw
 
   adsl <- filter(adsl, SAFFL == "Y")
   adae_mult <- filter(adae_mult, ANL01FL == "Y" & SAFFL == "Y")
