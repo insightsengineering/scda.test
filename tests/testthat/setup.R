@@ -1,29 +1,28 @@
 # Extra libraries (suggested) for tests
 library(dplyr)
-library(scda.2022)
 library(tern)
 library(lubridate)
 
 # Data loading for tests
-adsl_raw <- scda::synthetic_cdisc_dataset("latest", "adsl")
-adab_raw <- scda::synthetic_cdisc_dataset("latest", "adab")
-adae_raw <- scda::synthetic_cdisc_dataset("latest", "adae")
-adaette_raw <- scda::synthetic_cdisc_dataset("latest", "adaette")
-adcm_raw <- scda::synthetic_cdisc_dataset("latest", "adcm")
-addv_raw <- scda::synthetic_cdisc_dataset("latest", "addv")
-adeg_raw <- scda::synthetic_cdisc_dataset("latest", "adeg")
-adex_raw <- scda::synthetic_cdisc_dataset("latest", "adex")
-adhy_raw <- scda::synthetic_cdisc_dataset("latest", "adhy")
-adlb_raw <- scda::synthetic_cdisc_dataset("latest", "adlb")
-admh_raw <- scda::synthetic_cdisc_dataset("latest", "admh")
-adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
-adpp_raw <- scda::synthetic_cdisc_dataset("latest", "adpp")
-adpc_raw <- scda::synthetic_cdisc_dataset("latest", "adpc")
-adqs_raw <- scda::synthetic_cdisc_dataset("latest", "adqs")
-adrs_raw <- scda::synthetic_cdisc_dataset("latest", "adrs")
-adsub_raw <- scda::synthetic_cdisc_dataset("latest", "adsub")
-adtte_raw <- scda::synthetic_cdisc_dataset("latest", "adtte")
-advs_raw <- scda::synthetic_cdisc_dataset("latest", "advs")
+adsl_raw <- random.cdisc.data::cadsl
+adab_raw <- random.cdisc.data::cadab
+adae_raw <- random.cdisc.data::cadae
+adaette_raw <- random.cdisc.data::cadaette
+adcm_raw <- random.cdisc.data::cadcm
+addv_raw <- random.cdisc.data::caddv
+adeg_raw <- random.cdisc.data::cadeg
+adex_raw <- random.cdisc.data::cadex
+adhy_raw <- random.cdisc.data::cadhy
+adlb_raw <- random.cdisc.data::cadlb
+admh_raw <- random.cdisc.data::cadmh
+adpc_raw <- random.cdisc.data::cadpc
+adpp_raw <- random.cdisc.data::cadpp
+adpc_raw <- random.cdisc.data::cadpc
+adqs_raw <- random.cdisc.data::cadqs
+adrs_raw <- random.cdisc.data::cadrs
+adsub_raw <- random.cdisc.data::cadsub
+adtte_raw <- random.cdisc.data::cadtte
+advs_raw <- random.cdisc.data::cadvs
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
