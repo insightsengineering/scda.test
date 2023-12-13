@@ -6,7 +6,8 @@ adsl <- pharmaverseadam::adsl %>%
   filter(ACTARM != "Screen Failure")
 
 adae <- pharmaverseadam::adae %>%
-  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)))
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y")
 
 adsl <- df_explicit_na(adsl)
 adae <- df_explicit_na(
@@ -50,9 +51,8 @@ adae <- adae %>%
     # SMQ02 = with_label(SMQ02NAM != "", aesi_label(adae$SMQ02NAM, adae$SMQ02SC)),
     # CQ01 = with_label(CQ01NAM != "", aesi_label(adae$CQ01NAM)),
     USUBJID_AESEQ = paste(USUBJID, AESEQ, sep = "@@") # Create unique ID per AE in dataset.
-  )
-# %>%
-#   filter(ANL01FL == "Y")
+  ) %>%
+  filter(ANL01FL == "Y")
 
 testthat::test_that("Safety Summary Variant 1 works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "SEV")

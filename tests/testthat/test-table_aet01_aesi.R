@@ -1,5 +1,8 @@
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- pharmaverseadam::adsl
+adae <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y",
+         AECONTRT = sample(c("Y", "N"), nrow(.), replace = TRUE, prob = c(0.02, 0.98)))
 
 adsl <- filter(adsl, SAFFL == "Y")
 adae <- filter(adae, ANL01FL == "Y" & SAFFL == "Y")
@@ -182,14 +185,16 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
 })
 
 testthat::test_that("AET01_AESI Variant 3 works as expected", {
-  adsl <- synthetic_cdisc_dataset("latest", "adsl")
-  adae_mult <- synthetic_cdisc_dataset("latest", "adae")
+  adsl <- pharmaverseadam::adsl %>%
+    filter(SAFFL == "Y") %>%
+    df_explicit_na()
 
-  adsl <- filter(adsl, SAFFL == "Y")
-  adae_mult <- filter(adae_mult, ANL01FL == "Y" & SAFFL == "Y")
-
-  adsl <- df_explicit_na(adsl)
-  adae_mult <- df_explicit_na(adae_mult)
+  adae_mult <- pharmaverseadam::adae %>%
+    mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+           ANL01FL = "Y",
+           AECONTRT = sample(c("Y", "N"), nrow(.), replace = TRUE, prob = c(0.02, 0.98))) %>%
+    filter(ANL01FL == "Y" & SAFFL == "Y") %>%
+    df_explicit_na()
 
   # for illustration purposes only, create AEREL1, AEREL2, AEACN1, AEACN2 from respective variables
   adae_mult <- adae_mult %>%
@@ -414,6 +419,7 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
   testthat::expect_snapshot(res)
 })
 
+# SMQ stuff will not work quite yet
 testthat::test_that("AET01_AESI Variant 4 works as expected", {
   adsl <- filter(adsl_raw, SAFFL == "Y")
   adae <- filter(adae_raw, ANL01FL == "Y" & SAFFL == "Y")
