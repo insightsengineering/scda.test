@@ -1,5 +1,13 @@
-adsl <- adsl_raw
-adae <- adae_raw
+set.seed(99)
+
+adsl <- pharmaverseadam::adsl %>%
+  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
+  filter(ACTARM != "Screen Failure")
+
+adae <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y")
 
 adsl <- df_explicit_na(adsl) %>% filter(TRT01A != "<Missing>")
 adae <- df_explicit_na(adae) %>%
@@ -112,7 +120,7 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[4, 1],
-    "cl A.1"
+    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[5:6, 1],
@@ -121,7 +129,7 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
 })
 
 testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment Groups)", {
-  adae2 <- adae %>% filter(ACTARM == "A: Drug X")
+  adae2 <- adae %>% filter(ACTARM == "Xanomeline High Dose")
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ACTARM") %>%
@@ -194,11 +202,11 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[4, 1],
-    "cl A.1"
+    "SKIN AND SUBCUTANEOUS TISSUE DISORDERS"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[5:6, 2],
-    c("100 (74.6%)", "10 (7.5%)")
+    c("0","0")
   )
 })
 
@@ -273,11 +281,11 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]])[4, 1],
-    "cl A.1"
+    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[5:6, 2],
-    c("100 (74.6%)", "10 (7.5%)")
+    c("69 (80.2%)", "46 (53.5%)")
   )
 })
 
