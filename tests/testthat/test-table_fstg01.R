@@ -153,4 +153,3 @@ testthat::test_that("FSTG01 variant 5 is produced correctly", {
 
   expect_snapshot_ggplot("v5", v5, width = 20, height = 5)
 })
-
