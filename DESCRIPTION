@@ -34,6 +34,7 @@ Suggests:
     checkmate,
     dplyr,
     forcats,
+    ggplot2 (>= 3.4.0),
     knitr,
     lubridate,
     stringr,
