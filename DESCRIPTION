@@ -37,6 +37,7 @@ Suggests:
     knitr,
     lubridate,
     stringr,
+    svglite (>= 2.1.2),
     testthat (>= 3.0),
     tibble,
     tidyr
