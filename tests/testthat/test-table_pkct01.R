@@ -20,8 +20,10 @@ testthat::test_that("PKCT01 is produced correctly", {
   l2 <- basic_table() %>%
     split_rows_by(
       var = "ARM",
-      split_fun = keep_split_levels(c("Xanomeline High Dose",
-                                      "Xanomeline Low Dose"))
+      split_fun = keep_split_levels(c(
+        "Xanomeline High Dose",
+        "Xanomeline Low Dose"
+      ))
     ) %>%
     split_rows_by(var = "PARAM", child_labels = "hidden") %>%
     analyze_vars_in_cols(
