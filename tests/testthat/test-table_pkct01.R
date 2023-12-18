@@ -1,12 +1,12 @@
-adpc <- adpc_raw
+adpc <- adpc_pharmaverse
 
 testthat::test_that("PKCT01 is produced correctly", {
   l <- basic_table() %>%
     split_rows_by(
       var = "ARM",
       split_fun = keep_split_levels(c(
-        "A: Drug X",
-        "C: Combination"
+        "Xanomeline High Dose",
+        "Xanomeline Low Dose"
       ))
     ) %>%
     split_rows_by(var = "PARAM", child_labels = "hidden") %>%
@@ -20,7 +20,8 @@ testthat::test_that("PKCT01 is produced correctly", {
   l2 <- basic_table() %>%
     split_rows_by(
       var = "ARM",
-      split_fun = keep_split_levels(c("A: Drug X", "C: Combination"))
+      split_fun = keep_split_levels(c("Xanomeline High Dose",
+                                      "Xanomeline Low Dose"))
     ) %>%
     split_rows_by(var = "PARAM", child_labels = "hidden") %>%
     analyze_vars_in_cols(
@@ -47,8 +48,8 @@ testthat::test_that("Specific PKCT01 features are present", {
       NFRLT = as.factor(NFRLT),
       AVALCAT1 = as.factor(AVALCAT1)
     ) %>%
-    filter(ACTARM %in% c("A: Drug X")) %>%
-    mutate(ACTARM = factor(ACTARM, levels = c("A: Drug X"))) %>%
+    filter(ACTARM %in% c("Xanomeline High Dose")) %>%
+    mutate(ACTARM = factor(ACTARM, levels = c("Xanomeline High Dose"))) %>%
     select(NFRLT, ACTARM, VISIT, AVAL, PARAM, AVALCAT1)
 
   # Row structure

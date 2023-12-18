@@ -1,6 +1,6 @@
 testthat::test_that("PKCL01 listing is produced correctly", {
-  adpc <- adpc_raw
-  analyte <- "Plasma Drug X"
+  adpc <- adpc_pharmaverse
+  analyte <- "Pharmacokinetic concentration of Xanomeline"
   out <- adpc %>%
     filter(PARAM == analyte) %>%
     select(ARM, USUBJID, VISIT, NFRLT, AFRLT, AVAL)
@@ -9,8 +9,8 @@ testthat::test_that("PKCL01 listing is produced correctly", {
     ARM = "Treatment Group",
     USUBJID = "Subject ID",
     VISIT = "Visit",
-    NFRLT = paste0("Nominal Sampling\nTime (", adpc$RELTMU[1], ")"),
-    AFRLT = paste0("Actual Time\nFrom First\nDose (", adpc$RELTMU[1], ")"),
+    NFRLT = paste0("Nominal Sampling\nTime (hr)"),
+    AFRLT = paste0("Actual Time\nFrom First\nDose (hr)"),
     AVAL = paste0("Concentration\n(", adpc$AVALU[1], ")")
   )
 
