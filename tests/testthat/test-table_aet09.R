@@ -1,8 +1,16 @@
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- pharmaverseadam::adsl %>%
+  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
+  filter(ACTARM != "Screen Failure") %>%
+  df_explicit_na()
+
+adae <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y") %>%
+  df_explicit_na()
 
 testthat::test_that("AET09 variant 1 is produced correctly, AE related to study drug", {
-  adae_r <- adae[adae$AEREL == "Y", ]
+  adae_r <- adae[adae$AEREL %in% c("PROBABLE", "POSSIBLE", "RMEOTE"), ]
 
   lyt <- basic_table() %>%
     split_cols_by(var = "ARM") %>%
@@ -44,7 +52,7 @@ testthat::test_that("AET09 variant 1 is produced correctly, AE related to study 
 })
 
 testthat::test_that("AET09 variant 2 is produced correctly, AE related to study drug (including high-level terms)", {
-  adae_r <- adae[adae$AEREL == "Y", ]
+  adae_r <- adae[adae$AEREL %in% c("PROBABLE", "POSSIBLE", "RMEOTE"), ]
 
   lyt <- basic_table() %>%
     split_cols_by(var = "ARM") %>%
