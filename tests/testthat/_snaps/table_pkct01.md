@@ -3,36 +3,28 @@
     Code
       res
     Output
-                         n     Mean    SD    SE    CV (%)   CV % Geometric Mean
-      —————————————————————————————————————————————————————————————————————————
-      A: Drug X                                                                
-        Plasma Drug X   1340   7.1    6.6    0.2    92.9            NA         
-        Plasma Drug Y    0      NA     NA    NA      NA             NA         
-        Urine Drug X    670    1.0    1.9    0.1   188.0            NA         
-        Urine Drug Y    670    1.0    1.9    0.1   188.0            NA         
-      C: Combination                                                           
-        Plasma Drug X   1320   7.2    6.7    0.2    93.7            NA         
-        Plasma Drug Y   1320   14.4   13.5   0.4    93.7            NA         
-        Urine Drug X    660    1.0    1.9    0.1   189.6            NA         
-        Urine Drug Y    660    1.0    1.9    0.1   189.6            NA         
+                                                       n     Mean   SD    SE    CV (%)   CV % Geometric Mean
+      ——————————————————————————————————————————————————————————————————————————————————————————————————————
+      Xanomeline High Dose                                                                                  
+        Pharmacokinetic concentration of Xanomeline   1339   0.6    0.7   0.0   108.9            NA         
+        Xanomeline Patch Dose                         247    54.0   0.0   0.0    0.0             0.0        
+      Xanomeline Low Dose                                                                                   
+        Pharmacokinetic concentration of Xanomeline   1343   0.6    0.7   0.0   109.3            NA         
+        Xanomeline Patch Dose                         251    54.0   0.0   0.0    0.0             0.0        
 
 ---
 
     Code
       res
     Output
-                        n_blq
-      ———————————————————————
-      A: Drug X              
-        Plasma Drug X    268 
-        Plasma Drug Y     0  
-        Urine Drug X     268 
-        Urine Drug Y     268 
-      C: Combination         
-        Plasma Drug X    264 
-        Plasma Drug Y    264 
-        Urine Drug X     264 
-        Urine Drug Y     264 
+                                                      n_blq
+      —————————————————————————————————————————————————————
+      Xanomeline High Dose                                 
+        Pharmacokinetic concentration of Xanomeline    333 
+        Xanomeline Patch Dose                           0  
+      Xanomeline Low Dose                                  
+        Pharmacokinetic concentration of Xanomeline    335 
+        Xanomeline Patch Dose                           0  
 
 # Specific PKCT01 features are present
 
@@ -41,29 +33,30 @@
     Output
       Summary of PK Concentrations by Nominal Time and Treatment: PK Evaluable
        Protocol: xxxxx
-      Analyte:  Plasma Drug X Treatment: A: Drug X
-      Analyte:  Urine Drug X Treatment: C: Combination
-      Analyte:  Urine Drug Y Treatment: A: Drug X
-      Analyte:  Plasma Drug Y Treatment: C: Combination
+      Analyte:  Pharmacokinetic concentration of Xanomeline Treatment: Xanomeline High Dose
+      Analyte:  Xanomeline Patch Dose Treatment: Xanomeline Low Dose
       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Cohort/Treatment                            Number                                                                                                      
         Visit                                       of                                                                                                        
-          Norminal Time from First Dose    n    <LTR/BLQ>s    Mean      SD     CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
+          Norminal Time from First Dose    n    <LTR/BLQ>s   Mean      SD      CV (%) Mean   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      A: Drug X                                                                                                                                               
-        Day 1                                                                                                                                                 
-          0                               402      402         0        0          NE              NE                 NE              0         0         0   
-          0.5                             134       0         12.6     1.51       12.0            12.5               12.2            12.6     9.72      15.6  
-          1                               134       0         16.2     1.63       10.0            16.1               10.1            16.2     12.6      19.9  
-          1.5                             134       0         15.6     1.46        9.3            15.6                9.3            15.5     12.3       19   
-          2                               134       0         13.4     1.35       10.1            13.4               10.0            13.3     10.8      16.5  
-          3                               134       0         8.47     1.25       14.7            8.38               15.0            8.4      5.88      10.9  
-          4                               402       0         4.79     1.01       21.2            4.69               21.9            4.79      2.7      7.09  
-          8                               402       0        0.348    0.179       51.6           0.303               58.2           0.318     0.076     0.866 
-          12                              402       0        0.0224   0.0189      84.4           0.0156              111.2          0.017     0.002     0.083 
-        Day 2                                                                                                                                                 
-          24                              402      402         0        0          NE              NE                 NE              0         0         0   
+      Xanomeline High Dose                                                                                                                                    
+        BASELINE                                                                                                                                              
+          0                               144       72        27      27.1        100.3            NE                 NE              27        0        54   
+          0.08                            72        0         0.1    0.00489       4.9            0.1                 4.9            0.1     0.0912     0.112 
+          0.5                             72        0        0.544   0.0241        4.4           0.543                4.4           0.543     0.499     0.603 
+          1                               72        0        0.927    0.037        4.0           0.926                4.0           0.926     0.859     1.02  
+          1.5                             72        0         1.2    0.0438        3.7            1.2                 3.6            1.2      1.12      1.31  
+          2                               72        0        1.39    0.0474        3.4            1.39                3.4            1.38     1.31       1.5  
+          4                               72        0        1.73    0.0521        3.0            1.73                3.0            1.73     1.65      1.84  
+          6                               72        0        1.82    0.0538        3.0            1.82                3.0            1.82     1.74      1.92  
+          8                               72        0        1.84    0.0545        3.0            1.84                3.0            1.84     1.76      1.94  
+          12                              72        0        0.551   0.0341        6.2            0.55                6.2           0.554     0.486     0.619 
+          16                              72        0        0.165   0.0181       11.0           0.164               11.1           0.165     0.134     0.198 
+          24                              216       0         18      25.5        141.6          0.225             191466.4         0.0177    0.01       54   
+          36                              72        72       0.005      0          0.0           0.005                0.0           0.005     0.005     0.005 
+          48                              216      144        18      25.5        141.7          0.111             1518935.1        0.005     0.005      54   
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       
       NE: Not Estimable
