@@ -41,4 +41,3 @@ testthat::test_that("PKPT02 is produced correctly for Drug X", {
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
-
