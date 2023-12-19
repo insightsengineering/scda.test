@@ -24,6 +24,9 @@ adsub_raw <- random.cdisc.data::cadsub
 adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
+# Data loading for pharmaverse
+adpp_pharmaverse <- pharmaverseadam::adpp
+
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
   checkmate::assert_number(depth, lower = 0, upper = 5)

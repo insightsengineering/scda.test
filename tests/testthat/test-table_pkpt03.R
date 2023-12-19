@@ -1,6 +1,6 @@
 # Data generation
-adpp <- adpp_raw
-adpp_plasma <- adpp %>% dplyr::filter(PPSPEC == "Plasma", AVISIT == "CYCLE 1 DAY 1")
+adpp <- adpp_pharmaverse
+adpp_plasma <- adpp %>% dplyr::filter(PPSPEC == "PLASMA")
 
 # Helper function
 threesigfmt <- function(x, ...) {
@@ -54,28 +54,14 @@ l <- basic_table() %>%
 
 # PKPT03
 testthat::test_that("PKPT03 Drug X is produced correctly", {
-  # Plasma Drug x
+  # Plasma COMPARTMENTAL
   adpp0 <- adpp_plasma %>%
-    dplyr::filter(PPCAT == "Plasma Drug X") %>%
+    dplyr::filter(PPCAT == "COMPARTMENTAL") %>%
     h_pkparam_sort() %>%
-    dplyr::mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", AVALU, ")")))
+    dplyr::mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", PPORRESU, ")")))
   result <- build_table(l, df = adpp0)
   main_title(result) <- paste("Summary of", unique(adpp0$PPSPEC), "PK Parameter by Treatment Arm, PK Population")
   subtitles(result) <- paste("Analyte:", unique(adpp0$PPCAT), "\nVisit:", unique(adpp0$AVISIT))
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-testthat::test_that("PKPT03 Drug Y is produced correctly", {
-  # Plasma Drug Y__
-  adpp1 <- adpp_plasma %>%
-    dplyr::filter(PPCAT == "Plasma Drug Y") %>%
-    h_pkparam_sort() %>%
-    dplyr::mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", AVALU, ")")))
-  result <- build_table(l, df = adpp1)
-  main_title(result) <- paste("Summary of", unique(adpp1$PPSPEC), "PK Parameter by Treatment Arm, PK Population")
-  subtitles(result) <- paste("Analyte:", unique(adpp1$PPCAT), "\nVisit:", unique(adpp1$AVISIT))
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
