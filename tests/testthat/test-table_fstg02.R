@@ -43,10 +43,9 @@ testthat::test_that("FSTG02 table variant 1 (Subgroup Analysis of Survival Durat
   testthat::expect_snapshot(res)
 
   # Add plot.
-  g_forest(
-    tbl = result,
-    draw = FALSE
-  )
+  v1 <- g_forest(tbl = result)
+
+  expect_snapshot_ggplot("v1", v1, width = 15, height = 5)
 })
 
 testthat::test_that("FSTG02 table variant 2 (specifying class variables and options for the treatment variable)", {
@@ -80,10 +79,9 @@ testthat::test_that("FSTG02 table variant 2 (specifying class variables and opti
   testthat::expect_snapshot(res)
 
   # Add plot.
-  g_forest(
-    tbl = result,
-    draw = FALSE
-  )
+  v2 <- g_forest(tbl = result)
+
+  expect_snapshot_ggplot("v2", v2, width = 15, height = 5)
 })
 
 testthat::test_that("FSTG02 table variant 3 (selecting columns and changing the alpha level)", {
@@ -105,10 +103,9 @@ testthat::test_that("FSTG02 table variant 3 (selecting columns and changing the 
   testthat::expect_snapshot(res)
 
   # Add plot.
-  g_forest(
-    tbl = result,
-    draw = FALSE
-  )
+  v3 <- g_forest(tbl = result)
+
+  expect_snapshot_ggplot("v3", v3, width = 10, height = 5)
 })
 
 testthat::test_that("FSTG02 table variant 4 (fixed symbol size) is produced correctly", {
@@ -135,8 +132,7 @@ testthat::test_that("FSTG02 table variant 4 (fixed symbol size) is produced corr
   testthat::expect_snapshot(res)
 
   # Add plot.
-  g_forest(
-    tbl = result,
-    draw = FALSE
-  )
+  v4 <- g_forest(tbl = result)
+
+  expect_snapshot_ggplot("v4", v4, width = 15, height = 5)
 })
