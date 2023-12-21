@@ -26,6 +26,8 @@ advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
 adpp_pharmaverse <- pharmaverseadam::adpp
+adsl_pharmaverse <- pharmaverseadam::adsl
+adpc_pharmaverse <- pharmaverseadam::adpc
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
