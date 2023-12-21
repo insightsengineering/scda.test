@@ -25,6 +25,7 @@ adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
+adpp_pharmaverse <- pharmaverseadam::adpp
 adsl_pharmaverse <- pharmaverseadam::adsl
 adpc_pharmaverse <- pharmaverseadam::adpc
 
