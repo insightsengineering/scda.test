@@ -30,35 +30,3 @@
         Median                       2.986e+01               2.977e+01      
         Min - Max              1.753e+01 - 4.871e+01   1.585e+01 - 4.757e+01
 
-# PKPT02 is produced correctly for Drug Y
-
-    Code
-      res
-    Output
-      PK Parameter                     ARM C        
-      ——————————————————————————————————————————————
-      AUCinf obs (day*ug/mL)                        
-        n                               132         
-        Mean (SD)              1.986e+02 (3.792e+01)
-        CV (%)                         19.1         
-        Geometric Mean               1.952e+02      
-        CV % Geometric Mean            18.9         
-        Median                       1.953e+02      
-        Min - Max              1.264e+02 - 3.183e+02
-      CL obs (ml/day/kg)                            
-        n                               132         
-        Mean (SD)              4.955e+00 (8.951e-01)
-        CV (%)                         18.1         
-        Geometric Mean               4.873e+00      
-        CV % Geometric Mean            18.7         
-        Median                       4.936e+00      
-        Min - Max              2.987e+00 - 7.211e+00
-      Cmax (ug/mL)                                  
-        n                               132         
-        Mean (SD)              2.990e+01 (5.550e+00)
-        CV (%)                         18.6         
-        Geometric Mean               2.935e+01      
-        CV % Geometric Mean            20.1         
-        Median                       2.969e+01      
-        Min - Max              1.406e+01 - 4.345e+01
-
