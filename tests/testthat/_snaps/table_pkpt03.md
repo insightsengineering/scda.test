@@ -3,38 +3,30 @@
     Code
       res
     Output
-      Summary of Plasma PK Parameter by Treatment Arm, PK Population
-      Analyte: Plasma Drug X 
-      Visit: CYCLE 1 DAY 1
+      Summary of PLASMA PK Parameter by Treatment Arm, PK Population
+      Analyte: COMPARTMENTAL 
+      Visit: 
       
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Treatment Arm                                                                                                             
-        PK Parameter              n    Mean    SD     CV (%)   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      ARM A                                                                                                                     
-        AUCinf obs (day*ug/mL)   134   203    37.7     18.6         199                18.7            197       125       311  
-        CL obs (ml/day/kg)       134   5.04   1.04     20.6         4.93               22.4            5.08     2.25      7.39  
-        Cmax (ug/mL)             134   30.2   6.24     20.6         29.6               21.0            29.9     17.5      48.7  
-      ARM C                                                                                                                     
-        AUCinf obs (day*ug/mL)   132   195    37.8     19.4         192                20.1            196       103       315  
-        CL obs (ml/day/kg)       132   5.01   0.985    19.7         4.91               21.1            4.97      2.1      7.49  
-        Cmax (ug/mL)             132    30    5.46     18.2         29.5               18.9            29.8     15.9      47.6  
-
-# PKPT03 Drug Y is produced correctly
-
-    Code
-      res
-    Output
-      Summary of Plasma PK Parameter by Treatment Arm, PK Population
-      Analyte: Plasma Drug Y 
-      Visit: CYCLE 1 DAY 1
-      
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Treatment Arm                                                                                                             
-        PK Parameter              n    Mean    SD     CV (%)   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      ARM C                                                                                                                     
-        AUCinf obs (day*ug/mL)   132   199    37.9     19.1         195                18.9            195       126       318  
-        CL obs (ml/day/kg)       132   4.96   0.895    18.1         4.87               18.7            4.94     2.99      7.21  
-        Cmax (ug/mL)             132   29.9   5.55     18.6         29.4               20.1            29.7     14.1      43.4  
+      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+      Treatment Arm                                                                                                                 
+        PK Parameter              n     Mean      SD      CV (%)   Geometric Mean   CV % Geometric Mean   Median   Minimum   Maximum
+      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+      Xan_Hi                                                                                                                        
+        AUCall (h*ug/ml)         336     19      0.57      3.0           19                 3.0            19.1      18       20.1  
+        AUClast (h*ug/ml)        84      19      0.569     3.0           19                 3.0             19       18        20   
+        Clast (ug/ml)            336   0.015    0.00302    20.2        0.0147              20.8           0.0149    0.01     0.0203 
+        Cmax (ug/ml)             84     1.84    0.0538     2.9          1.84                2.9            1.84     1.76      1.94  
+        Lambda z (/h)            84    0.302    0.0128     4.2         0.302                4.2           0.301     0.283     0.324 
+        No points Lambda z (U)   84      4         0       0.0           4                  0.0             4         4         4   
+        Tmax (h)                 84      8         0       0.0           8                  0.0             8         8         8   
+        t1/2 (h)                 84     2.3     0.0968     4.2          2.3                 4.2            2.31     2.14      2.45  
+      Xan_Lo                                                                                                                        
+        AUCall (h*ug/ml)         336     19      0.568     3.0           19                 3.0            18.9     18.1       20   
+        AUClast (h*ug/ml)        84      19      0.568     3.0          18.9                3.0            18.9      18        20   
+        Clast (ug/ml)            336   0.0144   0.00289    20.0        0.0142              20.0           0.0141   0.0102    0.0207 
+        Cmax (ug/ml)             84     1.84    0.0556     3.0          1.84                3.0            1.84     1.75      1.94  
+        Lambda z (/h)            84    0.304    0.0125     4.1         0.304                4.1           0.305     0.283     0.323 
+        No points Lambda z (U)   84      4         0       0.0           4                  0.0             4         4         4   
+        Tmax (h)                 84      8         0       0.0           8                  0.0             8         8         8   
+        t1/2 (h)                 84     2.28    0.0947     4.2          2.28                4.1            2.27     2.14      2.45  
 
