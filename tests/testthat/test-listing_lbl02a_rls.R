@@ -65,7 +65,7 @@ testthat::test_that("LBL02A_RLS listing is produced correctly", {
 
   testthat::expect_message(result <- as_listing(
     out,
-    key_cols = c("LBTEST_U", "TRT01A", "CPID"),
+    key_cols = c("TRT01A", "LBTEST_U", "CPID"),
     disp_cols = names(out),
     main_title = "Listing of Laboratory Abnormalities Defined by Roche Safety Lab Standardization",
     main_footer = paste(

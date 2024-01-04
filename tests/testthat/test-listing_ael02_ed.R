@@ -63,7 +63,7 @@ testthat::test_that("AEL02_ED listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("cent_subj", "ASR", "TRT01A"),
+    key_cols = c("TRT01A", "cent_subj", "ASR"),
     disp_cols = names(out),
     main_title = "Listing of Adverse Events (for early development studies)",
     main_footer = "(1) Outcome: 1 = fatal; 2 = not recovered/not resolved; 3 = recovered/resolved;

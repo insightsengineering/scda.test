@@ -9,9 +9,9 @@
                                                                                                                                                         Clinically              
                                                                                             Days Since             % Change     Standard     Marked      Relevant               
                                                                                    Study   Last Dose of              from      Reference    Reference     Change     Abnormality
-                   Lab Test (Unit)                 Treatment   Center/Patient ID    Day     Study Drug    Result   Baseline      Range        Range     Dec./Inc.       Flag    
+      Treatment                Lab Test (Unit)                 Center/Patient ID    Day     Study Drug    Result   Baseline      Range        Range     Dec./Inc.       Flag    
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Alanine Aminotransferase Measurement (U/L)   A: Drug X     BRA-1/id-105       80          0           4.3           NA   5.5 - 31.1    7 - 55     40% / 40%        LL     
+      A: Drug X   Alanine Aminotransferase Measurement (U/L)     BRA-1/id-105       80          0           4.3           NA   5.5 - 31.1    7 - 55     40% / 40%        LL     
                                                                                     149         69         24.7          0.0   5.5 - 31.1    7 - 55     40% / 40%               
                                                                                     314        165         24.9          0.7   5.5 - 31.1    7 - 55     40% / 40%               
                                                                                     398         84          3.7        -85.2   5.5 - 31.1    7 - 55     40% / 40%        LL     

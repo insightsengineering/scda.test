@@ -51,7 +51,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("CRTNPT", "AGSXRC", "TRT01A", "AVISIT", "ADY"),
+    key_cols = c("TRT01A", "CRTNPT", "AGSXRC", "AVISIT", "ADY"),
     disp_cols = names(out),
     main_title = "Listing of ECG Data: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
