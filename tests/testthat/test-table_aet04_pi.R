@@ -33,8 +33,14 @@ criteria_fun <- function(tr) {
   inherits(tr, "ContentRow")
 }
 
-adsl <- adsl_raw
-adae_max <- adae_raw %>%
+adsl <- pharmaverseadam::adsl %>%
+  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
+  filter(ACTARM != "Screen Failure")
+
+adae_max <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y") %>%
   dplyr::group_by(ACTARM, USUBJID, AEBODSYS, AEDECOD) %>%
   dplyr::summarize(
     MAXAETOXGR = max(as.numeric(AETOXGR))
