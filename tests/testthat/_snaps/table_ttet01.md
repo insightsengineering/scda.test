@@ -14,7 +14,7 @@
         Median                                NA                NA                9.4      
           95% CI                           (9.3, NA)         (9.4, NA)         (7.6, NA)   
         25% and 75%-ile                     5.6, NA           5.6, NA           5.0, NA    
-        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                                
         p-value (log-rank)                                    0.9998            0.1541     
         Hazard Ratio                                           1.00              1.29      
@@ -36,8 +36,6 @@
       —————————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       —————————————————————————————————————————————————————————————————————————————————————
       
 
@@ -57,7 +55,7 @@
         Median                                NA                9.4               NA       
           95% CI                           (9.3, NA)         (7.6, NA)         (9.4, NA)   
         25% and 75%-ile                     5.6, NA           5.0, NA           5.6, NA    
-        Range                           0.5 to 16.4 {1}   0.5 to 16.3 {2}   0.9 to 16.3 {3}
+        Range                           0.5 to 16.4 {1}   0.5 to 16.3 {1}   0.9 to 16.3 {1}
       Unstratified Analysis                                                                
         p-value (log-rank)                  0.9998            0.1480                       
         Hazard Ratio                         1.00              1.29                        
@@ -79,8 +77,6 @@
       —————————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       —————————————————————————————————————————————————————————————————————————————————————
       
 
@@ -98,7 +94,7 @@
         Median                             NA                NA                9.4      
           95% CI                        (9.3, NA)         (9.4, NA)         (7.6, NA)   
         25% and 75%-ile                  5.6, NA           5.6, NA           5.0, NA    
-        Range                        0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                        0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                             
         p-value (log-rank)                                 0.9998            0.1541     
         Hazard Ratio                                        1.00              1.29      
@@ -110,8 +106,6 @@
       ——————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       ——————————————————————————————————————————————————————————————————————————————————
       
 
@@ -131,7 +125,7 @@
         Median                              NA                NA                9.4      
           90% CI                         (9.6, NA)         (9.6, NA)         (7.7, NA)   
         25% and 75%-ile                   5.6, NA           5.6, NA           5.0, NA    
-        Range                         0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                         0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                              
         p-value (log-rank)                                  0.9998            0.1541     
         Hazard Ratio                                         1.00              1.29      
@@ -146,8 +140,6 @@
       ———————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       ———————————————————————————————————————————————————————————————————————————————————
       
 
@@ -167,7 +159,7 @@
         Median                                NA                NA                9.4      
           95% CI                           (9.3, NA)         (9.4, NA)         (7.6, NA)   
         25% and 75%-ile                     5.6, NA           5.6, NA           5.0, NA    
-        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                                
         p-value (log-rank)                                    0.9998            0.1541     
         Hazard Ratio                                           1.00              1.29      
@@ -186,8 +178,6 @@
       —————————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       —————————————————————————————————————————————————————————————————————————————————————
       
 
@@ -207,7 +197,7 @@
         Median                                NA                NA                9.4      
           95% CI                           (9.3, NA)         (9.4, NA)         (7.6, NA)   
         25% and 75%-ile                     5.6, NA           5.6, NA           5.0, NA    
-        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                                
         p-value (log-rank)                                    0.9998            0.1541     
         Hazard Ratio                                           1.00              1.29      
@@ -222,8 +212,6 @@
       —————————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       —————————————————————————————————————————————————————————————————————————————————————
       
 
@@ -243,7 +231,7 @@
         Median                                NA                NA                9.4      
           95% CI                           (9.3, NA)         (9.4, NA)         (7.6, NA)   
         25% and 75%-ile                     5.6, NA           5.6, NA           5.0, NA    
-        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {2}   0.5 to 16.3 {3}
+        Range                           0.5 to 16.4 {1}   0.9 to 16.3 {1}   0.5 to 16.3 {1}
       Unstratified Analysis                                                                
         p-value (log-rank)                                    0.9998            0.1541     
         p-value (wald)                                        0.9998            0.1552     
@@ -260,8 +248,6 @@
       —————————————————————————————————————————————————————————————————————————————————————
       
       {1} - Censored observation: range maximum
-      {2} - Censored observation: range maximum
-      {3} - Censored observation: range maximum
       —————————————————————————————————————————————————————————————————————————————————————
       
 

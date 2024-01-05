@@ -1,15 +1,20 @@
 testthat::test_that("PKPL01 listing is produced correctly", {
-  drug_a <- "Plasma Drug X"
-  spec <- "Plasma"
-  adpp <- adpp_raw
+  drug_a <- "Xanomeline Low Dose"
+  spec <- "PLASMA"
+  adpp <- adpp_pharmaverse
   adpp_x <- adpp %>% filter(
-    PPCAT == drug_a,
+    ARM == drug_a,
     PPSPEC == spec
   )
 
+  # tmp solution
+  adpp_x$AVISIT <- rep(c("visit 1", "visit 2", "visit 3"))
+
   out <- adpp_x %>%
-    mutate(PARAM = paste0(PARAM, " (", AVALU, ")")) %>%
+    mutate(PARAM = paste0(PARAMCD, " (", PPORRESU, ")")) %>%
+    mutate(TRT01A = TRT01A.x) %>% # This is a temp fix
     select(TRT01A, USUBJID, AVISIT, PARAM, AVAL) %>%
+    unique() %>% # This is a temp fix, as avisit was added this way
     tidyr::pivot_wider(
       id_cols = c(TRT01A, USUBJID, AVISIT),
       names_from = PARAM,

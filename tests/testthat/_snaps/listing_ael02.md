@@ -5,63 +5,63 @@
     Output
       Listing of Adverse Events
       
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-                                                                                                Date of                                                                                         
-                                                                               Adverse        First Study     Study       AE                  Most      Caused by                         Action
-                                                                             Event MedDRA         Drug        Day of   Duration              Extreme      Study     Outcome   Treatment   Taken 
-      Center/Patient ID            Age/Sex/Race              Treatment      Preferred Term   Administration   Onset    in Days    Serious   Intensity     Drug        (1)      for AE      (2)  
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-        BRA-1/id-134                47/M/WHITE               A: Drug X      dcd B.2.1.2.1      04NOV2020       162       173        No      MODERATE       No          5         Yes        2   
-                                                                            dcd D.1.1.4.2      04NOV2020       196       166        No      MODERATE       No          5         No         2   
-                                                                            dcd A.1.1.1.2      04NOV2020       321       149        Yes     MODERATE       No          5         Yes        2   
-                                                                            dcd A.1.1.1.2      04NOV2020       393        43        Yes     MODERATE       No          5         No         5   
-        BRA-1/id-141                35/F/WHITE             C: Combination   dcd B.2.1.2.1      25JUL2020       387        11        No      MODERATE       No          3         Yes        1   
-                                                                            dcd D.2.1.5.3      25JUL2020       455       628        No        MILD         Yes         3         No         1   
-                                                                            dcd A.1.1.1.1      25JUL2020       739        36        No        MILD         No          4         Yes        3   
-                                                                            dcd A.1.1.1.2      25JUL2020       899       139        Yes     MODERATE       No          4         Yes        2   
-                                                                            dcd A.1.1.1.1      25JUL2020       951        66        No        MILD         No          5         No         1   
-                                                                            dcd D.1.1.1.1      25JUL2020       1093       3         Yes      SEVERE        Yes         1         No         6   
-        BRA-1/id-236      32/M/BLACK OR AFRICAN AMERICAN     B: Placebo     dcd B.1.1.1.1      15JAN2021        33       614        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd B.1.1.1.1      15JAN2021       271       775        Yes      SEVERE        Yes         1         Yes        6   
-                                                                            dcd B.1.1.1.1      15JAN2021       1051       7         Yes      SEVERE        Yes         1         Yes        6   
-        BRA-1/id-265                25/M/WHITE             C: Combination   dcd C.2.1.2.1      07OCT2019        84        78        No      MODERATE       Yes         2         Yes        5   
-                                                                            dcd D.1.1.4.2      07OCT2019       349       285        No      MODERATE       No          3         Yes        7   
-                                                                            dcd D.1.1.1.1      07OCT2019       685        37        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd C.1.1.1.3      07OCT2019       705        66        No       SEVERE        Yes         4         Yes        7   
-         BRA-1/id-42      36/M/BLACK OR AFRICAN AMERICAN     A: Drug X      dcd C.2.1.2.1      01JAN2020        39       506        No      MODERATE       Yes         2         No         6   
-                                                                            dcd D.1.1.1.1      01JAN2020        64       630        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd C.2.1.2.1      01JAN2020        95       306        No      MODERATE       Yes         5         No         2   
-                                                                            dcd A.1.1.1.2      01JAN2020       160       259        Yes     MODERATE       No          2         Yes        2   
-                                                                            dcd B.2.2.3.1      01JAN2020       292        50        Yes       MILD         No          3         No         2   
-                                                                            dcd A.1.1.1.2      01JAN2020       459       195        Yes     MODERATE       No          5         Yes        2   
-                                                                            dcd B.1.1.1.1      01JAN2020       470       131        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd A.1.1.1.2      01JAN2020       475       113        Yes     MODERATE       No          4         Yes        2   
-                                                                            dcd C.1.1.1.3      01JAN2020       496       162        No       SEVERE        Yes         5         Yes        2   
-                                                                            dcd B.1.1.1.1      01JAN2020       641        15        Yes      SEVERE        Yes         1         Yes        6   
-         BRA-1/id-65      25/F/BLACK OR AFRICAN AMERICAN     B: Placebo     dcd C.2.1.2.1      15JUL2019       217       359        No      MODERATE       Yes         2         Yes        2   
-                                                                            dcd D.2.1.5.3      15JUL2019       286       174        No        MILD         Yes         3         Yes        2   
-                                                                            dcd B.1.1.1.1      15JUL2019       349       441        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd C.1.1.1.3      15JUL2019       696        7         No       SEVERE        Yes         6         No         3   
-         BRA-1/id-93                34/F/ASIAN               A: Drug X      dcd D.1.1.4.2      20JUN2020        44        47        No      MODERATE       No          5         Yes        2   
-                                                                            dcd D.2.1.5.3      20JUN2020        79       300        No        MILD         Yes         5         No         3   
-                                                                            dcd A.1.1.1.1      20JUN2020       136        78        No        MILD         No          3         Yes        2   
-                                                                            dcd D.2.1.5.3      20JUN2020       260       305        No        MILD         Yes         5         No         2   
-                                                                            dcd C.1.1.1.3      20JUN2020       281       106        No       SEVERE        Yes         5         Yes        2   
-                                                                            dcd D.1.1.1.1      20JUN2020       316       250        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd B.1.1.1.1      20JUN2020       523        24        Yes      SEVERE        Yes         1         No         6   
-                                                                            dcd D.2.1.5.3      20JUN2020       566        40        No        MILD         Yes         6         No         3   
-                                                                            dcd B.2.2.3.1      20JUN2020       596        10        Yes       MILD         No          3         Yes        2   
-        BRA-11/id-237               64/F/ASIAN             C: Combination   dcd D.2.1.5.3      10MAR2020       157       564        No        MILD         Yes         3         No         6   
-                                                                            dcd C.1.1.1.3      10MAR2020       340       239        No       SEVERE        Yes         4         No         5   
-                                                                            dcd B.2.1.2.1      10MAR2020       1068       13        No      MODERATE       No          3         No         3   
-        BRA-11/id-321               33/F/ASIAN             C: Combination   dcd A.1.1.1.1      06OCT2020        37       129        No        MILD         No          5         No         2   
-                                                                            dcd A.1.1.1.1      06OCT2020       320       481        No        MILD         No          5         No         2   
-                                                                            dcd C.2.1.2.1      06OCT2020       406       394        No      MODERATE       Yes         4         No         2   
-                                                                            dcd A.1.1.1.2      06OCT2020       427       335        Yes     MODERATE       No          4         No         6   
-                                                                            dcd D.2.1.5.3      06OCT2020       427       327        No        MILD         Yes         3         No         2   
-                                                                            dcd D.2.1.5.3      06OCT2020       627       388        No        MILD         Yes         5         No         2   
-                                                                            dcd A.1.1.1.1      06OCT2020       640       168        No        MILD         No          3         Yes        2   
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+      —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+                                                                                           Date of                                                                                         
+                                                                          Adverse        First Study     Study       AE                  Most      Caused by                         Action
+                                                                        Event MedDRA         Drug        Day of   Duration              Extreme      Study     Outcome   Treatment   Taken 
+      Treatment   Center/Patient ID            Age/Sex/Race            Preferred Term   Administration   Onset    in Days    Serious   Intensity     Drug        (1)      for AE      (2)  
+      —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+      A: Drug X     BRA-1/id-134                47/M/WHITE             dcd B.2.1.2.1      04NOV2020       162       173        No      MODERATE       No          5         Yes        2   
+                                                                       dcd D.1.1.4.2      04NOV2020       196       166        No      MODERATE       No          5         No         2   
+                                                                       dcd A.1.1.1.2      04NOV2020       321       149        Yes     MODERATE       No          5         Yes        2   
+                                                                       dcd A.1.1.1.2      04NOV2020       393        43        Yes     MODERATE       No          5         No         5   
+                     BRA-1/id-42      36/M/BLACK OR AFRICAN AMERICAN   dcd C.2.1.2.1      01JAN2020        39       506        No      MODERATE       Yes         2         No         6   
+                                                                       dcd D.1.1.1.1      01JAN2020        64       630        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd C.2.1.2.1      01JAN2020        95       306        No      MODERATE       Yes         5         No         2   
+                                                                       dcd A.1.1.1.2      01JAN2020       160       259        Yes     MODERATE       No          2         Yes        2   
+                                                                       dcd B.2.2.3.1      01JAN2020       292        50        Yes       MILD         No          3         No         2   
+                                                                       dcd A.1.1.1.2      01JAN2020       459       195        Yes     MODERATE       No          5         Yes        2   
+                                                                       dcd B.1.1.1.1      01JAN2020       470       131        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd A.1.1.1.2      01JAN2020       475       113        Yes     MODERATE       No          4         Yes        2   
+                                                                       dcd C.1.1.1.3      01JAN2020       496       162        No       SEVERE        Yes         5         Yes        2   
+                                                                       dcd B.1.1.1.1      01JAN2020       641        15        Yes      SEVERE        Yes         1         Yes        6   
+                     BRA-1/id-93                34/F/ASIAN             dcd D.1.1.4.2      20JUN2020        44        47        No      MODERATE       No          5         Yes        2   
+                                                                       dcd D.2.1.5.3      20JUN2020        79       300        No        MILD         Yes         5         No         3   
+                                                                       dcd A.1.1.1.1      20JUN2020       136        78        No        MILD         No          3         Yes        2   
+                                                                       dcd D.2.1.5.3      20JUN2020       260       305        No        MILD         Yes         5         No         2   
+                                                                       dcd C.1.1.1.3      20JUN2020       281       106        No       SEVERE        Yes         5         Yes        2   
+                                                                       dcd D.1.1.1.1      20JUN2020       316       250        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd B.1.1.1.1      20JUN2020       523        24        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd D.2.1.5.3      20JUN2020       566        40        No        MILD         Yes         6         No         3   
+                                                                       dcd B.2.2.3.1      20JUN2020       596        10        Yes       MILD         No          3         Yes        2   
+                    BRA-11/id-345               37/F/WHITE             dcd B.2.1.2.1      18AUG2020        22        38        No      MODERATE       No          3         Yes        5   
+                                                                       dcd D.1.1.4.2      18AUG2020       133       315        No      MODERATE       No          6         No         3   
+                                                                       dcd A.1.1.1.1      18AUG2020       570        3         No        MILD         No          5         No         2   
+                                                                       dcd B.1.1.1.1      18AUG2020       1009       35        Yes      SEVERE        Yes         1         No         6   
+                    BRA-11/id-397               38/M/ASIAN             dcd B.2.1.2.1      27JUN2020       247       638        No      MODERATE       No          2         Yes        6   
+                                                                       dcd D.1.1.4.2      27JUN2020       305       661        No      MODERATE       No          2         No         2   
+                                                                       dcd D.1.1.4.2      27JUN2020       328       251        No      MODERATE       No          5         Yes        1   
+                                                                       dcd D.1.1.1.1      27JUN2020       516       441        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd D.2.1.5.3      27JUN2020       699       236        No        MILD         Yes         3         No         1   
+                                                                       dcd B.1.1.1.1      27JUN2020       1011       30        Yes      SEVERE        Yes         1         Yes        6   
+                    BRA-11/id-50      26/M/BLACK OR AFRICAN AMERICAN   dcd D.1.1.4.2      28APR2019       108        67        No      MODERATE       No          5         No         5   
+                                                                       dcd C.1.1.1.3      28APR2019       437        39        No       SEVERE        Yes         3         No         7   
+                                                                       dcd A.1.1.1.2      28APR2019       1007       68        Yes     MODERATE       No          3         Yes        2   
+                    BRA-13/id-177               24/M/WHITE             dcd B.2.1.2.1      30AUG2020        4        335        No      MODERATE       No          2         No         2   
+                                                                       dcd D.2.1.5.3      30AUG2020       122       701        No        MILD         Yes         5         Yes        5   
+                                                                       dcd B.1.1.1.1      30AUG2020       249       470        Yes      SEVERE        Yes         1         No         6   
+                                                                       dcd C.1.1.1.3      30AUG2020       586       450        No       SEVERE        Yes         3         Yes        3   
+                                                                       dcd B.2.1.2.1      30AUG2020       739       289        No      MODERATE       No          2         Yes        2   
+                                                                       dcd B.1.1.1.1      30AUG2020       1012       33        Yes      SEVERE        Yes         1         No         6   
+                    BRA-14/id-23                37/M/ASIAN             dcd B.2.1.2.1      06NOV2019       588       134        No      MODERATE       No          5         Yes        2   
+                                                                       dcd D.2.1.5.3      06NOV2019       594       135        No        MILD         Yes         4         Yes        3   
+                                                                       dcd C.1.1.1.3      06NOV2019       662        40        No       SEVERE        Yes         3         Yes        7   
+                    BRA-15/id-36                38/F/ASIAN             dcd D.1.1.4.2      08JAN2020       114       413        No      MODERATE       No          3         Yes        6   
+                                                                       dcd B.1.1.1.1      08JAN2020       372       154        Yes      SEVERE        Yes         1         Yes        6   
+                                                                       dcd D.1.1.4.2      08JAN2020       485       157        No      MODERATE       No          3         Yes        3   
+                                                                       dcd A.1.1.1.2      08JAN2020       573       134        Yes     MODERATE       No          3         Yes        2   
+                    BRA-2/id-296                44/F/ASIAN             dcd B.2.1.2.1      22JAN2021        95       431        No      MODERATE       No          5         Yes        7   
+      —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       
       (1) Outcome: 1 = fatal; 2 = not recovered/not resolved; 3 = recovered/resolved;
           4 = recovered/resolved with sequelae; 5 = recovering/resolving; 6 = unknown.

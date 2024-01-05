@@ -20,6 +20,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
 
   testthat::expect_message(result <- as_listing(
     out,
+    key_cols = "ARMCD",
     disp_cols = names(out),
     main_title = "Listing of Patients with Study Drug Withdrawn Due to Adverse Events",
     subtitles = "Population: All Patients",
