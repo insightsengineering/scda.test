@@ -73,7 +73,7 @@ testthat::test_that("VSL01 listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("CRTNPT", "AGSXRC", "TRT01A", "AVISIT"),
+    key_cols = c("TRT01A", "CRTNPT", "AGSXRC", "AVISIT"),
     disp_cols = names(out),
     main_title = "Listing of Vital Signs: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are

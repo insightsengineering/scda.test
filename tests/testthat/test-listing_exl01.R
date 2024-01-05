@@ -21,7 +21,7 @@ testthat::test_that("EXL01 listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("CRTNPT", "AVISIT"),
+    key_cols = c("TRT01A", "CRTNPT", "AVISIT"),
     disp_cols = names(out),
     main_title = "Listing of Exposure to Study Drug"
   ) %>% head(50)

@@ -22,7 +22,7 @@ testthat::test_that("AEL04 listing is produced correctly", {
 
   testthat::expect_message(result <- as_listing(
     out,
-    key_cols = "ID",
+    key_cols = c("TRT01A", "ID"),
     disp_cols = names(out),
     main_title = "Listing of Patient Deaths"
   ) %>% head(50), "sorting incoming data by key columns")

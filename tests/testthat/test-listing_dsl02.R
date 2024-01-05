@@ -29,6 +29,7 @@ testthat::test_that("DSL02 listing is produced correctly", {
 
   testthat::expect_message(result <- as_listing(
     out,
+    key_cols = "TRT01A",
     disp_cols = names(out),
     main_title = "Listing of Patients Who Discontinued Early from Study"
   ) %>% head(50), "sorting incoming data by key columns")
