@@ -8,9 +8,9 @@
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
                                                                                                   Days Since                                  NCI 
                                                                              Study               Last Dose of                   Lab Normal   CTCAE
-                    Lab Test                 Treatment   Center/Patient ID    Day      Date       Study Drug    Result   Unit     Range      Grade
+      Treatment                 Lab Test                 Center/Patient ID    Day      Date       Study Drug    Result   Unit     Range      Grade
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Alanine Aminotransferase Measurement   A: Drug X     BRA-1/id-105       80     27MAY2020        0           4.3    U/L    7.0 - 55.0    L4  
+      A: Drug X   Alanine Aminotransferase Measurement     BRA-1/id-105       80     27MAY2020        0           4.3    U/L    7.0 - 55.0    L4  
                                                                               398    10APR2021       318          3.7    U/L    7.0 - 55.0    L3  
                                                             CAN-1/id-18       465    12APR2022        0           1.8    U/L    7.0 - 55.0    L2  
                                                            CHN-1/id-133       127    13DEC2020        0           5.6    U/L    7.0 - 55.0    L2  
