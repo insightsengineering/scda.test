@@ -1,5 +1,3 @@
-set.seed(99)
-
 adsl <- adsl_pharmaverse
 adae <- adae_pharmaverse
 
