@@ -1,8 +1,5 @@
-adsl <- pharmaverseadam::adsl
-adae <- pharmaverseadam::adae %>%
-  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
-         ANL01FL = "Y",
-         AECONTRT = sample(c("Y", "N"), nrow(.), replace = TRUE, prob = c(0.02, 0.98)))
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 adsl <- filter(adsl, SAFFL == "Y")
 adae <- filter(adae, ANL01FL == "Y" & SAFFL == "Y")
@@ -185,15 +182,9 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
 })
 
 testthat::test_that("AET01_AESI Variant 3 works as expected", {
-  adsl <- pharmaverseadam::adsl %>%
-    filter(SAFFL == "Y") %>%
-    df_explicit_na()
+  adsl <- adsl_pharmaverse
 
-  adae_mult <- pharmaverseadam::adae %>%
-    mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
-           ANL01FL = "Y",
-           AECONTRT = sample(c("Y", "N"), nrow(.), replace = TRUE, prob = c(0.02, 0.98))) %>%
-    filter(ANL01FL == "Y" & SAFFL == "Y") %>%
+  adae_mult <- adae_pharmaverse %>%
     df_explicit_na()
 
   # for illustration purposes only, create AEREL1, AEREL2, AEACN1, AEACN2 from respective variables

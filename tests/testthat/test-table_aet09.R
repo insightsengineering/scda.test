@@ -1,12 +1,7 @@
-adsl <- pharmaverseadam::adsl %>%
-  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
-         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
-  filter(ACTARM != "Screen Failure") %>%
+adsl <- adsl_pharmaverse %>%
   df_explicit_na()
 
-adae <- pharmaverseadam::adae %>%
-  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
-         ANL01FL = "Y") %>%
+adae <- adae_pharmaverse %>%
   df_explicit_na()
 
 testthat::test_that("AET09 variant 1 is produced correctly, AE related to study drug", {

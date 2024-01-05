@@ -28,6 +28,16 @@ advs_raw <- random.cdisc.data::cadvs
 adpp_pharmaverse <- pharmaverseadam::adpp
 adsl_pharmaverse <- pharmaverseadam::adsl
 adpc_pharmaverse <- pharmaverseadam::adpc
+set.seed(99)
+adsl_pharmaverse <- pharmaverseadam::adsl %>%
+  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
+  filter(ACTARM != "Screen Failure")
+
+adae_pharmaverse <- pharmaverseadam::adae %>%
+  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
+         ANL01FL = "Y")
+set.seed(NULL)
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr

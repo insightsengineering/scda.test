@@ -1,13 +1,7 @@
 # Tests the single variant of AET10
 
-adsl <- pharmaverseadam::adsl %>%
-  mutate(DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
-         DCSREAS = with_label(DCSREAS, "Discontinuation Reason")) %>%
-  filter(ACTARM != "Screen Failure")
-
-adae <- pharmaverseadam::adae %>%
-  mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
-         ANL01FL = "Y")
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET10 default variant is produced correctly", {
   result1 <- basic_table() %>%

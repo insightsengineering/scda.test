@@ -1,9 +1,7 @@
 # Test all variants of AET02
 
-adsl <- pharmaverseadam::adsl  %>%
-  filter(ACTARM != "Screen Failure")
-adae <- pharmaverseadam::adae %>%
-  mutate(ANL01FL = "Y")
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 # Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
 adsl <- df_explicit_na(adsl)
