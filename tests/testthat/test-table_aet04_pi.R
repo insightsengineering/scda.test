@@ -41,8 +41,10 @@ adae_max <- adae_pharmaverse %>%
   ) %>%
   dplyr::ungroup() %>%
   dplyr::mutate(
+    ACTARM = factor(ACTARM),
     MAXAETOXGR = factor(MAXAETOXGR),
-    AEDECOD = droplevels(AEDECOD)
+    AEBODSYS = factor(AEBODSYS),
+    AEDECOD = factor(AEDECOD)
   )
 
 testthat::test_that("AET04_PI full table is produced correctly", {
