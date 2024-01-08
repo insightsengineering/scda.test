@@ -23,88 +23,88 @@
 <g clip-path='url(#cpMC4wMHwxNDQwLjAwfDAuMDB8MzYwLjAw)'>
 </g>
 <defs>
-  <clipPath id='cpMjcuMDB8MTA4MC4wMHwwLjAwfDMyNS44Mw=='>
-    <rect x='27.00' y='0.000000000000057' width='1053.00' height='325.83' />
+  <clipPath id='cpMjcuMDB8MTA4MC4wMHwwLjAwfDMyNS42OA=='>
+    <rect x='27.00' y='0.00' width='1053.00' height='325.68' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMjcuMDB8MTA4MC4wMHwwLjAwfDMyNS44Mw==)'>
-<line x1='37.40' y1='74.05' x2='1069.60' y2='74.05' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='474.71' y='33.92' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='58.05px' lengthAdjust='spacingAndGlyphs'>B: Placebo</text>
-<line x1='344.70' y1='44.43' x2='604.72' y2='44.43' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='746.54' y='33.92' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.03px' lengthAdjust='spacingAndGlyphs'>A: Drug X</text>
-<line x1='620.47' y1='44.43' x2='872.61' y2='44.43' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='37.40' y='63.54' style='font-size: 12.00px; font-family: "Arial";' textLength='116.06px' lengthAdjust='spacingAndGlyphs'>Baseline Risk Factors</text>
-<text x='37.40' y='93.16' style='font-size: 12.00px; font-family: "Arial";' textLength='60.03px' lengthAdjust='spacingAndGlyphs'>All Patients</text>
-<text x='37.40' y='122.78' style='font-size: 12.00px; font-family: "Arial";' textLength='20.69px' lengthAdjust='spacingAndGlyphs'>Sex</text>
-<text x='37.40' y='152.40' style='font-size: 12.00px; font-family: "Arial";' textLength='20.66px' lengthAdjust='spacingAndGlyphs'>    F</text>
-<text x='37.40' y='182.02' style='font-size: 12.00px; font-family: "Arial";' textLength='23.34px' lengthAdjust='spacingAndGlyphs'>    M</text>
-<text x='37.40' y='211.65' style='font-size: 12.00px; font-family: "Arial";' textLength='160.76px' lengthAdjust='spacingAndGlyphs'>Categorical Level Biomarker 2</text>
-<text x='37.40' y='241.27' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>    LOW</text>
-<text x='37.40' y='270.89' style='font-size: 12.00px; font-family: "Arial";' textLength='62.01px' lengthAdjust='spacingAndGlyphs'>    MEDIUM</text>
-<text x='37.40' y='300.51' style='font-size: 12.00px; font-family: "Arial";' textLength='43.34px' lengthAdjust='spacingAndGlyphs'>    HIGH</text>
-<text x='305.30' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='35.35px' lengthAdjust='spacingAndGlyphs'>Total n</text>
-<text x='305.30' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>268</text>
-<text x='305.30' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>161</text>
-<text x='305.30' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>107</text>
-<text x='305.30' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>95</text>
-<text x='305.30' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>93</text>
-<text x='305.30' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>80</text>
-<text x='380.15' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>n</text>
-<text x='380.15' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>134</text>
-<text x='380.15' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>82</text>
-<text x='380.15' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>52</text>
-<text x='380.15' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>45</text>
-<text x='380.15' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>56</text>
-<text x='380.15' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>33</text>
-<text x='466.83' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='64.72px' lengthAdjust='spacingAndGlyphs'>Responders</text>
-<text x='466.83' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>47</text>
-<text x='466.83' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>25</text>
-<text x='466.83' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>22</text>
-<text x='466.83' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>21</text>
-<text x='466.83' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>16</text>
-<text x='466.83' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
-<text x='561.38' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='76.05px' lengthAdjust='spacingAndGlyphs'>Response (%)</text>
-<text x='561.38' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>35.1%</text>
-<text x='561.38' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>30.5%</text>
-<text x='561.38' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>42.3%</text>
-<text x='561.38' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>46.7%</text>
-<text x='561.38' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>28.6%</text>
-<text x='561.38' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>30.3%</text>
-<text x='651.99' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>n</text>
-<text x='651.99' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>134</text>
-<text x='651.99' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>79</text>
-<text x='651.99' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>55</text>
-<text x='651.99' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>50</text>
-<text x='651.99' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>37</text>
-<text x='651.99' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>47</text>
-<text x='734.73' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='64.72px' lengthAdjust='spacingAndGlyphs'>Responders</text>
-<text x='734.73' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>60</text>
-<text x='734.73' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>39</text>
-<text x='734.73' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>21</text>
-<text x='734.73' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>27</text>
-<text x='734.73' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>19</text>
-<text x='734.73' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>14</text>
-<text x='829.28' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='76.05px' lengthAdjust='spacingAndGlyphs'>Response (%)</text>
-<text x='829.28' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>44.8%</text>
-<text x='829.28' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>49.4%</text>
-<text x='829.28' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>38.2%</text>
-<text x='829.28' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>54.0%</text>
-<text x='829.28' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>51.4%</text>
-<text x='829.28' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.03px' lengthAdjust='spacingAndGlyphs'>29.8%</text>
-<text x='923.83' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='60.04px' lengthAdjust='spacingAndGlyphs'>Odds Ratio</text>
-<text x='923.83' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>1.52</text>
-<text x='923.83' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>2.32</text>
-<text x='923.83' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>0.84</text>
-<text x='923.83' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>1.43</text>
-<text x='923.83' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>2.60</text>
-<text x='923.83' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='23.36px' lengthAdjust='spacingAndGlyphs'>0.99</text>
-<text x='1018.38' y='63.54' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='39.36px' lengthAdjust='spacingAndGlyphs'>95% CI</text>
-<text x='1018.38' y='93.16' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(0.93, 2.48)</text>
-<text x='1018.38' y='152.40' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(1.21, 4.45)</text>
-<text x='1018.38' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(0.39, 1.82)</text>
-<text x='1018.38' y='241.27' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(0.63, 3.24)</text>
-<text x='1018.38' y='270.89' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(1.10, 6.16)</text>
-<text x='1018.38' y='300.51' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='61.37px' lengthAdjust='spacingAndGlyphs'>(0.38, 2.57)</text>
+<g clip-path='url(#cpMjcuMDB8MTA4MC4wMHwwLjAwfDMyNS42OA==)'>
+<line x1='37.40' y1='74.02' x2='1069.60' y2='74.02' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='474.71' y='33.98' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='62.98px' lengthAdjust='spacingAndGlyphs'>B: Placebo</text>
+<line x1='344.70' y1='44.41' x2='604.72' y2='44.41' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='746.54' y='33.98' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='57.30px' lengthAdjust='spacingAndGlyphs'>A: Drug X</text>
+<line x1='620.47' y1='44.41' x2='872.61' y2='44.41' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='37.40' y='63.59' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='126.42px' lengthAdjust='spacingAndGlyphs'>Baseline Risk Factors</text>
+<text x='37.40' y='93.20' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='66.75px' lengthAdjust='spacingAndGlyphs'>All Patients</text>
+<text x='37.40' y='122.80' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='21.90px' lengthAdjust='spacingAndGlyphs'>Sex</text>
+<text x='37.40' y='152.41' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.17px' lengthAdjust='spacingAndGlyphs'>    F</text>
+<text x='37.40' y='182.02' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='25.62px' lengthAdjust='spacingAndGlyphs'>    M</text>
+<text x='37.40' y='211.63' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='180.88px' lengthAdjust='spacingAndGlyphs'>Categorical Level Biomarker 2</text>
+<text x='37.40' y='241.23' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='42.84px' lengthAdjust='spacingAndGlyphs'>    LOW</text>
+<text x='37.40' y='270.84' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='65.12px' lengthAdjust='spacingAndGlyphs'>    MEDIUM</text>
+<text x='37.40' y='300.45' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='46.17px' lengthAdjust='spacingAndGlyphs'>    HIGH</text>
+<text x='305.30' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='39.46px' lengthAdjust='spacingAndGlyphs'>Total n</text>
+<text x='305.30' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.92px' lengthAdjust='spacingAndGlyphs'>268</text>
+<text x='305.30' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.92px' lengthAdjust='spacingAndGlyphs'>161</text>
+<text x='305.30' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.92px' lengthAdjust='spacingAndGlyphs'>107</text>
+<text x='305.30' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>95</text>
+<text x='305.30' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>93</text>
+<text x='305.30' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>80</text>
+<text x='380.15' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='7.61px' lengthAdjust='spacingAndGlyphs'>n</text>
+<text x='380.15' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.92px' lengthAdjust='spacingAndGlyphs'>134</text>
+<text x='380.15' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>82</text>
+<text x='380.15' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>52</text>
+<text x='380.15' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>45</text>
+<text x='380.15' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>56</text>
+<text x='380.15' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>33</text>
+<text x='466.83' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.21px' lengthAdjust='spacingAndGlyphs'>Responders</text>
+<text x='466.83' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>47</text>
+<text x='466.83' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>25</text>
+<text x='466.83' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>22</text>
+<text x='466.83' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>21</text>
+<text x='466.83' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>16</text>
+<text x='466.83' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='561.38' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='82.24px' lengthAdjust='spacingAndGlyphs'>Response (%)</text>
+<text x='561.38' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>35.1%</text>
+<text x='561.38' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>30.5%</text>
+<text x='561.38' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>42.3%</text>
+<text x='561.38' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>46.7%</text>
+<text x='561.38' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>28.6%</text>
+<text x='561.38' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>30.3%</text>
+<text x='651.99' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='7.61px' lengthAdjust='spacingAndGlyphs'>n</text>
+<text x='651.99' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='22.92px' lengthAdjust='spacingAndGlyphs'>134</text>
+<text x='651.99' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>79</text>
+<text x='651.99' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>55</text>
+<text x='651.99' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='651.99' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>37</text>
+<text x='651.99' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>47</text>
+<text x='734.73' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.21px' lengthAdjust='spacingAndGlyphs'>Responders</text>
+<text x='734.73' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text x='734.73' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>39</text>
+<text x='734.73' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>21</text>
+<text x='734.73' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>27</text>
+<text x='734.73' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>19</text>
+<text x='734.73' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>14</text>
+<text x='829.28' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='82.24px' lengthAdjust='spacingAndGlyphs'>Response (%)</text>
+<text x='829.28' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>44.8%</text>
+<text x='829.28' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>49.4%</text>
+<text x='829.28' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>38.2%</text>
+<text x='829.28' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>54.0%</text>
+<text x='829.28' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>51.4%</text>
+<text x='829.28' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='38.14px' lengthAdjust='spacingAndGlyphs'>29.8%</text>
+<text x='923.83' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='65.57px' lengthAdjust='spacingAndGlyphs'>Odds Ratio</text>
+<text x='923.83' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>1.52</text>
+<text x='923.83' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>2.32</text>
+<text x='923.83' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>0.84</text>
+<text x='923.83' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>1.43</text>
+<text x='923.83' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>2.60</text>
+<text x='923.83' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='26.73px' lengthAdjust='spacingAndGlyphs'>0.99</text>
+<text x='1018.38' y='63.59' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='42.42px' lengthAdjust='spacingAndGlyphs'>95% CI</text>
+<text x='1018.38' y='93.20' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(0.93, 2.48)</text>
+<text x='1018.38' y='152.41' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(1.21, 4.45)</text>
+<text x='1018.38' y='182.02' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(0.39, 1.82)</text>
+<text x='1018.38' y='241.23' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(0.63, 3.24)</text>
+<text x='1018.38' y='270.84' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(1.10, 6.16)</text>
+<text x='1018.38' y='300.45' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='70.46px' lengthAdjust='spacingAndGlyphs'>(0.38, 2.57)</text>
 </g>
 <g clip-path='url(#cpMC4wMHwxNDQwLjAwfDAuMDB8MzYwLjAw)'>
 </g>
@@ -117,36 +117,36 @@
 <rect x='1080.00' y='0.00' width='360.00' height='360.00' style='stroke-width: 1.07; stroke: none;' />
 </g>
 <g clip-path='url(#cpMC4wMHwxNDQwLjAwfDAuMDB8MzYwLjAw)'>
-<rect x='1080.00' y='0.00' width='324.00' height='325.83' style='stroke-width: 1.07; stroke: none;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<rect x='1083.18' y='74.05' width='317.65' height='251.78' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
-<line x1='1242.00' y1='325.83' x2='1242.00' y2='74.05' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='1162.59' y='49.66' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='58.05px' lengthAdjust='spacingAndGlyphs'>B: Placebo</text>
-<text x='1162.59' y='62.62' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='32.02px' lengthAdjust='spacingAndGlyphs'>Better</text>
-<text x='1321.41' y='49.66' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.03px' lengthAdjust='spacingAndGlyphs'>A: Drug X</text>
-<text x='1321.41' y='62.62' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='32.02px' lengthAdjust='spacingAndGlyphs'>Better</text>
-<circle cx='1270.73' cy='88.86' r='6.76' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<circle cx='1300.06' cy='148.11' r='4.92' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<circle cx='1230.32' cy='177.73' r='3.44' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<circle cx='1266.86' cy='236.97' r='2.93' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<circle cx='1308.02' cy='266.59' r='2.82' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<circle cx='1240.96' cy='296.21' r='1.42' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
-<line x1='1236.81' y1='88.86' x2='1304.64' y2='88.86' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<line x1='1255.15' y1='148.11' x2='1344.97' y2='148.11' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<line x1='1177.44' y1='177.73' x2='1283.20' y2='177.73' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<line x1='1210.59' y1='236.97' x2='1323.14' y2='236.97' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<line x1='1248.68' y1='266.59' x2='1367.36' y2='266.59' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<line x1='1174.69' y1='296.21' x2='1307.23' y2='296.21' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
-<polyline points='1080.00,325.83 1404.00,325.83 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='1083.18,328.57 1083.18,325.83 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='1242.00,328.57 1242.00,325.83 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='1400.82,328.57 1400.82,325.83 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<text x='1083.18' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Arial";' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>0.1</text>
-<text x='1242.00' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='1400.82' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
+<rect x='1080.00' y='0.00' width='324.00' height='325.68' style='stroke-width: 1.07; stroke: none;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<rect x='1083.18' y='74.02' width='317.65' height='251.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBEBEB;' />
+<line x1='1242.00' y1='325.68' x2='1242.00' y2='74.02' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='1162.59' y='49.71' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='62.98px' lengthAdjust='spacingAndGlyphs'>B: Placebo</text>
+<text x='1162.59' y='62.67' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='37.36px' lengthAdjust='spacingAndGlyphs'>Better</text>
+<text x='1321.41' y='49.71' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='57.30px' lengthAdjust='spacingAndGlyphs'>A: Drug X</text>
+<text x='1321.41' y='62.67' text-anchor='middle' style='font-size: 12.00px; font-family: "Liberation Sans";' textLength='37.36px' lengthAdjust='spacingAndGlyphs'>Better</text>
+<circle cx='1270.73' cy='88.82' r='6.76' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<circle cx='1300.06' cy='148.04' r='4.92' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<circle cx='1230.32' cy='177.64' r='3.44' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<circle cx='1266.86' cy='236.86' r='2.93' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<circle cx='1308.02' cy='266.47' r='2.82' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<circle cx='1240.96' cy='296.07' r='1.42' style='stroke-width: 0.71; stroke: #343CFF; fill: #343CFF;' />
+<line x1='1236.81' y1='88.82' x2='1304.64' y2='88.82' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<line x1='1255.15' y1='148.04' x2='1344.97' y2='148.04' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<line x1='1177.44' y1='177.64' x2='1283.20' y2='177.64' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<line x1='1210.59' y1='236.86' x2='1323.14' y2='236.86' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<line x1='1248.68' y1='266.47' x2='1367.36' y2='266.47' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<line x1='1174.69' y1='296.07' x2='1307.23' y2='296.07' style='stroke-width: 1.07; stroke: #343CFF; stroke-linecap: butt;' />
+<polyline points='1080.00,325.68 1404.00,325.68 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='1083.18,328.42 1083.18,325.68 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='1242.00,328.42 1242.00,325.68 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='1400.82,328.42 1400.82,325.68 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text x='1083.18' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Liberation Sans";' textLength='19.09px' lengthAdjust='spacingAndGlyphs'>0.1</text>
+<text x='1242.00' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Liberation Sans";' textLength='7.64px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='1400.82' y='339.36' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Liberation Sans";' textLength='15.28px' lengthAdjust='spacingAndGlyphs'>10</text>
 </g>
 </svg>
