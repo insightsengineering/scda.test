@@ -3,22 +3,24 @@
     Code
       res
     Output
-                               B: Placebo   C: Combination
-                                (N=134)        (N=132)    
-      ————————————————————————————————————————————————————
-      Total number of deaths   70 (52.2%)     75 (56.8%)  
-      cl D.1 / dcd D.1.1.1.1   42 (31.3%)     51 (38.6%)  
-      cl B.1 / dcd B.1.1.1.1   49 (36.6%)     43 (32.6%)  
+                                                                            Xanomeline Low Dose   Placebo 
+                                                                                  (N=96)           (N=86) 
+      ————————————————————————————————————————————————————————————————————————————————————————————————————
+      Total number of deaths                                                     1 (1.0%)         2 (2.3%)
+      CARDIAC DISORDERS / MYOCARDIAL INFARCTION                                      0            1 (1.2%)
+      GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS / SUDDEN DEATH        1 (1.0%)            0    
+      PSYCHIATRIC DISORDERS / COMPLETED SUICIDE                                      0            1 (1.2%)
 
 # AET07 variant 2 is produced correctly
 
     Code
       res
     Output
-                               A: Drug X   B: Placebo   C: Combination
-                                (N=134)     (N=134)        (N=132)    
-      ————————————————————————————————————————————————————————————————
-      Total number of deaths       0       70 (52.2%)     75 (56.8%)  
-      cl D.1 / dcd D.1.1.1.1       0       42 (31.3%)     51 (38.6%)  
-      cl B.1 / dcd B.1.1.1.1       0       49 (36.6%)     43 (32.6%)  
+                                                                            Xanomeline Low Dose   Placebo 
+                                                                                  (N=96)           (N=86) 
+      ————————————————————————————————————————————————————————————————————————————————————————————————————
+      Total number of deaths                                                     1 (1.0%)         2 (2.3%)
+      CARDIAC DISORDERS / MYOCARDIAL INFARCTION                                      0            1 (1.2%)
+      GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS / SUDDEN DEATH        1 (1.0%)            0    
+      PSYCHIATRIC DISORDERS / COMPLETED SUICIDE                                      0            1 (1.2%)
 
