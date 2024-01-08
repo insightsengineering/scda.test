@@ -103,11 +103,10 @@ testthat::test_that("Safety Summary Variant 1 works as expected", {
   testthat::expect_snapshot(res)
 })
 
-# NEEDS HELP HERE ----
 
 testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "CTC35")
-  basket_vars <- c("SMQ01", "SMQ02", "CQ01") # dont have basket terms
+  basket_vars <- c("SMQ01", "SMQ02", "CQ01")
 
   # Layout for variables from adsl dataset.
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%
@@ -147,15 +146,17 @@ testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) wo
       denom = "N_col",
       var_labels = "Total number of patients with at least one",
       show_labels = "visible"
-    ) %>%
-    count_patients_with_flags(
-      "USUBJID",
-      flag_variables = basket_vars,
-      table_names = "table_aesi",
-      denom = "N_col",
-      var_labels = "Total number of patients with at least one",
-      show_labels = "visible"
     )
+  # pharmaverseadae doesn't have basket/smq terms yet
+  # %>%
+  #   count_patients_with_flags(
+  #     "USUBJID",
+  #     flag_variables = basket_vars,
+  #     table_names = "table_aesi",
+  #     denom = "N_col",
+  #     var_labels = "Total number of patients with at least one",
+  #     show_labels = "visible"
+  #   )
 
   result_adae <- build_table(lyt_adae, df = adae, alt_counts_df = adsl)
 
@@ -163,7 +164,7 @@ testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) wo
   col_info(result_adsl) <- col_info(result_adae)
   result <- rbind(
     result_adae[1:2, ],
-    result_adsl[, -2],
+    result_adsl,
     result_adae[3:nrow(result_adae), ]
   )
 
@@ -308,3 +309,4 @@ testthat::test_that("Safety Summary Variant 4 (with Rows Counting Events and Add
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
+
