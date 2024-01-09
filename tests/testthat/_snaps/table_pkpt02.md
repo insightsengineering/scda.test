@@ -69,3 +69,4 @@
         CV % Geometric Mean             4.2                     4.1         
         Median                       2.306e+00               2.273e+00      
         Min - Max              2.141e+00 - 2.452e+00   2.144e+00 - 2.449e+00
+
