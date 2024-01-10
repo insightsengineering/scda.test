@@ -1,5 +1,6 @@
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse %>%
+  filter(!PARAMCD %in% c("BILI", "COLOR", "GLUC"))
 
 adsl <- df_explicit_na(adsl)
 adlb <- df_explicit_na(adlb)
