@@ -47,7 +47,7 @@ testthat::test_that("LBL01_RLS listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("CPID", "TRT01A"),
+    key_cols = c("TRT01A", "CPID"),
     disp_cols = names(out),
     main_title = "Listing of Laboratory Test Results Using Roche Safety Lab Standardization",
     main_footer = "Abnormalities are flagged as high (H) or low (L) if outside the Roche standard reference range;

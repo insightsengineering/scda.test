@@ -25,7 +25,7 @@ testthat::test_that("MHL01 listing is produced correctly", {
 
   testthat::expect_message(result <- as_listing(
     out,
-    key_cols = c("ID", "ASR", "TRT01A", "MHBODSYS", "MHDECOD"),
+    key_cols = c("TRT01A", "ID", "ASR", "MHBODSYS", "MHDECOD"),
     disp_cols = names(out),
     main_title = "Listing of Medical History and Concurrent Diseases"
   ) %>% head(50), "sorting incoming data by key columns")

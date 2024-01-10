@@ -52,7 +52,7 @@ testthat::test_that("ONCL01 listing is produced correctly", {
 
   result <- as_listing(
     out,
-    key_cols = c("ID", "TRT01A"),
+    key_cols = c("TRT01A", "ID"),
     disp_cols = names(out),
     main_title = "Listing of Individual Efficacy Data",
     main_footer = "PFS = Progression Free Survival"

@@ -9,58 +9,58 @@
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
                                                                               Date of First                                     
                                                                                 Study Drug       Study Day       Discontinued   
-      Center/Patient ID               Age/Sex/Race                Treatment   Administration   of Withdrawal   Early from Study?
+      Treatment   Center/Patient ID               Age/Sex/Race                Administration   of Withdrawal   Early from Study?
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-        BRA-1/id-105         38/M/BLACK OR AFRICAN AMERICAN         ARM A       08MAR2020           709               Yes       
-        BRA-1/id-134                   47/M/WHITE                   ARM A       04NOV2020           473               Yes       
-        BRA-1/id-141                   35/F/WHITE                   ARM C       25JUL2020          1096               No        
-        BRA-1/id-236         32/M/BLACK OR AFRICAN AMERICAN         ARM B       15JAN2021          1096               No        
-        BRA-1/id-265                   25/M/WHITE                   ARM C       07OCT2019           863               Yes       
-         BRA-1/id-42         36/M/BLACK OR AFRICAN AMERICAN         ARM A       01JAN2020           NA                No        
-         BRA-1/id-65         25/F/BLACK OR AFRICAN AMERICAN         ARM B       15JUL2019          1096               No        
-         BRA-1/id-93                   34/F/ASIAN                   ARM A       20JUN2020           610               Yes       
-        BRA-11/id-171                  40/F/ASIAN                   ARM C       03DEC2019           NA                No        
-        BRA-11/id-217                  43/M/ASIAN                   ARM A       28SEP2019           871               Yes       
-        BRA-11/id-237                  64/F/ASIAN                   ARM C       10MAR2020          1096               No        
-        BRA-11/id-321                  33/F/ASIAN                   ARM C       06OCT2020          1096               No        
-        BRA-11/id-345                  37/F/WHITE                   ARM A       18AUG2020          1096               No        
-        BRA-11/id-397                  38/M/ASIAN                   ARM A       27JUN2020          1096               No        
-        BRA-11/id-50         26/M/BLACK OR AFRICAN AMERICAN         ARM A       28APR2019          1096               No        
-         BRA-11/id-9                   40/M/ASIAN                   ARM C       25MAR2019          1056               Yes       
-        BRA-12/id-59         36/M/BLACK OR AFRICAN AMERICAN         ARM B       25NOV2019           NA                No        
-        BRA-13/id-177                  24/M/WHITE                   ARM A       30AUG2020          1096               No        
-        BRA-14/id-120                  33/F/ASIAN                   ARM C       19SEP2020           512               Yes       
-        BRA-14/id-23                   37/M/ASIAN                   ARM A       06NOV2019           NA                No        
-        BRA-15/id-36                   38/F/ASIAN                   ARM A       08JAN2020           767               Yes       
-        BRA-2/id-101                   34/M/ASIAN                   ARM B       26JUN2020          1096               No        
-        BRA-2/id-296                   44/F/ASIAN                   ARM A       22JAN2021          1096               No        
-         BRA-3/id-13         42/M/BLACK OR AFRICAN AMERICAN         ARM B       24APR2020          1096               No        
-         BRA-3/id-8          25/F/BLACK OR AFRICAN AMERICAN         ARM B       12MAR2020           707               Yes       
-        BRA-4/id-368         46/M/BLACK OR AFRICAN AMERICAN         ARM C       25FEB2020          1096               No        
-        BRA-4/id-383                   30/F/ASIAN                   ARM B       18JAN2020           NA                No        
-        BRA-5/id-234                   32/M/WHITE                   ARM C       22JUN2019          1096               No        
-        BRA-6/id-369                   35/F/ASIAN                   ARM A       13AUG2020          1096               No        
-        BRA-7/id-301                   35/M/ASIAN                   ARM C       25JUL2019          1096               No        
-         CAN-1/id-18         41/F/BLACK OR AFRICAN AMERICAN         ARM A       02JAN2021          1096               No        
-        CAN-1/id-341                   43/F/ASIAN                   ARM B       23MAY2019           998               Yes       
-        CAN-11/id-139                  31/M/ASIAN                   ARM A       15SEP2020           519               Yes       
-        CAN-11/id-306                  37/F/ASIAN                   ARM C       08JUN2020          1096               No        
-        CAN-14/id-104        39/F/BLACK OR AFRICAN AMERICAN         ARM A       28JUN2019          1096               No        
-        CAN-4/id-324                   32/M/ASIAN                   ARM C       17NOV2020          1096               No        
-        CAN-4/id-331      34/F/AMERICAN INDIAN OR ALASKA NATIVE     ARM B       03MAY2020          1096               No        
-        CAN-5/id-121                   36/M/ASIAN                   ARM C       15OCT2019           NA                No        
-        CHN-1/id-107         41/M/BLACK OR AFRICAN AMERICAN         ARM B       31JUL2020           569               Yes       
-        CHN-1/id-119                   32/F/ASIAN                   ARM A       14JAN2020           764               Yes       
-         CHN-1/id-12         42/F/BLACK OR AFRICAN AMERICAN         ARM B       20DEC2020          1096               No        
-        CHN-1/id-123                   27/F/ASIAN                   ARM A       28JAN2020           750               Yes       
-        CHN-1/id-133      25/F/AMERICAN INDIAN OR ALASKA NATIVE     ARM A       08AUG2020           559               Yes       
-        CHN-1/id-144                   35/F/ASIAN                   ARM C       19FEB2020           731               Yes       
-        CHN-1/id-156                   32/F/ASIAN                   ARM B       06SEP2020           528               Yes       
-         CHN-1/id-16         46/M/BLACK OR AFRICAN AMERICAN         ARM C       03JAN2021          1096               No        
-        CHN-1/id-163                   41/F/ASIAN                   ARM B       27MAY2020           634               Yes       
-        CHN-1/id-181         47/F/BLACK OR AFRICAN AMERICAN         ARM C       05MAY2020          1096               No        
-        CHN-1/id-186                   27/M/ASIAN                   ARM B       02FEB2021          1096               No        
-        CHN-1/id-197                   31/F/WHITE                   ARM B       01JUN2020           622               Yes       
+        ARM A       CHN-3/id-128                   32/M/ASIAN                   24FEB2019          1084               Yes       
+                     USA-1/id-45                   34/F/ASIAN                   06MAR2019          1096               No        
+                     CHN-4/id-73                   24/F/ASIAN                   17MAR2019          1066               Yes       
+                     RUS-1/id-52                   40/F/ASIAN                   18MAR2019          1064               Yes       
+                    PAK-11/id-268        28/F/BLACK OR AFRICAN AMERICAN         21MAR2019          1096               No        
+                    CHN-3/id-361         31/F/BLACK OR AFRICAN AMERICAN         11APR2019          1096               No        
+                    RUS-13/id-70                   39/F/WHITE                   15APR2019          1096               No        
+                    CHN-17/id-309                  36/F/ASIAN                   27APR2019          1028               Yes       
+                    CHN-2/id-395         28/M/BLACK OR AFRICAN AMERICAN         27APR2019          1096               No        
+                    BRA-11/id-50         26/M/BLACK OR AFRICAN AMERICAN         28APR2019          1096               No        
+                     CHN-14/id-1                   27/F/ASIAN                   07MAY2019          1096               No        
+                    USA-17/id-142                  31/F/WHITE                   14MAY2019          1096               No        
+                    CHN-2/id-286                   30/F/ASIAN                   16MAY2019          1096               No        
+                    NGA-1/id-388                   39/F/WHITE                   17MAY2019          1005               Yes       
+                    CHN-11/id-88                   25/F/ASIAN                   22MAY2019          1096               No        
+                    CHN-14/id-168                  39/M/ASIAN                   29MAY2019          1096               No        
+                    PAK-11/id-68                   37/F/ASIAN                   03JUN2019          1096               No        
+                    RUS-18/id-359        47/F/BLACK OR AFRICAN AMERICAN         08JUN2019          1096               No        
+                    PAK-1/id-148      46/M/AMERICAN INDIAN OR ALASKA NATIVE     17JUN2019          1096               No        
+                    CAN-14/id-104        39/F/BLACK OR AFRICAN AMERICAN         28JUN2019          1096               No        
+                    CHN-1/id-329                   48/M/WHITE                   06JUL2019           954               Yes       
+                    CHN-1/id-235                   39/M/ASIAN                   13JUL2019           950               Yes       
+                    CHN-11/id-124                  41/M/ASIAN                   14JUL2019          1096               No        
+                    PAK-14/id-117                  25/F/ASIAN                   15JUL2019           951               Yes       
+                    CHN-11/id-379        36/F/BLACK OR AFRICAN AMERICAN         30JUL2019          1096               No        
+                    CHN-3/id-204                   34/M/ASIAN                   08AUG2019          1096               No        
+                    CHN-13/id-270                  39/F/ASIAN                   17AUG2019          1096               No        
+                    CHN-4/id-114                   23/F/ASIAN                   18AUG2019          1096               No        
+                    CHN-1/id-315                   32/M/ASIAN                   21AUG2019           911               Yes       
+                    NGA-1/id-200                   25/F/ASIAN                   01SEP2019          1096               No        
+                    PAK-12/id-328                  21/F/WHITE                   10SEP2019          1096               No        
+                    CHN-5/id-108         28/F/BLACK OR AFRICAN AMERICAN         11SEP2019           886               Yes       
+                    NGA-17/id-72                   50/M/WHITE                   11SEP2019          1096               No        
+                    CHN-14/id-161                  33/F/ASIAN                   12SEP2019          1096               No        
+                    PAK-15/id-314                  27/F/ASIAN                   17SEP2019           NA                No        
+                    CHN-17/id-182        37/M/BLACK OR AFRICAN AMERICAN         18SEP2019           879               Yes       
+                    CHN-12/id-396                  25/F/ASIAN                   20SEP2019           NA                No        
+                    CHN-11/id-392                  39/M/ASIAN                   28SEP2019           NA                No        
+                    BRA-11/id-217                  43/M/ASIAN                   28SEP2019           871               Yes       
+                    CHN-15/id-14         38/F/BLACK OR AFRICAN AMERICAN         29SEP2019           871               Yes       
+                    JPN-1/id-218         35/F/BLACK OR AFRICAN AMERICAN         09OCT2019           863               Yes       
+                    CHN-12/id-57         45/F/BLACK OR AFRICAN AMERICAN         13OCT2019           NA                No        
+                    CHN-2/id-274                   40/F/ASIAN                   14OCT2019           860               Yes       
+                    CHN-15/id-399                  33/F/WHITE                   15OCT2019           NA                No        
+                    CHN-14/id-228                  30/M/ASIAN                   18OCT2019           NA                No        
+                    USA-11/id-339                  39/F/WHITE                   19OCT2019           854               Yes       
+                    CHN-2/id-398      46/F/AMERICAN INDIAN OR ALASKA NATIVE     19OCT2019           NA                No        
+                    CHN-12/id-266        32/F/BLACK OR AFRICAN AMERICAN         29OCT2019           NA                No        
+                    JPN-5/id-326                   34/F/ASIAN                   03NOV2019           NA                No        
+                    BRA-14/id-23                   37/M/ASIAN                   06NOV2019           NA                No        
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       
       Program: xxxx
