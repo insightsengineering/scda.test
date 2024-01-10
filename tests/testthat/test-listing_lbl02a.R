@@ -1,9 +1,10 @@
 testthat::test_that("LBL02A listing is produced correctly", {
-  adlb_x <- adlb_raw %>%
+  adlb_x <- adlb_pharmaverse %>%
     filter(ANRIND %in% c("LOW", "HIGH"), !ATOXGR %in% c("0", ""), LBTEST != "") %>%
     mutate(
       LBTEST_U = paste0(LBTEST, " (", AVALU, ")"),
       CPID = paste(SITEID, SUBJID, sep = "/"),
+      ADTM = ADT, # no ADTM in pharmaverse::adlb
       ADTM = toupper(format(as.Date(ADTM), "%d%b%Y")),
       AVAL = format(round(AVAL, 1), nsmall = 1),
       LBNRNG = paste(format(round(ANRLO, 1), nsmall = 1), format(round(ANRHI, 1), nsmall = 1), sep = " - "),
