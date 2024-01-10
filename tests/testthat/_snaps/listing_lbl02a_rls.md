@@ -9,9 +9,9 @@
                                                                                                                                               Clinically              
                                                                                 Days Since             % Change     Standard       Marked      Relevant               
                                                                        Study   Last Dose of              from       Reference     Reference     Change     Abnormality
-             Lab Test (Unit)           Treatment   Center/Patient ID    Day     Study Drug    Result   Baseline       Range         Range     Dec./Inc.       Flag    
+      Treatment          Lab Test (Unit)           Center/Patient ID    Day     Study Drug    Result   Baseline       Range         Range     Dec./Inc.       Flag    
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Alanine Aminotransferase (U/L)    Placebo        701/1015         -7          0           27.0       0.0     10.0 -  29.0    6 - 34     40% / 40%               
+       Placebo    Alanine Aminotransferase (U/L)       701/1015         -7          0           27.0       0.0     10.0 -  29.0    6 - 34     40% / 40%               
                                                                         15          22          41.0      51.9     10.0 -  29.0    6 - 34     40% / 40%         H     
                                                                         29          14          18.0     -33.3     10.0 -  29.0    6 - 34     40% / 40%               
                                                                         42          13          26.0      -3.7     10.0 -  29.0    6 - 34     40% / 40%               
