@@ -1,5 +1,5 @@
 testthat::test_that("LBL02B listing is produced correctly", {
-  adlb_x <- adlb_raw %>%
+  adlb_x <- adlb_pharmaverse %>%
     filter(
       !sub("-", "", ATOXGR) %in% c("", "0", "1"),
       LBTEST != "",
@@ -8,6 +8,7 @@ testthat::test_that("LBL02B listing is produced correctly", {
     ) %>%
     mutate(
       CPID = paste(SITEID, SUBJID, sep = "/"),
+      ADTM = ADT,
       ADTM = toupper(format(as.Date(ADTM), "%d%b%Y")),
       AVAL = format(round(AVAL, 1), nsmall = 1),
       LBNRNG = paste(format(round(ANRLO, 1), nsmall = 1), format(round(ANRHI, 1), nsmall = 1), sep = " - "),
