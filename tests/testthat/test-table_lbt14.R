@@ -1,5 +1,7 @@
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse %>%
+  mutate(WGRLOFL = ifelse(AVISIT == "POST-BASELINE MINIMUM", "Y", ""),
+         WGRHIFL = ifelse(AVISIT == "POST-BASELINE MAXIMUM", "Y", ""))
 
 adsl <- df_explicit_na(adsl)
 adlb <- df_explicit_na(adlb)
