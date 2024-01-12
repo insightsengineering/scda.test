@@ -1,12 +1,15 @@
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse %>%
+  mutate(WGRLOFL = ifelse(AVISIT == "POST-BASELINE MINIMUM", "Y", ""),
+         WGRHIFL = ifelse(AVISIT == "POST-BASELINE MAXIMUM", "Y", "")) %>%
+  filter(ATOXGR != "<Missing>")
 
 adlb <- adlb %>%
   dplyr::mutate(
     GRADDR = dplyr::case_when(
-      PARAMCD == "ALT" ~ "L",
-      PARAMCD == "CRP" ~ "B",
-      PARAMCD == "IGA" ~ "H"
+      PARAMCD == "GLUC" ~ "L",
+      PARAMCD == "BILI" ~ "B",
+      PARAMCD == "ALKPH" ~ "H"
     )
   ) %>%
   dplyr::filter(SAFFL == "Y" & ONTRTFL == "Y" & GRADDR != "")
