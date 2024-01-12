@@ -1,7 +1,10 @@
 # Tests LBT07
 
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse %>%
+  mutate(WGRLOFL = ifelse(AVISIT == "POST-BASELINE MINIMUM", "Y", ""),
+         WGRHIFL = ifelse(AVISIT == "POST-BASELINE MAXIMUM", "Y", "")) %>%
+  filter(ATOXGR != "<Missing>")
 
 adlb_labels <- var_labels(adlb)
 
@@ -11,7 +14,6 @@ adlb <- df_explicit_na(adlb)
 
 # Select worst post-baseline records.
 adlb_f <- adlb %>%
-  filter(ATOXGR != "<Missing>") %>%
   filter(ONTRTFL == "Y") %>%
   filter(WGRLOFL == "Y" | WGRHIFL == "Y")
 
@@ -31,9 +33,9 @@ adlb_f <- adlb_f %>%
     ),
     GRADE_ANL = forcats::fct_relevel(
       forcats::fct_recode(ATOXGR,
-        `1` = "-1", `2` = "-2", `3` = "-3", `4` = "-4"
+        `1` = "-1", `2` = "-2", `3` = "-3"
       ),
-      c("0", "1", "2", "3", "4")
+      c("0", "1", "2", "3")
     )
   ) %>%
   var_relabel(
@@ -45,7 +47,7 @@ adlb_f <- adlb_f %>%
 map <- expand.grid(
   PARAM = levels(adlb$PARAM),
   GRADE_DIR = c("LOW", "HIGH"),
-  GRADE_ANL = as.character(1:4),
+  GRADE_ANL = as.character(1:3),
   stringsAsFactors = FALSE
 ) %>%
   arrange(PARAM, desc(GRADE_DIR), GRADE_ANL)

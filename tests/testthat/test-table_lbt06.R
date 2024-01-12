@@ -1,13 +1,12 @@
 # Tests all variants of LBT06
 
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse
 
 testthat::test_that("LBT06 default variant is produced correctly", {
   adlb <- adlb %>%
     dplyr::filter(PARAMCD == "ALT") %>%
-    dplyr::filter(!(AVISIT %in% c("SCREENING", "BASELINE"))) %>%
-    dplyr::mutate(AVISIT = droplevels(AVISIT))
+    dplyr::filter(AVISIT %in% c("Week 2", "Week 4", "Week 6", "Week 8"))
 
   result <- basic_table() %>%
     split_cols_by("ARM") %>%
