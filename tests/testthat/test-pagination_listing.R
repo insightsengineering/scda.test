@@ -93,3 +93,62 @@ testthat::test_that("Direct pagination works fine", {
     )
   )
 })
+
+
+testthat::test_that("pagination counts the right number of lines when wrapping on keycols is present", {
+  adae <- pharmaverseadam::adae %>%
+    select(AESOC, AEDECOD, AETERM) %>%
+    unique()
+
+  var_labels(adae) <- c(
+    AESOC = "MedDRA System Organ Class",
+    AEDECOD = "MedDRA Preferred Term",
+    AETERM = "Investigator-Specified Adverse Event Term"
+  )
+
+  lsting <- as_listing(
+    adae,
+    key_cols = c("AESOC", "AEDECOD"),
+    disp_cols = names(adae),
+    main_title = "Glossary of Adverse Event Preferred Terms and Investigator-Specified Adverse Event Terms",
+    subtitles = "Protocal xxx",
+    main_footer = "Investigator text for AEs is coded using MedDRA version 26.1.",
+    prov_footer = "blah blah blah"
+  )
+
+  pagination_test1 <- testthat::expect_silent(
+    export_as_txt(lsting, colwidths = c(150, 38, 70),
+                                    cpp = 400, lpp = 35, tf_wrap = FALSE, page_break = "\f")
+  )
+  spl_pag_test1 <- strsplit(pagination_test1, "\\f")[[1]]
+  testthat::expect_equal(length(spl_pag_test1), 11)
+  testthat::expect_true(
+    all(
+      sapply(spl_pag_test1[-length(spl_pag_test1)], function(x) {
+        length(strsplit(x, "\\n")[[1]]) == 35
+      })
+    )
+  )
+  testthat::expect_equal(
+    length(strsplit(spl_pag_test1[length(spl_pag_test1)], "\\n")[[1]]),
+    16
+  )
+
+  pagination_test2 <- testthat::expect_silent(
+    export_as_txt(lsting,
+                  colwidths = c(48, 38, 70), cpp = 180, lpp = 35, tf_wrap = TRUE, page_break = "\f")
+  )
+  spl_pag_test2 <- strsplit(pagination_test2, "\\f")[[1]]
+  testthat::expect_equal(length(spl_pag_test2), 11)
+  testthat::expect_true(
+    all(
+      sapply(spl_pag_test2[-length(spl_pag_test2)], function(x) {
+        length(strsplit(x, "\\n")[[1]]) == 35
+      })
+    )
+  )
+  testthat::expect_equal(
+    length(strsplit(spl_pag_test2[length(spl_pag_test2)], "\\n")[[1]]),
+    19
+  )
+})
