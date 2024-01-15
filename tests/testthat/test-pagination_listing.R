@@ -115,8 +115,10 @@ testthat::test_that("pagination counts the right number of lines when wrapping o
   )
 
   pagination_test1 <- testthat::expect_silent(
-    export_as_txt(lsting, colwidths = c(150, 38, 70),
-                                    cpp = 400, lpp = 35, tf_wrap = FALSE, page_break = "\f")
+    export_as_txt(lsting,
+      colwidths = c(150, 38, 70),
+      cpp = 400, lpp = 35, tf_wrap = FALSE, page_break = "\f"
+    )
   )
   spl_pag_test1 <- strsplit(pagination_test1, "\\f")[[1]]
   testthat::expect_equal(length(spl_pag_test1), 11)
@@ -134,7 +136,8 @@ testthat::test_that("pagination counts the right number of lines when wrapping o
 
   pagination_test2 <- testthat::expect_silent(
     export_as_txt(lsting,
-                  colwidths = c(48, 38, 70), cpp = 180, lpp = 35, tf_wrap = TRUE, page_break = "\f")
+      colwidths = c(48, 38, 70), cpp = 180, lpp = 35, tf_wrap = TRUE, page_break = "\f"
+    )
   )
   spl_pag_test2 <- strsplit(pagination_test2, "\\f")[[1]]
   testthat::expect_equal(length(spl_pag_test2), 11)

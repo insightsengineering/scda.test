@@ -12,7 +12,6 @@ testthat::test_that("PKPL01 listing is produced correctly", {
 
   out <- adpp_x %>%
     mutate(PARAM = paste0(PARAMCD, " (", PPORRESU, ")")) %>%
-    mutate(TRT01A = TRT01A.x) %>% # This is a temp fix
     select(TRT01A, USUBJID, AVISIT, PARAM, AVAL) %>%
     unique() %>% # This is a temp fix, as avisit was added this way
     tidyr::pivot_wider(

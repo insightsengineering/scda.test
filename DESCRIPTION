@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9051
-Date: 2024-01-08
+Version: 0.0.0.9052
+Date: 2024-01-15
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -27,7 +27,7 @@ Depends:
     rtables (>= 0.6.6),
     tern (>= 0.9.3.9002)
 Imports:
-    pharmaverseadam (>= 0.1.1),
+    pharmaverseadam (>= 0.2.0),
     random.cdisc.data (>= 0.3.14.9002)
 Suggests:
     broom,
