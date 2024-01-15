@@ -27,7 +27,7 @@ Depends:
     rtables (>= 0.6.6),
     tern (>= 0.9.3.9002)
 Imports:
-    pharmaverseadam (>= 0.1.1),
+    pharmaverseadam (>= 0.2.0),
     random.cdisc.data (>= 0.3.14.9002)
 Suggests:
     broom,
