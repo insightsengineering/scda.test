@@ -1,6 +1,8 @@
 # Data generation
 adpp <- adpp_pharmaverse
-adpp_plasma <- adpp %>% dplyr::filter(PPSPEC == "PLASMA")
+adpp_plasma <- adpp %>%
+  dplyr::filter(PPSPEC == "PLASMA") %>%
+  mutate(PARAM = paste0(PARAMCD, " (", PPORRESU, ")")) # temp fix for potential bug in h_pkparam_sort()
 
 # Define template layout
 l <- basic_table() %>%
