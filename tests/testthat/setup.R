@@ -28,6 +28,8 @@ advs_raw <- random.cdisc.data::cadvs
 adpp_pharmaverse <- pharmaverseadam::adpp
 adsl_pharmaverse <- pharmaverseadam::adsl
 adpc_pharmaverse <- pharmaverseadam::adpc
+adlb_pharmaverse <- pharmaverseadam::adlb %>%
+  mutate(AVALU = LBORRESU)
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
