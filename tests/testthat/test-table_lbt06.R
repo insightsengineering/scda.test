@@ -3,6 +3,7 @@
 adsl <- adsl_pharmaverse
 adlb <- adlb_pharmaverse
 
+# modify necessary columns into factor to avoid warnings
 testthat::test_that("LBT06 default variant is produced correctly", {
   adlb <- adlb %>%
     dplyr::filter(PARAMCD == "ALT") %>%
