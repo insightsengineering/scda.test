@@ -7,12 +7,14 @@ testthat::test_that("LBT06 default variant is produced correctly", {
   adlb <- adlb %>%
     dplyr::filter(PARAMCD == "ALT") %>%
     dplyr::filter(AVISIT %in% c("Week 2", "Week 4", "Week 6", "Week 8")) %>%
-    mutate(AVISIT = factor(AVISIT),
-           ARM = factor(ARM),
-           PARAMCD = factor(PARAMCD),
-           PARAM = factor(PARAM),
-           ANRIND = factor(ANRIND),
-           BNRIND = factor(BNRIND))
+    mutate(
+      AVISIT = factor(AVISIT),
+      ARM = factor(ARM),
+      PARAMCD = factor(PARAMCD),
+      PARAM = factor(PARAM),
+      ANRIND = factor(ANRIND),
+      BNRIND = factor(BNRIND)
+    )
 
   result <- basic_table() %>%
     split_cols_by("ARM") %>%
