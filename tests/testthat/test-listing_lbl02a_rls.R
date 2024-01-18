@@ -1,5 +1,5 @@
 testthat::test_that("LBL02A_RLS listing is produced correctly", {
-  adlb_x <- adlb_raw %>%
+  adlb_x <- adlb_pharmaverse %>%
     filter(
       LBTEST != ""
     ) %>%

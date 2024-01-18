@@ -1,5 +1,5 @@
 testthat::test_that("LBL01_RLS listing is produced correctly", {
-  adlb_x <- adlb_raw %>%
+  adlb_x <- adlb_pharmaverse %>%
     mutate(ANRIND = factor(
       case_when(
         ANRIND == "LOW" & AVAL > stats::quantile(adlb_raw$AVAL, probs = c(0.1)) ~ "L",
