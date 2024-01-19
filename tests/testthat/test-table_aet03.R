@@ -79,9 +79,9 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
   result_matrix <- to_string_matrix(result, with_spaces = FALSE)
 
   # Pagination also works (and sorting)
-  lpp_test <- 18
+  lpp_test <- 16
   testthat::expect_equal(
-    nrow(paginate_table(result, lpp = lpp_test)[[1]]) + 4, # 4 is the header
+    nrow(paginate_table(result, lpp = lpp_test)[[3]]) + 4, # 4 is the header
     lpp_test
   )
 
@@ -91,7 +91,7 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
     suppressMessages(paginate_table(result, lpp = lpp_test)[[1]])
   )
 
-  pag_result <- paginate_table(result, lpp = 16)
+  pag_result <- paginate_table(result)
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]], with_spaces = FALSE)[3, 1],
