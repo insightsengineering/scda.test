@@ -1,7 +1,7 @@
 # Tests all variants of LBT04
 
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adlb <- df_explicit_na(adlb)

@@ -1,5 +1,5 @@
 testthat::test_that("LBL01 listing is produced correctly", {
-  adlb_x <- adlb_raw %>%
+  adlb_x <- adlb_pharmaverse %>%
     filter(!is.na(AVAL) & !is.na(LBSEQ) & !is.na(ADY) & ANRIND != "") %>%
     mutate(
       CPID = paste(SITEID, SUBJID, sep = "/"),

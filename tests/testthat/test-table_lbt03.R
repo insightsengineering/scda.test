@@ -1,13 +1,13 @@
 # Tests the single variant for LBT03
 
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse
 
 testthat::test_that("LBT03 default variant is produced correctly", {
   adlb_f <- adlb %>%
-    dplyr::filter(AVISIT != "SCREENING", PARAMCD == "ALT") %>%
+    dplyr::filter(AVISIT %in% c("Baseline", "Week 2", "Week 4") & PARAMCD == "ALT") %>%
     dplyr::mutate(
-      AVISIT = droplevels(AVISIT),
+      ABLFL = ifelse(AVISIT == "Baseline", "Y", ""), # original adlb_pharmaverse ABLFL is unreliable
       ABLFLL = ABLFL == "Y"
     )
 

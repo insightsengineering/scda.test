@@ -39,6 +39,8 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
          AECONTRT = sample(c("Y"), nrow(.), replace = TRUE, prob = c(0.95)),
          ANL01FL = "Y")
 set.seed(NULL)
+adlb_pharmaverse <- pharmaverseadam::adlb %>%
+  mutate(AVALU = LBORRESU)
 
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
