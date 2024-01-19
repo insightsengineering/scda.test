@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9054
-Date: 2024-01-18
+Version: 0.0.0.9055
+Date: 2024-01-19
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
