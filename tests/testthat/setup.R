@@ -40,6 +40,8 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
          ANL01FL = "Y",
          SMQ01NAM = ifelse(AEDECOD %in% c("NAUSEA", "VOMITING"), "SMQ01", NA_character_),
          SMQ01SC = ifelse(SMQ01NAM == "SMQ01", "BROAD", NA_character_),
+         SMQ02NAM = ifelse(AEDECOD == "SKIN IRRITATION", "SMQ02", NA_character_),
+         SMQ02SC = ifelse(SMQ02NAM == "SMQ02", "NARROW", NA_character_),
          CQ01NAM = ifelse(AEDECOD == "HEADACHE", "CQ01", NA_character_))
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%

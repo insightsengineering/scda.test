@@ -412,8 +412,8 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
 
 # SMQ stuff will not work quite yet
 testthat::test_that("AET01_AESI Variant 4 works as expected", {
-  adsl <- filter(adsl_raw, SAFFL == "Y")
-  adae <- filter(adae_raw, ANL01FL == "Y" & SAFFL == "Y")
+  adsl <- filter(adsl_pharmaverse, SAFFL == "Y")
+  adae <- filter(adae_pharmaverse, ANL01FL == "Y" & SAFFL == "Y")
 
   adsl <- df_explicit_na(adsl)
   adae <- df_explicit_na(adae)

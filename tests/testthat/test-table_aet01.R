@@ -40,7 +40,7 @@ adae <- adae %>%
     CTC35 = with_label(AETOXGR %in% c("3", "4", "5"), "Grade 3-5 AE"),
     CTC45 = with_label(AETOXGR %in% c("4", "5"), "Grade 4/5 AE"),
     SMQ01 = with_label(SMQ01NAM != "", aesi_label(adae$SMQ01NAM, adae$SMQ01SC)),
-    # SMQ02 = with_label(SMQ02NAM != "", aesi_label(adae$SMQ02NAM, adae$SMQ02SC)),
+    SMQ02 = with_label(SMQ02NAM != "", aesi_label(adae$SMQ02NAM, adae$SMQ02SC)),
     CQ01 = with_label(CQ01NAM != "", aesi_label(adae$CQ01NAM)),
     USUBJID_AESEQ = paste(USUBJID, AESEQ, sep = "@@") # Create unique ID per AE in dataset.
   ) %>%
@@ -106,7 +106,7 @@ testthat::test_that("Safety Summary Variant 1 works as expected", {
 
 testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "CTC35")
-  basket_vars <- c("SMQ01", "CQ01")
+  basket_vars <- c("SMQ01", "SMQ02", "CQ01")
 
   # Layout for variables from adsl dataset.
   lyt_adsl <- basic_table(show_colcounts = TRUE) %>%

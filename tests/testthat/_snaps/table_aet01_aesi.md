@@ -118,39 +118,55 @@
     Code
       res
     Output
-                                                                                        A: Drug X    B: Placebo   C: Combination
-      Standardized MedDRA Query                                                          (N=134)      (N=134)        (N=132)    
-      ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      C.1.1.1.3/B.2.2.3.1 AESI (BROAD)                                                                                          
-        Total number of patients with at least one AE                                   58 (43.3%)   60 (44.8%)     66 (50.0%)  
-        Total number of AEs                                                                 97          106            122      
-        Total number of patients with at least one AE by worst grade                                                            
-          Grade 1                                                                       22 (16.4%)   26 (19.4%)     30 (22.7%)  
-          Grade 2                                                                           0            0              0       
-          Grade 3                                                                           0            0              0       
-          Grade 4                                                                       36 (26.9%)   34 (25.4%)     36 (27.3%)  
-          Grade 5 (fatal outcome)                                                           0            0              0       
-        Total number of patients with study drug withdrawn due to AE                     5 (3.7%)     6 (4.5%)       9 (6.8%)   
-        Total number of patients with dose modified/interrupted due to AE               21 (15.7%)   21 (15.7%)     24 (18.2%)  
-        Total number of patients with treatment received for AE                         32 (23.9%)   35 (26.1%)     44 (33.3%)  
-        Total number of patients with all non-fatal AEs resolved                         7 (5.2%)     9 (6.7%)       8 (6.1%)   
-        Total number of patients with at least one non-fatal unresolved or ongoing AE   51 (38.1%)   51 (38.1%)     58 (43.9%)  
-        Total number of patients with at least one serious AE                           38 (28.4%)   40 (29.9%)     45 (34.1%)  
-        Total number of patients with at least one related AE                           36 (26.9%)   34 (25.4%)     36 (27.3%)  
-      D.2.1.5.3/A.1.1.1.1 AESI                                                                                                  
-        Total number of patients with at least one AE                                   62 (46.3%)   61 (45.5%)     76 (57.6%)  
-        Total number of AEs                                                                106          100            139      
-        Total number of patients with at least one AE by worst grade                                                            
-          Grade 1                                                                       62 (46.3%)   61 (45.5%)     76 (57.6%)  
-          Grade 2                                                                           0            0              0       
-          Grade 3                                                                           0            0              0       
-          Grade 4                                                                           0            0              0       
-          Grade 5 (fatal outcome)                                                           0            0              0       
-        Total number of patients with study drug withdrawn due to AE                     6 (4.5%)     8 (6.0%)       4 (3.0%)   
-        Total number of patients with dose modified/interrupted due to AE               23 (17.2%)   20 (14.9%)     26 (19.7%)  
-        Total number of patients with treatment received for AE                         33 (24.6%)   37 (27.6%)     33 (25.0%)  
-        Total number of patients with all non-fatal AEs resolved                         4 (3.0%)     5 (3.7%)      14 (10.6%)  
-        Total number of patients with at least one non-fatal unresolved or ongoing AE   58 (43.3%)   56 (41.8%)     62 (47.0%)  
-        Total number of patients with at least one serious AE                               0            0              0       
-        Total number of patients with at least one related AE                           37 (27.6%)   46 (34.3%)     50 (37.9%)  
+                                                                                        Placebo    Xanomeline High Dose   Xanomeline Low Dose
+      Standardized MedDRA Query                                                          (N=86)           (N=72)                (N=96)       
+      ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+      SMQ01 (BROAD)                                                                                                                          
+        Total number of patients with at least one AE                                   4 (4.7%)        10 (13.9%)             6 (6.2%)      
+        Total number of AEs                                                                6                21                    10         
+        Total number of patients with at least one AE by worst grade                                                                         
+          Grade 1                                                                       1 (1.2%)         5 (6.9%)              3 (3.1%)      
+          Grade 2                                                                       2 (2.3%)         2 (2.8%)              2 (2.1%)      
+          Grade 3                                                                          0             2 (2.8%)                  0         
+          Grade 4                                                                          0                0                  1 (1.0%)      
+          Grade 5 (fatal outcome)                                                       1 (1.2%)         1 (1.4%)                  0         
+        Total number of patients with study drug withdrawn due to AE                       0                0                      0         
+        Total number of patients with dose modified/interrupted due to AE                  0                0                      0         
+        Total number of patients with treatment received for AE                         4 (4.7%)        10 (13.9%)             6 (6.2%)      
+        Total number of patients with all non-fatal AEs resolved                        3 (3.5%)         4 (5.6%)              3 (3.1%)      
+        Total number of patients with at least one non-fatal unresolved or ongoing AE   1 (1.2%)         6 (8.3%)              3 (3.1%)      
+        Total number of patients with at least one serious AE                              0                0                      0         
+        Total number of patients with at least one related AE                              0                0                      0         
+      SMQ02 (NARROW)                                                                                                                         
+        Total number of patients with at least one AE                                   3 (3.5%)         5 (6.9%)              6 (6.2%)      
+        Total number of AEs                                                                4                8                     13         
+        Total number of patients with at least one AE by worst grade                                                                         
+          Grade 1                                                                       1 (1.2%)         3 (4.2%)              3 (3.1%)      
+          Grade 2                                                                       2 (2.3%)         2 (2.8%)              1 (1.0%)      
+          Grade 3                                                                          0                0                      0         
+          Grade 4                                                                          0                0                  1 (1.0%)      
+          Grade 5 (fatal outcome)                                                          0                0                  1 (1.0%)      
+        Total number of patients with study drug withdrawn due to AE                       0                0                      0         
+        Total number of patients with dose modified/interrupted due to AE                  0                0                      0         
+        Total number of patients with treatment received for AE                         3 (3.5%)         5 (6.9%)              6 (6.2%)      
+        Total number of patients with all non-fatal AEs resolved                           0                0                  1 (1.0%)      
+        Total number of patients with at least one non-fatal unresolved or ongoing AE   3 (3.5%)         5 (6.9%)              5 (5.2%)      
+        Total number of patients with at least one serious AE                              0                0                      0         
+        Total number of patients with at least one related AE                              0                0                      0         
+      CQ01                                                                                                                                   
+        Total number of patients with at least one AE                                   7 (8.1%)         6 (8.3%)              3 (3.1%)      
+        Total number of AEs                                                                8                9                      4         
+        Total number of patients with at least one AE by worst grade                                                                         
+          Grade 1                                                                       5 (5.8%)         3 (4.2%)              2 (2.1%)      
+          Grade 2                                                                       1 (1.2%)         3 (4.2%)              1 (1.0%)      
+          Grade 3                                                                          0                0                      0         
+          Grade 4                                                                       1 (1.2%)            0                      0         
+          Grade 5 (fatal outcome)                                                          0                0                      0         
+        Total number of patients with study drug withdrawn due to AE                       0                0                      0         
+        Total number of patients with dose modified/interrupted due to AE                  0                0                      0         
+        Total number of patients with treatment received for AE                         7 (8.1%)         6 (8.3%)              3 (3.1%)      
+        Total number of patients with all non-fatal AEs resolved                        1 (1.2%)         2 (2.8%)              2 (2.1%)      
+        Total number of patients with at least one non-fatal unresolved or ongoing AE   6 (7.0%)         4 (5.6%)              1 (1.0%)      
+        Total number of patients with at least one serious AE                              0                0                      0         
+        Total number of patients with at least one related AE                              0                0                      0         
 
