@@ -1,5 +1,9 @@
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse %>%
+  mutate(
+    WGRLOVFL = ifelse(AVISIT == "POST-BASELINE MINIMUM", "Y", ""),
+    WGRHIVFL = ifelse(AVISIT == "POST-BASELINE MAXIMUM", "Y", "")
+  )
 
 adsl <- df_explicit_na(adsl)
 adlb <- df_explicit_na(adlb)
@@ -7,7 +11,7 @@ adlb <- df_explicit_na(adlb)
 # Please note that in real clinical data, population flag like SAFFL, and parameter category like PARCAT2 needs to be
 # selected properly.
 adsl_f <- adsl %>% filter(SAFFL == "Y")
-adlb <- adlb %>% filter(PARAMCD == "CRP" & SAFFL == "Y")
+adlb <- adlb %>% filter(PARAMCD == "ALB" & ANL01FL == "Y")
 
 testthat::test_that("LBT13 variant 1: LOW works as expected", {
   adlb_f <- adlb %>% filter(WGRLOVFL == "Y")
@@ -22,7 +26,7 @@ testthat::test_that("LBT13 variant 1: LOW works as expected", {
     )
 
   # Create new grouping variables ATOXGR_GP, BTOXGR_GP
-  adlb_out <- adlb_out %>%
+  adlb_out <- adlb_f %>%
     mutate(
       ATOXGR_GP = case_when(
         ATOXGR %in% c(0, 1, 2, 3, 4) ~ "Not Low",
