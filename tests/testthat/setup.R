@@ -37,7 +37,10 @@ adsl_pharmaverse <- pharmaverseadam::adsl %>%
 adae_pharmaverse <- pharmaverseadam::adae %>%
   mutate(AETOXGR = sample(c("1", "2", "3", "4", "5"), nrow(.), replace = TRUE, prob = c(0.70, 0.20, 0.05, 0.045, 0.005)),
          AECONTRT = sample(c("Y"), nrow(.), replace = TRUE, prob = c(0.95)),
-         ANL01FL = "Y")
+         ANL01FL = "Y",
+         SMQ01NAM = ifelse(AEDECOD %in% c("NAUSEA", "VOMITING"), "SMQ01", NA_character_),
+         SMQ01SC = ifelse(SMQ01NAM == "SMQ01", "BROAD", NA_character_),
+         CQ01NAM = ifelse(AEDECOD == "HEADACHE", "CQ01", NA_character_))
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
