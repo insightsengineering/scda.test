@@ -25,7 +25,7 @@ Depends:
     R (>= 4.2),
     rlistings (>= 0.2.7),
     rtables (>= 0.6.6),
-    tern (>= 0.9.3.9002)
+    tern (>= 0.9.3)
 Imports:
     pharmaverseadam (>= 0.2.0),
     random.cdisc.data (>= 0.3.14.9002)
@@ -34,11 +34,9 @@ Suggests:
     checkmate,
     dplyr,
     forcats,
-    ggplot2 (>= 3.4.0),
     knitr,
     lubridate,
     stringr,
-    svglite (>= 2.1.2),
     testthat (>= 3.0),
     tibble,
     tidyr
@@ -51,4 +49,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.0
