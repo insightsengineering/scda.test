@@ -34,11 +34,9 @@ Suggests:
     checkmate,
     dplyr,
     forcats,
-    ggplot2 (>= 3.4.0),
     knitr,
     lubridate,
     stringr,
-    svglite (>= 2.1.2),
     testthat (>= 3.0),
     tibble,
     tidyr
