@@ -1,6 +1,6 @@
 # Test variants for AET06_SMQ.
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET06_SMQ variant 1 is produced correctly", {
   adsl_labels <- formatters::var_labels(adsl)
@@ -9,15 +9,15 @@ testthat::test_that("AET06_SMQ variant 1 is produced correctly", {
   adae <- adae %>%
     dplyr::mutate(
       SMQ1 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl B.1", "cl C.1", "cl D.1") ~ "SMQ 1 (broad)",
+        AEDECOD %in% c("NAUSEA", "VOMITING") ~ "SMQ 1 (broad)",
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl D.1") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(
-        AEDECOD %in% c("dcd B.2.1.2.1", "dcd A.1.1.1.2", "dcd C.2.1.2.1", "dcd B.2.2.3.1") ~ "AESI",
+        AEDECOD %in% c("HEADACHE") ~ "AESI",
         TRUE ~ NA_character_
       )
     )
@@ -88,18 +88,18 @@ testthat::test_that("AET06_SMQ variant 2 is produced correctly", {
 
   formatters::var_labels(adsl) <- c(adsl_labels, "AGE65" = "AGE65 GROUP")
 
-  adae <- adae %>%
+  adae <- adae%>%
     dplyr::mutate(
       SMQ1 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl B.1", "cl C.1", "cl D.1") ~ "SMQ 1 (broad)",
+        AEDECOD %in% c("NAUSEA", "VOMITING") ~ "SMQ 1 (broad)",
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl D.1") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(
-        AEDECOD %in% c("dcd B.2.1.2.1", "dcd A.1.1.1.2", "dcd C.2.1.2.1", "dcd B.2.2.3.1") ~ "AESI",
+        AEDECOD %in% c("HEADACHE") ~ "AESI",
         TRUE ~ NA_character_
       ),
       AGE65 = dplyr::case_when(
