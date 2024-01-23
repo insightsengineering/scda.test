@@ -197,7 +197,7 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]])[5:6, 2],
-    c("0","0")
+    c("0", "0")
   )
 })
 

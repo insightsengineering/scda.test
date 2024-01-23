@@ -307,4 +307,3 @@ testthat::test_that("Safety Summary Variant 4 (with Rows Counting Events and Add
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
-
