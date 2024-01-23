@@ -33,16 +33,18 @@ criteria_fun <- function(tr) {
   inherits(tr, "ContentRow")
 }
 
-adsl <- adsl_raw
-adae_max <- adae_raw %>%
+adsl <- adsl_pharmaverse
+adae_max <- adae_pharmaverse %>%
   dplyr::group_by(ACTARM, USUBJID, AEBODSYS, AEDECOD) %>%
   dplyr::summarize(
     MAXAETOXGR = max(as.numeric(AETOXGR))
   ) %>%
   dplyr::ungroup() %>%
   dplyr::mutate(
+    ACTARM = factor(ACTARM),
     MAXAETOXGR = factor(MAXAETOXGR),
-    AEDECOD = droplevels(AEDECOD)
+    AEBODSYS = factor(AEBODSYS),
+    AEDECOD = factor(AEDECOD)
   )
 
 testthat::test_that("AET04_PI full table is produced correctly", {

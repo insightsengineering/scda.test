@@ -1,7 +1,7 @@
 # Test all variants of AET02
 
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 # Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
 adsl <- df_explicit_na(adsl)
@@ -66,12 +66,15 @@ testthat::test_that("AET02 variant 1 is produced correctly", {
   testthat::expect_snapshot(res)
 
   # Testing pagination with not repeated Total number of patients
-  pag_result <- paginate_table(result, cpp = 75) # std is 70 which fails
+  pag_result <- paginate_table(result)
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]], with_spaces = FALSE)[3, 1],
     "Total number of patients with at least one adverse event"
   )
-  testthat::expect_identical(to_string_matrix(pag_result[[2]], with_spaces = FALSE)[5, 1], "cl A.1")
+  testthat::expect_identical(
+    to_string_matrix(pag_result[[2]], with_spaces = FALSE)[3, 1],
+    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
+  )
 })
 
 testthat::test_that("AET02 variant 2 is produced correctly", {
@@ -554,7 +557,7 @@ testthat::test_that("AET02 variant 11 is produced correctly", {
 
   row_condition <- has_fraction_in_cols(
     atleast = 0.05,
-    col_names = c("B: Placebo")
+    col_names = c("Placebo")
   )
   result <- prune_table(result, keep_rows(row_condition))
 
@@ -599,8 +602,8 @@ testthat::test_that("AET02 variant 12 is produced correctly", {
   criteria_fun <- function(tr) is(tr, "ContentRow")
   result <- trim_rows(result, criteria = criteria_fun)
 
-  row_condition1 <- has_fractions_difference(atleast = 0.05, col_names = c("A: Drug X", "B: Placebo"))
-  row_condition2 <- has_fractions_difference(atleast = 0.05, col_names = c("A: Drug X", "C: Combination"))
+  row_condition1 <- has_fractions_difference(atleast = 0.05, col_names = c("Placebo", "Xanomeline High Dose"))
+  row_condition2 <- has_fractions_difference(atleast = 0.05, col_names = c("Placebo", "Xanomeline Low Dose"))
   row_condition <- row_condition1 | row_condition2
   result <- prune_table(result, keep_rows(row_condition))
 

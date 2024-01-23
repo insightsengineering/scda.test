@@ -1,13 +1,11 @@
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adae <- df_explicit_na(
   adae,
   omit_columns = c("SMQ01NAM", "SMQ01SC", "SMQ02NAM", "SMQ02SC", "CQ01NAM", "STUDYID", "USUBJID")
 )
-
-set.seed(99)
 
 adae <- adae %>%
   mutate(
@@ -104,6 +102,7 @@ testthat::test_that("Safety Summary Variant 1 works as expected", {
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
+
 
 testthat::test_that("Safety Summary Variant 2 (with Medical Concepts Section) works as expected", {
   aesi_vars <- c("FATAL", "SER", "SERWD", "SERDSM", "RELSER", "WD", "DSM", "REL", "RELWD", "RELDSM", "CTC35")
@@ -308,3 +307,4 @@ testthat::test_that("Safety Summary Variant 4 (with Rows Counting Events and Add
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
+

@@ -18,8 +18,8 @@ preprocess_adae <- function(adae) {
     dplyr::filter(AESDTH == "Y")
 }
 
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET07 variant 1 is produced correctly", {
   adae <- adae %>%
