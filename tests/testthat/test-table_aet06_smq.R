@@ -88,7 +88,7 @@ testthat::test_that("AET06_SMQ variant 2 is produced correctly", {
 
   formatters::var_labels(adsl) <- c(adsl_labels, "AGE65" = "AGE65 GROUP")
 
-  adae <- adae%>%
+  adae <- adae %>%
     dplyr::mutate(
       SMQ1 = dplyr::case_when(
         AEDECOD %in% c("NAUSEA", "VOMITING") ~ "SMQ 1 (broad)",
