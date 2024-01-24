@@ -23,7 +23,7 @@ testthat::test_that("AET09 variant 1 (AEs related to study drug by SMQ) is produ
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(
@@ -82,7 +82,7 @@ testthat::test_that(
           TRUE ~ NA_character_
         ),
         SMQ2 = dplyr::case_when(
-          AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
+          AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
           TRUE ~ NA_character_
         ),
         SMQ3 = dplyr::case_when(

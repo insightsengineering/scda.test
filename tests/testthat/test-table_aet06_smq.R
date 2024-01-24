@@ -13,7 +13,7 @@ testthat::test_that("AET06_SMQ variant 1 is produced correctly", {
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(
@@ -95,7 +95,7 @@ testthat::test_that("AET06_SMQ variant 2 is produced correctly", {
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEDECOD %in% c( "VOMITING") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(

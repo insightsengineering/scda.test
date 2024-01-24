@@ -7,7 +7,7 @@ adaette <- left_join(
 ) %>%
   mutate(
     PARAM = "Time to first occurrence of any adverse event",
-    AVAL = as.numeric(difftime(TRTSDT, ASTDTM, unit = "days"))/365.25,
+    AVAL = as.numeric(difftime(TRTSDT, ASTDTM, unit = "days")) / 365.25,
     AVALU = "YEARS",
     CNSR = ifelse(is.na(AVAL), 1, 0)
   )
