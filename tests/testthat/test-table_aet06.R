@@ -4,6 +4,9 @@
 
 adsl <- adsl_pharmaverse
 adae <- adae_pharmaverse
+
+# Create portion fo adsub that is needed for tables, as pharmaverseadam doesn't have adsub
+# This can be achieved by using certain rows of advs
 adsub <- advs_pharmaverse %>%
   filter(PARAMCD == "BMI" & VISIT == "BASELINE") %>%
   select(STUDYID, USUBJID, PARAMCD, AVAL) %>%
