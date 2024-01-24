@@ -22,15 +22,19 @@ anl_rsp_arms_ab <- anl %>%
 var_labels(anl_rsp_arms_ab) <- c(anl_labels, is_rsp = "Is Responder")
 
 testthat::test_that("FSTG01 variant 1 is produced correctly", {
-  df <- extract_rsp_subgroups(
-    variables = list(
-      rsp = "is_rsp",
-      arm = "ARM",
-      subgroups = c("SEX", "BMRKR2"),
-      strata_var = "STRATA2"
-    ),
-    data = anl_rsp_arms_ab,
-    conf_level = 0.95
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    df <- extract_rsp_subgroups(
+      variables = list(
+        rsp = "is_rsp",
+        arm = "ARM",
+        subgroups = c("SEX", "BMRKR2"),
+        strat = "STRATA2"
+      ),
+      data = anl_rsp_arms_ab,
+      conf_level = 0.95
+    )
   )
 
   result <- basic_table() %>%
@@ -60,15 +64,19 @@ testthat::test_that("FSTG01 variant 2 is produced correctly", {
     droplevels()
   var_labels(anl_rsp_comb_arms_ac) <- c(anl_labels, is_rsp = "Is Responder")
 
-  df <- extract_rsp_subgroups(
-    variables = list(
-      rsp = "is_rsp",
-      arm = "ARMCD",
-      subgroups = c("SEX", "BMRKR2"),
-      strata_var = "STRATA2"
-    ),
-    data = anl_rsp_comb_arms_ac,
-    conf_level = 0.95
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    df <- extract_rsp_subgroups(
+      variables = list(
+        rsp = "is_rsp",
+        arm = "ARMCD",
+        subgroups = c("SEX", "BMRKR2"),
+        strata_var = "STRATA2"
+      ),
+      data = anl_rsp_comb_arms_ac,
+      conf_level = 0.95
+    )
   )
 
   result <- basic_table() %>%
@@ -80,15 +88,19 @@ testthat::test_that("FSTG01 variant 2 is produced correctly", {
 })
 
 testthat::test_that("FSTG01 variant 3 is produced correctly", {
-  df <- extract_rsp_subgroups(
-    variables = list(
-      rsp = "is_rsp",
-      arm = "ARM",
-      subgroups = c("SEX", "BMRKR2"),
-      strata_var = "STRATA2"
-    ),
-    data = anl_rsp_arms_ab,
-    conf_level = 0.90
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    df <- extract_rsp_subgroups(
+      variables = list(
+        rsp = "is_rsp",
+        arm = "ARM",
+        subgroups = c("SEX", "BMRKR2"),
+        strat = "STRATA2"
+      ),
+      data = anl_rsp_arms_ab,
+      conf_level = 0.90
+    )
   )
 
   result <- basic_table() %>%
@@ -100,15 +112,19 @@ testthat::test_that("FSTG01 variant 3 is produced correctly", {
 })
 
 testthat::test_that("FSTG01 variant 4 is produced correctly", {
-  df <- extract_rsp_subgroups(
-    variables = list(
-      rsp = "is_rsp",
-      arm = "ARM",
-      subgroups = c("SEX", "BMRKR2"),
-      strata_var = "STRATA2"
-    ),
-    data = anl_rsp_arms_ab,
-    conf_level = 0.95
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    df <- extract_rsp_subgroups(
+      variables = list(
+        rsp = "is_rsp",
+        arm = "ARM",
+        subgroups = c("SEX", "BMRKR2"),
+        strat = "STRATA2"
+      ),
+      data = anl_rsp_arms_ab,
+      conf_level = 0.95
+    )
   )
 
   result <- basic_table() %>%
@@ -135,15 +151,19 @@ testthat::test_that("FSTG01 variant 5 is produced correctly", {
     droplevels()
   var_labels(anl_cr_arms_ab) <- c(anl_labels, is_rsp = "Is CR")
 
-  df <- extract_rsp_subgroups(
-    variables = list(
-      rsp = "is_rsp",
-      arm = "ARM",
-      subgroups = c("SEX", "BMRKR2"),
-      strata_var = "STRATA2"
-    ),
-    data = anl_cr_arms_ab,
-    conf_level = 0.95
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    df <- extract_rsp_subgroups(
+      variables = list(
+        rsp = "is_rsp",
+        arm = "ARM",
+        subgroups = c("SEX", "BMRKR2"),
+        strat = "STRATA2"
+      ),
+      data = anl_cr_arms_ab,
+      conf_level = 0.95
+    )
   )
 
   result <- basic_table() %>%

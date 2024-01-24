@@ -94,7 +94,7 @@ testthat::test_that("CMT01B variant 2 is produced correctly", {
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by("ARM") %>%
     analyze_num_patients(
-      var = "USUBJID",
+      vars = "USUBJID",
       count_by = "CMSEQ",
       .stats = c("unique", "nonunique"),
       .labels = c(

@@ -33,7 +33,7 @@ lyt <- basic_table(show_colcounts = TRUE) %>%
     split_label = obj_label(admh_f$MHBODSYS)
   ) %>%
   analyze_num_patients(
-    var = "USUBJID",
+    vars = "USUBJID",
     .stats = c("unique", "nonunique"),
     .labels = c("Total number of patients with at least one condition", "Total number of conditions"),
     show_labels = "hidden"
@@ -77,7 +77,7 @@ testthat::test_that("MHT01 variant 3 is produced accurately", {
       split_label = obj_label(admh_f$MHBODSYS)
     ) %>%
     analyze_num_patients(
-      var = "USUBJID",
+      vars = "USUBJID",
       .stats = c("unique"),
       .labels = c("Total number of patients with at least one condition"),
       show_labels = "hidden"
