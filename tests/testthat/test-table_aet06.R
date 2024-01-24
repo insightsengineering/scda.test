@@ -2,11 +2,24 @@
 # to variant 1, needing only the data frame to be pre-processed
 # and the baseline variable to be changed from SEX.
 
-adsl <- adsl_raw
-adae <- adae_raw
-adsub <- adsub_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
+adsub <- advs_pharmaverse %>%
+  filter(PARAMCD == "BMI" & VISIT == "BASELINE") %>%
+  select(STUDYID, USUBJID, PARAMCD, AVAL) %>%
+  unique() %>%
+  mutate(
+    AVALCAT1 = case_when(
+      AVAL < 18.5 ~ "<18.5",
+      18.5 <= AVAL & AVAL < 25 ~ "18.5 - 24.9",
+      25 <= AVAL & AVAL < 30 ~ "25 - 29.9",
+      AVAL >= 30 ~ ">30"
+    ),
+    AVALCAT1 = factor(AVALCAT1, levels = c("<18.5", "18.5 - 24.9", "25 - 29.9", ">30"))
+  )
+
 adsub_bmi <- adsub %>%
-  dplyr::filter(PARAMCD == "BBMISI") %>%
+  dplyr::filter(PARAMCD == "BMI") %>%
   dplyr::select(STUDYID, USUBJID, AVALCAT1) %>%
   dplyr::mutate(
     AVALCAT1 = factor(AVALCAT1, levels = c("<18.5", "18.5 - 24.9", "25 - 29.9", ">30"))
