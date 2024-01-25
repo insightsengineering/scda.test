@@ -2,6 +2,7 @@ adsl <- adsl_pharmaverse
 adae <- adae_pharmaverse
 
 # Create portion fo adaette that is needed for tables, as pharmaverseadam doesn't have adaeatte
+# Create First occurence of any AE from adae
 adaette <- left_join(
   select(adsl, USUBJID, ARM, TRTSDT),
   select(filter(adae, AESEQ == 1), USUBJID, ASTDTM),
