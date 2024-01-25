@@ -1,83 +1,72 @@
-adhy <- adhy_raw
-
-# Ensure character variables are converted to factors and empty strings and NAs are explicit missing levels.
-adhy_liver <- df_explicit_na(adhy)
-
-# Define values of interest in PARAMCD variable.
-paramcd_tbili_alt <- c("BLAL", "BGAL", "BA2AL", "BA5AL")
-paramcd_tbili_ast <- c("BLAS", "BGAS", "BA2AS", "BA5AS")
-
-# Select LBT09 parameters.
-adhy_liver <- adhy_liver %>%
-  filter(
-    SAFFL == "Y",
-    AVISIT %in% c("BASELINE", "POST-BASELINE"),
-    PARAMCD %in% c(paramcd_tbili_alt, paramcd_tbili_ast)
-  )
-
-# Let's be explicit about factor levels for AVISIT and PARAMCD.
-adhy_liver <- adhy_liver %>%
+adhy_liver <-  full_join(
+    (pharmaverseadam::adlb %>%
+       filter(PARAMCD %in% c("BILI") & (AVISIT == "Baseline" | DTYPE == "MAXIMUM")) %>%
+       select(USUBJID, ARM, AVISIT, PARAMCD, AVAL, ANRHI) %>%
+       rename(BILI = PARAMCD,
+              BILIVAL = AVAL,
+              BILIRHI = ANRHI)),
+    (pharmaverseadam::adlb %>%
+       filter(PARAMCD %in% c("ALT", "AST") & (AVISIT == "Baseline" | DTYPE == "MAXIMUM")) %>%
+       select(USUBJID, ARM, AVISIT, PARAMCD, AVAL, ANRHI) %>%
+       rename(ALTAST = PARAMCD,
+              ALTASTVAL = AVAL,
+              ALTASTRHI = ANRHI)),
+    by = join_by(USUBJID, ARM, AVISIT)
+  ) %>%
   mutate(
-    AVISIT = factor(AVISIT, levels = c("BASELINE", "POST-BASELINE")),
-    PARAMCD = factor(PARAMCD, levels = c(paramcd_tbili_alt, paramcd_tbili_ast))
-  )
-
-# Create indicator and category variables.
-adhy_liver <- adhy_liver %>%
-  mutate(
-    TBILI_CAT = factor(
-      case_when(
-        PARAMCD %in% c(paramcd_tbili_alt[1], paramcd_tbili_ast[1]) ~ "Total Bilirubin <= 2xULN",
-        PARAMCD %in% c(paramcd_tbili_alt[2], paramcd_tbili_ast[2]) ~ "Total Bilirubin > 2xULN",
-        PARAMCD %in% c(paramcd_tbili_alt[3], paramcd_tbili_ast[3]) ~
-          "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN",
-        PARAMCD %in% c(paramcd_tbili_alt[4], paramcd_tbili_ast[4]) ~
-          "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 5xULN"
+      TBILI_CAT = factor(
+        case_when(
+          BILIVAL <= 2*BILIRHI ~ "Total Bilirubin <= 2xULN",
+          BILIVAL > 2*BILIRHI ~ "Total Bilirubin > 2xULN"
+        ),
+        levels = c(
+          "Total Bilirubin <= 2xULN",
+          "Total Bilirubin > 2xULN"
+        )
       ),
-      levels = c(
-        "Total Bilirubin <= 2xULN",
-        "Total Bilirubin > 2xULN",
-        "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 2xULN",
-        "Total Bilirubin > 2xULN and Alkaline Phosphatase <= 5xULN"
+      ALTAST_CAT = factor(
+        case_when(
+          ALTAST %in% c("ALT") & (ALTASTVAL > 3*ALTASTRHI) ~ "ALT >3 - <= 5xULN",
+          ALTAST %in% c("ALT") & (ALTASTVAL > 5*ALTASTRHI) ~ "ALT >5 - <= 10xULN",
+          ALTAST %in% c("ALT") & (ALTASTVAL > 10*ALTASTRHI) ~ "ALT >10 - <= 20xULN",
+          ALTAST %in% c("ALT") & (ALTASTVAL > 20*ALTASTRHI) ~ "ALT >20xULN",
+          ALTAST %in% c("AST") & (ALTASTVAL > 3*ALTASTRHI) ~ "AST >3 - <= 5xULN",
+          ALTAST %in% c("AST") & (ALTASTVAL > 5*ALTASTRHI) ~ "ALT >5 - <= 10xULN",
+          ALTAST %in% c("AST") & (ALTASTVAL > 10*ALTASTRHI) ~ "AST >10 - <= 20xULN",
+          ALTAST %in% c("AST") & (ALTASTVAL > 20*ALTASTRHI) ~ "AST >20xULN",
+          TRUE ~ "Criteria not met"
+        ),
+        levels = c(
+          "ALT >3 - <= 5xULN", "ALT >5 - <= 10xULN", "ALT >10 - <= 20xULN", "ALT > 20xULN",
+          "AST >3 - <= 5xULN", "AST >5 - <= 10xULN", "AST >10 - <= 20xULN", "AST > 20xULN",
+          "Criteria not met"
+        )
+      ),
+      ALTAST_ind = factor(
+        case_when(
+          ALTAST == "ALT" ~ "ALT",
+          ALTAST == "AST" ~ "AST"
+        ),
+        levels = c("ALT", "AST")
       )
-    ),
-    ALTAST_CAT = factor(
-      case_when(
-        PARAMCD %in% paramcd_tbili_alt & AVALC == ">3-5ULN" ~ "ALT >3 - <= 5xULN",
-        PARAMCD %in% paramcd_tbili_alt & AVALC == ">5-10ULN" ~ "ALT >5 - <= 10xULN",
-        PARAMCD %in% paramcd_tbili_alt & AVALC == ">10-20ULN" ~ "ALT >10 - <= 20xULN",
-        PARAMCD %in% paramcd_tbili_alt & AVALC == ">20ULN" ~ "ALT > 20xULN",
-        PARAMCD %in% paramcd_tbili_ast & AVALC == ">3-5ULN" ~ "AST >3 - <= 5xULN",
-        PARAMCD %in% paramcd_tbili_ast & AVALC == ">5-10ULN" ~ "AST >5 - <= 10xULN",
-        PARAMCD %in% paramcd_tbili_ast & AVALC == ">10-20ULN" ~ "AST >10 - <= 20xULN",
-        PARAMCD %in% paramcd_tbili_ast & AVALC == ">20ULN" ~ "AST > 20xULN",
-        TRUE ~ "Criteria not met"
-      ),
-      levels = c(
-        "ALT >3 - <= 5xULN", "ALT >5 - <= 10xULN", "ALT >10 - <= 20xULN",
-        "20" = "ALT > 20xULN",
-        "AST >3 - <= 5xULN", "AST >5 - <= 10xULN", "AST >10 - <= 20xULN", "AST > 20xULN",
-        "Criteria not met"
-      )
-    ),
-    ALTAST_ind = factor(
-      case_when(
-        PARAMCD %in% paramcd_tbili_alt ~ "ALT",
-        PARAMCD %in% paramcd_tbili_ast ~ "AST"
-      ),
-      levels = c("ALT", "AST")
     )
-  )
 
 map <- data.frame(
-  ALTAST_ind = c(rep("ALT", 5), rep("AST", 5)),
-  ALTAST_CAT = c(
-    "ALT >3 - <= 5xULN", "ALT >5 - <= 10xULN", "ALT >10 - <= 20xULN",
-    "20" = "ALT > 20xULN", "Criteria not met",
-    "AST >3 - <= 5xULN", "AST >5 - <= 10xULN", "AST >10 - <= 20xULN", "AST > 20xULN", "Criteria not met"
-  ),
-  stringsAsFactors = FALSE
-)
+    ALTAST_ind = c(rep("ALT", 5), rep("AST", 5)),
+    ALTAST_CAT = c(
+      "ALT >3 - <= 5xULN",
+      "ALT >5 - <= 10xULN",
+      "ALT >10 - <= 20xULN",
+      "20" = "ALT > 20xULN",
+      "Criteria not met",
+      "AST >3 - <= 5xULN",
+      "AST >5 - <= 10xULN",
+      "AST >10 - <= 20xULN",
+      "AST > 20xULN",
+      "Criteria not met"
+    ),
+    stringsAsFactors = FALSE
+  )
 
 testthat::test_that("LBT09 variant 1 works as expected", {
   result <- basic_table() %>%

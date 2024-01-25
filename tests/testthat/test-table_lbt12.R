@@ -1,29 +1,35 @@
-adhy <- adhy_raw
+adhy <- pharmaverseadam::adlb %>%
+  filter(PARAMCD %in% c("ALT", "AST") & !(DTYPE %in% c("MINIMUM", "MAXIMUM")) & AVISIT != "Baseline" & SAFFL == "Y") %>%
+  mutate(APERIODC = ifelse(AVISIT %in% c("Unscheduled 1.1", "Unscheduled 1.2", "Unscheduled 1.3", "Week 2"), "PERIOD 1", "PERIOD 2"),
+         AVAL2 = ifelse(AVAL > 3*ANRHI, "Y", "N")) %>%
+  select(USUBJID, ACTARM, AVISIT, APERIODC, PARAMCD, AVAL2)
 
-anl <- adhy
+adhy_altast <- adhy %>%
+  pivot_wider(., names_from = PARAMCD, values_from = AVAL2) %>%
+  mutate(PARAMCD = "ALTAST",
+         AVAL2 = ifelse(ALT == "Y" | AST == "Y", "Y", "N")) %>%
+  select(USUBJID, ACTARM, AVISIT, APERIODC, PARAMCD, AVAL2)
+
+anl <- bind_rows(adhy, adhy_altast)
 anl$APERIODC <- as.factor(anl$APERIODC) # to ensure the table is built even if there is no patients after filtering
 anl$ACTARM <- as.factor(anl$ACTARM) # to ensure the table is built even if there is no patients after filtering
 
 anl <- anl %>%
-  filter(
-    SAFFL == "Y",
-    PARAMCD %in% c("ASTPULN", "ALTPULN", "ALTASTPU") & AVISIT == "POST-BASELINE"
-  ) %>%
   mutate(
     ARM_AVALC = factor(
       case_when(
-        AVALC == "Y" ~ as.character(ACTARM),
+        AVAL2 == "Y" ~ as.character(ACTARM),
         TRUE ~ "Criteria not met"
       ),
       levels = c(levels(anl$ACTARM), "Criteria not met")
     ),
     PARAM = factor(
       case_when(
-        PARAMCD == "ASTPULN" ~ "AST >3x ULN",
-        PARAMCD == "ALTPULN" ~ "ALT >3x ULN",
-        PARAMCD == "ALTASTPU" ~ "AST >3x ULN or ALT >x3 ULN"
+        PARAMCD == "ALT" ~ "AST >3x ULN",
+        PARAMCD == "AST" ~ "ALT >3x ULN",
+        PARAMCD == "ALTAST" ~ "AST >3x ULN or ALT >x3 ULN"
       ),
-      levels = c("AST >3x ULN", "ALT >3x ULN", "AST >3x ULN or ALT >x3 ULN")
+      levels = c("AST >3x ULN", "ALT >3x ULN","AST >3x ULN or ALT >x3 ULN")
     ),
     TITLE = factor("First Elevated Result Occurring During")
   )
