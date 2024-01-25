@@ -1,51 +1,55 @@
 adsl <- adsl_pharmaverse
-adhy <-  full_join(
+adhy <- full_join(
   (pharmaverseadam::adlb %>%
-     filter(PARAMCD %in% c("BILI") & !(DTYPE %in% c("MINIMUM", "MAXIMUM"))) %>%
-     select(USUBJID, ACTARMCD, AVISIT, PARAMCD, AVAL, ANRHI) %>%
-     rename(BILI = PARAMCD,
-            BILIVAL = AVAL,
-            BILIRHI = ANRHI)),
+    filter(PARAMCD %in% c("BILI") & !(DTYPE %in% c("MINIMUM", "MAXIMUM"))) %>%
+    select(USUBJID, ACTARMCD, AVISIT, PARAMCD, AVAL, ANRHI) %>%
+    rename(
+      BILI = PARAMCD,
+      BILIVAL = AVAL,
+      BILIRHI = ANRHI
+    )),
   (pharmaverseadam::adlb %>%
-     filter(PARAMCD %in% c("ALT", "AST") & !(DTYPE %in% c("MINIMUM", "MAXIMUM"))) %>%
-     select(USUBJID, ACTARMCD, AVISIT, PARAMCD, AVAL, ANRHI) %>%
-     rename(ALTAST = PARAMCD,
-            ALTASTVAL = AVAL,
-            ALTASTRHI = ANRHI)),
+    filter(PARAMCD %in% c("ALT", "AST") & !(DTYPE %in% c("MINIMUM", "MAXIMUM"))) %>%
+    select(USUBJID, ACTARMCD, AVISIT, PARAMCD, AVAL, ANRHI) %>%
+    rename(
+      ALTAST = PARAMCD,
+      ALTASTVAL = AVAL,
+      ALTASTRHI = ANRHI
+    )),
   by = join_by(USUBJID, ACTARMCD, AVISIT)
 ) %>%
   unique() %>%
   mutate(
-      TBILI_CAT = factor(
-        case_when(
-          BILIVAL <= 1*BILIRHI ~ "Total Bilirubin <= 2xULN",
-          BILIVAL > 1*BILIRHI ~ "Total Bilirubin > 2xULN",
-          TRUE ~ "Criteria not met"
-        ),
-        levels = c(
-          "Total Bilirubin <= 2xULN",
-          "Total Bilirubin > 2xULN",
-          "Criteria not met"
-        )
+    TBILI_CAT = factor(
+      case_when(
+        BILIVAL <= 1 * BILIRHI ~ "Total Bilirubin <= 2xULN",
+        BILIVAL > 1 * BILIRHI ~ "Total Bilirubin > 2xULN",
+        TRUE ~ "Criteria not met"
       ),
-      ALTAST_CAT = factor(
-        case_when(
-          ALTAST %in% c("ALT") & (ALTASTVAL > 3*ALTASTRHI) ~ "ALT >3 - <= 5xULN",
-          ALTAST %in% c("ALT") & (ALTASTVAL > 5*ALTASTRHI) ~ "ALT >5 - <= 10xULN",
-          ALTAST %in% c("ALT") & (ALTASTVAL > 10*ALTASTRHI) ~ "ALT >10 - <= 20xULN",
-          ALTAST %in% c("ALT") & (ALTASTVAL > 20*ALTASTRHI) ~ "ALT >20xULN",
-          ALTAST %in% c("AST") & (ALTASTVAL > 3*ALTASTRHI) ~ "AST >3 - <= 5xULN",
-          ALTAST %in% c("AST") & (ALTASTVAL > 5*ALTASTRHI) ~ "ALT >5 - <= 10xULN",
-          ALTAST %in% c("AST") & (ALTASTVAL > 10*ALTASTRHI) ~ "AST >10 - <= 20xULN",
-          ALTAST %in% c("AST") & (ALTASTVAL > 20*ALTASTRHI) ~ "AST >20xULN",
-          TRUE ~ "Criteria not met"
-        ),
-        levels = c(
-          "ALT >3 - <= 5xULN", "ALT >5 - <= 10xULN", "ALT >10 - <= 20xULN", "ALT > 20xULN",
-          "AST >3 - <= 5xULN", "AST >5 - <= 10xULN", "AST >10 - <= 20xULN", "AST > 20xULN",
-          "Criteria not met"
-        )
+      levels = c(
+        "Total Bilirubin <= 2xULN",
+        "Total Bilirubin > 2xULN",
+        "Criteria not met"
       )
+    ),
+    ALTAST_CAT = factor(
+      case_when(
+        ALTAST %in% c("ALT") & (ALTASTVAL > 3 * ALTASTRHI) ~ "ALT >3 - <= 5xULN",
+        ALTAST %in% c("ALT") & (ALTASTVAL > 5 * ALTASTRHI) ~ "ALT >5 - <= 10xULN",
+        ALTAST %in% c("ALT") & (ALTASTVAL > 10 * ALTASTRHI) ~ "ALT >10 - <= 20xULN",
+        ALTAST %in% c("ALT") & (ALTASTVAL > 20 * ALTASTRHI) ~ "ALT >20xULN",
+        ALTAST %in% c("AST") & (ALTASTVAL > 3 * ALTASTRHI) ~ "AST >3 - <= 5xULN",
+        ALTAST %in% c("AST") & (ALTASTVAL > 5 * ALTASTRHI) ~ "ALT >5 - <= 10xULN",
+        ALTAST %in% c("AST") & (ALTASTVAL > 10 * ALTASTRHI) ~ "AST >10 - <= 20xULN",
+        ALTAST %in% c("AST") & (ALTASTVAL > 20 * ALTASTRHI) ~ "AST >20xULN",
+        TRUE ~ "Criteria not met"
+      ),
+      levels = c(
+        "ALT >3 - <= 5xULN", "ALT >5 - <= 10xULN", "ALT >10 - <= 20xULN", "ALT > 20xULN",
+        "AST >3 - <= 5xULN", "AST >5 - <= 10xULN", "AST >10 - <= 20xULN", "AST > 20xULN",
+        "Criteria not met"
+      )
+    )
   )
 
 anl <- adhy %>%

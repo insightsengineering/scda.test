@@ -17,7 +17,7 @@ anl <- adlb_pharmaverse %>%
   select(STUDYID, USUBJID, ARMCD, ADT, CRIT1, CRIT1FL) %>%
   pivot_wider(names_from = CRIT1, values_from = CRIT1FL) %>%
   mutate(
-    HYLAW = ifelse((`AST >=3xULN` == "Y" | `ALT >=3xULN` == "Y") & `BILI >=2xULN` == "Y" , "Y", NA_character_)
+    HYLAW = ifelse((`AST >=3xULN` == "Y" | `ALT >=3xULN` == "Y") & `BILI >=2xULN` == "Y", "Y", NA_character_)
   ) %>%
   select(USUBJID, HYLAW, ADT) %>%
   group_by(USUBJID, HYLAW) %>%
@@ -134,4 +134,3 @@ testthat::test_that("LBT11 variant 3 works as expected", {
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
-
