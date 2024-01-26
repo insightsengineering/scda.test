@@ -1,7 +1,11 @@
 adhy <- pharmaverseadam::adlb %>%
   filter(PARAMCD %in% c("ALT", "AST") & !(DTYPE %in% c("MINIMUM", "MAXIMUM")) & AVISIT != "Baseline" & SAFFL == "Y") %>%
   mutate(
-    APERIODC = ifelse(AVISIT %in% c("Unscheduled 1.1", "Unscheduled 1.2", "Unscheduled 1.3", "Week 2"), "PERIOD 1", "PERIOD 2"),
+    APERIODC = ifelse(
+      AVISIT %in% c("Unscheduled 1.1", "Unscheduled 1.2", "Unscheduled 1.3", "Week 2"),
+      "PERIOD 1",
+      "PERIOD 2"
+    ),
     AVAL2 = ifelse(AVAL > 3 * BASE, "Y", "N")
   ) %>%
   select(USUBJID, ACTARM, AVISIT, APERIODC, PARAMCD, AVAL2)
@@ -31,16 +35,16 @@ anl <- anl %>%
       case_when(
         PARAMCD == "ALT" ~ "AST >3x Baseline",
         PARAMCD == "AST" ~ "ALT >3x Baseline",
-        PARAMCD == "ALTAST" ~ "AST >3x Baseline or ALT >x3 Baseline"
+        PARAMCD == "ALTAST" ~ "AST >3x Baseline or ALT >3x Baseline"
       ),
-      levels = c("AST >3x Baseline", "ALT >3x Baseline", "AST >3x Baseline or ALT >x3 Baseline")
+      levels = c("AST >3x Baseline", "ALT >3x Baseline", "AST >3x Baseline or ALT >3x Baseline")
     ),
     TITLE = factor("First Elevated Result Occurring During")
   )
 
 anl <- df_explicit_na(anl)
 
-testthat::test_that("LBT12 works as expected", {
+testthat::test_that("LBT12_BL works as expected", {
   result <- basic_table() %>%
     split_cols_by("TITLE") %>%
     split_cols_by("APERIODC") %>%
