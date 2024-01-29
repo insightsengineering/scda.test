@@ -1,18 +1,14 @@
 # Test the single variant for LBT01
 
-adsl <- adsl_raw
-adlb <- adlb_raw
+adsl <- adsl_pharmaverse
+adlb <- adlb_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adlb <- df_explicit_na(adlb) %>%
   filter(ANL01FL == "Y")
 
 adlb_f <- adlb %>%
-  dplyr::filter(
-    PARAM == "Alanine Aminotransferase Measurement" &
-      !(ACTARM == "B: Placebo" & AVISIT == "WEEK 1 DAY 8") &
-      AVISIT != "SCREENING"
-  )
+  dplyr::filter(PARAM == "Alanine Aminotransferase (U/L)")
 
 testthat::test_that("LBT01 default variant is produced correctly", {
   # Define the split function
