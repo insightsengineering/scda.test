@@ -1,4 +1,4 @@
-# 1. Preprocess ADAE so that deaths do not occur in arm "A: Drug X".
+# 1. Preprocess ADAE so that deaths do not occur in arm "Xanomeline High Dose".
 # 2. Concatenate AEBODSYS and AEDECOD per GDSR output standard AET07.
 preprocess_adae <- function(adae) {
   set.seed(1, kind = "Mersenne-Twister")
@@ -7,9 +7,9 @@ preprocess_adae <- function(adae) {
       # Convert AESDTH to character for next step.
       AESDTH = as.character(AESDTH),
       # For demonstration purpose only,
-      # make "A: Drug X" as the arm without AE leading to death.
+      # make "Xanomeline High Dose" as the arm without AE leading to death.
       AESDTH = dplyr::case_when(
-        ARM == "A: Drug X" ~ NA_character_,
+        ARM == "Xanomeline Low Dose" ~ NA_character_,
         TRUE ~ AESDTH
       ),
       AESDTH = as.factor(AESDTH),

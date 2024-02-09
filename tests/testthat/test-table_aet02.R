@@ -72,7 +72,7 @@ testthat::test_that("AET02 variant 1 is produced correctly", {
     "Total number of patients with at least one adverse event"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[2]], with_spaces = FALSE)[3, 1],
+    to_string_matrix(pag_result[[2]], with_spaces = FALSE)[5, 1],
     "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
   )
 })
@@ -221,7 +221,7 @@ testthat::test_that("AET02 variant 4 is produced correctly", {
 })
 
 testthat::test_that("AET02 variant 5 is produced correctly", {
-  adae_5 <- adae %>% dplyr::filter(ACTARM != "C: Combination")
+  adae_5 <- adae %>% dplyr::filter(ACTARM != "Xanomeline Low Dose")
 
   lyt <- basic_table(show_colcounts = TRUE) %>%
     split_cols_by(var = "ACTARM") %>%

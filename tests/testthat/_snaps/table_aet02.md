@@ -1952,315 +1952,266 @@
       MedDRA System Organ Class                                              Placebo     Xanomeline High Dose   Xanomeline Low Dose
         MedDRA Preferred Term                                                 (N=86)            (N=72)                (N=96)       
       —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event              69 (80.2%)        70 (97.2%)            86 (89.6%)     
-      Overall total number of events                                           301               436                    454        
+      Total number of patients with at least one adverse event              69 (80.2%)        70 (97.2%)                 0         
+      Overall total number of events                                           301               436                     0         
+      SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                       
+        Total number of patients with at least one adverse event            21 (24.4%)        42 (58.3%)                 0         
+        Total number of events                                                  47               111                     0         
+        PRURITUS                                                             8 (9.3%)         26 (36.1%)                 0         
+        ERYTHEMA                                                            9 (10.5%)         14 (19.4%)                 0         
+        RASH                                                                 5 (5.8%)         11 (15.3%)                 0         
+        HYPERHIDROSIS                                                        2 (2.3%)         8 (11.1%)                  0         
+        SKIN IRRITATION                                                      3 (3.5%)          5 (6.9%)                  0         
+        RASH PRURITIC                                                           0              2 (2.8%)                  0         
+        ACTINIC KERATOSIS                                                       0              1 (1.4%)                  0         
+        ALOPECIA                                                             1 (1.2%)             0                      0         
+        BLISTER                                                                 0              1 (1.4%)                  0         
+        COLD SWEAT                                                           1 (1.2%)             0                      0         
+        DERMATITIS ATOPIC                                                    1 (1.2%)             0                      0         
+        DRUG ERUPTION                                                        1 (1.2%)             0                      0         
+        PRURITUS GENERALISED                                                    0              1 (1.4%)                  0         
+        RASH MACULO-PAPULAR                                                     0              1 (1.4%)                  0         
+        RASH PAPULAR                                                            0              1 (1.4%)                  0         
+        SKIN ODOUR ABNORMAL                                                     0              1 (1.4%)                  0         
+        SKIN ULCER                                                           1 (1.2%)             0                      0         
+        URTICARIA                                                               0              1 (1.4%)                  0         
       GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS                                                                         
-        Total number of patients with at least one adverse event            21 (24.4%)        36 (50.0%)            51 (53.1%)     
-        Total number of events                                                  48               118                    126        
-        APPLICATION SITE PRURITUS                                            6 (7.0%)         21 (29.2%)            23 (24.0%)     
-        APPLICATION SITE ERYTHEMA                                            3 (3.5%)         14 (19.4%)            13 (13.5%)     
-        APPLICATION SITE DERMATITIS                                          5 (5.8%)          7 (9.7%)              9 (9.4%)      
-        APPLICATION SITE IRRITATION                                          3 (3.5%)         9 (12.5%)              9 (9.4%)      
-        APPLICATION SITE VESICLES                                            1 (1.2%)          5 (6.9%)              5 (5.2%)      
-        FATIGUE                                                              1 (1.2%)          5 (6.9%)              5 (5.2%)      
-        OEDEMA PERIPHERAL                                                    2 (2.3%)          2 (2.8%)              1 (1.0%)      
-        APPLICATION SITE SWELLING                                               0              2 (2.8%)              1 (1.0%)      
-        APPLICATION SITE URTICARIA                                              0              1 (1.4%)              2 (2.1%)      
-        CHILLS                                                               1 (1.2%)          1 (1.4%)              1 (1.0%)      
-        MALAISE                                                                 0              2 (2.8%)              1 (1.0%)      
-        PYREXIA                                                              2 (2.3%)             0                  1 (1.0%)      
+        Total number of patients with at least one adverse event            21 (24.4%)        36 (50.0%)                 0         
+        Total number of events                                                  48               118                     0         
+        APPLICATION SITE PRURITUS                                            6 (7.0%)         21 (29.2%)                 0         
+        APPLICATION SITE ERYTHEMA                                            3 (3.5%)         14 (19.4%)                 0         
+        APPLICATION SITE DERMATITIS                                          5 (5.8%)          7 (9.7%)                  0         
+        APPLICATION SITE IRRITATION                                          3 (3.5%)         9 (12.5%)                  0         
+        APPLICATION SITE VESICLES                                            1 (1.2%)          5 (6.9%)                  0         
+        FATIGUE                                                              1 (1.2%)          5 (6.9%)                  0         
+        OEDEMA PERIPHERAL                                                    2 (2.3%)          2 (2.8%)                  0         
         APPLICATION SITE PAIN                                                   0              2 (2.8%)                  0         
         APPLICATION SITE PERSPIRATION                                           0              2 (2.8%)                  0         
         APPLICATION SITE REACTION                                            1 (1.2%)          1 (1.4%)                  0         
-        ASTHENIA                                                             1 (1.2%)             0                  1 (1.0%)      
-        CHEST DISCOMFORT                                                        0              1 (1.4%)              1 (1.0%)      
+        APPLICATION SITE SWELLING                                               0              2 (2.8%)                  0         
         CHEST PAIN                                                              0              2 (2.8%)                  0         
-        OEDEMA                                                                  0                 0                  2 (2.1%)      
-        PAIN                                                                    0              1 (1.4%)              1 (1.0%)      
-        APPLICATION SITE BLEEDING                                               0                 0                  1 (1.0%)      
-        APPLICATION SITE DESQUAMATION                                           0                 0                  1 (1.0%)      
+        CHILLS                                                               1 (1.2%)          1 (1.4%)                  0         
+        MALAISE                                                                 0              2 (2.8%)                  0         
+        PYREXIA                                                              2 (2.3%)             0                      0         
         APPLICATION SITE DISCHARGE                                              0              1 (1.4%)                  0         
-        APPLICATION SITE DISCOLOURATION                                         0                 0                  1 (1.0%)      
         APPLICATION SITE INDURATION                                          1 (1.2%)             0                      0         
-        APPLICATION SITE WARMTH                                                 0                 0                  1 (1.0%)      
-        CYST                                                                    0                 0                  1 (1.0%)      
+        APPLICATION SITE URTICARIA                                              0              1 (1.4%)                  0         
+        ASTHENIA                                                             1 (1.2%)             0                      0         
+        CHEST DISCOMFORT                                                        0              1 (1.4%)                  0         
         FEELING ABNORMAL                                                        0              1 (1.4%)                  0         
         FEELING COLD                                                            0              1 (1.4%)                  0         
-        INFLAMMATION                                                            0                 0                  1 (1.0%)      
-        SECRETION DISCHARGE                                                     0                 0                  1 (1.0%)      
-        SUDDEN DEATH                                                            0                 0                  1 (1.0%)      
-        SWELLING                                                                0                 0                  1 (1.0%)      
-        ULCER                                                                   0                 0                  1 (1.0%)      
-      SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                       
-        Total number of patients with at least one adverse event            21 (24.4%)        42 (58.3%)            42 (43.8%)     
-        Total number of events                                                  47               111                    118        
-        PRURITUS                                                             8 (9.3%)         26 (36.1%)            23 (24.0%)     
-        ERYTHEMA                                                            9 (10.5%)         14 (19.4%)            15 (15.6%)     
-        RASH                                                                 5 (5.8%)         11 (15.3%)            13 (13.5%)     
-        HYPERHIDROSIS                                                        2 (2.3%)         8 (11.1%)              4 (4.2%)      
-        SKIN IRRITATION                                                      3 (3.5%)          5 (6.9%)              6 (6.2%)      
-        BLISTER                                                                 0              1 (1.4%)              5 (5.2%)      
-        RASH PRURITIC                                                           0              2 (2.8%)              1 (1.0%)      
-        PRURITUS GENERALISED                                                    0              1 (1.4%)              1 (1.0%)      
-        RASH ERYTHEMATOUS                                                       0                 0                  2 (2.1%)      
-        URTICARIA                                                               0              1 (1.4%)              1 (1.0%)      
-        ACTINIC KERATOSIS                                                       0              1 (1.4%)                  0         
-        ALOPECIA                                                             1 (1.2%)             0                      0         
-        COLD SWEAT                                                           1 (1.2%)             0                      0         
-        DERMATITIS ATOPIC                                                    1 (1.2%)             0                      0         
-        DERMATITIS CONTACT                                                      0                 0                  1 (1.0%)      
-        DRUG ERUPTION                                                        1 (1.2%)             0                      0         
-        RASH MACULO-PAPULAR                                                     0              1 (1.4%)                  0         
-        RASH PAPULAR                                                            0              1 (1.4%)                  0         
-        SKIN EXFOLIATION                                                        0                 0                  1 (1.0%)      
-        SKIN ODOUR ABNORMAL                                                     0              1 (1.4%)                  0         
-        SKIN ULCER                                                           1 (1.2%)             0                      0         
-      NERVOUS SYSTEM DISORDERS                                                                                                     
-        Total number of patients with at least one adverse event            12 (14.0%)        25 (34.7%)            22 (22.9%)     
-        Total number of events                                                  16                43                    42         
-        DIZZINESS                                                            2 (2.3%)         11 (15.3%)             9 (9.4%)      
-        HEADACHE                                                             7 (8.1%)          6 (8.3%)              3 (3.1%)      
-        SYNCOPE                                                                 0              2 (2.8%)              5 (5.2%)      
-        SOMNOLENCE                                                           2 (2.3%)          1 (1.4%)              3 (3.1%)      
-        TRANSIENT ISCHAEMIC ATTACK                                              0              1 (1.4%)              2 (2.1%)      
-        BURNING SENSATION                                                       0              2 (2.8%)                  0         
-        LETHARGY                                                                0              1 (1.4%)              1 (1.0%)      
-        AMNESIA                                                                 0              1 (1.4%)                  0         
-        BALANCE DISORDER                                                        0                 0                  1 (1.0%)      
-        COGNITIVE DISORDER                                                      0              1 (1.4%)                  0         
-        COMPLEX PARTIAL SEIZURES                                                0                 0                  1 (1.0%)      
-        COORDINATION ABNORMAL                                                   0                 0                  1 (1.0%)      
-        HEMIANOPIA HOMONYMOUS                                                   0                 0                  1 (1.0%)      
-        HYPERSOMNIA                                                             0              1 (1.4%)                  0         
-        PARAESTHESIA                                                            0              1 (1.4%)                  0         
-        PARAESTHESIA ORAL                                                       0                 0                  1 (1.0%)      
-        PARKINSON'S DISEASE                                                  1 (1.2%)             0                      0         
-        PAROSMIA                                                                0              1 (1.4%)                  0         
-        PARTIAL SEIZURES WITH SECONDARY GENERALISATION                          0              1 (1.4%)                  0         
-        PSYCHOMOTOR HYPERACTIVITY                                            1 (1.2%)             0                      0         
-        STUPOR                                                                  0                 0                  1 (1.0%)      
-        SYNCOPE VASOVAGAL                                                       0              1 (1.4%)                  0         
+        PAIN                                                                    0              1 (1.4%)                  0         
       GASTROINTESTINAL DISORDERS                                                                                                   
-        Total number of patients with at least one adverse event            17 (19.8%)        20 (27.8%)            16 (16.7%)     
-        Total number of events                                                  26                35                    26         
-        DIARRHOEA                                                           9 (10.5%)          3 (4.2%)              6 (6.2%)      
-        VOMITING                                                             3 (3.5%)          6 (8.3%)              4 (4.2%)      
-        NAUSEA                                                               3 (3.5%)          6 (8.3%)              3 (3.1%)      
-        ABDOMINAL PAIN                                                       1 (1.2%)          1 (1.4%)              3 (3.1%)      
+        Total number of patients with at least one adverse event            17 (19.8%)        20 (27.8%)                 0         
+        Total number of events                                                  26                35                     0         
+        DIARRHOEA                                                           9 (10.5%)          3 (4.2%)                  0         
+        NAUSEA                                                               3 (3.5%)          6 (8.3%)                  0         
+        VOMITING                                                             3 (3.5%)          6 (8.3%)                  0         
         SALIVARY HYPERSECRETION                                                 0              4 (5.6%)                  0         
-        DYSPEPSIA                                                            1 (1.2%)          1 (1.4%)              1 (1.0%)      
+        ABDOMINAL PAIN                                                       1 (1.2%)          1 (1.4%)                  0         
+        DYSPEPSIA                                                            1 (1.2%)          1 (1.4%)                  0         
         ABDOMINAL DISCOMFORT                                                    0              1 (1.4%)                  0         
         CONSTIPATION                                                         1 (1.2%)             0                      0         
-        DYSPHAGIA                                                               0                 0                  1 (1.0%)      
         FLATULENCE                                                           1 (1.2%)             0                      0         
         GASTROINTESTINAL HAEMORRHAGE                                            0              1 (1.4%)                  0         
         GASTROOESOPHAGEAL REFLUX DISEASE                                     1 (1.2%)             0                      0         
         GLOSSITIS                                                            1 (1.2%)             0                      0         
         HIATUS HERNIA                                                        1 (1.2%)             0                      0         
-        RECTAL HAEMORRHAGE                                                      0                 0                  1 (1.0%)      
         STOMACH DISCOMFORT                                                      0              1 (1.4%)                  0         
-      CARDIAC DISORDERS                                                                                                            
-        Total number of patients with at least one adverse event            13 (15.1%)        15 (20.8%)            16 (16.7%)     
-        Total number of events                                                  27                30                    34         
-        SINUS BRADYCARDIA                                                    2 (2.3%)         8 (11.1%)              7 (7.3%)      
-        MYOCARDIAL INFARCTION                                                4 (4.7%)          4 (5.6%)              2 (2.1%)      
-        ATRIAL FIBRILLATION                                                  1 (1.2%)          2 (2.8%)              2 (2.1%)      
-        ATRIOVENTRICULAR BLOCK SECOND DEGREE                                 2 (2.3%)          1 (1.4%)              2 (2.1%)      
-        SUPRAVENTRICULAR EXTRASYSTOLES                                       1 (1.2%)          1 (1.4%)              1 (1.0%)      
-        VENTRICULAR EXTRASYSTOLES                                               0              1 (1.4%)              2 (2.1%)      
-        ATRIAL FLUTTER                                                          0              1 (1.4%)              1 (1.0%)      
-        ATRIOVENTRICULAR BLOCK FIRST DEGREE                                  1 (1.2%)             0                  1 (1.0%)      
-        BUNDLE BRANCH BLOCK RIGHT                                            1 (1.2%)             0                  1 (1.0%)      
-        PALPITATIONS                                                            0                 0                  2 (2.1%)      
-        ATRIAL HYPERTROPHY                                                   1 (1.2%)             0                      0         
-        BRADYCARDIA                                                          1 (1.2%)             0                      0         
-        BUNDLE BRANCH BLOCK LEFT                                             1 (1.2%)             0                      0         
-        CARDIAC DISORDER                                                        0              1 (1.4%)                  0         
-        CARDIAC FAILURE CONGESTIVE                                           1 (1.2%)             0                      0         
-        SINUS ARRHYTHMIA                                                     1 (1.2%)             0                      0         
-        SUPRAVENTRICULAR TACHYCARDIA                                            0                 0                  1 (1.0%)      
-        TACHYCARDIA                                                          1 (1.2%)             0                      0         
-        VENTRICULAR HYPERTROPHY                                              1 (1.2%)             0                      0         
-        WOLFF-PARKINSON-WHITE SYNDROME                                          0                 0                  1 (1.0%)      
+      NERVOUS SYSTEM DISORDERS                                                                                                     
+        Total number of patients with at least one adverse event            12 (14.0%)        25 (34.7%)                 0         
+        Total number of events                                                  16                43                     0         
+        DIZZINESS                                                            2 (2.3%)         11 (15.3%)                 0         
+        HEADACHE                                                             7 (8.1%)          6 (8.3%)                  0         
+        SOMNOLENCE                                                           2 (2.3%)          1 (1.4%)                  0         
+        BURNING SENSATION                                                       0              2 (2.8%)                  0         
+        SYNCOPE                                                                 0              2 (2.8%)                  0         
+        AMNESIA                                                                 0              1 (1.4%)                  0         
+        COGNITIVE DISORDER                                                      0              1 (1.4%)                  0         
+        HYPERSOMNIA                                                             0              1 (1.4%)                  0         
+        LETHARGY                                                                0              1 (1.4%)                  0         
+        PARAESTHESIA                                                            0              1 (1.4%)                  0         
+        PARKINSON'S DISEASE                                                  1 (1.2%)             0                      0         
+        PAROSMIA                                                                0              1 (1.4%)                  0         
+        PARTIAL SEIZURES WITH SECONDARY GENERALISATION                          0              1 (1.4%)                  0         
+        PSYCHOMOTOR HYPERACTIVITY                                            1 (1.2%)             0                      0         
+        SYNCOPE VASOVAGAL                                                       0              1 (1.4%)                  0         
+        TRANSIENT ISCHAEMIC ATTACK                                              0              1 (1.4%)                  0         
       INFECTIONS AND INFESTATIONS                                                                                                  
-        Total number of patients with at least one adverse event            16 (18.6%)        13 (18.1%)            10 (10.4%)     
-        Total number of events                                                  35                20                    18         
-        NASOPHARYNGITIS                                                      2 (2.3%)          6 (8.3%)              4 (4.2%)      
-        UPPER RESPIRATORY TRACT INFECTION                                    6 (7.0%)          3 (4.2%)              1 (1.0%)      
-        INFLUENZA                                                            1 (1.2%)          1 (1.4%)              1 (1.0%)      
+        Total number of patients with at least one adverse event            16 (18.6%)        13 (18.1%)                 0         
+        Total number of events                                                  35                20                     0         
+        UPPER RESPIRATORY TRACT INFECTION                                    6 (7.0%)          3 (4.2%)                  0         
+        NASOPHARYNGITIS                                                      2 (2.3%)          6 (8.3%)                  0         
         URINARY TRACT INFECTION                                              2 (2.3%)          1 (1.4%)                  0         
         CYSTITIS                                                             1 (1.2%)          1 (1.4%)                  0         
         EAR INFECTION                                                        2 (2.3%)             0                      0         
-        LOCALISED INFECTION                                                  1 (1.2%)             0                  1 (1.0%)      
+        INFLUENZA                                                            1 (1.2%)          1 (1.4%)                  0         
         BRONCHITIS                                                           1 (1.2%)             0                      0         
-        CELLULITIS                                                              0                 0                  1 (1.0%)      
         CERVICITIS                                                           1 (1.2%)             0                      0         
         GASTROENTERITIS VIRAL                                                1 (1.2%)             0                      0         
         HORDEOLUM                                                               0              1 (1.4%)                  0         
+        LOCALISED INFECTION                                                  1 (1.2%)             0                      0         
         LOWER RESPIRATORY TRACT INFECTION                                       0              1 (1.4%)                  0         
-        ONYCHOMYCOSIS                                                           0                 0                  1 (1.0%)      
-        PNEUMONIA                                                               0                 0                  1 (1.0%)      
         RHINITIS                                                                0              1 (1.4%)                  0         
         VAGINAL MYCOSIS                                                      1 (1.2%)             0                      0         
-        VIRAL INFECTION                                                         0                 0                  1 (1.0%)      
+      CARDIAC DISORDERS                                                                                                            
+        Total number of patients with at least one adverse event            13 (15.1%)        15 (20.8%)                 0         
+        Total number of events                                                  27                30                     0         
+        SINUS BRADYCARDIA                                                    2 (2.3%)         8 (11.1%)                  0         
+        MYOCARDIAL INFARCTION                                                4 (4.7%)          4 (5.6%)                  0         
+        ATRIAL FIBRILLATION                                                  1 (1.2%)          2 (2.8%)                  0         
+        ATRIOVENTRICULAR BLOCK SECOND DEGREE                                 2 (2.3%)          1 (1.4%)                  0         
+        SUPRAVENTRICULAR EXTRASYSTOLES                                       1 (1.2%)          1 (1.4%)                  0         
+        ATRIAL FLUTTER                                                          0              1 (1.4%)                  0         
+        ATRIAL HYPERTROPHY                                                   1 (1.2%)             0                      0         
+        ATRIOVENTRICULAR BLOCK FIRST DEGREE                                  1 (1.2%)             0                      0         
+        BRADYCARDIA                                                          1 (1.2%)             0                      0         
+        BUNDLE BRANCH BLOCK LEFT                                             1 (1.2%)             0                      0         
+        BUNDLE BRANCH BLOCK RIGHT                                            1 (1.2%)             0                      0         
+        CARDIAC DISORDER                                                        0              1 (1.4%)                  0         
+        CARDIAC FAILURE CONGESTIVE                                           1 (1.2%)             0                      0         
+        SINUS ARRHYTHMIA                                                     1 (1.2%)             0                      0         
+        TACHYCARDIA                                                          1 (1.2%)             0                      0         
+        VENTRICULAR EXTRASYSTOLES                                               0              1 (1.4%)                  0         
+        VENTRICULAR HYPERTROPHY                                              1 (1.2%)             0                      0         
       RESPIRATORY, THORACIC AND MEDIASTINAL DISORDERS                                                                              
-        Total number of patients with at least one adverse event            10 (11.6%)        10 (13.9%)            10 (10.4%)     
-        Total number of events                                                  15                22                    16         
-        COUGH                                                                3 (3.5%)          5 (6.9%)              6 (6.2%)      
-        NASAL CONGESTION                                                     3 (3.5%)          3 (4.2%)              1 (1.0%)      
-        DYSPNOEA                                                             1 (1.2%)          1 (1.4%)              1 (1.0%)      
-        EPISTAXIS                                                               0              2 (2.8%)              1 (1.0%)      
-        PHARYNGOLARYNGEAL PAIN                                                  0              1 (1.4%)              1 (1.0%)      
-        RHINORRHOEA                                                             0              1 (1.4%)              1 (1.0%)      
+        Total number of patients with at least one adverse event            10 (11.6%)        10 (13.9%)                 0         
+        Total number of events                                                  15                22                     0         
+        COUGH                                                                3 (3.5%)          5 (6.9%)                  0         
+        NASAL CONGESTION                                                     3 (3.5%)          3 (4.2%)                  0         
+        DYSPNOEA                                                             1 (1.2%)          1 (1.4%)                  0         
+        EPISTAXIS                                                               0              2 (2.8%)                  0         
         ALLERGIC GRANULOMATOUS ANGIITIS                                         0              1 (1.4%)                  0         
-        DYSPHONIA                                                               0                 0                  1 (1.0%)      
         EMPHYSEMA                                                            1 (1.2%)             0                      0         
         HAEMOPTYSIS                                                          1 (1.2%)             0                      0         
         PHARYNGEAL ERYTHEMA                                                     0              1 (1.4%)                  0         
+        PHARYNGOLARYNGEAL PAIN                                                  0              1 (1.4%)                  0         
         POSTNASAL DRIP                                                       1 (1.2%)             0                      0         
         PRODUCTIVE COUGH                                                        0              1 (1.4%)                  0         
         RALES                                                                1 (1.2%)             0                      0         
         RESPIRATORY TRACT CONGESTION                                            0              1 (1.4%)                  0         
+        RHINORRHOEA                                                             0              1 (1.4%)                  0         
       PSYCHIATRIC DISORDERS                                                                                                        
-        Total number of patients with at least one adverse event            10 (11.6%)        8 (11.1%)             11 (11.5%)     
-        Total number of events                                                  14                11                    15         
-        CONFUSIONAL STATE                                                    2 (2.3%)          1 (1.4%)              3 (3.1%)      
-        AGITATION                                                            2 (2.3%)             0                  3 (3.1%)      
-        ANXIETY                                                              1 (1.2%)             0                  3 (3.1%)      
+        Total number of patients with at least one adverse event            10 (11.6%)        8 (11.1%)                  0         
+        Total number of events                                                  14                11                     0         
         INSOMNIA                                                             2 (2.3%)          2 (2.8%)                  0         
+        CONFUSIONAL STATE                                                    2 (2.3%)          1 (1.4%)                  0         
+        AGITATION                                                            2 (2.3%)             0                      0         
         DELUSION                                                             1 (1.2%)          1 (1.4%)                  0         
-        DEPRESSED MOOD                                                          0              1 (1.4%)              1 (1.0%)      
-        IRRITABILITY                                                         1 (1.2%)             0                  1 (1.0%)      
+        ANXIETY                                                              1 (1.2%)             0                      0         
         COMPLETED SUICIDE                                                    1 (1.2%)             0                      0         
         DELIRIUM                                                                0              1 (1.4%)                  0         
+        DEPRESSED MOOD                                                          0              1 (1.4%)                  0         
         DISORIENTATION                                                       1 (1.2%)             0                      0         
         HALLUCINATION                                                           0              1 (1.4%)                  0         
         HALLUCINATION, VISUAL                                                   0              1 (1.4%)                  0         
+        IRRITABILITY                                                         1 (1.2%)             0                      0         
         LIBIDO DECREASED                                                        0              1 (1.4%)                  0         
         LISTLESS                                                                0              1 (1.4%)                  0         
         NIGHTMARE                                                               0              1 (1.4%)                  0         
-        RESTLESSNESS                                                            0                 0                  1 (1.0%)      
       INVESTIGATIONS                                                                                                               
-        Total number of patients with at least one adverse event            10 (11.6%)         5 (6.9%)              8 (8.3%)      
-        Total number of events                                                  19                6                     15         
-        ELECTROCARDIOGRAM ST SEGMENT DEPRESSION                              4 (4.7%)             0                  1 (1.0%)      
-        ELECTROCARDIOGRAM T WAVE INVERSION                                   2 (2.3%)          1 (1.4%)              1 (1.0%)      
-        BLOOD GLUCOSE INCREASED                                                 0              1 (1.4%)              1 (1.0%)      
-        ELECTROCARDIOGRAM T WAVE AMPLITUDE DECREASED                         1 (1.2%)             0                  1 (1.0%)      
+        Total number of patients with at least one adverse event            10 (11.6%)         5 (6.9%)                  0         
+        Total number of events                                                  19                6                      0         
+        ELECTROCARDIOGRAM ST SEGMENT DEPRESSION                              4 (4.7%)             0                      0         
+        ELECTROCARDIOGRAM T WAVE INVERSION                                   2 (2.3%)          1 (1.4%)                  0         
         BIOPSY                                                                  0              1 (1.4%)                  0         
         BIOPSY PROSTATE                                                         0              1 (1.4%)                  0         
         BLOOD ALKALINE PHOSPHATASE INCREASED                                 1 (1.2%)             0                      0         
         BLOOD CHOLESTEROL INCREASED                                             0              1 (1.4%)                  0         
         BLOOD CREATINE PHOSPHOKINASE INCREASED                               1 (1.2%)             0                      0         
+        BLOOD GLUCOSE INCREASED                                                 0              1 (1.4%)                  0         
         BLOOD URINE PRESENT                                                  1 (1.2%)             0                      0         
-        BODY TEMPERATURE INCREASED                                              0                 0                  1 (1.0%)      
         CYSTOSCOPY                                                           1 (1.2%)             0                      0         
+        ELECTROCARDIOGRAM T WAVE AMPLITUDE DECREASED                         1 (1.2%)             0                      0         
         HEART RATE INCREASED                                                 1 (1.2%)             0                      0         
         HEART RATE IRREGULAR                                                 1 (1.2%)             0                      0         
-        NASAL MUCOSA BIOPSY                                                     0                 0                  1 (1.0%)      
-        NEUTROPHIL COUNT INCREASED                                              0                 0                  1 (1.0%)      
-        URINE ANALYSIS ABNORMAL                                                 0                 0                  1 (1.0%)      
-        WEIGHT DECREASED                                                        0                 0                  1 (1.0%)      
-        WHITE BLOOD CELL COUNT INCREASED                                        0                 0                  1 (1.0%)      
       MUSCULOSKELETAL AND CONNECTIVE TISSUE DISORDERS                                                                              
-        Total number of patients with at least one adverse event             5 (5.8%)         8 (11.1%)              7 (7.3%)      
-        Total number of events                                                  8                 11                    10         
-        BACK PAIN                                                            1 (1.2%)          3 (4.2%)              1 (1.0%)      
-        ARTHRALGIA                                                           1 (1.2%)          1 (1.4%)              2 (2.1%)      
-        SHOULDER PAIN                                                        1 (1.2%)             0                  2 (2.1%)      
+        Total number of patients with at least one adverse event             5 (5.8%)         8 (11.1%)                  0         
+        Total number of events                                                  8                 11                     0         
+        BACK PAIN                                                            1 (1.2%)          3 (4.2%)                  0         
+        ARTHRALGIA                                                           1 (1.2%)          1 (1.4%)                  0         
         ARTHRITIS                                                            1 (1.2%)          1 (1.4%)                  0         
         FLANK PAIN                                                              0              2 (2.8%)                  0         
-        MUSCLE SPASMS                                                           0              1 (1.4%)              1 (1.0%)      
-        MUSCULAR WEAKNESS                                                       0                 0                  1 (1.0%)      
+        MUSCLE SPASMS                                                           0              1 (1.4%)                  0         
         MYALGIA                                                                 0              1 (1.4%)                  0         
         PAIN IN EXTREMITY                                                    1 (1.2%)             0                      0         
+        SHOULDER PAIN                                                        1 (1.2%)             0                      0         
       INJURY, POISONING AND PROCEDURAL COMPLICATIONS                                                                               
-        Total number of patients with at least one adverse event             4 (4.7%)          5 (6.9%)              5 (5.2%)      
-        Total number of events                                                  9                 8                     12         
-        CONTUSION                                                            1 (1.2%)          2 (2.8%)              1 (1.0%)      
-        EXCORIATION                                                          2 (2.3%)          1 (1.4%)              1 (1.0%)      
-        FALL                                                                 1 (1.2%)          1 (1.4%)              2 (2.1%)      
+        Total number of patients with at least one adverse event             4 (4.7%)          5 (6.9%)                  0         
+        Total number of events                                                  9                 8                      0         
+        CONTUSION                                                            1 (1.2%)          2 (2.8%)                  0         
+        EXCORIATION                                                          2 (2.3%)          1 (1.4%)                  0         
         HIP FRACTURE                                                         1 (1.2%)          2 (2.8%)                  0         
-        SKIN LACERATION                                                      1 (1.2%)             0                  2 (2.1%)      
+        FALL                                                                 1 (1.2%)          1 (1.4%)                  0         
         FACIAL BONES FRACTURE                                                   0              1 (1.4%)                  0         
-        JOINT DISLOCATION                                                       0                 0                  1 (1.0%)      
-        WOUND                                                                   0                 0                  1 (1.0%)      
-      RENAL AND URINARY DISORDERS                                                                                                  
-        Total number of patients with at least one adverse event             4 (4.7%)          3 (4.2%)              4 (4.2%)      
-        Total number of events                                                  5                 4                      4         
-        MICTURITION URGENCY                                                  1 (1.2%)          1 (1.4%)              1 (1.0%)      
-        DYSURIA                                                              1 (1.2%)             0                  1 (1.0%)      
-        NEPHROLITHIASIS                                                      1 (1.2%)          1 (1.4%)                  0         
-        CALCULUS URETHRAL                                                       0              1 (1.4%)                  0         
-        ENURESIS                                                                0                 0                  1 (1.0%)      
-        INCONTINENCE                                                            0                 0                  1 (1.0%)      
-        POLLAKIURIA                                                          1 (1.2%)             0                      0         
+        SKIN LACERATION                                                      1 (1.2%)             0                      0         
       METABOLISM AND NUTRITION DISORDERS                                                                                           
-        Total number of patients with at least one adverse event             6 (7.0%)          3 (4.2%)              1 (1.0%)      
-        Total number of events                                                  8                 5                      1         
+        Total number of patients with at least one adverse event             6 (7.0%)          3 (4.2%)                  0         
+        Total number of events                                                  8                 5                      0         
         DECREASED APPETITE                                                   1 (1.2%)          1 (1.4%)                  0         
-        FOOD CRAVING                                                         1 (1.2%)             0                  1 (1.0%)      
         INCREASED APPETITE                                                   1 (1.2%)          1 (1.4%)                  0         
         DEHYDRATION                                                          1 (1.2%)             0                      0         
         DIABETES MELLITUS                                                    1 (1.2%)             0                      0         
+        FOOD CRAVING                                                         1 (1.2%)             0                      0         
         HYPERCHOLESTEROLAEMIA                                                   0              1 (1.4%)                  0         
         HYPONATRAEMIA                                                        1 (1.2%)             0                      0         
-      VASCULAR DISORDERS                                                                                                           
-        Total number of patients with at least one adverse event             3 (3.5%)          1 (1.4%)              4 (4.2%)      
-        Total number of events                                                  7                 1                      5         
-        HYPERTENSION                                                         1 (1.2%)             0                  2 (2.1%)      
-        HYPOTENSION                                                          2 (2.3%)             0                  1 (1.0%)      
-        HOT FLUSH                                                               0                 0                  1 (1.0%)      
-        ORTHOSTATIC HYPOTENSION                                              1 (1.2%)             0                      0         
-        WOUND HAEMORRHAGE                                                       0              1 (1.4%)                  0         
+      RENAL AND URINARY DISORDERS                                                                                                  
+        Total number of patients with at least one adverse event             4 (4.7%)          3 (4.2%)                  0         
+        Total number of events                                                  5                 4                      0         
+        MICTURITION URGENCY                                                  1 (1.2%)          1 (1.4%)                  0         
+        NEPHROLITHIASIS                                                      1 (1.2%)          1 (1.4%)                  0         
+        CALCULUS URETHRAL                                                       0              1 (1.4%)                  0         
+        DYSURIA                                                              1 (1.2%)             0                      0         
+        POLLAKIURIA                                                          1 (1.2%)             0                      0         
       EYE DISORDERS                                                                                                                
-        Total number of patients with at least one adverse event             4 (4.7%)          1 (1.4%)              2 (2.1%)      
-        Total number of events                                                  8                 2                      2         
+        Total number of patients with at least one adverse event             4 (4.7%)          1 (1.4%)                  0         
+        Total number of events                                                  8                 2                      0         
         CONJUNCTIVITIS                                                       2 (2.3%)             0                      0         
-        VISION BLURRED                                                          0              1 (1.4%)              1 (1.0%)      
-        CONJUNCTIVAL HAEMORRHAGE                                                0                 0                  1 (1.0%)      
         EYE ALLERGY                                                          1 (1.2%)             0                      0         
         EYE PRURITUS                                                         1 (1.2%)             0                      0         
         EYE SWELLING                                                         1 (1.2%)             0                      0         
         GLAUCOMA                                                             1 (1.2%)             0                      0         
+        VISION BLURRED                                                          0              1 (1.4%)                  0         
       SURGICAL AND MEDICAL PROCEDURES                                                                                              
-        Total number of patients with at least one adverse event             2 (2.3%)          2 (2.8%)              1 (1.0%)      
-        Total number of events                                                  2                 2                      1         
-        CATARACT OPERATION                                                   1 (1.2%)             0                  1 (1.0%)      
+        Total number of patients with at least one adverse event             2 (2.3%)          2 (2.8%)                  0         
+        Total number of events                                                  2                 2                      0         
         ACROCHORDON EXCISION                                                    0              1 (1.4%)                  0         
+        CATARACT OPERATION                                                   1 (1.2%)             0                      0         
         EYE LASER SURGERY                                                    1 (1.2%)             0                      0         
         SKIN LESION EXCISION                                                    0              1 (1.4%)                  0         
-      EAR AND LABYRINTH DISORDERS                                                                                                  
-        Total number of patients with at least one adverse event             1 (1.2%)          1 (1.4%)              2 (2.1%)      
-        Total number of events                                                  2                 1                      3         
-        VERTIGO                                                                 0              1 (1.4%)              1 (1.0%)      
-        CERUMEN IMPACTION                                                       0                 0                  1 (1.0%)      
-        EAR PAIN                                                             1 (1.2%)             0                      0         
-        TINNITUS                                                                0                 0                  1 (1.0%)      
-      CONGENITAL, FAMILIAL AND GENETIC DISORDERS                                                                                   
-        Total number of patients with at least one adverse event                0              2 (2.8%)              1 (1.0%)      
-        Total number of events                                                  0                 2                      1         
-        VENTRICULAR SEPTAL DEFECT                                               0              2 (2.8%)              1 (1.0%)      
-      NEOPLASMS BENIGN, MALIGNANT AND UNSPECIFIED (INCL CYSTS AND POLYPS)                                                          
-        Total number of patients with at least one adverse event                0              1 (1.4%)              2 (2.1%)      
-        Total number of events                                                  0                 1                      3         
-        COLON CANCER                                                            0                 0                  1 (1.0%)      
-        MALIGNANT FIBROUS HISTIOCYTOMA                                          0                 0                  1 (1.0%)      
-        PROSTATE CANCER                                                         0              1 (1.4%)                  0         
+      VASCULAR DISORDERS                                                                                                           
+        Total number of patients with at least one adverse event             3 (3.5%)          1 (1.4%)                  0         
+        Total number of events                                                  7                 1                      0         
+        HYPOTENSION                                                          2 (2.3%)             0                      0         
+        HYPERTENSION                                                         1 (1.2%)             0                      0         
+        ORTHOSTATIC HYPOTENSION                                              1 (1.2%)             0                      0         
+        WOUND HAEMORRHAGE                                                       0              1 (1.4%)                  0         
       REPRODUCTIVE SYSTEM AND BREAST DISORDERS                                                                                     
         Total number of patients with at least one adverse event             2 (2.3%)          1 (1.4%)                  0         
         Total number of events                                                  4                 1                      0         
         BENIGN PROSTATIC HYPERPLASIA                                         1 (1.2%)          1 (1.4%)                  0         
         PELVIC PAIN                                                          1 (1.2%)             0                      0         
-      IMMUNE SYSTEM DISORDERS                                                                                                      
-        Total number of patients with at least one adverse event                0              1 (1.4%)              1 (1.0%)      
-        Total number of events                                                  0                 1                      2         
-        HYPERSENSITIVITY                                                        0                 0                  1 (1.0%)      
-        SEASONAL ALLERGY                                                        0              1 (1.4%)                  0         
+      CONGENITAL, FAMILIAL AND GENETIC DISORDERS                                                                                   
+        Total number of patients with at least one adverse event                0              2 (2.8%)                  0         
+        Total number of events                                                  0                 2                      0         
+        VENTRICULAR SEPTAL DEFECT                                               0              2 (2.8%)                  0         
+      EAR AND LABYRINTH DISORDERS                                                                                                  
+        Total number of patients with at least one adverse event             1 (1.2%)          1 (1.4%)                  0         
+        Total number of events                                                  2                 1                      0         
+        EAR PAIN                                                             1 (1.2%)             0                      0         
+        VERTIGO                                                                 0              1 (1.4%)                  0         
       HEPATOBILIARY DISORDERS                                                                                                      
         Total number of patients with at least one adverse event             1 (1.2%)             0                      0         
         Total number of events                                                  1                 0                      0         
         HYPERBILIRUBINAEMIA                                                  1 (1.2%)             0                      0         
+      IMMUNE SYSTEM DISORDERS                                                                                                      
+        Total number of patients with at least one adverse event                0              1 (1.4%)                  0         
+        Total number of events                                                  0                 1                      0         
+        SEASONAL ALLERGY                                                        0              1 (1.4%)                  0         
+      NEOPLASMS BENIGN, MALIGNANT AND UNSPECIFIED (INCL CYSTS AND POLYPS)                                                          
+        Total number of patients with at least one adverse event                0              1 (1.4%)                  0         
+        Total number of events                                                  0                 1                      0         
+        PROSTATE CANCER                                                         0              1 (1.4%)                  0         
       SOCIAL CIRCUMSTANCES                                                                                                         
         Total number of patients with at least one adverse event                0              1 (1.4%)                  0         
         Total number of events                                                  0                 1                      0         
