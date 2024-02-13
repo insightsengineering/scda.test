@@ -32,7 +32,7 @@ adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
 
 # skip_if_too_deep
-skip_if_too_deep <- function(depth) { # nolintr
+skip_if_too_deep <- function(depth) { # nolint
   checkmate::assert_number(depth, lower = 0, upper = 5)
 
   testing_depth <- getOption("TESTING_DEPTH")
