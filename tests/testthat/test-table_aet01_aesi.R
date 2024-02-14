@@ -1,5 +1,5 @@
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 adsl <- filter(adsl, SAFFL == "Y")
 adae <- filter(adae, ANL01FL == "Y" & SAFFL == "Y")
@@ -182,14 +182,10 @@ testthat::test_that("AET01_AESI Variant 2 works as expected", {
 })
 
 testthat::test_that("AET01_AESI Variant 3 works as expected", {
-  adsl <- adsl_raw
-  adae_mult <- adae_raw
+  adsl <- adsl_pharmaverse
 
-  adsl <- filter(adsl, SAFFL == "Y")
-  adae_mult <- filter(adae_mult, ANL01FL == "Y" & SAFFL == "Y")
-
-  adsl <- df_explicit_na(adsl)
-  adae_mult <- df_explicit_na(adae_mult)
+  adae_mult <- adae_pharmaverse %>%
+    df_explicit_na()
 
   # for illustration purposes only, create AEREL1, AEREL2, AEACN1, AEACN2 from respective variables
   adae_mult <- adae_mult %>%
@@ -414,9 +410,10 @@ testthat::test_that("AET01_AESI Variant 3 works as expected", {
   testthat::expect_snapshot(res)
 })
 
+# SMQ stuff will not work quite yet
 testthat::test_that("AET01_AESI Variant 4 works as expected", {
-  adsl <- filter(adsl_raw, SAFFL == "Y")
-  adae <- filter(adae_raw, ANL01FL == "Y" & SAFFL == "Y")
+  adsl <- filter(adsl_pharmaverse, SAFFL == "Y")
+  adae <- filter(adae_pharmaverse, ANL01FL == "Y" & SAFFL == "Y")
 
   adsl <- df_explicit_na(adsl)
   adae <- df_explicit_na(adae)
