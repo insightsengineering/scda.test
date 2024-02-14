@@ -10,8 +10,8 @@ stack_adae_by_smq <- function(adae, smq) {
   do.call(rbind, l_df)
 }
 
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET02SMQ variant 1 is produced correctly", {
   adae <- stack_adae_by_smq(adae, c("SMQ01NAM"))
