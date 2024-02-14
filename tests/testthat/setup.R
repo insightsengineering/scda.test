@@ -26,7 +26,6 @@ advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
 adpp_pharmaverse <- pharmaverseadam::adpp
-adsl_pharmaverse <- pharmaverseadam::adsl
 adpc_pharmaverse <- pharmaverseadam::adpc
 set.seed(99)
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
@@ -55,7 +54,7 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
-
+advs_pharmaverse <- pharmaverseadam::advs
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolintr
   checkmate::assert_number(depth, lower = 0, upper = 5)
