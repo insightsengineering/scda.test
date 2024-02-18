@@ -9,8 +9,8 @@ stack_adae_by_smq <- function(adae, smq) {
   do.call(rbind, l_df)
 }
 
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET09 variant 1 (AEs related to study drug by SMQ) is produced correctly", {
   adsl_labels <- formatters::var_labels(adsl)
@@ -19,21 +19,21 @@ testthat::test_that("AET09 variant 1 (AEs related to study drug by SMQ) is produ
   adae <- adae %>%
     dplyr::mutate(
       SMQ1 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl B.1", "cl C.1", "cl D.1") ~ "SMQ 1 (broad)",
+        AEDECOD %in% c("NAUSEA", "VOMITING") ~ "SMQ 1 (broad)",
         TRUE ~ NA_character_
       ),
       SMQ2 = dplyr::case_when(
-        AEBODSYS %in% c("cl A.1", "cl D.1") ~ "SMQ 1 (narrow)",
+        AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
         TRUE ~ NA_character_
       ),
       SMQ3 = dplyr::case_when(
-        AEDECOD %in% c("dcd B.2.1.2.1", "dcd A.1.1.1.2", "dcd C.2.1.2.1", "dcd B.2.2.3.1") ~ "AESI",
+        AEDECOD %in% c("HEADACHE") ~ "AESI",
         TRUE ~ NA_character_
       )
     )
 
   adae <- stack_adae_by_smq(adae, c("SMQ1"))
-  adae_r <- adae[adae$AEREL == "Y", ]
+  adae_r <- adae[adae$AREL %in% c("PROBABLE", "REMOTE", "POSSIBLE"), ]
 
   lyt <- basic_table() %>%
     split_cols_by("ARM") %>%
@@ -78,21 +78,21 @@ testthat::test_that(
     adae <- adae %>%
       dplyr::mutate(
         SMQ1 = dplyr::case_when(
-          AEBODSYS %in% c("cl A.1", "cl B.1", "cl C.1", "cl D.1") ~ "SMQ 1 (broad)",
+          AEDECOD %in% c("NAUSEA", "VOMITING") ~ "SMQ 1 (broad)",
           TRUE ~ NA_character_
         ),
         SMQ2 = dplyr::case_when(
-          AEBODSYS %in% c("cl A.1", "cl D.1") ~ "SMQ 1 (narrow)",
+          AEDECOD %in% c("VOMITING") ~ "SMQ 1 (narrow)",
           TRUE ~ NA_character_
         ),
         SMQ3 = dplyr::case_when(
-          AEDECOD %in% c("dcd B.2.1.2.1", "dcd A.1.1.1.2", "dcd C.2.1.2.1", "dcd B.2.2.3.1") ~ "AESI",
+          AEDECOD %in% c("HEADACHE") ~ "AESI",
           TRUE ~ NA_character_
         )
       )
 
     adae <- stack_adae_by_smq(adae, c("SMQ1", "SMQ2", "SMQ3"))
-    adae_r <- adae[adae$AEREL == "Y", ]
+    adae_r <- adae[adae$AREL %in% c("PROBABLE", "REMOTE", "POSSIBLE"), ]
 
     lyt <- basic_table() %>%
       split_cols_by("ARM") %>%

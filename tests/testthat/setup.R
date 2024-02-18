@@ -26,11 +26,35 @@ advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
 adpp_pharmaverse <- pharmaverseadam::adpp
-adsl_pharmaverse <- pharmaverseadam::adsl
 adpc_pharmaverse <- pharmaverseadam::adpc
+set.seed(99)
+adsl_pharmaverse <- pharmaverseadam::adsl %>%
+  mutate(
+    DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
+    DCSREAS = with_label(DCSREAS, "Discontinuation Reason")
+  ) %>%
+  filter(ACTARM != "Screen Failure")
+
+adae_pharmaverse <- pharmaverseadam::adae %>%
+  mutate(
+    AETOXGR = sample(
+      c("1", "2", "3", "4", "5"),
+      nrow(.),
+      replace = TRUE,
+      prob = c(0.70, 0.20, 0.05, 0.045, 0.005)
+    ),
+    AECONTRT = sample(c("Y"), nrow(.), replace = TRUE, prob = c(0.95)),
+    ANL01FL = "Y",
+    SMQ01NAM = ifelse(AEDECOD %in% c("NAUSEA", "VOMITING"), "SMQ01", NA_character_),
+    SMQ01SC = ifelse(SMQ01NAM == "SMQ01", "BROAD", NA_character_),
+    SMQ02NAM = ifelse(AEDECOD == "SKIN IRRITATION", "SMQ02", NA_character_),
+    SMQ02SC = ifelse(SMQ02NAM == "SMQ02", "NARROW", NA_character_),
+    CQ01NAM = ifelse(AEDECOD == "HEADACHE", "CQ01", NA_character_)
+  )
+set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
-
+advs_pharmaverse <- pharmaverseadam::advs
 # skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolint
   checkmate::assert_number(depth, lower = 0, upper = 5)

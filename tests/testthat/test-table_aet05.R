@@ -1,6 +1,19 @@
-# Test variants for AET05.
-adsl <- adsl_raw
-adaette <- adaette_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
+
+# Create portion fo adaette that is needed for tables, as pharmaverseadam doesn't have adaeatte
+# Create First occurence of any AE from adae
+adaette <- left_join(
+  select(adsl, USUBJID, ARM, TRTSDT),
+  select(filter(adae, AESEQ == 1), USUBJID, ASTDTM),
+  by = "USUBJID"
+) %>%
+  mutate(
+    PARAM = "Time to first occurrence of any adverse event",
+    AVAL = as.numeric(difftime(TRTSDT, ASTDTM, unit = "days")) / 365.25,
+    AVALU = "YEARS",
+    CNSR = ifelse(is.na(AVAL), 1, 0)
+  )
 
 adsl <- df_explicit_na(adsl)
 adaette <- df_explicit_na(adaette)
