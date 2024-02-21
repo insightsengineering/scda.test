@@ -1,7 +1,7 @@
 # Tests the single variant of AET10
 
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse
+adae <- adae_pharmaverse
 
 testthat::test_that("AET10 default variant is produced correctly", {
   result1 <- basic_table() %>%
@@ -13,7 +13,7 @@ testthat::test_that("AET10 default variant is produced correctly", {
   result2 <- prune_table(
     result1,
     keep_rows(
-      has_fraction_in_any_col(atleast = 0.40, col_names = levels(adsl$ARM))
+      has_fraction_in_any_col(atleast = 0.30, col_names = levels(adsl$ARM))
     )
   )
 
