@@ -296,7 +296,7 @@ testthat::test_that("TTET01 variant 4: with stratified analysis", {
       vars = "AVAL",
       is_event = "is_event",
       var_labels = "Stratified Analysis",
-      strat = "SEX",
+      strata = "SEX",
       table_names = "coxph_stratified"
     ) %>%
     surv_timepoint(
