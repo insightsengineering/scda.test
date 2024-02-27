@@ -1,8 +1,11 @@
-adsl <- adsl_raw
-adae <- adae_raw
+adsl <- adsl_pharmaverse %>%
+  df_explicit_na()
+
+adae <- adae_pharmaverse %>%
+  df_explicit_na()
 
 testthat::test_that("AET09 variant 1 is produced correctly, AE related to study drug", {
-  adae_r <- adae[adae$AEREL == "Y", ]
+  adae_r <- adae[adae$AEREL %in% c("PROBABLE", "POSSIBLE", "REMOTE"), ]
 
   lyt <- basic_table() %>%
     split_cols_by(var = "ARM") %>%
@@ -44,7 +47,7 @@ testthat::test_that("AET09 variant 1 is produced correctly, AE related to study 
 })
 
 testthat::test_that("AET09 variant 2 is produced correctly, AE related to study drug (including high-level terms)", {
-  adae_r <- adae[adae$AEREL == "Y", ]
+  adae_r <- adae[adae$AEREL %in% c("PROBABLE", "POSSIBLE", "REMOTE"), ]
 
   lyt <- basic_table() %>%
     split_cols_by(var = "ARM") %>%

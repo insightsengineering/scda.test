@@ -125,7 +125,7 @@ testthat::test_that("LBT11 variant 3 works as expected", {
       vars = "AVAL",
       is_event = "is_event",
       var_labels = paste0("Stratified By: ", paste(strata, collapse = ", ")),
-      strat = strata,
+      strata = strata,
       table_names = "coxph_stratified"
     )
 
