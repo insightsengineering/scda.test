@@ -39,7 +39,8 @@ Suggests:
     stringr,
     testthat (>= 3.0),
     tibble,
-    tidyr
+    tidyr,
+    withr (>= 2.0.0)
 VignetteBuilder:
     knitr
 biocViews:

@@ -44,10 +44,14 @@ testthat::test_that("CMHT01 variant 1 is produced correctly", {
       table_names = "est_or_strat"
     )
 
-  result <- build_table(
-    lyt = lyt_01,
-    df = anl_01,
-    alt_counts_df = adsl
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    result <- build_table(
+      lyt = lyt_01,
+      df = anl_01,
+      alt_counts_df = adsl
+    )
   )
 
   res <- testthat::expect_silent(result)
@@ -104,10 +108,14 @@ testthat::test_that("CMHT01 variant 2 is produced correctly", {
       table_names = "est_or_strat"
     )
 
-  result <- build_table(
-    lyt = lyt_02,
-    df = anl_02,
-    alt_counts_df = adsl
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    result <- build_table(
+      lyt = lyt_02,
+      df = anl_02,
+      alt_counts_df = adsl
+    )
   )
 
   res <- testthat::expect_silent(result)
