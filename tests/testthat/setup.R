@@ -1,5 +1,6 @@
 # Extra libraries (suggested) for tests
 library(dplyr)
+library(tidyr)
 library(tern)
 library(lubridate)
 
