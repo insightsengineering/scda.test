@@ -8,7 +8,7 @@ full_table_aet04_pi <- function(adsl, adae_max) {
   col_counts <- rep(table(adsl$ACTARM), each = length(grade_groups))
   basic_table() %>%
     split_cols_by("ACTARM") %>%
-    split_cols_by_groups("MAXAETOXGR", groups = grade_groups) %>%
+    split_cols_by_groups("MAXAETOXGR", groups_list = grade_groups) %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible", nested = FALSE,
@@ -193,7 +193,7 @@ testthat::test_that("AET04_PI variant 6 is produced correctly", {
   col_counts <- rep(table(adsl$ACTARM), each = length(grade_groups))
   full_table <- basic_table() %>%
     split_cols_by("ACTARM") %>%
-    split_cols_by_groups("MAXAETOXGR", groups = grade_groups) %>%
+    split_cols_by_groups("MAXAETOXGR", groups_list = grade_groups) %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible", nested = FALSE,
@@ -244,7 +244,7 @@ testthat::test_that("AET04_PI variant 7 is produced correctly", {
   col_counts <- rep(table(adsl$ACTARM), each = length(grade_groups))
   full_table <- basic_table() %>%
     split_cols_by("ACTARM") %>%
-    split_cols_by_groups("MAXAETOXGR", groups = grade_groups) %>%
+    split_cols_by_groups("MAXAETOXGR", groups_list = grade_groups) %>%
     split_rows_by(
       "AEBODSYS",
       child_labels = "visible", nested = FALSE,
@@ -294,7 +294,7 @@ testthat::test_that("AET04_PI variant 8 is produced correctly", {
   col_counts <- rep(table(adsl$ACTARM), each = length(grade_groups))
   full_table <- basic_table() %>%
     split_cols_by("ACTARM") %>%
-    split_cols_by_groups("MAXAETOXGR", groups = grade_groups) %>%
+    split_cols_by_groups("MAXAETOXGR", groups_list = grade_groups) %>%
     analyze_vars(
       "AEDECOD",
       na.rm = TRUE,

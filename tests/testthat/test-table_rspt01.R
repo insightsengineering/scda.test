@@ -160,7 +160,11 @@ testthat::test_that("RSPT01: 4. Best Overall Response (with stratified analysis)
     ) %>%
     estimate_multinomial_response(var = "AVALC")
 
-  result <- build_table(l, adrs)
+  # https://github.com/therneau/survival/issues/240
+  withr::with_options(
+    opts_partial_match_old,
+    result <- build_table(l, adrs)
+  )
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

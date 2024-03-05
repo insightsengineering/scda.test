@@ -1,3 +1,4 @@
+set.seed(1)
 adsl <- adsl_pharmaverse
 adae <- adae_pharmaverse
 
@@ -7,17 +8,18 @@ adae <- df_explicit_na(
   omit_columns = c("SMQ01NAM", "SMQ01SC", "SMQ02NAM", "SMQ02SC", "CQ01NAM", "STUDYID", "USUBJID")
 )
 
+aesdth_tmp <- sample(c("N", "Y"), size = nrow(adae), replace = TRUE, prob = c(0.99, 0.01))
+aeacn_tmp <- sample(
+  c("DOSE NOT CHANGED", "DOSE INCREASED", "DRUG INTERRUPTED", "DRUG WITHDRAWN"),
+  size = nrow(adae),
+  replace = TRUE, prob = c(0.68, 0.02, 0.25, 0.05)
+)
+
 adae <- adae %>%
   mutate(
     AEDECOD = with_label(as.character(AEDECOD), "Dictionary-Derived Term"),
-    AESDTH = with_label(
-      sample(c("N", "Y"), size = nrow(adae), replace = TRUE, prob = c(0.99, 0.01)), "Results in Death"
-    ),
-    AEACN = with_label(sample(
-      c("DOSE NOT CHANGED", "DOSE INCREASED", "DRUG INTERRUPTED", "DRUG WITHDRAWN"),
-      size = nrow(adae),
-      replace = TRUE, prob = c(0.68, 0.02, 0.25, 0.05)
-    ), "Action Taken with Study Treatment"),
+    AESDTH = with_label(aesdth_tmp, "Results in Death"),
+    AEACN = with_label(aeacn_tmp, "Action Taken with Study Treatment"),
     FATAL = with_label(AESDTH == "Y", "AE with fatal outcome"),
     SEV = with_label(AESEV == "SEVERE", "Severe AE (at greatest intensity)"),
     SER = with_label(AESER == "Y", "Serious AE"),
