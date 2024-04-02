@@ -19,6 +19,9 @@ grade_groups <- list(
 )
 adae$TOTAL_VAR <- "- Any adverse events - "
 
+# Further reducing burden of the table size
+adae <- level_reducer(adae, "AEDECOD", p_to_keep = 0.7)
+
 # Helper function to avoid filtering also the first part of the table, where general information is given.
 my_row_condition <- function(row_fnc_condition) {
   function(table_row) {
