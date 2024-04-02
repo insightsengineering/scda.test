@@ -67,7 +67,7 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
     }
     print(gg)
 
-  #  Effective calculations
+    #  Effective calculations
   } else {
     checkmate::assert_int(num_of_rare_values, lower = 0, upper = length(lev_freq))
     checkmate::assert_int(num_max_values, lower = num_of_rare_values, upper = length(lev_freq), null.ok = TRUE)
