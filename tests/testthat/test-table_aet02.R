@@ -73,7 +73,7 @@ testthat::test_that("AET02 variant 1 is produced correctly", {
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[2]], with_spaces = FALSE)[5, 1],
-    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
+    "SKIN AND SUBCUTANEOUS TISSUE DISORDERS"
   )
 })
 

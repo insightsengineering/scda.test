@@ -79,7 +79,7 @@ testthat::test_that("AET03 variant 1 is produced correctly", {
   result_matrix <- to_string_matrix(result, with_spaces = FALSE)
 
   # Pagination also works (and sorting)
-  lpp_test <- 16
+  lpp_test <- 148
   testthat::expect_equal(
     nrow(paginate_table(result, lpp = lpp_test)[[3]]) + 4, # 4 is the header
     lpp_test

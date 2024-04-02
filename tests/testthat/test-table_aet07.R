@@ -19,7 +19,7 @@ preprocess_adae <- function(adae) {
 }
 
 adsl <- adsl_pharmaverse
-adae <- adae_pharmaverse
+adae <- pharmaverseadam::adae
 
 testthat::test_that("AET07 variant 1 is produced correctly", {
   adae <- adae %>%
