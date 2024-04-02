@@ -275,11 +275,11 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
 
   testthat::expect_identical(
     to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
-    "SKIN AND SUBCUTANEOUS TISSUE DISORDERS"
+    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
-    c("46 (53.5%)" ,"37 (43.0%)")
+    c("29 (33.7%)", "22 (25.6%)")
   )
 })
 
