@@ -210,7 +210,10 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
 # adae_pharmaverse trimming of variables with too many levels
 adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
   num_max_values = 7, num_of_rare_values = 1,
-  add_specific_value = c("VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE")
+  add_specific_value = c(
+    "VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE", # For SMQ01NAM, SMQ02NAM, CQ01NAM
+    "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
+  )
 )
 
 set.seed(NULL)

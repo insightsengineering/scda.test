@@ -25,6 +25,9 @@
       NERVOUS SYSTEM DISORDERS                                                                                                                                                                          
       Total number of patients with at least one adverse event     7 (8.1%)        1 (1.2%)           0          6 (8.3%)            0              0          3 (3.1%)            0              0     
         HEADACHE                                                       8               1              0              8               0              0              3               0              0     
+      CARDIAC DISORDERS                                                                                                                                                                                 
+      Total number of patients with at least one adverse event     4 (4.7%)        1 (1.2%)           0          4 (5.6%)        1 (1.4%)           0          2 (2.1%)            0              0     
+        MYOCARDIAL INFARCTION                                          5               1              0              6               1              0              2               0              0     
       VASCULAR DISORDERS                                                                                                                                                                                
       Total number of patients with at least one adverse event         0               0              0          1 (1.4%)            0              0              0               0              0     
         WOUND HAEMORRHAGE                                              0               0              0              1               0              0              0               0              0     
@@ -52,6 +55,8 @@
       NAUSEA                                                       3               0              0              8               3              1              3               1              0     
       NERVOUS SYSTEM DISORDERS                                                                                                                                                                      
       HEADACHE                                                     8               1              0              8               0              0              3               0              0     
+      CARDIAC DISORDERS                                                                                                                                                                             
+      MYOCARDIAL INFARCTION                                        5               1              0              6               1              0              2               0              0     
 
 # AET04_PI variant 2 is produced correctly
 

@@ -279,7 +279,7 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
   )
   testthat::expect_identical(
     to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
-    c("22 (25.6%)", "17 (19.8%)")
+    c("23 (26.7%)", "17 (19.8%)")
   )
 })
 

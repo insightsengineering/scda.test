@@ -6,8 +6,8 @@
       MedDRA System Organ Class                                     Placebo     Xanomeline High Dose   Xanomeline Low Dose   All Patients
         MedDRA Preferred Term                                        (N=86)            (N=72)                (N=96)            (N=254)   
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event     34 (39.5%)        61 (84.7%)            63 (65.6%)        158 (62.2%) 
-      Overall total number of events                                   71               189                    177               437     
+      Total number of patients with at least one adverse event     37 (43.0%)        61 (84.7%)            64 (66.7%)        162 (63.8%) 
+      Overall total number of events                                   75               197                    181               453     
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                             
         Total number of patients with at least one adverse event   19 (22.1%)        34 (47.2%)            35 (36.5%)         88 (34.6%) 
         Total number of events                                         37                86                    90                213     
@@ -30,6 +30,10 @@
         Total number of patients with at least one adverse event    7 (8.1%)          6 (8.3%)              3 (3.1%)          16 (6.3%)  
         Total number of events                                         8                 9                      4                 21     
         HEADACHE                                                    7 (8.1%)          6 (8.3%)              3 (3.1%)          16 (6.3%)  
+      CARDIAC DISORDERS                                                                                                                  
+        Total number of patients with at least one adverse event    4 (4.7%)          4 (5.6%)              2 (2.1%)          10 (3.9%)  
+        Total number of events                                         4                 8                      4                 16     
+        MYOCARDIAL INFARCTION                                       4 (4.7%)          4 (5.6%)              2 (2.1%)          10 (3.9%)  
       VASCULAR DISORDERS                                                                                                                 
         Total number of patients with at least one adverse event       0              1 (1.4%)                  0              1 (0.4%)  
         Total number of events                                         0                 1                      0                 1      
@@ -43,8 +47,8 @@
       MedDRA System Organ Class                                     Placebo     Xanomeline High Dose   Xanomeline Low Dose   All Patients
         MedDRA Preferred Term                                        (N=86)            (N=72)                (N=96)            (N=254)   
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event     34 (39.5%)        61 (84.7%)            63 (65.6%)        158 (62.2%) 
-      Overall total number of events                                   71               189                    177               437     
+      Total number of patients with at least one adverse event     37 (43.0%)        61 (84.7%)            64 (66.7%)        162 (63.8%) 
+      Overall total number of events                                   75               197                    181               453     
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                             
         Total number of patients with at least one adverse event   19 (22.1%)        34 (47.2%)            35 (36.5%)         88 (34.6%) 
         PRURITUS                                                    8 (9.3%)         26 (36.1%)            23 (24.0%)         57 (22.4%) 
@@ -67,6 +71,10 @@
         Total number of patients with at least one adverse event    7 (8.1%)          6 (8.3%)              3 (3.1%)          16 (6.3%)  
         HEADACHE                                                    7 (8.1%)          6 (8.3%)              3 (3.1%)          16 (6.3%)  
         Total number of events                                         8                 9                      4                 21     
+      CARDIAC DISORDERS                                                                                                                  
+        Total number of patients with at least one adverse event    4 (4.7%)          4 (5.6%)              2 (2.1%)          10 (3.9%)  
+        MYOCARDIAL INFARCTION                                       4 (4.7%)          4 (5.6%)              2 (2.1%)          10 (3.9%)  
+        Total number of events                                         4                 8                      4                 16     
       VASCULAR DISORDERS                                                                                                                 
         Total number of patients with at least one adverse event       0              1 (1.4%)                  0              1 (0.4%)  
         WOUND HAEMORRHAGE                                              0              1 (1.4%)                  0              1 (0.4%)  
@@ -81,8 +89,8 @@
         High Level Term                                               Placebo     Xanomeline High Dose   Xanomeline Low Dose
           MedDRA Preferred Term                                        (N=86)            (N=72)                (N=96)       
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event       34 (39.5%)        61 (84.7%)            63 (65.6%)     
-      Overall total number of events                                     71               189                    177        
+      Total number of patients with at least one adverse event       37 (43.0%)        61 (84.7%)            64 (66.7%)     
+      Overall total number of events                                     75               197                    181        
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                
         Total number of patients with at least one adverse event     19 (22.1%)        34 (47.2%)            35 (36.5%)     
         Total number of events                                           37                86                    90         
@@ -135,6 +143,13 @@
           Total number of patients with at least one adverse event    7 (8.1%)          6 (8.3%)              3 (3.1%)      
           Total number of events                                         8                 9                      4         
           HEADACHE                                                    7 (8.1%)          6 (8.3%)              3 (3.1%)      
+      CARDIAC DISORDERS                                                                                                     
+        Total number of patients with at least one adverse event      4 (4.7%)          4 (5.6%)              2 (2.1%)      
+        Total number of events                                           4                 8                      4         
+        HLT_0649                                                                                                            
+          Total number of patients with at least one adverse event    4 (4.7%)          4 (5.6%)              2 (2.1%)      
+          Total number of events                                         4                 8                      4         
+          MYOCARDIAL INFARCTION                                       4 (4.7%)          4 (5.6%)              2 (2.1%)      
       VASCULAR DISORDERS                                                                                                    
         Total number of patients with at least one adverse event         0              1 (1.4%)                  0         
         Total number of events                                           0                 1                      0         
@@ -151,8 +166,8 @@
                                                                   Placebo     Xanomeline High Dose   Xanomeline Low Dose
       MedDRA Preferred Term                                        (N=86)            (N=72)                (N=96)       
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event   34 (39.5%)        61 (84.7%)            63 (65.6%)     
-      Total number of events                                         71               189                    177        
+      Total number of patients with at least one adverse event   37 (43.0%)        61 (84.7%)            64 (66.7%)     
+      Total number of events                                         75               197                    181        
       PRURITUS                                                    8 (9.3%)         26 (36.1%)            23 (24.0%)     
       APPLICATION SITE PRURITUS                                   6 (7.0%)         21 (29.2%)            23 (24.0%)     
       ERYTHEMA                                                   9 (10.5%)         14 (19.4%)            15 (15.6%)     
@@ -163,6 +178,7 @@
       SKIN IRRITATION                                             3 (3.5%)          5 (6.9%)              6 (6.2%)      
       VOMITING                                                    3 (3.5%)          6 (8.3%)              4 (4.2%)      
       NAUSEA                                                      3 (3.5%)          6 (8.3%)              3 (3.1%)      
+      MYOCARDIAL INFARCTION                                       4 (4.7%)          4 (5.6%)              2 (2.1%)      
       WOUND HAEMORRHAGE                                              0              1 (1.4%)                  0         
 
 # AET02 variant 5 is produced correctly
@@ -173,8 +189,8 @@
       MedDRA System Organ Class                                     Placebo     Xanomeline High Dose   Xanomeline Low Dose
         MedDRA Preferred Term                                        (N=86)            (N=72)                (N=96)       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event     34 (39.5%)        61 (84.7%)                 0         
-      Overall total number of events                                   71               189                     0         
+      Total number of patients with at least one adverse event     37 (43.0%)        61 (84.7%)                 0         
+      Overall total number of events                                   75               197                     0         
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                              
         Total number of patients with at least one adverse event   19 (22.1%)        34 (47.2%)                 0         
         Total number of events                                         37                86                     0         
@@ -197,6 +213,10 @@
         Total number of patients with at least one adverse event    7 (8.1%)          6 (8.3%)                  0         
         Total number of events                                         8                 9                      0         
         HEADACHE                                                    7 (8.1%)          6 (8.3%)                  0         
+      CARDIAC DISORDERS                                                                                                   
+        Total number of patients with at least one adverse event    4 (4.7%)          4 (5.6%)                  0         
+        Total number of events                                         4                 8                      0         
+        MYOCARDIAL INFARCTION                                       4 (4.7%)          4 (5.6%)                  0         
       VASCULAR DISORDERS                                                                                                  
         Total number of patients with at least one adverse event       0              1 (1.4%)                  0         
         Total number of events                                         0                 1                      0         
@@ -224,6 +244,8 @@
         NAUSEA                                               3 (3.5%)          6 (8.3%)              3 (3.1%)      
       NERVOUS SYSTEM DISORDERS                                                                                     
         HEADACHE                                             7 (8.1%)          6 (8.3%)              3 (3.1%)      
+      CARDIAC DISORDERS                                                                                            
+        MYOCARDIAL INFARCTION                                4 (4.7%)          4 (5.6%)              2 (2.1%)      
 
 # AET02 variant 7 is produced correctly
 
@@ -258,6 +280,9 @@
       NERVOUS SYSTEM DISORDERS                                                                                     
         HLT_0064                                                                                                   
           HEADACHE                                           7 (8.1%)          6 (8.3%)              3 (3.1%)      
+      CARDIAC DISORDERS                                                                                            
+        HLT_0649                                                                                                   
+          MYOCARDIAL INFARCTION                              4 (4.7%)          4 (5.6%)              2 (2.1%)      
 
 # AET02 variant 8 is produced correctly
 
@@ -298,6 +323,8 @@
         NAUSEA                                               3 (3.5%)          6 (8.3%)              3 (3.1%)      
       NERVOUS SYSTEM DISORDERS                                                                                     
         HEADACHE                                             7 (8.1%)          6 (8.3%)              3 (3.1%)      
+      CARDIAC DISORDERS                                                                                            
+        MYOCARDIAL INFARCTION                                4 (4.7%)          4 (5.6%)              2 (2.1%)      
 
 # AET02 variant 10 is produced correctly
 

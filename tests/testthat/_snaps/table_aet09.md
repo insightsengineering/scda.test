@@ -6,8 +6,8 @@
                                                                                           Placebo     Xanomeline High Dose   Xanomeline Low Dose   All Patients
                                                                                            (N=86)            (N=84)                (N=84)            (N=254)   
       —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event related to study drug     28 (32.6%)        61 (72.6%)            57 (67.9%)        146 (57.5%) 
-      Overall total number of events related to study drug                                   63               179                    158               400     
+      Total number of patients with at least one adverse event related to study drug     31 (36.0%)        61 (72.6%)            58 (69.0%)        150 (59.1%) 
+      Overall total number of events related to study drug                                   67               181                    162               410     
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                                                   
         Total number of patients with at least one adverse event related to study drug   18 (20.9%)        32 (38.1%)            31 (36.9%)         81 (31.9%) 
         Total number of events related to study drug                                         34                80                    77                191     
@@ -26,6 +26,10 @@
         Total number of events related to study drug                                         5                 18                     9                 32     
         NAUSEA                                                                            3 (3.5%)          5 (6.0%)              3 (3.6%)          11 (4.3%)  
         VOMITING                                                                          2 (2.3%)          5 (6.0%)              3 (3.6%)          10 (3.9%)  
+      CARDIAC DISORDERS                                                                                                                                        
+        Total number of patients with at least one adverse event related to study drug    4 (4.7%)          2 (2.4%)              2 (2.4%)           8 (3.1%)  
+        Total number of events related to study drug                                         4                 2                      4                 10     
+        MYOCARDIAL INFARCTION                                                             4 (4.7%)          2 (2.4%)              2 (2.4%)           8 (3.1%)  
       NERVOUS SYSTEM DISORDERS                                                                                                                                 
         Total number of patients with at least one adverse event related to study drug    3 (3.5%)          3 (3.6%)              2 (2.4%)           8 (3.1%)  
         Total number of events related to study drug                                         4                 6                      2                 12     
@@ -43,8 +47,8 @@
                                                                                             Placebo     Xanomeline High Dose   Xanomeline Low Dose
                                                                                              (N=86)            (N=84)                (N=84)       
       ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event related to study drug       28 (32.6%)        61 (72.6%)            57 (67.9%)     
-      Overall total number of events related to study drug                                     63               179                    158        
+      Total number of patients with at least one adverse event related to study drug       31 (36.0%)        61 (72.6%)            58 (69.0%)     
+      Overall total number of events related to study drug                                     67               181                    162        
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                                      
         Total number of patients with at least one adverse event related to study drug     18 (20.9%)        32 (38.1%)            31 (36.9%)     
         Total number of events related to study drug                                           34                80                    77         
@@ -90,6 +94,13 @@
           Total number of patients with at least one adverse event related to study drug    2 (2.3%)          5 (6.0%)              3 (3.6%)      
           Total number of events related to study drug                                         2                 6                      4         
           VOMITING                                                                          2 (2.3%)          5 (6.0%)              3 (3.6%)      
+      CARDIAC DISORDERS                                                                                                                           
+        Total number of patients with at least one adverse event related to study drug      4 (4.7%)          2 (2.4%)              2 (2.4%)      
+        Total number of events related to study drug                                           4                 2                      4         
+        HLT_0649                                                                                                                                  
+          Total number of patients with at least one adverse event related to study drug    4 (4.7%)          2 (2.4%)              2 (2.4%)      
+          Total number of events related to study drug                                         4                 2                      4         
+          MYOCARDIAL INFARCTION                                                             4 (4.7%)          2 (2.4%)              2 (2.4%)      
       NERVOUS SYSTEM DISORDERS                                                                                                                    
         Total number of patients with at least one adverse event related to study drug      3 (3.5%)          3 (3.6%)              2 (2.4%)      
         Total number of events related to study drug                                           4                 6                      2         

@@ -7,8 +7,8 @@
                                                                          F            M            F            M            F            M     
                                                                        (N=53)       (N=33)       (N=40)       (N=44)       (N=50)       (N=34)  
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event       21 (39.6%)   13 (39.4%)   27 (67.5%)   36 (81.8%)   34 (68.0%)   27 (79.4%)
-      Overall total number of events                                     51           20           84          108          106           68    
+      Total number of patients with at least one adverse event       24 (45.3%)   13 (39.4%)   27 (67.5%)   36 (81.8%)   35 (70.0%)   27 (79.4%)
+      Overall total number of events                                     55           20           85          115          110           68    
         GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS                                                                                    
           Total number of patients with at least one adverse event   7 (13.2%)     3 (9.1%)    14 (35.0%)   16 (36.4%)   18 (36.0%)   12 (35.3%)
           Total number of events                                         15           5            37           37           35           36    
@@ -31,6 +31,10 @@
           Total number of patients with at least one adverse event    4 (7.5%)     3 (9.1%)    4 (10.0%)     2 (4.5%)        0         3 (8.8%) 
           Total number of events                                         5            3            7            2            0            4     
             HEADACHE                                                  4 (7.5%)     3 (9.1%)    4 (10.0%)     2 (4.5%)        0         3 (8.8%) 
+        CARDIAC DISORDERS                                                                                                                       
+          Total number of patients with at least one adverse event    4 (7.5%)        0         1 (2.5%)     3 (6.8%)     2 (4.0%)        0     
+          Total number of events                                         4            0            1            7            4            0     
+            MYOCARDIAL INFARCTION                                     4 (7.5%)        0         1 (2.5%)     3 (6.8%)     2 (4.0%)        0     
         VASCULAR DISORDERS                                                                                                                      
           Total number of patients with at least one adverse event       0            0         1 (2.5%)        0            0            0     
           Total number of events                                         0            0            1            0            0            0     
@@ -45,8 +49,8 @@
       Body System or Organ Class                                   <18.5   18.5 - 24.9   25 - 29.9       >30        <18.5     18.5 - 24.9   25 - 29.9       >30        <18.5     18.5 - 24.9   25 - 29.9       >30   
         Dictionary-Derived Term                                    (N=3)     (N=57)        (N=20)       (N=6)       (N=2)       (N=42)        (N=28)      (N=12)       (N=3)       (N=43)        (N=27)      (N=10)  
       ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event       0     18 (31.6%)    13 (65.0%)   3 (50.0%)   1 (50.0%)   30 (71.4%)    24 (85.7%)   8 (66.7%)   2 (66.7%)   29 (67.4%)    21 (77.8%)   8 (80.0%)
-      Overall total number of events                                 0         45            21           5           1           89            75          27           6           83            58          25    
+      Total number of patients with at least one adverse event       0     21 (36.8%)    13 (65.0%)   3 (50.0%)   1 (50.0%)   30 (71.4%)    24 (85.7%)   8 (66.7%)   3 (100%)    29 (67.4%)    21 (77.8%)   8 (80.0%)
+      Overall total number of events                                 0         48            21           6           1           97            75          27           8           85            58          25    
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                                                                                                                         
         Total number of patients with at least one adverse event     0      9 (15.8%)    8 (40.0%)    2 (33.3%)   1 (50.0%)   16 (38.1%)    13 (46.4%)   4 (33.3%)   1 (33.3%)   16 (37.2%)    12 (44.4%)   5 (50.0%)
         Total number of events                                       0         19            14           4           1           36            41           8           2           41            25          21    
@@ -69,6 +73,10 @@
         Total number of patients with at least one adverse event     0      5 (8.8%)     2 (10.0%)        0           0        2 (4.8%)     3 (10.7%)    1 (8.3%)        0        3 (7.0%)         0            0    
         Total number of events                                       0          6            2            0           0            2            6            1           0            4            0            0    
         HEADACHE                                                     0      5 (8.8%)     2 (10.0%)        0           0        2 (4.8%)     3 (10.7%)    1 (8.3%)        0        3 (7.0%)         0            0    
+      CARDIAC DISORDERS                                                                                                                                                                                              
+        Total number of patients with at least one adverse event     0      3 (5.3%)         0        1 (16.7%)       0        4 (9.5%)         0            0       1 (33.3%)    1 (2.3%)         0            0    
+        Total number of events                                       0          3            0            1           0            8            0            0           2            2            0            0    
+        MYOCARDIAL INFARCTION                                        0      3 (5.3%)         0        1 (16.7%)       0        4 (9.5%)         0            0       1 (33.3%)    1 (2.3%)         0            0    
       VASCULAR DISORDERS                                                                                                                                                                                             
         Total number of patients with at least one adverse event     0          0            0            0           0        1 (2.4%)         0            0           0            0            0            0    
         Total number of events                                       0          0            0            0           0            1            0            0           0            0            0            0    
@@ -83,8 +91,8 @@
                                                                          F            M            F            M            F            M     
                                                                        (N=53)       (N=33)       (N=40)       (N=44)       (N=50)       (N=34)  
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      Total number of patients with at least one adverse event       21 (39.6%)   13 (39.4%)   27 (67.5%)   36 (81.8%)   34 (68.0%)   27 (79.4%)
-      Overall total number of events                                     51           20           84          108          106           68    
+      Total number of patients with at least one adverse event       24 (45.3%)   13 (39.4%)   27 (67.5%)   36 (81.8%)   35 (70.0%)   27 (79.4%)
+      Overall total number of events                                     55           20           85          115          110           68    
       GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS                                                                                      
         Total number of patients with at least one adverse event     7 (13.2%)     3 (9.1%)    14 (35.0%)   16 (36.4%)   18 (36.0%)   12 (35.3%)
         Total number of events                                           15           5            37           37           35           36    
@@ -137,6 +145,13 @@
           Total number of patients with at least one adverse event    4 (7.5%)     3 (9.1%)    4 (10.0%)     2 (4.5%)        0         3 (8.8%) 
           Total number of events                                         5            3            7            2            0            4     
             HEADACHE                                                  4 (7.5%)     3 (9.1%)    4 (10.0%)     2 (4.5%)        0         3 (8.8%) 
+      CARDIAC DISORDERS                                                                                                                         
+        Total number of patients with at least one adverse event      4 (7.5%)        0         1 (2.5%)     3 (6.8%)     2 (4.0%)        0     
+        Total number of events                                           4            0            1            7            4            0     
+        HLT_0649                                                                                                                                
+          Total number of patients with at least one adverse event    4 (7.5%)        0         1 (2.5%)     3 (6.8%)     2 (4.0%)        0     
+          Total number of events                                         4            0            1            7            4            0     
+            MYOCARDIAL INFARCTION                                     4 (7.5%)        0         1 (2.5%)     3 (6.8%)     2 (4.0%)        0     
       VASCULAR DISORDERS                                                                                                                        
         Total number of patients with at least one adverse event         0            0         1 (2.5%)        0            0            0     
         Total number of events                                           0            0            1            0            0            0     

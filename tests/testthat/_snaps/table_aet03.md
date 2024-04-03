@@ -7,10 +7,10 @@
         MedDRA Preferred Term                                 Placebo     Xanomeline High Dose   Xanomeline Low Dose
           Severity/Intensity                                   (N=86)            (N=72)                (N=96)       
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————
-      - Any Intensity -                                      34 (39.5%)        61 (84.7%)            63 (65.6%)     
-      MILD                                                   22 (25.6%)        27 (37.5%)            27 (28.1%)     
-      MODERATE                                               10 (11.6%)        30 (41.7%)            26 (27.1%)     
-      SEVERE                                                     0              2 (2.8%)              8 (8.3%)      
+      - Any Intensity -                                      37 (43.0%)        61 (84.7%)            64 (66.7%)     
+      MILD                                                   22 (25.6%)        26 (36.1%)            28 (29.2%)     
+      MODERATE                                               11 (12.8%)        31 (43.1%)            26 (27.1%)     
+      SEVERE                                                  2 (2.3%)          2 (2.8%)              8 (8.3%)      
       LIFE THREATENING                                        2 (2.3%)          2 (2.8%)              2 (2.1%)      
       SKIN AND SUBCUTANEOUS TISSUE DISORDERS                                                                        
         - Any Intensity -                                    19 (22.1%)        34 (47.2%)            35 (36.5%)     
@@ -86,6 +86,16 @@
           MILD                                                4 (4.7%)          4 (5.6%)              2 (2.1%)      
           MODERATE                                            3 (3.5%)          2 (2.8%)                  0         
           SEVERE                                                 0                 0                  1 (1.0%)      
+      CARDIAC DISORDERS                                                                                             
+        - Any Intensity -                                     4 (4.7%)          4 (5.6%)              2 (2.1%)      
+        MILD                                                  1 (1.2%)          3 (4.2%)              2 (2.1%)      
+        MODERATE                                              1 (1.2%)          1 (1.4%)                  0         
+        SEVERE                                                2 (2.3%)             0                      0         
+        MYOCARDIAL INFARCTION                                                                                       
+          - Any Intensity -                                   4 (4.7%)          4 (5.6%)              2 (2.1%)      
+          MILD                                                1 (1.2%)          3 (4.2%)              2 (2.1%)      
+          MODERATE                                            1 (1.2%)          1 (1.4%)                  0         
+          SEVERE                                              2 (2.3%)             0                      0         
       VASCULAR DISORDERS                                                                                            
         - Any Intensity -                                        0              1 (1.4%)                  0         
         MODERATE                                                 0              1 (1.4%)                  0         
