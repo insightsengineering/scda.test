@@ -5,7 +5,7 @@ adeg <- adeg_raw
 
 testthat::test_that("EGT03 variant 1 is produced correctly", {
   set.seed(123, kind = "Mersenne-Twister")
-  adeg_labels <- formatters::var_labels(adeg)
+  adeg_labels <- var_labels(adeg)
 
   # Filtering
   # ---------
@@ -36,7 +36,7 @@ testthat::test_that("EGT03 variant 1 is produced correctly", {
   adeg_f$BNRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
   adeg_f$ANRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
 
-  formatters::var_labels(adeg_f) <- adeg_labels
+  var_labels(adeg_f) <- adeg_labels
 
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
@@ -52,7 +52,7 @@ testthat::test_that("EGT03 variant 1 is produced correctly", {
 
 testthat::test_that("EGT03 variant 2 is produced correctly", {
   set.seed(123, kind = "Mersenne-Twister")
-  adeg_labels <- formatters::var_labels(adeg)
+  adeg_labels <- var_labels(adeg)
 
   # Filtering
   # ---------
@@ -77,7 +77,7 @@ testthat::test_that("EGT03 variant 2 is produced correctly", {
 
   adeg_f$BNRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
 
-  formatters::var_labels(adeg_f) <- adeg_labels
+  var_labels(adeg_f) <- adeg_labels
 
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
@@ -93,7 +93,7 @@ testthat::test_that("EGT03 variant 2 is produced correctly", {
 
 testthat::test_that("EGT03 variant 3 is produced correctly", {
   set.seed(123, kind = "Mersenne-Twister")
-  adeg_labels <- formatters::var_labels(adeg)
+  adeg_labels <- var_labels(adeg)
 
   # Filtering
   # ---------
@@ -118,7 +118,7 @@ testthat::test_that("EGT03 variant 3 is produced correctly", {
 
   adeg_f$ANRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
 
-  formatters::var_labels(adeg_f) <- adeg_labels
+  var_labels(adeg_f) <- adeg_labels
 
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
@@ -134,7 +134,7 @@ testthat::test_that("EGT03 variant 3 is produced correctly", {
 
 testthat::test_that("EGT03 variant 4 is produced correctly", {
   set.seed(123, kind = "Mersenne-Twister")
-  adeg_labels <- formatters::var_labels(adeg)
+  adeg_labels <- var_labels(adeg)
 
   # Filtering
   # ---------
@@ -165,7 +165,7 @@ testthat::test_that("EGT03 variant 4 is produced correctly", {
   adeg_f$BNRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
   adeg_f$ANRIND[sample(seq_len(nrow(adeg_f)), size = 5)] <- "Missing"
 
-  formatters::var_labels(adeg_f) <- adeg_labels
+  var_labels(adeg_f) <- adeg_labels
 
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%

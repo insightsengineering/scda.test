@@ -5,7 +5,7 @@ testthat::test_that("DSUR4 listing is produced correctly", {
     select(ARM, ID, DTHCAUS)
   death_num <- length(unique(out$ID))
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ARM = "Treatment Group",
     ID = "Center/Patient ID",
     DTHCAUS = "Cause of Death"

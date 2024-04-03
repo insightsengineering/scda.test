@@ -40,7 +40,7 @@ result <- adae_raw %>%
   select(CPID, ASR, TRT01A, AEDECOD, Date_First, ASTDY, Duration, AESEV, Related, Outcome, Treated, Action, SERREAS)
 
 # Adding labels
-formatters::var_labels(result) <- c(
+var_labels(result) <- c(
   CPID = "Center/Patient ID",
   ASR = "Age/Sex/Race",
   TRT01A = "Treatment",
@@ -79,7 +79,7 @@ lst_res <- as_listing(
 testthat::test_that("Direct pagination works fine", {
   testthat::expect_equal(nrow(lst_res), 50) # head() worked
 
-  clw <- formatters::propose_column_widths(lst_res) / 2 + 1
+  clw <- propose_column_widths(lst_res) / 2 + 1
 
   pg_lst <- testthat::expect_silent(paginate_listing(lst_res, lpp = 50, colwidths = floor(clw)))
   testthat::expect_equal(length(pg_lst), 10L)

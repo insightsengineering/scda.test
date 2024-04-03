@@ -5,7 +5,7 @@ testthat::test_that("PKCL01 listing is produced correctly", {
     filter(PARAM == analyte) %>%
     select(ARM, USUBJID, VISIT, NFRLT, AFRLT, AVAL)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ARM = "Treatment Group",
     USUBJID = "Subject ID",
     VISIT = "Visit",

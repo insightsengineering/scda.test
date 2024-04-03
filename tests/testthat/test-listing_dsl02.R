@@ -16,7 +16,7 @@ testthat::test_that("DSL02 listing is produced correctly", {
     filter(DISCONT == "Yes") %>%
     select(ID, ASR, TRT01A, SSADTM, EOSDY, SSAEDY, RANDEDY, DCSREAS)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     TRT01A = "Treatment",

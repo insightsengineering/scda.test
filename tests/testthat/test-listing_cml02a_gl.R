@@ -3,7 +3,7 @@ testthat::test_that("CML02A_GL listing is produced correctly", {
     select(ATC2, CMDECOD, CMTRT) %>%
     unique()
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ATC2 = "ATC Class Level 2",
     CMDECOD = "WHODrug Preferred Name",
     CMTRT = "Investigator-Specified\nTreatment Term"

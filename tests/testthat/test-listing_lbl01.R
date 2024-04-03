@@ -33,8 +33,8 @@ testthat::test_that("LBL01 listing is produced correctly", {
     ungroup() %>%
     select(CPID, TRT01A, ADY, DLD, unique(adlb_x$PARAM_U))
 
-  formatters::var_labels(out) <- names(out)
-  out <- out %>% formatters::var_relabel(
+  var_labels(out) <- names(out)
+  out <- out %>% var_relabel(
     TRT01A = "Treatment",
     CPID = "Center/Patient ID",
     ADY = "Study\nDay",

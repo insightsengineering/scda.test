@@ -3,7 +3,7 @@ testthat::test_that("AEL01 listing is produced correctly", {
     select(AESOC, AEDECOD, AELLT, AETERM) %>%
     unique()
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     AESOC = "MedDRA System Organ Class",
     AEDECOD = "MedDRA Preferred Term",
     AELLT = "MedDRA Lowest Level Term",

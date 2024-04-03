@@ -9,7 +9,7 @@ testthat::test_that("AEL04 listing is produced correctly", {
     arrange(SUBJID) %>%
     select(ID, AGSXRC, TRT01A, TRTSD, EOSDY, DTHADY, DTHCAUS, ADTHAUT)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     AGSXRC = "Age/Sex/Race",
     TRT01A = "Treatment",

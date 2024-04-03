@@ -30,7 +30,7 @@ adsl_local <- local({
     )
   columns <- c("STSTFL", "COMPSTUD", "DISCSTUD", "AGEGRP", "ETHNIC")
   labels <- c("Start Study", "Study Completion Flag", "Study Discontinuation Flag", "Age Group", "Ethnicity")
-  formatters::var_labels(adsl_f)[columns] <- labels
+  var_labels(adsl_f)[columns] <- labels
 
   adsl_f$AGEGRP <- factor(adsl_f$AGEGRP, levels = c("< 65 yrs", ">= 65 yrs"))
   adsl_f$ETHNIC <- factor(adsl_f$ETHNIC, levels = c("Ethnicity 1", "Ethnicity 2", "Unknown"))
@@ -166,9 +166,9 @@ testthat::test_that("Table of Serious Adverse Events is produced correctly (for 
   adae_serious_arm <- adae_serious %>% dplyr::filter(ARM == "A: Drug X")
 
   filters_list <- list(
-    related = formatters::with_label(c(AEREL = "Y"), "Events (Related)"),
-    fatal = formatters::with_label(c(AESDTH = "Y"), "Events (Fatal)"),
-    fatal_related = formatters::with_label(c(AEREL = "Y", AESDTH = "Y"), "Events (Fatal & Related)")
+    related = with_label(c(AEREL = "Y"), "Events (Related)"),
+    fatal = with_label(c(AESDTH = "Y"), "Events (Fatal)"),
+    fatal_related = with_label(c(AEREL = "Y", AESDTH = "Y"), "Events (Fatal & Related)")
   )
 
   result <- basic_table() %>%

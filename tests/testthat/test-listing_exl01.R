@@ -7,7 +7,7 @@ testthat::test_that("EXL01 listing is produced correctly", {
     arrange(CRTNPT, AVISIT) %>%
     select(CRTNPT, AVISIT, EXSTDY, EXENDY, TRT01A, AVAL, AVALU, EXDOSFRQ, EXROUTE)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     CRTNPT = "Center/Subject ID",
     AVISIT = "Visit",
     EXSTDY = "Study Day\nFrom",

@@ -72,10 +72,10 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     ) %>%
     select(USUBJID, unique(adab_x$VISN[order(adab_x$NFRLT)]), PTES)
 
-  formatters::var_labels(out) <- names(out)
+  var_labels(out) <- names(out)
 
   out <- out %>%
-    formatters::var_relabel(
+    var_relabel(
       USUBJID = "Subject ID",
       PTES = "Patient Treatment\nEmergent ADA Status"
     )

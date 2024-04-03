@@ -32,8 +32,8 @@ testthat::test_that("PKPL04 listing is produced correctly", {
     ) %>%
     select(names(.)[c(1:2, 4, 6, 3, 5, 7)])
 
-  formatters::var_labels(out) <- names(out)
-  out <- out %>% formatters::var_relabel(USUBJID = "Subject ID")
+  var_labels(out) <- names(out)
+  out <- out %>% var_relabel(USUBJID = "Subject ID")
 
   testthat::expect_message(result <- as_listing(
     out,

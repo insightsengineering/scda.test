@@ -9,7 +9,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
     ) %>%
     select(ID, ASR, ARMCD, SSADM, STDWD, DISCONT)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     ARMCD = "Treatment",

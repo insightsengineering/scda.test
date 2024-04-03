@@ -37,7 +37,7 @@ testthat::test_that("AEL03 listing is produced correctly", {
     ) %>%
     select(CPID, ASR, TRT01A, AEDECOD, Date_First, ASTDY, Duration, AESEV, Related, Outcome, Treated, Action, SERREAS)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     CPID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     TRT01A = "Treatment",

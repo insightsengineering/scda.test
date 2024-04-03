@@ -30,9 +30,9 @@ testthat::test_that("LBL02B listing is produced correctly", {
   out <- adlb_x %>%
     select(LBTEST, TRT01A, CPID, ADY, ADTM, DLD, AVAL, AVALU, LBNRNG, ANRIND_GR)
 
-  formatters::var_labels(out) <- names(out)
+  var_labels(out) <- names(out)
   out <- out %>%
-    formatters::var_relabel(
+    var_relabel(
       LBTEST = "Lab Test",
       TRT01A = "Treatment",
       CPID = "Center/Patient ID",

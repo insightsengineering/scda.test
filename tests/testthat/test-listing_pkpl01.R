@@ -20,8 +20,8 @@ testthat::test_that("PKPL01 listing is produced correctly", {
       values_from = AVAL
     )
 
-  formatters::var_labels(out) <- names(out)
-  out <- out %>% formatters::var_relabel(
+  var_labels(out) <- names(out)
+  out <- out %>% var_relabel(
     TRT01A = "Treatment Group",
     USUBJID = "Subject ID",
     AVISIT = "Visit"
