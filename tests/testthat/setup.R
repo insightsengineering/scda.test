@@ -5,11 +5,17 @@ library(lubridate)
 
 # Helper function to reduce the number of levels in a column of a data frame
 level_reducer <- function(dt, variable, p_to_keep = 0.7,
-                          num_max_values = NULL, num_of_rare_values = 0, explorative = FALSE) {
+                          num_max_values = NULL, num_of_rare_values = 0, explorative = FALSE,
+                          add_specific_value = NULL, keep_spec_rows = NULL) { # Latter no exploration
   checkmate::assert_number(p_to_keep, lower = 0, upper = 1)
   checkmate::assert_data_frame(dt)
-  checkmate::assert_character(variable)
+  checkmate::assert_string(variable)
+  checkmate::assert_character(add_specific_value, null.ok = TRUE)
   checkmate::assert_choice(variable, names(dt))
+  checkmate::assert_integer(keep_spec_rows,
+    null.ok = TRUE,
+    lower = 1, upper = nrow(dt), unique = TRUE
+  )
   checkmate::assert_flag(explorative)
   cur_vec <- dt[[variable]]
 
@@ -39,35 +45,60 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
         breaks = plot_tbl$level[seq(1, nrow(plot_tbl), by = spacing)],
         labels = seq(1, nrow(plot_tbl))[seq(1, nrow(plot_tbl), by = spacing)]
       )
+
+    # Adding % annotation
+    annot_x <- tail(plot_tbl$level[cumsum(plot_tbl$freq) <= sum(plot_tbl$freq) * p_to_keep], 1)
+    annot_y <- 0.9 * max(plot_tbl$freq)
+    annot_label <- paste0(
+      "Desired: ", round(p_to_keep * 100, 1), "%",
+      "\n", "Levels to keep: ", sum(cumsum(plot_tbl$freq) <= sum(plot_tbl$freq) * p_to_keep)
+    )
     gg <- gg + geom_vline(aes(xintercept = tail(level[cumsum(freq) <= sum(freq) * p_to_keep], 1)), color = "red") +
-      geom_text(
-        aes(
-          x = tail(level[cumsum(freq) <= sum(freq) * p_to_keep], 1), y = 0.9 * max(freq),
-          label = paste0(
-            "Desired: ", round(p_to_keep * 100, 1), "%",
-            "\n", "Levels to keep: ", sum(cumsum(freq) <= sum(freq) * p_to_keep)
-          )
-        ),
-        vjust = 0, hjust = 0
-      )
+      annotate("text", x = annot_x, y = annot_y, label = annot_label, vjust = 0, hjust = 0)
+
     if (!is.null(num_max_values)) {
+      annot_x <- num_max_values - num_of_rare_values
+      annot_y <- 0.5 * max(plot_tbl$freq)
+      annot_label <- paste0(
+        "Desired: ", num_max_values - num_of_rare_values,
+        "\n Kept: ",
+        round(sum(plot_tbl$freq[seq(1, num_max_values - num_of_rare_values)]) * 100 / sum(plot_tbl$freq), 1),
+        "%"
+      )
       gg <- gg + geom_vline(aes(xintercept = num_max_values - num_of_rare_values), color = "blue") +
-        geom_text(
-          aes(
-            x = num_max_values - num_of_rare_values, y = 0.5 * max(freq),
-            label = paste0(
-              "Desired: ", num_max_values - num_of_rare_values,
-              "\n Kept: ",
-              round(sum(freq[seq(1, num_max_values - num_of_rare_values)]) * 100 / sum(freq), 1),
-              "%"
-            )
-          ),
-          vjust = 0, hjust = 0
-        )
+        annotate("text", x = annot_x, y = annot_y, label = annot_label, vjust = 0, hjust = 0)
     }
+
+    if (!is.null(add_specific_value)) {
+      xint <- which(plot_tbl$level %in% add_specific_value)
+      annot_x <- tail(which(plot_tbl$level %in% add_specific_value), 1)
+      annot_y <- 0.1 * max(plot_tbl$freq)
+      if (length(add_specific_value) == 1L) {
+        annot_label <- paste0(
+          "Specific value: ", add_specific_value,
+          "\nAdded freq: ",
+          round(plot_tbl$freq[which(plot_tbl$level == add_specific_value)] * 100 / sum(plot_tbl$freq), 1),
+          "%\n",
+          "Rank: ", which(plot_tbl$level == add_specific_value)
+        )
+      } else {
+        xint <- max(xint)
+        annot_label <- paste0(
+          "Num spec values: ", length(add_specific_value),
+          "\nAdded freq: ",
+          round(sum(plot_tbl$freq[which(plot_tbl$level %in% add_specific_value)]) * 100 / sum(plot_tbl$freq), 1),
+          "%\n",
+          "Max rank: ", max(which(plot_tbl$level %in% add_specific_value))
+        )
+      }
+      gg <- gg +
+        geom_vline(aes(xintercept = xint), color = "black") +
+        annotate("text", x = annot_x, y = annot_y, label = annot_label, vjust = 0, hjust = 0)
+    }
+
     print(gg)
 
-  #  Effective calculations
+    #  Effective calculations
   } else {
     checkmate::assert_int(num_of_rare_values, lower = 0, upper = length(lev_freq))
     checkmate::assert_int(num_max_values, lower = num_of_rare_values, upper = length(lev_freq), null.ok = TRUE)
@@ -88,6 +119,18 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
       }
       lev_to_keep <- names(lev_freq)[cum_freq <= p_to_keep]
     }
+
+    if (!is.null(add_specific_value)) {
+      checkmate::assert_subset(add_specific_value, names(lev_freq))
+      lev_to_keep <- unique(c(lev_to_keep, add_specific_value))
+    }
+
+    if (!is.null(keep_spec_rows)) {
+      lev_to_keep <- c(lev_to_keep, keep_spec_rows)
+      filter1 <- which(cur_vec %in% lev_to_keep)
+      keep_spec_rows <- keep_spec_rows[!keep_spec_rows %in% filter1]
+    }
+
     if (interactive()) {
       msg <- paste0(
         "Reducing levels of ", deparse(substitute(dt)), " for variable ",
@@ -95,10 +138,20 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
         " levels out of ", length(lev_freq), " levels. Total kept (%): ",
         round(sum(lev_freq[lev_to_keep]) * 100 / sum(lev_freq), 1)
       )
+      if (length(keep_spec_rows) > 0) {
+        msg <- paste0(
+          msg, "\n", "Keeping other rows for a total: ",
+          round((sum(lev_freq[lev_to_keep]) + length(keep_spec_rows)) * 100 / sum(lev_freq), 1)
+        )
+      }
       message(msg)
     }
 
     out <- dt %>% filter(!!sym(variable) %in% lev_to_keep)
+
+    if (length(keep_spec_rows) > 0) {
+      out <- rbind(out, dt %>% slice(keep_spec_rows))
+    }
 
     # Simple check of filtering
     stopifnot(nrow(out) == sum(cur_vec %in% lev_to_keep))
@@ -155,14 +208,24 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
     CQ01NAM = ifelse(AEDECOD == "HEADACHE", "CQ01", NA_character_)
   )
 # adae_pharmaverse trimming of variables with too many levels
-# level_reducer(adae_pharmaverse, "AEDECOD", num_max_values = 10, num_of_rare_values = 2, explorative = TRUE)
-# level_reducer(adae_pharmaverse, "AEBODSYS", num_max_values = 10, num_of_rare_values = 2, explorative = TRUE)
-adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD", num_max_values = 15, num_of_rare_values = 1)
+adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
+  num_max_values = 7, num_of_rare_values = 1,
+  add_specific_value = c("VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE")
+)
 
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
-adlb_pharmaverse <- level_reducer(adlb_pharmaverse, "PARAM", num_max_values = 10, num_of_rare_values = 2)
+needed_paramcd <- adlb_pharmaverse %>%
+  filter(PARAMCD %in% c("AST", "ALT", "BILI", "ALB")) %>% # needed for lbt11 and lbt13
+  pull(PARAM) %>%
+  unique()
+
+adlb_pharmaverse <- level_reducer(
+  adlb_pharmaverse, "PARAM",
+  num_max_values = 10, num_of_rare_values = 1,
+  add_specific_value = c(needed_paramcd, "Sodium (mmol/L)") # for ATOXGR == "-3" in lbt07
+)
 advs_pharmaverse <- pharmaverseadam::advs
 
 
