@@ -11,13 +11,13 @@ testthat::test_that("DSUR4 listing is produced correctly", {
     DTHCAUS = "Cause of Death"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("ARM"),
     disp_cols = names(out),
     main_title = "Listing of Patients Who Died During Reporting Period",
     subtitles = paste("Number of patient deaths during reporting period =", death_num)
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

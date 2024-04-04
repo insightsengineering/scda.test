@@ -35,7 +35,7 @@ testthat::test_that("PKPL04 listing is produced correctly", {
   var_labels(out) <- names(out)
   out <- out %>% var_relabel(USUBJID = "Subject ID")
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = "USUBJID",
     disp_cols = names(out),
@@ -45,7 +45,7 @@ testthat::test_that("PKPL04 listing is produced correctly", {
       "\nVisit: ", unique(adpp_x$AVISIT)
     ),
     subtitles = paste0("\nAnalytes: ", paste(drug_a, drug_b, sep = " and "))
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

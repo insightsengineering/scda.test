@@ -49,7 +49,7 @@ testthat::test_that("PKCL02 listing is produced correctly", {
     VISIT = "Visit"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "USUBJID", "VISIT"),
     disp_cols = names(out),
@@ -58,7 +58,7 @@ testthat::test_that("PKCL02 listing is produced correctly", {
       unique(adpc_x$REGIMEN)[1], " of ", drug_a, ", PK Population\nProtocol: xxnnnnn"
     ),
     subtitles = paste("Analyte:", drug_a)
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

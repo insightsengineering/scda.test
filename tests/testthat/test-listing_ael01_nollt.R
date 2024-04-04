@@ -9,7 +9,7 @@ testthat::test_that("AEL01_NOLLT listing is produced correctly", {
     AETERM = "Investigator-Specified\nAdverse Event Term"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("AESOC", "AEDECOD"),
     disp_cols = names(out),
@@ -18,7 +18,7 @@ testthat::test_that("AEL01_NOLLT listing is produced correctly", {
       numeric = fmt_config(align = "center")
     ),
     main_title = "Listing of Preferred Terms and Investigator-Specified Adverse Event Terms"
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

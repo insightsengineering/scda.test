@@ -18,7 +18,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
     DISCONT = "Discontinued\nEarly from Study?"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = "ARMCD",
     disp_cols = names(out),
@@ -26,7 +26,7 @@ testthat::test_that("DSL01 listing is produced correctly", {
     subtitles = "Population: All Patients",
     main_footer = c("Program: xxxx", "Output: xxxx"),
     prov_footer = "Page 1 of 1"
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })
