@@ -81,10 +81,12 @@ testthat::test_that("Direct pagination works fine", {
 
   clw <- propose_column_widths(lst_res) / 2 + 1
 
-  pg_lst <- testthat::expect_silent(paginate_listing(lst_res, lpp = 50, colwidths = floor(clw)))
+  pg_lst <- testthat::expect_silent(
+    paginate_listing(lst_res, lpp = 50, colwidths = floor(clw), print_pages = FALSE)
+  )
   testthat::expect_equal(length(pg_lst), 10L)
 
-  pg_lst <- paginate_listing(lst_res, page_type = "a4", font_size = 9)
+  pg_lst <- paginate_listing(lst_res, page_type = "a4", font_size = 9, print_pages = FALSE)
   testthat::expect_equal(length(pg_lst), 9L)
 
   testthat::expect_silent( # for footers \n
