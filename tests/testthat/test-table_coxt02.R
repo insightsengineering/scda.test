@@ -11,7 +11,7 @@ adtte_f <- adtte %>%
     RACE = droplevels(RACE),
     EVENT = 1 - CNSR
   ) %>%
-  formatters::var_relabel(
+  var_relabel(
     SEX = "Sex",
     AGE = "Age"
   )

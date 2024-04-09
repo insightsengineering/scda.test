@@ -43,7 +43,7 @@ testthat::test_that("AEL02_ED listing is produced correctly", {
       ADURN, AESER_F, AESEV, AEREL_F, AEOUT_F, AECONTRT_F, AEACN_F
     )
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     cent_subj  = "Center/Patient ID",
     ASR        = "Age/Sex/Race",
     TRT01A     = "Treatment",

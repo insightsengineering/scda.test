@@ -9,7 +9,7 @@ testthat::test_that("AEL04 listing is produced correctly", {
     arrange(SUBJID) %>%
     select(ID, AGSXRC, TRT01A, TRTSD, EOSDY, DTHADY, DTHCAUS, ADTHAUT)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     AGSXRC = "Age/Sex/Race",
     TRT01A = "Treatment",
@@ -20,12 +20,12 @@ testthat::test_that("AEL04 listing is produced correctly", {
     ADTHAUT = "Autopsy\nPerformed?"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "ID"),
     disp_cols = names(out),
     main_title = "Listing of Patient Deaths"
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

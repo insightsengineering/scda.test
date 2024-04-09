@@ -1,5 +1,5 @@
 adtte <- adtte_raw
-saved_labels <- formatters::var_labels(adtte)
+saved_labels <- var_labels(adtte)
 adtte_f <- adtte %>%
   dplyr::filter(
     PARAMCD == "OS",
@@ -13,7 +13,7 @@ adtte_f <- adtte %>%
     RACE = droplevels(RACE),
     EVENT = 1 - CNSR
   )
-formatters::var_labels(adtte_f) <- c(saved_labels, "Event")
+var_labels(adtte_f) <- c(saved_labels, "Event")
 
 testthat::test_that("1. Cox Regression", {
   variables <- list(

@@ -36,7 +36,7 @@ anl <- adlb_pharmaverse %>%
   ) %>%
   mutate(
     PARAM = "Time to Hy's Law Elevation in relation to ULN",
-    AVAL = as.numeric(difftime(ADT2, TRTSDT, unit = "days")),
+    AVAL = as.numeric(difftime(ADT2, TRTSDT, units = "days")),
     AVAL = ifelse(is.na(AVAL) & !is.na(ARMCD), 1, AVAL),
     AVALU = ifelse(!is.na(AVAL), "DAYS", NA_character_),
     AVALU = as.factor(AVALU),

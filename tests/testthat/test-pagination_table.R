@@ -66,7 +66,7 @@ testthat::test_that("Direct pagination with standard values", {
 
 testthat::test_that("Pagination with specific column widths and minimum lines per page", {
   # With combo of rows and cols per page
-  std_col_widths <- formatters::propose_column_widths(raw_result)
+  std_col_widths <- propose_column_widths(raw_result)
   # Min h-width: first value is the row label, second is the largest content, 3 is the inter-space
   cpp_width <- std_col_widths[1] + max(std_col_widths[-1]) + 3
   pag_res <- testthat::expect_silent(
@@ -84,7 +84,7 @@ main_footer(res) <- "main footer"
 prov_footer(res) <- "prov \nfooter that has a lot of \nnew \nlines"
 top_left(res) <- "SOME TOPLEFT"
 table_inset(res) <- 5
-rtables::fnotes_at_path(
+fnotes_at_path(
   res,
   c(make_row_df(res)$path[[7]]),
   c("B: Placebo") # nolint
@@ -211,7 +211,7 @@ testthat::test_that("AET04 variant 2 page_by pagination tests", {
   res <- testthat::expect_silent(result)
   pag_res <- testthat::expect_silent(paginate_table(res))
   testthat::expect_setequal(
-    sapply(pag_res, formatters::page_titles),
+    sapply(pag_res, page_titles),
     paste0("AEBODSYS: ", levels(adae$AEBODSYS))
   )
   testthat::expect_snapshot(pag_res[c(2, 5)]) # randomly picked to have a comparison

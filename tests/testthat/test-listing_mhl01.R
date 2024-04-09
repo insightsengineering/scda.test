@@ -9,7 +9,7 @@ testthat::test_that("MHL01 listing is produced correctly", {
     ) %>%
     select(ID, ASR, TRT01A, MHBODSYS, MHDECOD, TRTSDTM, ASTDTM, ASTDY, AENDTM, AENDY, ATIREL)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     TRT01A = "Treatment",
@@ -23,12 +23,12 @@ testthat::test_that("MHL01 listing is produced correctly", {
     ATIREL = "Time Relation\nof Disease"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "ID", "ASR", "MHBODSYS", "MHDECOD"),
     disp_cols = names(out),
     main_title = "Listing of Medical History and Concurrent Diseases"
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

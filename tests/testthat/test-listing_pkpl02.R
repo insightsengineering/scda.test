@@ -17,20 +17,20 @@ testthat::test_that("PKPL02 listing is produced correctly", {
       values_from = AVAL
     )
 
-  formatters::var_labels(out) <- names(out)
-  out <- out %>% formatters::var_relabel(
+  var_labels(out) <- names(out)
+  out <- out %>% var_relabel(
     TRT01A = "Treatment Group",
     USUBJID = "Subject ID",
     AVISIT = "Visit"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "USUBJID", "AVISIT"),
     disp_cols = names(out),
     main_title = paste("Listing of", drug_a, spec, "PK Parameters, PK Population\nProtocol: xxnnnnn"),
     subtitles = paste("Analyte:", drug_a)
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

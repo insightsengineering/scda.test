@@ -47,9 +47,9 @@ testthat::test_that("LBL02A_RLS listing is produced correctly", {
   out <- adlb_x %>%
     select(LBTEST_U, TRT01A, CPID, ADY, DLD, AVAL, PCHG, STD_RNG, LBNRNG, CRC, ANRIND)
 
-  formatters::var_labels(out) <- names(out)
+  var_labels(out) <- names(out)
   out <- out %>%
-    formatters::var_relabel(
+    var_relabel(
       LBTEST_U = "Lab Test (Unit)",
       TRT01A = "Treatment",
       CPID = "Center/Patient ID",
@@ -63,7 +63,7 @@ testthat::test_that("LBL02A_RLS listing is produced correctly", {
       ANRIND = "Abnormality\nFlag"
     )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "LBTEST_U", "CPID"),
     disp_cols = names(out),
@@ -74,7 +74,7 @@ testthat::test_that("LBL02A_RLS listing is produced correctly", {
       "the standard reference range; high high (HH) or low low (LL) if outside the marked reference range with a",
       "clinically relevant change from baseline."
     )
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

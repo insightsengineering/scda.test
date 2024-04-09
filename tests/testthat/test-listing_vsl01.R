@@ -36,7 +36,7 @@ testthat::test_that("VSL01 listing is produced correctly", {
       AVAL_ANRIND_DIABP, CHG_DIABP, AVAL_ANRIND_SYSBP, CHG_SYSBP, AVAL_ANRIND_PULSE, CHG_PULSE,
       AVAL_ANRIND_RESP, CHG_RESP
     ) %>%
-    formatters::var_relabel(
+    var_relabel(
       CRTNPT = "Center/Subject ID",
       AGSXRC = "Age/Sex/Race",
       TRT01A = "Treatment",
