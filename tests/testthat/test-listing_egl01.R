@@ -35,7 +35,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     select(
       CRTNPT, AGSXRC, TRT01A, AVISIT, ADY, AVAL_ANRIND_HR, CHG_HR, AVAL_ANRIND_QT, CHG_QT, AVAL_ANRIND_RR, CHG_RR
     ) %>%
-    formatters::var_relabel(
+    var_relabel(
       CRTNPT = "Center/Subject ID",
       AGSXRC = "Age/Sex/Race",
       TRT01A = "Treatment",

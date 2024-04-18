@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9066
-Date: 2024-03-05
+Version: 0.0.0.9068
+Date: 2024-04-17
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -21,14 +21,14 @@ License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
-    formatters (>= 0.5.5),
+    formatters (>= 0.5.6),
     R (>= 4.2),
-    rlistings (>= 0.2.7),
-    rtables (>= 0.6.6),
-    tern (>= 0.9.3)
+    rlistings (>= 0.2.8),
+    rtables (>= 0.6.7),
+    tern (>= 0.9.4)
 Imports:
     pharmaverseadam (>= 0.2.0),
-    random.cdisc.data (>= 0.3.14.9006)
+    random.cdisc.data (>= 0.3.15.9001)
 Suggests:
     broom,
     checkmate,

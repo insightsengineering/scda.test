@@ -19,6 +19,9 @@ grade_groups <- list(
 )
 adae$TOTAL_VAR <- "- Any adverse events - "
 
+# Further reducing burden of the table size
+adae <- level_reducer(adae, "AEDECOD", p_to_keep = 0.7)
+
 # Helper function to avoid filtering also the first part of the table, where general information is given.
 my_row_condition <- function(row_fnc_condition) {
   function(table_row) {
@@ -110,8 +113,8 @@ testthat::test_that("AET04 variant 1 is produced correctly", {
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
-    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
+    "SKIN AND SUBCUTANEOUS TISSUE DISORDERS",
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1]
   )
   testthat::expect_identical(
     trimws(to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 1]),
@@ -192,11 +195,11 @@ testthat::test_that("AET04 variant 2 is produced correctly (Fill in of Treatment
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
     "SKIN AND SUBCUTANEOUS TISSUE DISORDERS"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[5:6, 2],
+    to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
     c("0", "0")
   )
 })
@@ -271,12 +274,12 @@ testthat::test_that("AET04 variant 3 is produced correctly (Fill in of Grades)",
   )
 
   testthat::expect_identical(
-    to_string_matrix(pag_result[[3]])[4, 1],
-    "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS"
+    to_string_matrix(pag_result[[3]], with_spaces = FALSE)[4, 1],
+    "SKIN AND SUBCUTANEOUS TISSUE DISORDERS"
   )
   testthat::expect_identical(
-    to_string_matrix(pag_result[[1]])[5:6, 2],
-    c("69 (80.2%)", "46 (53.5%)")
+    to_string_matrix(pag_result[[1]], with_spaces = FALSE)[5:6, 2],
+    c("23 (26.7%)", "17 (19.8%)")
   )
 })
 

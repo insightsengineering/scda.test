@@ -5,7 +5,7 @@ testthat::test_that("PKCL01 listing is produced correctly", {
     filter(PARAM == analyte) %>%
     select(ARM, USUBJID, VISIT, NFRLT, AFRLT, AVAL)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ARM = "Treatment Group",
     USUBJID = "Subject ID",
     VISIT = "Visit",
@@ -14,7 +14,7 @@ testthat::test_that("PKCL01 listing is produced correctly", {
     AVAL = paste0("Concentration\n(", adpc$AVALU[1], ")")
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("ARM", "USUBJID", "VISIT"),
     disp_cols = names(out),
@@ -23,7 +23,7 @@ testthat::test_that("PKCL01 listing is produced correctly", {
       "PK Population\nProtocol: xxnnnnn"
     ),
     subtitles = paste("Analyte:", analyte)
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

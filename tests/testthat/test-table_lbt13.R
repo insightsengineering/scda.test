@@ -17,13 +17,7 @@ testthat::test_that("LBT13 variant 1: LOW works as expected", {
   adlb_f <- adlb %>% filter(WGRLOVFL == "Y")
 
   # Please note the step below can be skipped if you are using DTYPE PHANTOM
-  adlb_out <- adsl_f %>%
-    h_adsl_adlb_merge_using_worst_flag(
-      adlb_f,
-      worst_flag = c("WGRLOVFL" = "Y"),
-      by_visit = TRUE,
-      no_fillin_visits = c("SCREENING", "BASELINE", "UNSCHEDULED")
-    )
+  # you would use this adsl_adlb_merge_using_worst_flag
 
   # Create new grouping variables ATOXGR_GP, BTOXGR_GP
   adlb_out <- adlb_f %>%

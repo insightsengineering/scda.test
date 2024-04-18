@@ -26,8 +26,8 @@ testthat::test_that("LBL02A listing is produced correctly", {
   out <- adlb_x %>%
     select(LBTEST_U, TRT01A, CPID, ADY, ADTM, DLD, AVAL, LBNRNG, ANRIND_GR)
 
-  formatters::var_labels(out) <- names(out)
-  out <- out %>% formatters::var_relabel(
+  var_labels(out) <- names(out)
+  out <- out %>% var_relabel(
     LBTEST_U = "Lab Test (Unit)",
     TRT01A = "Treatment",
     CPID = "Center/Patient ID",
@@ -39,13 +39,13 @@ testthat::test_that("LBL02A listing is produced correctly", {
     ANRIND_GR = "NCI\nCTCAE\nGrade"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = c("TRT01A", "LBTEST_U", "CPID"),
     disp_cols = names(out),
     main_title = "Listing of Laboratory Abnormalities Defined by NCI CTCAE Grade >= 1",
     main_footer = "NCI CTCAE grade is displayed as abnormal high (H) or low (L) followed by the grade."
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

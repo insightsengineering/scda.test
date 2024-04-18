@@ -16,7 +16,7 @@ testthat::test_that("DSL02 listing is produced correctly", {
     filter(DISCONT == "Yes") %>%
     select(ID, ASR, TRT01A, SSADTM, EOSDY, SSAEDY, RANDEDY, DCSREAS)
 
-  formatters::var_labels(out) <- c(
+  var_labels(out) <- c(
     ID = "Center/Patient ID",
     ASR = "Age/Sex/Race",
     TRT01A = "Treatment",
@@ -27,12 +27,12 @@ testthat::test_that("DSL02 listing is produced correctly", {
     DCSREAS = "Reason for\nDiscontinuation"
   )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = "TRT01A",
     disp_cols = names(out),
     main_title = "Listing of Patients Who Discontinued Early from Study"
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

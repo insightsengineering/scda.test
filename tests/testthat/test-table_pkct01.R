@@ -127,7 +127,7 @@ testthat::test_that("Specific PKCT01 features are present", {
   testthat::expect_equal(sum(sapply(string_res, grepl, pattern = "NE")), 3L)
 
   # Checking significative digits (DISCLAIMER: this is an hack and is NOT well supported)
-  mean_vals <- rtables::cell_values(result,
+  mean_vals <- cell_values(result,
     rowpath = NULL,
     colpath = c("multivars", "AVAL._[[2]]_.")
   ) %>%

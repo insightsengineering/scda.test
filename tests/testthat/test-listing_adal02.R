@@ -72,15 +72,15 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     ) %>%
     select(USUBJID, unique(adab_x$VISN[order(adab_x$NFRLT)]), PTES)
 
-  formatters::var_labels(out) <- names(out)
+  var_labels(out) <- names(out)
 
   out <- out %>%
-    formatters::var_relabel(
+    var_relabel(
       USUBJID = "Subject ID",
       PTES = "Patient Treatment\nEmergent ADA Status"
     )
 
-  testthat::expect_message(result <- as_listing(
+  result <- as_listing(
     out,
     key_cols = "USUBJID",
     disp_cols = names(out),
@@ -104,7 +104,7 @@ Persistent ADA =  ADA positive result detected (a) at the last post-baseline sam
 time points during treatment where the first and last ADA positive samples are separated by a period ≥ 16 weeks,
 irrespective of any negative samples in between.
 Asterisk denotes sample that tested positive for Neutralizing Antibodies."
-  ) %>% head(50), "sorting incoming data by key columns")
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })
