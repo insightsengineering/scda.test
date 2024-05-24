@@ -1,23 +1,25 @@
 testthat::test_that("PKPL04 listing is produced correctly", {
-  adpp <- adpp_raw
-  visit <- "CYCLE 1 DAY 1"
-  drug_a <- "Plasma Drug X"
-  drug_b <- "Plasma Drug Y"
+  adpp <- adpp_pharmaverse
+  visit <- "Day 1"
+  drug_a <- "Xanomeline Low Dose"
+  drug_b <- "Xanomeline High Dose"
 
   adpp_x <- adpp %>%
     filter(
       AVISIT == visit,
-      PPCAT %in% c(drug_a, drug_b),
-      PARAMCD %in% c("CMAX", "AUCIFO")
+      TRT01A %in% c(drug_a, drug_b),
+      PARAMCD %in% c("CMAX", "AUCALL")
     ) %>%
     mutate(
-      PARAM_U = paste0(PARAM, " (", AVALU, ")")
-    )
+      PARAM_U = paste0(PPTEST, " (", AVALU, ")")
+    ) %>%
+    select(USUBJID, PARAM_U, TRT01A, AVAL) %>%
+    unique()
 
   adpp_ratio <- adpp_x %>%
     tidyr::pivot_wider(
       id_cols = c(USUBJID, PARAM_U),
-      names_from = PPCAT,
+      names_from = TRT01A,
       values_from = AVAL
     )
 
