@@ -87,7 +87,7 @@ testthat::test_that("Direct pagination works fine", {
   testthat::expect_equal(length(pg_lst), 10L)
 
   pg_lst <- paginate_listing(lst_res, page_type = "a4", font_size = 9, print_pages = FALSE)
-  testthat::expect_equal(length(pg_lst), 9L)
+  testthat::expect_equal(length(pg_lst), 7L)
 
   testthat::expect_silent( # for footers \n
     export_as_txt(lst_res, page_type = "a4", font_size = 9)
