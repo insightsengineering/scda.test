@@ -3,7 +3,7 @@ testthat::test_that("PKPL02 listing is produced correctly", {
   spec <- "URINE"
   adpp <- adpp_pharmaverse
   adpp_x <- adpp %>%
-    mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpc), REGIMEN, "BID")) %>%
+    mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpp), REGIMEN, "BID")) %>%
     filter(
       PPCAT == "XANOMELINE",
       PPSPEC == spec

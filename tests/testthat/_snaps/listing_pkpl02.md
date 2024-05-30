@@ -8,7 +8,7 @@
       Analyte: XANOMELINE
       
       ————————————————————————————————————————————————————————————————————————————————
-        Treatment Group      Subject ID    Visit       RCAMINT            RENALCL     
+        Treatment Group      Subject ID    Visit       Ae (mg)          CLR (mL/min)  
       ————————————————————————————————————————————————————————————————————————————————
       Xanomeline High Dose   01-701-1028   Day 1   57.1686321209494   52.6778016500772
                              01-701-1034   Day 1   61.6324956170209   52.7033978058332
