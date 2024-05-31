@@ -5,7 +5,7 @@ testthat::test_that("PKPL02 listing is produced correctly", {
   adpp_x <- adpp %>%
     mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpp), REGIMEN, "BID")) %>%
     filter(
-      PPCAT == "XANOMELINE",
+      PPCAT == drug_a,
       PPSPEC == spec
     )
 
