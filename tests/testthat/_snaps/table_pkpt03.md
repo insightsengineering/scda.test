@@ -4,8 +4,8 @@
       res
     Output
       Summary of PLASMA PK Parameter by Treatment Arm, PK Population
-      Analyte: COMPARTMENTAL 
-      Visit: 
+      Analyte: XANOMELINE 
+      Visit: Day 1
       
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
       Treatment Arm                                                                                                                 

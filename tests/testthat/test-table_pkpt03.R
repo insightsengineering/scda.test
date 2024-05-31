@@ -56,9 +56,9 @@ l <- basic_table() %>%
 
 # PKPT03
 testthat::test_that("PKPT03 Drug X is produced correctly", {
-  # Plasma COMPARTMENTAL
+  # Plasma XANOMELINE
   adpp0 <- adpp_plasma %>%
-    dplyr::filter(PPCAT == "COMPARTMENTAL") %>%
+    dplyr::filter(PPCAT == "XANOMELINE") %>%
     h_pkparam_sort() %>%
     dplyr::mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", PPORRESU, ")")))
   result <- build_table(l, df = adpp0)

@@ -31,10 +31,10 @@ l <- basic_table() %>%
     )
   )
 
-# PKPT02 COMPARTMENTAL
+# PKPT02 XANOMELINE
 testthat::test_that("PKPT02 is produced correctly for Drug X", {
   adpp0 <- adpp_plasma %>%
-    filter(PPCAT == "COMPARTMENTAL") %>%
+    filter(PPCAT == "XANOMELINE") %>%
     h_pkparam_sort() %>%
     mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", PPORRESU, ")")))
 
