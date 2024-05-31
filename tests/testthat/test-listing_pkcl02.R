@@ -6,7 +6,7 @@ testthat::test_that("PKCL02 listing is produced correctly", {
     mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpc), REGIMEN, "BID")) %>%
     filter(
       TRT01A == "Xanomeline High Dose",
-      PCTEST == "XANOMELINE",
+      PCTEST == drug_a,
       PARCAT1 == spec
     )
 
