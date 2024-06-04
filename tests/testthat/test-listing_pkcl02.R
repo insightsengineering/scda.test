@@ -1,29 +1,28 @@
 testthat::test_that("PKCL02 listing is produced correctly", {
-  drug_a <- "Drug X"
+  drug_a <- "XANOMELINE"
   spec <- "URINE"
-  adpc <- adpc_raw
+  adpc <- adpc_pharmaverse
   adpc_x <- adpc %>%
     mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpc), REGIMEN, "BID")) %>%
     filter(
-      grepl(drug_a, PARAM),
-      ASMED == spec
+      TRT01A == "Xanomeline High Dose",
+      PCTEST == drug_a,
+      PARCAT1 == spec
     )
 
   out <- adpc_x %>%
     tidyr::pivot_longer(
-      cols = c(AVAL, PCVOL),
+      cols = c(AVAL),
       names_to = "URCD",
       values_to = "VALUE"
     ) %>%
     mutate(
       URCD = case_when(
         URCD == "AVAL" ~ "UR_Conc",
-        URCD == "PCVOL" ~ "Vurine",
         TRUE ~ URCD
       ),
       UNIT = case_when(
         URCD == "UR_Conc" ~ as.character(AVALU),
-        URCD == "Vurine" ~ as.character(PCVOLU),
         TRUE ~ "NA"
       )
     ) %>%

@@ -1,14 +1,16 @@
 testthat::test_that("PKPL02 listing is produced correctly", {
-  drug_a <- "Plasma Drug X"
-  spec <- "Urine"
-  adpp <- adpp_raw
-  adpp_x <- adpp %>% filter(
-    PPCAT == drug_a,
-    PPSPEC == spec
-  )
+  drug_a <- "XANOMELINE"
+  spec <- "URINE"
+  adpp <- adpp_pharmaverse
+  adpp_x <- adpp %>%
+    mutate(REGIMEN = ifelse("REGIMEN" %in% names(adpp), REGIMEN, "BID")) %>%
+    filter(
+      PPCAT == drug_a,
+      PPSPEC == spec
+    )
 
   out <- adpp_x %>%
-    mutate(PARAM = paste0(PARAM, " (", AVALU, ")")) %>%
+    mutate(PARAM = paste0(PPTEST, " (", AVALU, ")")) %>%
     select(TRT01A, USUBJID, AVISIT, PARAM, AVAL) %>%
     unique() %>%
     tidyr::pivot_wider(
