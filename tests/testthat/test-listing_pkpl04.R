@@ -42,7 +42,7 @@ testthat::test_that("PKPL04 listing is produced correctly", {
     key_cols = "USUBJID",
     disp_cols = names(out),
     main_title = paste0(
-      "Listing of Individual ", drug_a, " ", paste(unique(adpp_x$PARAM), collapse = " and "), " Ratios following ",
+      "Listing of Individual ", drug_a, " ", paste(unique(adpp_x$PARAM_U), collapse = " and "), " Ratios following ",
       unique(adpp_x$REGIMEN), " ", paste(drug_a, drug_b, sep = " or "), ", PK Population\nProtocol: xxnnnnn",
       "\nVisit: ", unique(adpp_x$AVISIT)
     ),
