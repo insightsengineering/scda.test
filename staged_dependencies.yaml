@@ -19,4 +19,7 @@ upstream_repos:
   insightsengineering/rlistings:
     repo: insightsengineering/rlistings
     host: https://github.com
+  pharmaverse/pharmaverseadam:
+    repo: pharmaverse/pharmaverseadam
+    host: https://github.com
 downstream_repos:

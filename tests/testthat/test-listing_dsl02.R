@@ -5,11 +5,7 @@ testthat::test_that("DSL02 listing is produced correctly", {
       ID = paste(SITEID, SUBJID, sep = "/"),
       ASR = paste(AGE, SEX, RACE, sep = "/"),
       DISCONT = ifelse(!is.na(DCSREAS) & EOSSTT != "COMPLETED", "Yes", "No"),
-      SSADTM = as.POSIXct(
-        strftime(TRTSDTM, format = "%Y-%m-%d %H:%M:%S"),
-        format = "%Y-%m-%d",
-        tz = "UTC"
-      ),
+      SSADTM = as.Date(TRTSDTM, tz = "UTC"),
       SSAEDY = as.numeric(ceiling(difftime(EOSDT, SSADTM, units = "days"))),
       RANDEDY = as.numeric(ceiling(difftime(EOSDT, RANDDT, units = "days"))),
     ) %>%

@@ -1,6 +1,6 @@
 # Data generation
-adpp <- adpp_raw
-adpp_urine <- adpp %>% dplyr::filter(PPSPEC == "Urine", AVISIT == "CYCLE 1 DAY 1")
+adpp <- adpp_pharmaverse
+adpp_urine <- adpp %>% dplyr::filter(PPSPEC == "URINE", AVISIT == "Day 1")
 
 # Define template layout
 l <- basic_table() %>%
@@ -11,7 +11,7 @@ l <- basic_table() %>%
     split_label = "Treatment Arm"
   ) %>%
   split_rows_by(
-    var = "PKPARAM",
+    var = "PPTEST",
     label_pos = "topleft",
     split_label = "PK Parameter"
   ) %>%
@@ -32,24 +32,11 @@ l <- basic_table() %>%
 # PKPT04 Drug X
 testthat::test_that("PKPT04 is produced correctly for Drug X", {
   adpp0 <- adpp_urine %>%
-    filter(PPCAT == "Plasma Drug X") %>%
-    h_pkparam_sort() %>%
-    mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", AVALU, ")")))
+    filter(PPCAT == "XANOMELINE") %>%
+    # h_pkparam_sort() %>%
+    mutate(PKPARAM = factor(paste0(PPTEST, " (", AVALU, ")")))
 
   result <- build_table(l, df = adpp0)
-
-  res <- testthat::expect_silent(result)
-  testthat::expect_snapshot(res)
-})
-
-# PKPT04 Drug Y
-testthat::test_that("PKPT04 is produced correctly for Drug Y", {
-  adpp1 <- adpp_urine %>%
-    filter(PPCAT == "Plasma Drug Y") %>%
-    h_pkparam_sort() %>%
-    mutate(PKPARAM = factor(paste0(TLG_DISPLAY, " (", AVALU, ")")))
-
-  result <- build_table(l, df = adpp1)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

@@ -1,7 +1,7 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9067
+Version: 0.0.0.9072
 Date: 2024-06-13
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
@@ -34,6 +34,7 @@ Suggests:
     checkmate,
     dplyr,
     forcats,
+    ggplot2 (>= 3.5.0),
     knitr,
     lubridate,
     stringr,
