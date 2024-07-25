@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/404.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/index.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://insightsengineering.github.io/scda.test/reference/scda.test-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://insightsengineering.github.io/scda.test/404.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/LICENSE-text.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/authors.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/index.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/news/index.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/reference/index.html</loc></url>
+<url><loc>https://insightsengineering.github.io/scda.test/reference/scda.test-package.html</loc></url>
 </urlset>
+
