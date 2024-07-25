@@ -39,7 +39,7 @@ testthat::test_that("RATET01 is produced correctly", {
       .stats = c("rate", "rate_ci", "rate_ratio", "rate_ratio_ci", "pval"),
       .labels = c(
         rate = "Rate", rate_ci = "Rate CI", rate_ratio = "Rate Ratio",
-        rate_ratio_ci = "Rate Ratio CI", pval = "p value"
+        rate_ratio_ci = "Rate Ratio CI", pval = "p-value"
       )
     ) %>%
     summarize_glm_count(
@@ -53,7 +53,7 @@ testthat::test_that("RATET01 is produced correctly", {
       .stats = c("rate", "rate_ci", "rate_ratio", "rate_ratio_ci", "pval"),
       .labels = c(
         rate = "Rate", rate_ci = "Rate CI", rate_ratio = "Rate Ratio",
-        rate_ratio_ci = "Rate Ratio CI", pval = "p value"
+        rate_ratio_ci = "Rate Ratio CI", pval = "p-value"
       )
     )
 
