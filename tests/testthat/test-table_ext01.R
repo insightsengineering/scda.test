@@ -1,7 +1,7 @@
 # Tests all variants of EXT01
 
-adsl <- adsl_raw
-adex <- adex_raw
+adsl <- adsl_pharmaverse
+adex <- adex_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adex <- df_explicit_na(adex)
