@@ -1,3 +1,5 @@
+set.seed(99)
+
 # Extra libraries (suggested) for tests
 library(dplyr)
 library(tidyr)
@@ -182,9 +184,12 @@ adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
+adcm_pharmaverse <- pharmaverseadam::adcm
+adeg_pharmaverse <- pharmaverseadam::adeg
+adex_pharmaverse <- pharmaverseadam::adex
 adpp_pharmaverse <- pharmaverseadam::adpp
 adpc_pharmaverse <- pharmaverseadam::adpc
-set.seed(99)
+
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
     DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),

@@ -1,7 +1,7 @@
 # Test the single variant for VST02
 
-adsl <- adsl_raw
-advs <- advs_raw
+adsl <- adsl_pharmaverse
+advs <- advs_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 advs <- df_explicit_na(advs)
