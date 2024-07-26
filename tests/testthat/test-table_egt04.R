@@ -1,13 +1,13 @@
 # Tests the single variant for EGT04
 
-adsl <- adsl_raw
-adeg <- adeg_raw
+adsl <- adsl_pharmaverse
+adeg <- adeg_pharmaverse
 
 testthat::test_that("EGT04 default variant is produced correctly", {
   adeg_labels <- var_labels(adeg)
   adeg_f <- subset(
     adeg,
-    PARAMCD == "ECGINTP" & # Analysis in terms of "NORMAL"/"ABNORMAL" (AVALC)
+    PARAMCD == "EGINTP" & # Analysis in terms of "NORMAL"/"ABNORMAL" (AVALC)
       SAFFL == "Y" & # "Safety Population Flag"
       ONTRTFL == "Y" & # "On Treatment Record Flag"
       WORS02FL == "Y" # "Worst Post-Baseline Observation"

@@ -1,7 +1,7 @@
 # Test the single variant for EGT05_QTCAT
 
-adsl <- adsl_raw
-adeg <- adeg_raw
+adsl <- adsl_pharmaverse
+adeg <- adeg_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adeg <- df_explicit_na(adeg)
@@ -52,6 +52,10 @@ adeg_f <- adeg %>%
     AVALCAT1 = "Value at Visit",
     CHGCAT1 = "Change from Baseline"
   )
+
+levels(adeg_f$AVISIT) <- c(
+  "Baseline", "Week 2", "Week 4", "Week 6", "Week 8", "Week 12", "Week 16", "Week 20", "Week 24", "Week 26", "<Missing>"
+)
 
 testthat::test_that("EGT05_QTCAT default variant is produced correctly", {
   split_fun <- drop_split_levels
