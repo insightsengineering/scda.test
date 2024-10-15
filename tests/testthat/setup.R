@@ -170,7 +170,6 @@ adsl_raw <- random.cdisc.data::cadsl
 adab_raw <- random.cdisc.data::cadab
 adae_raw <- random.cdisc.data::cadae
 adaette_raw <- random.cdisc.data::cadaette
-adcm_raw <- random.cdisc.data::cadcm
 addv_raw <- random.cdisc.data::caddv
 adeg_raw <- random.cdisc.data::cadeg
 adex_raw <- random.cdisc.data::cadex
@@ -237,8 +236,8 @@ adcm_pharmaverse <- pharmaverseadam::adcm %>%
     ATC3 = factor(paste0("ATCCLAS3_", id)),
     ATC4 = factor(paste0("ATCCLAS4_", id))
   ) %>%
-  select(-id) %>%
   ungroup() %>%
+  select(-id) %>%
   mutate(CMENRTPT = if_else(is.na(CMENDTC), "ONGOING", NA_character_)) %>%
   var_relabel(
     ATIREL = "Time Relation of Medication",
