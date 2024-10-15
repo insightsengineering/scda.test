@@ -24,9 +24,9 @@ testthat::test_that("EGL01 listing is produced correctly", {
     )
 
   anl_eg <- adeg_sub %>%
-    select(SUBJID, CRTNPT, AGSXRC, TRT01A, PARAMCD, AVAL_ANRIND, CHG, ADY, EGSEQ, AVISIT, ADTM) %>%
+    select(SUBJID, CRTNPT, AGSXRC, TRT01A, PARAMCD, AVAL_ANRIND, CHG, ADY, AVISIT, ADTM) %>%
     tidyr::pivot_wider(
-      id_cols = c(SUBJID, CRTNPT, AGSXRC, TRT01A, ADY, AVISIT, ADTM, EGSEQ),
+      id_cols = c(SUBJID, CRTNPT, AGSXRC, TRT01A, ADY, AVISIT, ADTM),
       names_from = PARAMCD,
       values_from = c(AVAL_ANRIND, CHG)
     )
@@ -41,11 +41,11 @@ testthat::test_that("EGL01 listing is produced correctly", {
       TRT01A = "Treatment",
       AVISIT = "Visit",
       ADY = "Study\nDay",
-      AVAL_ANRIND_HR = paste0("Heart Rate Result\n(", eg_u_rng$HR$unit, ");\nRange:(", eg_u_rng$HR$range, ")"),
+      AVAL_ANRIND_HR = paste0("Heart Rate Result\n(", eg_u_rng$HR$unit[1], ");\nRange:(", eg_u_rng$HR$range[1], ")"),
       CHG_HR = "Heart Rate\nChange from BL",
-      AVAL_ANRIND_QT = paste0("QT Duration Result\n(", eg_u_rng$QT$unit, ");\nRange:(", eg_u_rng$QT$range, ")"),
+      AVAL_ANRIND_QT = paste0("QT Duration Result\n(", eg_u_rng$QT$unit[1], ");\nRange:(", eg_u_rng$QT$range[1], ")"),
       CHG_QT = "QT Duration\nChange from BL",
-      AVAL_ANRIND_RR = paste0("RR Duration Result\n(", eg_u_rng$RR$unit, ");\nRange:(", eg_u_rng$RR$range, ")"),
+      AVAL_ANRIND_RR = paste0("RR Duration Result\n(", eg_u_rng$RR$unit[1], ");\nRange:(", eg_u_rng$RR$range[1], ")"),
       CHG_RR = "RR Duration\nChange from BL"
     )
 
@@ -56,7 +56,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     main_title = "Listing of ECG Data: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
     flagged as high (H) or low (L) if outside the Roche standard reference range."
-  )
+  ) %>% head(50)
 
   testthat::expect_snapshot(result)
 })

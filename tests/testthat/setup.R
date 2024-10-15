@@ -1,7 +1,10 @@
-# Extra libraries (suggested) for tests
+## Extra libraries (suggested) for tests -----------
+
 library(dplyr)
 library(tidyr)
 library(lubridate)
+
+## level_reducer -----------------------------------
 
 # Helper function to reduce the number of levels in a column of a data frame
 level_reducer <- function(dt, variable, p_to_keep = 0.7,
@@ -160,6 +163,8 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
   }
 }
 
+## random.cdisc.data -------------------------------
+
 # Data loading for tests
 adsl_raw <- random.cdisc.data::cadsl
 adab_raw <- random.cdisc.data::cadab
@@ -181,10 +186,16 @@ adsub_raw <- random.cdisc.data::cadsub
 adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
+## pharmaverseadam ---------------------------------
+
 # Data loading for pharmaverse
+
+adex_pharmaverse <- pharmaverseadam::adex
 adpp_pharmaverse <- pharmaverseadam::adpp
 adpc_pharmaverse <- pharmaverseadam::adpc
+
 set.seed(99)
+
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
     DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
@@ -215,6 +226,33 @@ adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
     "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
   )
 )
+adcm_pharmaverse <- pharmaverseadam::adcm %>%
+  mutate(
+    ATIREL = sample(c("PRIOR", "CONCOMITANT"), nrow(.), replace = TRUE, prob = c(0.7, 0.3))
+  ) %>%
+  group_by(CMCLAS) %>%
+  mutate(
+    id = cur_group_id(),
+    ATC1 = factor(paste0("ATCCLAS1_", id)),
+    ATC2 = factor(paste0("ATCCLAS2_", id)),
+    ATC3 = factor(paste0("ATCCLAS3_", id)),
+    ATC4 = factor(paste0("ATCCLAS4_", id))
+  ) %>%
+  select(-id) %>%
+  ungroup() %>%
+  mutate(CMENRTPT = if_else(is.na(CMENDTC), "ONGOING", NA_character_)) %>%
+  var_relabel(
+    ATIREL = "Time Relation of Medication",
+    ATC1 = "ATC Level 1 Text",
+    ATC2 = "ATC Level 2 Text",
+    ATC3 = "ATC Level 3 Text",
+    ATC4 = "ATC Level 4 Text"
+  )
+
+adeg_pharmaverse <- pharmaverseadam::adeg %>%
+  group_by(USUBJID, AVISIT, PARAMCD) %>%
+  slice_head(n = 1) %>%
+  ungroup()
 
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
@@ -231,8 +269,8 @@ adlb_pharmaverse <- level_reducer(
 )
 advs_pharmaverse <- pharmaverseadam::advs
 
+# skip_if_too_deep ---------------------------------
 
-# skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolint
   checkmate::assert_number(depth, lower = 0, upper = 5)
 
