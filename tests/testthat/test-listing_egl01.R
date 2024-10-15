@@ -3,7 +3,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     u_rng <- lapply(unique(dataset$PARAMCD), function(p) {
       dat <- dataset %>% filter(PARAMCD == p)
       list(
-        unit = unique(dat$AVALU),
+        unit = unique(dat$EGSTRESU),
         range = paste0(unique(dat$ANRLO), "-", unique(dat$ANRHI))
       )
     })
@@ -11,9 +11,9 @@ testthat::test_that("EGL01 listing is produced correctly", {
     u_rng
   }
 
-  eg_u_rng <- get_param_unit_range(adeg_raw)
+  eg_u_rng <- get_param_unit_range(adeg_pharmaverse)
 
-  adeg_sub <- adeg_raw %>%
+  adeg_sub <- adeg_pharmaverse %>%
     filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(EGSEQ) & PARAMCD != "ECGINTP") %>%
     mutate(
       CRTNPT = paste(SITEID, sub("^.*-([[:alnum:]]+)$", "\\1", SUBJID), sep = "/"),
@@ -24,9 +24,9 @@ testthat::test_that("EGL01 listing is produced correctly", {
     )
 
   anl_eg <- adeg_sub %>%
-    select(SUBJID, CRTNPT, AGSXRC, TRT01A, PARAMCD, AVAL_ANRIND, CHG, ADY, AVISIT, ADTM) %>%
+    select(SUBJID, CRTNPT, AGSXRC, TRT01A, PARAMCD, AVAL_ANRIND, CHG, ADY, EGSEQ, AVISIT, ADTM) %>%
     tidyr::pivot_wider(
-      id_cols = c(SUBJID, CRTNPT, AGSXRC, TRT01A, ADY, AVISIT, ADTM),
+      id_cols = c(SUBJID, CRTNPT, AGSXRC, TRT01A, ADY, AVISIT, ADTM, EGSEQ),
       names_from = PARAMCD,
       values_from = c(AVAL_ANRIND, CHG)
     )
@@ -56,7 +56,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     main_title = "Listing of ECG Data: Safety-Evaluable Patients",
     main_footer = "Baseline is the patient's last observation prior to initiation of study drug. Abnormalities are
     flagged as high (H) or low (L) if outside the Roche standard reference range."
-  ) %>% head(50)
+  )
 
   testthat::expect_snapshot(result)
 })
