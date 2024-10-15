@@ -190,7 +190,6 @@ advs_raw <- random.cdisc.data::cadvs
 
 # Data loading for pharmaverse
 
-adex_pharmaverse <- pharmaverseadam::adex
 adpp_pharmaverse <- pharmaverseadam::adpp
 adpc_pharmaverse <- pharmaverseadam::adpc
 
@@ -252,7 +251,11 @@ adcm_pharmaverse <- pharmaverseadam::adcm %>%
 adeg_pharmaverse <- pharmaverseadam::adeg %>%
   group_by(USUBJID, AVISIT, PARAMCD) %>%
   slice_head(n = 1) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(AVALU = EGSTRESU)
+
+adex_pharmaverse <- pharmaverseadam::adex %>%
+  mutate(AVALU = EXDOSU)
 
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%

@@ -3,7 +3,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     u_rng <- lapply(unique(dataset$PARAMCD), function(p) {
       dat <- dataset %>% filter(PARAMCD == p)
       list(
-        unit = unique(dat$EGSTRESU),
+        unit = unique(dat$AVALU),
         range = paste0(unique(dat$ANRLO), "-", unique(dat$ANRHI))
       )
     })
