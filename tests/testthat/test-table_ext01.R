@@ -6,12 +6,26 @@ adex <- adex_pharmaverse
 adsl <- df_explicit_na(adsl)
 adex <- df_explicit_na(adex)
 
+adex_tndose <- adex %>%
+  filter(PARAMCD == "TDURD") %>%
+  mutate(
+    PARAMCD = "TNDOSE",
+    PARAM = "Total number of doses administered",
+    PARCAT1 = "OVERALL"
+  )
+
 adex <- adex %>%
+  rbind(adex_tndose) %>%
   filter(PARCAT1 == "OVERALL") %>%
   select(STUDYID, USUBJID, ACTARM, PARAMCD, PARAM, AVAL, PARCAT2) %>%
   mutate(
     PARAMCD = as.character(PARAMCD),
-    AVALC = ""
+    AVALC = case_when(
+      0 <= AVAL & AVAL <= 30 ~ "0 - 30",
+      31 <= AVAL & AVAL <= 60 ~ "31 - 60",
+      61 <= AVAL & AVAL <= 90 ~ "61 - 90",
+      TRUE ~ ">= 91"
+    )
   ) %>%
   droplevels()
 

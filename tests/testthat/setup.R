@@ -1,9 +1,10 @@
-set.seed(99)
+## Extra libraries (suggested) for tests -----------
 
-# Extra libraries (suggested) for tests
 library(dplyr)
 library(tidyr)
 library(lubridate)
+
+## level_reducer -----------------------------------
 
 # Helper function to reduce the number of levels in a column of a data frame
 level_reducer <- function(dt, variable, p_to_keep = 0.7,
@@ -15,8 +16,8 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
   checkmate::assert_character(add_specific_value, null.ok = TRUE)
   checkmate::assert_choice(variable, names(dt))
   checkmate::assert_integer(keep_spec_rows,
-    null.ok = TRUE,
-    lower = 1, upper = nrow(dt), unique = TRUE
+                            null.ok = TRUE,
+                            lower = 1, upper = nrow(dt), unique = TRUE
   )
   checkmate::assert_flag(explorative)
   cur_vec <- dt[[variable]]
@@ -162,6 +163,8 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
   }
 }
 
+## random.cdisc.data -------------------------------
+
 # Data loading for tests
 adsl_raw <- random.cdisc.data::cadsl
 adab_raw <- random.cdisc.data::cadab
@@ -183,12 +186,14 @@ adsub_raw <- random.cdisc.data::cadsub
 adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
+## pharmaverseadam ---------------------------------
+
 # Data loading for pharmaverse
-adcm_pharmaverse <- pharmaverseadam::adcm
-adeg_pharmaverse <- pharmaverseadam::adeg
-adex_pharmaverse <- pharmaverseadam::adex
+
 adpp_pharmaverse <- pharmaverseadam::adpp
 adpc_pharmaverse <- pharmaverseadam::adpc
+
+set.seed(99)
 
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
@@ -214,12 +219,33 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
   )
 # adae_pharmaverse trimming of variables with too many levels
 adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
-  num_max_values = 7, num_of_rare_values = 1,
-  add_specific_value = c(
-    "VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE", # For SMQ01NAM, SMQ02NAM, CQ01NAM
-    "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
-  )
+                                  num_max_values = 7, num_of_rare_values = 1,
+                                  add_specific_value = c(
+                                    "VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE", # For SMQ01NAM, SMQ02NAM, CQ01NAM
+                                    "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
+                                  )
 )
+
+adeg_pharmaverse <- pharmaverseadam::adeg %>%
+  group_by(USUBJID, AVISIT, PARAMCD) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  mutate(
+    AVALU = EGSTRESU,
+    WORS02FL = sample(c("Y", ""), nrow(.), replace = TRUE, prob = c(0.25, 0.75)),
+    BASEC = sample(c("NORMAL", "ABNORMAL", "Missing"), nrow(.), replace = TRUE, prob = c(0.5, 0.3, 0.2))
+  )
+
+adex_pharmaverse <- pharmaverseadam::adex %>%
+  mutate(
+    AVALU = EXDOSU
+  ) %>%
+  group_by(USUBJID) %>%
+  mutate(
+    PARCAT1 = ifelse(PARAMCD %in% c("TDOSE", "TNDOSE"), "OVERALL", "INDIVIDUAL"),
+    PARCAT2 = sample(c("Drug A", "Drug B"), 1, replace = TRUE)
+  ) %>%
+  ungroup()
 
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
@@ -236,8 +262,8 @@ adlb_pharmaverse <- level_reducer(
 )
 advs_pharmaverse <- pharmaverseadam::advs
 
+# skip_if_too_deep ---------------------------------
 
-# skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolint
   checkmate::assert_number(depth, lower = 0, upper = 5)
 
