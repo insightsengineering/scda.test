@@ -1,4 +1,5 @@
 # Tests all variants of EXT01
+set.seed(99)
 
 adsl <- adsl_pharmaverse
 adex <- adex_pharmaverse
@@ -29,7 +30,6 @@ adex <- adex %>%
   ) %>%
   droplevels()
 
-set.seed(99)
 tdurd_adsl <- adsl %>%
   select(STUDYID, USUBJID, ACTARM) %>%
   mutate(

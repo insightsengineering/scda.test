@@ -3,18 +3,18 @@
     Code
       res
     Output
-                                       Normal      Abnormal    Missing 
-      —————————————————————————————————————————————————————————————————
-      Placebo (N=168)                                                  
-        Normal                       78 (46.4%)       0        2 (1.2%)
-        Abnormal                     46 (27.4%)    1 (0.6%)       0    
-        Missing                      39 (23.2%)    1 (0.6%)    1 (0.6%)
-      Xanomeline High Dose (N=106)                                     
-        Normal                       44 (41.5%)   11 (10.4%)      0    
-        Abnormal                     20 (18.9%)    6 (5.7%)       0    
-        Missing                      21 (19.8%)    3 (2.8%)    1 (0.9%)
-      Xanomeline Low Dose (N=108)                                      
-        Normal                       47 (43.5%)    3 (2.8%)       0    
-        Abnormal                     33 (30.6%)       0        1 (0.9%)
-        Missing                      19 (17.6%)    5 (4.6%)       0    
+                                       Normal     Abnormal   Missing 
+      ———————————————————————————————————————————————————————————————
+      Placebo (N=145)                                                
+        Normal                       73 (50.3%)      0       1 (0.7%)
+        Abnormal                     38 (26.2%)   1 (0.7%)   2 (1.4%)
+        Missing                      30 (20.7%)      0          0    
+      Xanomeline High Dose (N=113)                                   
+        Normal                       45 (39.8%)    9 (8%)    1 (0.9%)
+        Abnormal                     27 (23.9%)   7 (6.2%)      0    
+        Missing                      23 (20.4%)   1 (0.9%)      0    
+      Xanomeline Low Dose (N=119)                                    
+        Normal                       52 (43.7%)   8 (6.7%)      0    
+        Abnormal                     30 (25.2%)   3 (2.5%)      0    
+        Missing                       25 (21%)       0       1 (0.8%)
 

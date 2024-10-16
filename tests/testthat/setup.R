@@ -226,15 +226,7 @@ adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
                                   )
 )
 
-adeg_pharmaverse <- pharmaverseadam::adeg %>%
-  group_by(USUBJID, AVISIT, PARAMCD) %>%
-  slice_head(n = 1) %>%
-  ungroup() %>%
-  mutate(
-    AVALU = EGSTRESU,
-    WORS02FL = sample(c("Y", ""), nrow(.), replace = TRUE, prob = c(0.25, 0.75)),
-    BASEC = sample(c("NORMAL", "ABNORMAL", "Missing"), nrow(.), replace = TRUE, prob = c(0.5, 0.3, 0.2))
-  )
+adeg_pharmaverse <- pharmaverseadam::adeg
 
 adex_pharmaverse <- pharmaverseadam::adex %>%
   mutate(

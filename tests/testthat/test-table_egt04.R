@@ -1,7 +1,16 @@
 # Tests the single variant for EGT04
+set.seed(99)
 
 adsl <- adsl_pharmaverse
-adeg <- adeg_pharmaverse
+adeg <- adeg_pharmaverse %>%
+  group_by(USUBJID, AVISIT, PARAMCD) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  mutate(
+    AVALU = EGSTRESU,
+    WORS02FL = sample(c("Y", ""), nrow(.), replace = TRUE, prob = c(0.25, 0.75)),
+    BASEC = sample(c("NORMAL", "ABNORMAL", "Missing"), nrow(.), replace = TRUE, prob = c(0.5, 0.3, 0.2))
+  )
 
 testthat::test_that("EGT04 default variant is produced correctly", {
   adeg_labels <- var_labels(adeg)
