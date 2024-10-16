@@ -11,9 +11,9 @@ testthat::test_that("EGL01 listing is produced correctly", {
     u_rng
   }
 
-  eg_u_rng <- get_param_unit_range(adeg_raw)
+  eg_u_rng <- get_param_unit_range(adeg_pharmaverse)
 
-  adeg_sub <- adeg_raw %>%
+  adeg_sub <- adeg_pharmaverse %>%
     filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(EGSEQ) & PARAMCD != "ECGINTP") %>%
     mutate(
       CRTNPT = paste(SITEID, sub("^.*-([[:alnum:]]+)$", "\\1", SUBJID), sep = "/"),
@@ -41,11 +41,11 @@ testthat::test_that("EGL01 listing is produced correctly", {
       TRT01A = "Treatment",
       AVISIT = "Visit",
       ADY = "Study\nDay",
-      AVAL_ANRIND_HR = paste0("Heart Rate Result\n(", eg_u_rng$HR$unit, ");\nRange:(", eg_u_rng$HR$range, ")"),
+      AVAL_ANRIND_HR = paste0("Heart Rate Result\n(", eg_u_rng$HR$unit[1], ");\nRange:(", eg_u_rng$HR$range[1], ")"),
       CHG_HR = "Heart Rate\nChange from BL",
-      AVAL_ANRIND_QT = paste0("QT Duration Result\n(", eg_u_rng$QT$unit, ");\nRange:(", eg_u_rng$QT$range, ")"),
+      AVAL_ANRIND_QT = paste0("QT Duration Result\n(", eg_u_rng$QT$unit[1], ");\nRange:(", eg_u_rng$QT$range[1], ")"),
       CHG_QT = "QT Duration\nChange from BL",
-      AVAL_ANRIND_RR = paste0("RR Duration Result\n(", eg_u_rng$RR$unit, ");\nRange:(", eg_u_rng$RR$range, ")"),
+      AVAL_ANRIND_RR = paste0("RR Duration Result\n(", eg_u_rng$RR$unit[1], ");\nRange:(", eg_u_rng$RR$range[1], ")"),
       CHG_RR = "RR Duration\nChange from BL"
     )
 
