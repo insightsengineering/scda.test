@@ -1,7 +1,10 @@
-# Extra libraries (suggested) for tests
+## Extra libraries (suggested) for tests -----------
+
 library(dplyr)
 library(tidyr)
 library(lubridate)
+
+## level_reducer -----------------------------------
 
 # Helper function to reduce the number of levels in a column of a data frame
 level_reducer <- function(dt, variable, p_to_keep = 0.7,
@@ -160,6 +163,8 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
   }
 }
 
+## random.cdisc.data -------------------------------
+
 # Data loading for tests
 adsl_raw <- random.cdisc.data::cadsl
 adab_raw <- random.cdisc.data::cadab
@@ -181,10 +186,15 @@ adsub_raw <- random.cdisc.data::cadsub
 adtte_raw <- random.cdisc.data::cadtte
 advs_raw <- random.cdisc.data::cadvs
 
+## pharmaverseadam ---------------------------------
+
 # Data loading for pharmaverse
+
 adpp_pharmaverse <- pharmaverseadam::adpp
 adpc_pharmaverse <- pharmaverseadam::adpc
+
 set.seed(99)
+
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
     DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
@@ -216,6 +226,19 @@ adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
   )
 )
 
+adeg_pharmaverse <- pharmaverseadam::adeg
+
+adex_pharmaverse <- pharmaverseadam::adex %>%
+  mutate(
+    AVALU = EXDOSU
+  ) %>%
+  group_by(USUBJID) %>%
+  mutate(
+    PARCAT1 = ifelse(PARAMCD %in% c("TDOSE", "TNDOSE"), "OVERALL", "INDIVIDUAL"),
+    PARCAT2 = sample(c("Drug A", "Drug B"), 1, replace = TRUE)
+  ) %>%
+  ungroup()
+
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%
   mutate(AVALU = LBORRESU)
@@ -231,8 +254,8 @@ adlb_pharmaverse <- level_reducer(
 )
 advs_pharmaverse <- pharmaverseadam::advs
 
+# skip_if_too_deep ---------------------------------
 
-# skip_if_too_deep
 skip_if_too_deep <- function(depth) { # nolint
   checkmate::assert_number(depth, lower = 0, upper = 5)
 

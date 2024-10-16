@@ -1,14 +1,14 @@
 # Test the single variant for EGT01
 
-adsl <- adsl_raw
-adeg <- adeg_raw
+adsl <- adsl_pharmaverse
+adeg <- adeg_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adeg <- df_explicit_na(adeg)
 
 adeg_f <- adeg %>%
   filter(ANL01FL == "Y") %>%
-  filter(PARAM %in% c("Heart Rate", "QT Duration", "RR Duration"))
+  filter(PARAMCD %in% c("HR", "QT", "RR"))
 
 testthat::test_that("EGT01 default variant is produced correctly", {
   split_fun <- drop_split_levels
