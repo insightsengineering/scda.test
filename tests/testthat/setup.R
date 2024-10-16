@@ -16,8 +16,8 @@ level_reducer <- function(dt, variable, p_to_keep = 0.7,
   checkmate::assert_character(add_specific_value, null.ok = TRUE)
   checkmate::assert_choice(variable, names(dt))
   checkmate::assert_integer(keep_spec_rows,
-                            null.ok = TRUE,
-                            lower = 1, upper = nrow(dt), unique = TRUE
+    null.ok = TRUE,
+    lower = 1, upper = nrow(dt), unique = TRUE
   )
   checkmate::assert_flag(explorative)
   cur_vec <- dt[[variable]]
@@ -219,11 +219,11 @@ adae_pharmaverse <- pharmaverseadam::adae %>%
   )
 # adae_pharmaverse trimming of variables with too many levels
 adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
-                                  num_max_values = 7, num_of_rare_values = 1,
-                                  add_specific_value = c(
-                                    "VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE", # For SMQ01NAM, SMQ02NAM, CQ01NAM
-                                    "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
-                                  )
+  num_max_values = 7, num_of_rare_values = 1,
+  add_specific_value = c(
+    "VOMITING", "NAUSEA", "SKIN IRRITATION", "HEADACHE", # For SMQ01NAM, SMQ02NAM, CQ01NAM
+    "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
+  )
 )
 
 adeg_pharmaverse <- pharmaverseadam::adeg
