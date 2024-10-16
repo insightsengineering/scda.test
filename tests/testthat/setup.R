@@ -238,7 +238,6 @@ adcm_pharmaverse <- pharmaverseadam::adcm %>%
   ) %>%
   ungroup() %>%
   select(-id) %>%
-  mutate(CMENRTPT = if_else(is.na(CMENDTC), "ONGOING", NA_character_)) %>%
   var_relabel(
     ATIREL = "Time Relation of Medication",
     ATC1 = "ATC Level 1 Text",
