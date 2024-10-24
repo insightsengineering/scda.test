@@ -1,7 +1,7 @@
 # Test single variant for CMT02_PT
 
-adsl <- adsl_raw
-adcm <- adcm_raw
+adsl <- adsl_pharmaverse
+adcm <- adcm_pharmaverse
 
 adcm$CMSEQ <- as.factor(adcm$CMSEQ)
 
