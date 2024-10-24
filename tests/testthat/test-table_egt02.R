@@ -1,14 +1,14 @@
 # Tests the variants for EGT02
 
-adsl <- adsl_raw
-adeg <- adeg_raw
+adsl <- adsl_pharmaverse
+adeg <- adeg_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 adeg <- df_explicit_na(adeg)
 
 adeg_f <- adeg %>%
   filter(ONTRTFL == "Y") %>%
-  filter(PARAM %in% c("Heart Rate", "QT Duration", "RR Duration")) %>%
+  filter(PARAMCD %in% c("HR", "QT", "RR")) %>%
   filter(ANRIND != "<Missing>") %>%
   var_relabel(
     PARAM = "Assessment",
