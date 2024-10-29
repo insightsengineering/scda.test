@@ -1,5 +1,5 @@
 testthat::test_that("CML02A_GL listing is produced correctly", {
-  out <- adcm_raw %>%
+  out <- adcm_pharmaverse %>%
     select(ATC2, CMDECOD, CMTRT) %>%
     unique()
 
