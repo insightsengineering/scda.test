@@ -24,8 +24,8 @@ Depends:
     formatters (>= 0.5.9),
     R (>= 4.2),
     rlistings (>= 0.2.9),
-    rtables (>= 0.6.8),
-    tern (>= 0.9.5)
+    rtables (>= 0.6.10),
+    tern (>= 0.9.6.9008)
 Imports:
     pharmaverseadam (>= 1.1.0),
     random.cdisc.data (>= 0.3.15.9001)
