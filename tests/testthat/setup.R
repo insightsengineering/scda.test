@@ -198,7 +198,7 @@ set.seed(99)
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
     DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
-    DCSREAS = with_label(DCSREAS, "Discontinuation Reason")
+    DCSREAS = formatters::with_label(DCSREAS, "Discontinuation Reason")
   ) %>%
   filter(ACTARM != "Screen Failure")
 adae_pharmaverse <- pharmaverseadam::adae %>%

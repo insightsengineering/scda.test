@@ -3,18 +3,18 @@
     Code
       res
     Output
-                                       Normal     Abnormal   Missing 
-      ———————————————————————————————————————————————————————————————
-      Placebo (N=145)                                                
-        Normal                       73 (50.3%)      0       1 (0.7%)
-        Abnormal                     38 (26.2%)   1 (0.7%)   2 (1.4%)
-        Missing                      30 (20.7%)      0          0    
-      Xanomeline High Dose (N=113)                                   
-        Normal                       45 (39.8%)    9 (8%)    1 (0.9%)
-        Abnormal                     27 (23.9%)   7 (6.2%)      0    
-        Missing                      23 (20.4%)   1 (0.9%)      0    
-      Xanomeline Low Dose (N=119)                                    
-        Normal                       52 (43.7%)   8 (6.7%)      0    
-        Abnormal                     30 (25.2%)   3 (2.5%)      0    
-        Missing                       25 (21%)       0       1 (0.8%)
+                                     Normal    Abnormal    Missing 
+      —————————————————————————————————————————————————————————————
+      Placebo (N=147)                                              
+        Normal                         0      79 (53.7%)      0    
+        Abnormal                       0      46 (31.3%)      0    
+        Missing                        0       22 (15%)       0    
+      Xanomeline High Dose (N=120)                                 
+        Normal                         0      62 (51.7%)   1 (0.8%)
+        Abnormal                       0      40 (33.3%)   1 (0.8%)
+        Missing                        0      16 (13.3%)      0    
+      Xanomeline Low Dose (N=111)                                  
+        Normal                         0      58 (52.3%)      0    
+        Abnormal                       0      26 (23.4%)   2 (1.8%)
+        Missing                        0      24 (21.6%)   1 (0.9%)
 
