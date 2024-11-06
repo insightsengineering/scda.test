@@ -25,7 +25,7 @@ Depends:
     R (>= 4.2),
     rlistings (>= 0.2.9),
     rtables (>= 0.6.8),
-    tern (>= 0.9.5)
+    tern (>= 0.9.5.9013)
 Imports:
     pharmaverseadam (>= 0.2.0),
     random.cdisc.data (>= 0.3.15.9001)
