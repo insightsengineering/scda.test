@@ -1,5 +1,5 @@
-adsl <- adsl_raw
-adcm <- adcm_raw
+adsl <- adsl_pharmaverse
+adcm <- adcm_pharmaverse
 
 testthat::test_that("CMT01 default variant (Concomitant medications) is produced correctly", {
   adcm_c <- adcm %>% dplyr::filter(ATIREL == "CONCOMITANT")

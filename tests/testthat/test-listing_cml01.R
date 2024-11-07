@@ -1,5 +1,5 @@
 testthat::test_that("CML01 listing is produced correctly", {
-  out <- adcm_raw %>%
+  out <- adcm_pharmaverse %>%
     filter(!is.na(CMDECOD)) %>%
     mutate(
       ID = paste(SITEID, SUBJID, sep = "/"),
