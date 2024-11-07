@@ -170,7 +170,6 @@ adsl_raw <- random.cdisc.data::cadsl
 adab_raw <- random.cdisc.data::cadab
 adae_raw <- random.cdisc.data::cadae
 adaette_raw <- random.cdisc.data::cadaette
-adcm_raw <- random.cdisc.data::cadcm
 addv_raw <- random.cdisc.data::caddv
 adeg_raw <- random.cdisc.data::cadeg
 adex_raw <- random.cdisc.data::cadex
@@ -225,6 +224,36 @@ adae_pharmaverse <- level_reducer(adae_pharmaverse, "AEDECOD",
     "MYOCARDIAL INFARCTION" # for aet07 AESDTH == "Y"
   )
 )
+adcm_pharmaverse <- pharmaverseadam::adcm %>%
+  mutate(
+    ATIREL = sample(c("PRIOR", "CONCOMITANT"), nrow(.), replace = TRUE, prob = c(0.7, 0.3))
+  ) %>%
+  group_by(CMCLAS) %>%
+  mutate(
+    id = cur_group_id(),
+    ATC1 = factor(paste0("ATCCLAS1_", id)),
+    ATC2 = factor(paste0("ATCCLAS2_", id)),
+    ATC3 = factor(paste0("ATCCLAS3_", id)),
+    ATC4 = factor(paste0("ATCCLAS4_", id))
+  ) %>%
+  ungroup() %>%
+  select(-id) %>%
+  var_relabel(
+    ATIREL = "Time Relation of Medication",
+    ATC1 = "ATC Level 1 Text",
+    ATC2 = "ATC Level 2 Text",
+    ATC3 = "ATC Level 3 Text",
+    ATC4 = "ATC Level 4 Text"
+  )
+
+adeg_pharmaverse <- pharmaverseadam::adeg %>%
+  group_by(USUBJID, AVISIT, PARAMCD) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  mutate(AVALU = EGSTRESU)
+
+adex_pharmaverse <- pharmaverseadam::adex %>%
+  mutate(AVALU = EXDOSU)
 
 adeg_pharmaverse <- pharmaverseadam::adeg
 
