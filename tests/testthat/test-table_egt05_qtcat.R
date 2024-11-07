@@ -10,7 +10,8 @@ adeg_labels <- var_labels(adeg)
 adeg_f <- adeg %>%
   filter(
     PARAMCD == "QT",
-    ANL01FL == "Y"
+    ANL01FL == "Y",
+    EGTPT == 1
   ) %>%
   mutate(
     AVALCAT1 = case_when(
