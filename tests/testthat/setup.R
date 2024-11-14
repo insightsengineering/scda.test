@@ -197,7 +197,7 @@ set.seed(99)
 adsl_pharmaverse <- pharmaverseadam::adsl %>%
   mutate(
     DCSREAS = sample(c("ADVERSE EVENT", ""), nrow(.), replace = TRUE, prob = c(0.08, 0.92)),
-    DCSREAS = with_label(DCSREAS, "Discontinuation Reason")
+    DCSREAS = formatters::with_label(DCSREAS, "Discontinuation Reason")
   ) %>%
   filter(ACTARM != "Screen Failure")
 adae_pharmaverse <- pharmaverseadam::adae %>%
@@ -254,6 +254,19 @@ adeg_pharmaverse <- pharmaverseadam::adeg %>%
 
 adex_pharmaverse <- pharmaverseadam::adex %>%
   mutate(AVALU = EXDOSU)
+
+adeg_pharmaverse <- pharmaverseadam::adeg
+
+adex_pharmaverse <- pharmaverseadam::adex %>%
+  mutate(
+    AVALU = EXDOSU
+  ) %>%
+  group_by(USUBJID) %>%
+  mutate(
+    PARCAT1 = ifelse(PARAMCD %in% c("TDOSE", "TNDOSE"), "OVERALL", "INDIVIDUAL"),
+    PARCAT2 = sample(c("Drug A", "Drug B"), 1, replace = TRUE)
+  ) %>%
+  ungroup()
 
 set.seed(NULL)
 adlb_pharmaverse <- pharmaverseadam::adlb %>%

@@ -3,7 +3,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
     u_rng <- lapply(unique(dataset$PARAMCD), function(p) {
       dat <- dataset %>% filter(PARAMCD == p)
       list(
-        unit = unique(dat$AVALU),
+        unit = unique(dat$EGSTRESU),
         range = paste0(unique(dat$ANRLO), "-", unique(dat$ANRHI))
       )
     })
@@ -14,7 +14,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
   eg_u_rng <- get_param_unit_range(adeg_pharmaverse)
 
   adeg_sub <- adeg_pharmaverse %>%
-    filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(EGSEQ) & PARAMCD != "ECGINTP") %>%
+    filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(EGSEQ) & PARAMCD != "ECGINTP", EGTPT == 1) %>%
     mutate(
       CRTNPT = paste(SITEID, sub("^.*-([[:alnum:]]+)$", "\\1", SUBJID), sep = "/"),
       AGSXRC = paste(AGE, SEX, RACE, sep = "/"),

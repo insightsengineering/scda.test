@@ -24,7 +24,7 @@ Depends:
     formatters (>= 0.5.9),
     R (>= 4.2),
     rlistings (>= 0.2.9),
-    rtables (>= 0.6.8),
+    rtables (>= 0.6.10),
     tern (>= 0.9.6.9015)
 Imports:
     pharmaverseadam (>= 1.1.0),
