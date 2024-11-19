@@ -1,7 +1,7 @@
 # Test the single variant for VST01
 
-adsl <- adsl_raw
-advs <- advs_raw
+adsl <- adsl_pharmaverse
+advs <- advs_pharmaverse
 
 adsl <- df_explicit_na(adsl)
 advs <- df_explicit_na(advs)
@@ -9,17 +9,14 @@ advs <- df_explicit_na(advs)
 advs_label <- var_labels(advs)
 
 advs <- advs %>%
-  filter(
-    PARAMCD == "DIABP",
-    PARAM == "Diastolic Blood Pressure"
-  ) %>%
+  filter(PARAMCD == "DIABP") %>%
   mutate(
     PARAMCD = droplevels(PARAMCD),
     PARAM = droplevels(PARAM)
   )
 
 advs_pb <- advs %>%
-  filter(ABLFL != "Y", ABLFL2 != "Y")
+  filter(ABLFL != "Y")
 
 advs_pb_max <- advs_pb %>%
   group_by(PARAM, USUBJID) %>%
@@ -51,6 +48,10 @@ advs_f <- rbind(
 
 advs_f <- advs_f %>%
   mutate(AVISIT = droplevels(AVISIT))
+levels(advs_f$AVISIT) <- c(
+  "Baseline", "Week 2", "Week 4", "Week 6", "Week 8", "Week 12", "Week 16", "Week 20", "Week 24", "Week 26",
+  "End of Treatment", "Post-Baseline Minimum", "Post-Baseline Maximum", "Post-Baseline Last", "<Missing>"
+)
 
 var_labels(advs_f) <- advs_label
 
