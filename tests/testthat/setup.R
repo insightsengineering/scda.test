@@ -247,9 +247,6 @@ adcm_pharmaverse <- pharmaverseadam::adcm %>%
   )
 
 adeg_pharmaverse <- pharmaverseadam::adeg %>%
-  group_by(USUBJID, AVISIT, PARAMCD) %>%
-  slice_head(n = 1) %>%
-  ungroup() %>%
   mutate(AVALU = EGSTRESU)
 
 adex_pharmaverse <- pharmaverseadam::adex %>%

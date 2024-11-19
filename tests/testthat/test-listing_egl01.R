@@ -14,7 +14,7 @@ testthat::test_that("EGL01 listing is produced correctly", {
   eg_u_rng <- get_param_unit_range(adeg_pharmaverse)
 
   adeg_sub <- adeg_pharmaverse %>%
-    filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(EGSEQ) & PARAMCD != "ECGINTP", EGTPT == 1) %>%
+    filter(!is.na(AVAL) & SAFFL == "Y" & ANL01FL == "Y" & !is.na(ASEQ) & PARAMCD != "EGINTP", DTYPE == "AVERAGE") %>%
     mutate(
       CRTNPT = paste(SITEID, sub("^.*-([[:alnum:]]+)$", "\\1", SUBJID), sep = "/"),
       AGSXRC = paste(AGE, SEX, RACE, sep = "/"),

@@ -22,8 +22,8 @@ adeg_f <- subset(
 # For the EGT03 template, data imputation should be avoided, and missing data
 # explicit and accounted for, so the contingency table sum adds up to the group N.
 # For illustration purpose, missing data are added to the example.
-adeg_f$BNRIND[is.na(adeg_f$BNRIND)] <- "LOW"
-adeg_f$ANRIND[is.na(adeg_f$ANRIND)] <- "LOW"
+adeg_f$BNRIND[sample(seq_len(nrow(adeg_f)), size = 100)] <- "LOW"
+adeg_f$ANRIND[sample(seq_len(nrow(adeg_f)), size = 100)] <- "LOW"
 
 adeg_f$BNRIND <- factor( # nolint
   adeg_f$BNRIND,
