@@ -14,7 +14,8 @@ adeg_f <- subset(
   PARAMCD == "HR" & # Heart Rate
     SAFFL == "Y" & # "Safety Population Flag"
     ONTRTFL == "Y" & # "On Treatment Record Flag"
-    AVISIT == "Week 2" # "Analysis Visit"
+    AVISIT == "Week 2" & # "Analysis Visit"
+    DTYPE == "AVERAGE"
 )
 
 # Preprocessing
