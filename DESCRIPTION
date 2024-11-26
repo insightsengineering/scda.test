@@ -44,6 +44,8 @@ Suggests:
     withr (>= 2.0.0)
 VignetteBuilder:
     knitr
+Remotes:
+    insightsengineering/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
