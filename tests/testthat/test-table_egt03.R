@@ -1,7 +1,5 @@
 # Tests variant 1 for EGT03
 
-adsl <- adsl_pharmaverse %>%
-  mutate(ANRIND = NA)
 adeg <- adeg_pharmaverse
 
 set.seed(123, kind = "Mersenne-Twister")
@@ -50,10 +48,10 @@ testthat::test_that("EGT03 variant 1 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -65,10 +63,10 @@ testthat::test_that("EGT03 variant 2 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -91,10 +89,10 @@ testthat::test_that("EGT03 variant 3 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -116,10 +114,10 @@ testthat::test_that("EGT03 variant 4 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

@@ -5,13 +5,13 @@
     Output
                                        LOW         NORMAL     HIGH   Missing 
       ———————————————————————————————————————————————————————————————————————
-      Placebo (N=86)                                                         
+      Placebo (N=84)                                                         
         n                               37           45        0        2    
         LOW                         15 (17.9%)   14 (16.7%)    0     2 (2.4%)
         NORMAL                      20 (23.8%)   31 (36.9%)    0        0    
         HIGH                            0            0         0        0    
         Missing                      2 (2.4%)        0         0        0    
-      Xanomeline High Dose (N=84)                                            
+      Xanomeline High Dose (N=82)                                            
         n                               30           50        0        2    
         LOW                         13 (15.9%)   20 (24.4%)    0     2 (2.4%)
         NORMAL                      17 (20.7%)   29 (35.4%)    0        0    
@@ -31,13 +31,13 @@
     Output
                                        LOW         NORMAL  
       —————————————————————————————————————————————————————
-      Placebo (N=86)                                       
+      Placebo (N=84)                                       
         n                               38           46    
         LOW                          16 (19%)    15 (17.9%)
         NORMAL                      20 (23.8%)   31 (36.9%)
         HIGH                            0            0     
         Missing                      2 (2.4%)        0     
-      Xanomeline High Dose (N=84)                          
+      Xanomeline High Dose (N=82)                          
         n                               30           52    
         LOW                         13 (15.9%)   22 (26.8%)
         NORMAL                      17 (20.7%)   29 (35.4%)
@@ -57,13 +57,13 @@
     Output
                                        LOW         NORMAL     HIGH   Missing 
       ———————————————————————————————————————————————————————————————————————
-      Placebo (N=86)                                                         
+      Placebo (N=84)                                                         
         n                               37           45        0        2    
         LOW                         15 (17.9%)   14 (16.7%)    0     2 (2.4%)
         NORMAL                      20 (23.8%)   31 (36.9%)    0        0    
         HIGH                            0            0         0        0    
         Missing                      2 (2.4%)        0         0        0    
-      Xanomeline High Dose (N=84)                                            
+      Xanomeline High Dose (N=82)                                            
         n                               30           50        0        2    
         LOW                         13 (15.9%)   20 (24.4%)    0     2 (2.4%)
         NORMAL                      17 (20.7%)   29 (35.4%)    0        0    
@@ -83,13 +83,13 @@
     Output
                                        LOW         NORMAL     HIGH   Missing 
       ———————————————————————————————————————————————————————————————————————
-      Placebo (N=86)                                                         
+      Placebo (N=84)                                                         
         n                               37           45        0        2    
         LOW                         15 (17.9%)   14 (16.7%)    0     2 (2.4%)
         NORMAL                      20 (23.8%)   31 (36.9%)    0        0    
         HIGH                            0            0         0        0    
         Missing                      2 (2.4%)        0         0        0    
-      Xanomeline High Dose (N=84)                                            
+      Xanomeline High Dose (N=82)                                            
         n                               30           50        0        2    
         LOW                         13 (15.9%)   20 (24.4%)    0     2 (2.4%)
         NORMAL                      17 (20.7%)   29 (35.4%)    0        0    
