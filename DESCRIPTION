@@ -28,7 +28,7 @@ Depends:
     tern (>= 0.9.6.9015)
 Imports:
     pharmaverseadam (>= 1.1.0),
-    random.cdisc.data (>= 0.3.15.9001)
+    random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
     checkmate,
@@ -44,6 +44,8 @@ Suggests:
     withr (>= 2.0.0)
 VignetteBuilder:
     knitr
+Remotes:
+    pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
