@@ -1,7 +1,5 @@
 # Tests variant 1 for EGT03
 
-adsl <- adsl_pharmaverse %>%
-  mutate(ANRIND = NA)
 adeg <- adeg_pharmaverse
 
 set.seed(123, kind = "Mersenne-Twister")
@@ -14,7 +12,8 @@ adeg_f <- subset(
   PARAMCD == "HR" & # Heart Rate
     SAFFL == "Y" & # "Safety Population Flag"
     ONTRTFL == "Y" & # "On Treatment Record Flag"
-    AVISIT == "Week 2" # "Analysis Visit"
+    AVISIT == "Week 2" & # "Analysis Visit"
+    DTYPE == "AVERAGE"
 )
 
 # Preprocessing
@@ -22,8 +21,8 @@ adeg_f <- subset(
 # For the EGT03 template, data imputation should be avoided, and missing data
 # explicit and accounted for, so the contingency table sum adds up to the group N.
 # For illustration purpose, missing data are added to the example.
-adeg_f$BNRIND[is.na(adeg_f$BNRIND)] <- "LOW"
-adeg_f$ANRIND[is.na(adeg_f$ANRIND)] <- "LOW"
+adeg_f$BNRIND[sample(seq_len(nrow(adeg_f)), size = 100)] <- "LOW"
+adeg_f$ANRIND[sample(seq_len(nrow(adeg_f)), size = 100)] <- "LOW"
 
 adeg_f$BNRIND <- factor( # nolint
   adeg_f$BNRIND,
@@ -49,10 +48,10 @@ testthat::test_that("EGT03 variant 1 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -64,10 +63,10 @@ testthat::test_that("EGT03 variant 2 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -90,10 +89,10 @@ testthat::test_that("EGT03 variant 3 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
@@ -115,10 +114,10 @@ testthat::test_that("EGT03 variant 4 is produced correctly", {
   lyt <- basic_table() %>%
     split_cols_by("ANRIND") %>%
     split_rows_by("ARM") %>%
-    add_rowcounts(alt_counts = TRUE) %>%
+    add_rowcounts() %>%
     analyze_vars("BNRIND", denom = "N_row")
 
-  result <- build_table(lyt = lyt, df = adeg_f, alt_counts_df = adsl)
+  result <- build_table(lyt = lyt, df = adeg_f)
 
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)

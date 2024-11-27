@@ -11,7 +11,7 @@ adeg_f <- adeg %>%
   filter(
     PARAMCD == "QT",
     ANL01FL == "Y",
-    EGTPT == 1
+    DTYPE == "AVERAGE"
   ) %>%
   mutate(
     AVALCAT1 = case_when(
