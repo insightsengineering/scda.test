@@ -45,7 +45,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/tern@main
+    insightsengineering/tern,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
