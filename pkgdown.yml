@@ -2,7 +2,7 @@ pandoc: '3.4'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-11-27T09:05Z
+last_built: 2024-12-03T22:07Z
 urls:
   reference: https://insightsengineering.github.io/scda.test/main/reference
   article: https://insightsengineering.github.io/scda.test/main/articles
