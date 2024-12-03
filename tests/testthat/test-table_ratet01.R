@@ -23,6 +23,17 @@ testthat::test_that("RATET01 is produced correctly", {
       conf_level = 0.95,
       distribution = "poisson",
       rate_mean_method = "emmeans",
+      var_labels = "Unadjusted exacerbation rate (per year) with offset",
+      table_names = "unadj-offest",
+      .stats = c("rate"),
+      .labels = c(rate = "Rate")
+    ) %>%
+    summarize_glm_count(
+      vars = "AVAL",
+      variables = list(arm = "ARM", covariates = NULL),
+      conf_level = 0.95,
+      distribution = "poisson",
+      rate_mean_method = "emmeans",
       var_labels = "Unadjusted exacerbation rate (per year)",
       table_names = "unadj",
       .stats = c("rate"),
@@ -34,6 +45,20 @@ testthat::test_that("RATET01 is produced correctly", {
       conf_level = 0.95,
       distribution = "quasipoisson",
       rate_mean_method = "ppmeans",
+      var_labels = "Adjusted (QP) exacerbation rate (per year) with offset",
+      table_names = "adj-qp-offest",
+      .stats = c("rate", "rate_ci", "rate_ratio", "rate_ratio_ci", "pval"),
+      .labels = c(
+        rate = "Rate", rate_ci = "Rate CI", rate_ratio = "Rate Ratio",
+        rate_ratio_ci = "Rate Ratio CI", pval = "p-value"
+      )
+    ) %>%
+    summarize_glm_count(
+      vars = "AVAL",
+      variables = list(arm = "ARM", covariates = c("REGION1")),
+      conf_level = 0.95,
+      distribution = "quasipoisson",
+      rate_mean_method = "emmeans",
       var_labels = "Adjusted (QP) exacerbation rate (per year)",
       table_names = "adj-qp",
       .stats = c("rate", "rate_ci", "rate_ratio", "rate_ratio_ci", "pval"),
@@ -45,6 +70,20 @@ testthat::test_that("RATET01 is produced correctly", {
     summarize_glm_count(
       vars = "AVAL",
       variables = list(arm = "ARM", offset = "lgTMATRSK", covariates = c("REGION1")),
+      conf_level = 0.95,
+      distribution = "negbin",
+      rate_mean_method = "emmeans",
+      var_labels = "Adjusted (NB) exacerbation rate (per year) with offset",
+      table_names = "adj-nb-offest",
+      .stats = c("rate", "rate_ci", "rate_ratio", "rate_ratio_ci", "pval"),
+      .labels = c(
+        rate = "Rate", rate_ci = "Rate CI", rate_ratio = "Rate Ratio",
+        rate_ratio_ci = "Rate Ratio CI", pval = "p-value"
+      )
+    ) %>%
+    summarize_glm_count(
+      vars = "AVAL",
+      variables = list(arm = "ARM", covariates = c("REGION1")),
       conf_level = 0.95,
       distribution = "negbin",
       rate_mean_method = "emmeans",
