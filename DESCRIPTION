@@ -45,7 +45,9 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@main,
+    insightsengineering/rtables@981_cran_v0.6.11,
+    insightsengineering/tern@upversion_dep
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
@@ -54,6 +56,4 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Remotes: 
-    insightsengineering/rtables@981_cran_v0.6.11,
-    insightsengineering/tern@upversion_dep
+
