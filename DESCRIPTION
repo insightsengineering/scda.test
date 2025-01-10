@@ -21,11 +21,11 @@ License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
-    formatters (>= 0.5.9),
+    formatters (>= 0.5.10),
     R (>= 4.2),
-    rlistings (>= 0.2.9),
-    rtables (>= 0.6.10),
-    tern (>= 0.9.6.9015)
+    rlistings (>= 0.2.10),
+    rtables (>= 0.6.11),
+    tern (>= 0.9.6.9018)
 Imports:
     pharmaverseadam (>= 1.1.0),
     random.cdisc.data (>= 0.3.16)
@@ -45,7 +45,9 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@main,
+    insightsengineering/rtables@981_cran_v0.6.11,
+    insightsengineering/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
@@ -54,3 +56,4 @@ Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+
