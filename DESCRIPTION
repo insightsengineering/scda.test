@@ -47,7 +47,7 @@ VignetteBuilder:
 Remotes:
     pharmaverse/pharmaverseadam@main,
     insightsengineering/rtables@981_cran_v0.6.11,
-    insightsengineering/tern@upversion_dep
+    insightsengineering/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
