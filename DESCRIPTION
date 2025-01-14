@@ -45,7 +45,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/rtables@981_cran_v0.6.11,
+    insightsengineering/rtables@main,
     insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
