@@ -25,7 +25,7 @@ Depends:
     R (>= 4.2),
     rlistings (>= 0.2.10),
     rtables (>= 0.6.11),
-    tern (>= 0.9.6.9018)
+    tern (>= 0.9.7)
 Imports:
     pharmaverseadam (>= 1.1.0),
     random.cdisc.data (>= 0.3.16)
@@ -46,7 +46,7 @@ VignetteBuilder:
     knitr
 Remotes:
     insightsengineering/rtables@main,
-    insightsengineering/tern@main,
+    insightsengineering/tern@1281_cran_0.9.7,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate

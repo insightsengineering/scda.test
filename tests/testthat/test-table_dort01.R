@@ -32,7 +32,7 @@ testthat::test_that("DORT01 variant 1 is produced correctly", {
     count_values(
       vars = "USUBJID",
       values = unique(adtte$USUBJID),
-      .labels = "Responders",
+      .labels = c(count = "Responders"),
       .stats = "count"
     ) %>%
     analyze_vars(
@@ -87,7 +87,7 @@ testthat::test_that("DORT01 variant 2 (selecting sectons) is produced correctly"
     count_values(
       vars = "USUBJID",
       values = unique(adtte$USUBJID),
-      .labels = "Responders",
+      .labels = c(count = "Responders"),
       .stats = "count"
     ) %>%
     analyze_vars(
@@ -143,7 +143,7 @@ testthat::test_that("DORT01 variant 3 (modifying conftype and alpha level) is pr
     count_values(
       vars = "USUBJID",
       values = unique(adtte$USUBJID),
-      .labels = "Responders",
+      .labels = c(count = "Responders"),
       .stats = "count"
     ) %>%
     analyze_vars(
@@ -199,7 +199,7 @@ testthat::test_that("DORT01 variant 4 (modifying time point for the “xx durati
     count_values(
       vars = "USUBJID",
       values = unique(adtte$USUBJID),
-      .labels = "Responders",
+      .labels = c(count = "Responders"),
       .stats = "count"
     ) %>%
     analyze_vars(
