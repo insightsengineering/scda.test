@@ -94,7 +94,7 @@ testthat::test_that("Patient Disposition table is produced correctly", {
       "DISCSTUD",
       values = "Y",
       .labels = c(count_fraction = "Discontinued Study"),
-      .formats = "xx (xx.xx%)"
+      .formats = c(count_fraction = "xx (xx.xx%)"),
     ) %>%
     analyze_vars(
       "DCSREAS",
