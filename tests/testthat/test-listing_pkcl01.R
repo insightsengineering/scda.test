@@ -42,7 +42,7 @@ testthat::test_that("PKCL01 listing key columns values are repeated when entries
     AVAL = paste0("Concentration\n(", adpc$AVALU[1], ")")
   )
 
-  out  <- out %>%
+  out <- out %>%
     arrange(TRT01A, USUBJID, NFRLT)
 
   result <- as_listing(
