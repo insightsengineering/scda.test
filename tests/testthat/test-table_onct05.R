@@ -95,3 +95,29 @@ testthat::test_that("ONCT05 variant 4 (setting values indicating response) is pr
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
+
+testthat::test_that("ONCT05 (with risk difference column) is produced correctly", {
+  adrs <- adrs %>%
+    preprocess_adrs(n_records = 200)
+
+  df <- extract_rsp_subgroups(
+    variables = list(rsp = "rsp", arm = "ARM", subgroups = c("SEX", "STRATA2")),
+    data = adrs
+  )
+
+  # Response table.
+  result <- basic_table() %>%
+    tabulate_rsp_subgroups(
+      df = df,
+      vars = c("n", "prop", "n_tot", "or", "ci"),
+      riskdiff = control_riskdiff(
+        arm_x = levels(df$prop$arm)[1],
+        arm_y = levels(df$prop$arm)[2],
+        pct = FALSE,
+        col_label = "Risk Diff. (95% CI)"
+      )
+    )
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
