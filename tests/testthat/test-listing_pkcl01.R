@@ -51,7 +51,7 @@ testthat::test_that("PKCL01 listing key columns values are repeated when entries
     disp_cols = names(out)
   ) %>%
     head(50) %>%
-    export_as_txt(tf_wrap = TRUE, cpp = 120, lpp = 50)
+    export_as_txt(tf_wrap = TRUE, cpp = 120, lpp = 30)
 
   testthat::expect_snapshot(result %>% cat())
 })
