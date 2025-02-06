@@ -216,4 +216,3 @@ testthat::test_that("AET04 variant 2 page_by pagination tests", {
   )
   testthat::expect_snapshot(pag_res[c(2, 5)]) # randomly picked to have a comparison
 })
-
