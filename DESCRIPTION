@@ -21,11 +21,11 @@ License: Apache License 2.0 | file LICENSE
 URL: https://github.com/insightsengineering/scda.test/
 BugReports: https://github.com/insightsengineering/scda.test/issues
 Depends:
-    formatters (>= 0.5.10),
+    formatters (>= 0.5.10.9001),
     R (>= 4.2),
     rlistings (>= 0.2.10),
     rtables (>= 0.6.11),
-    tern (>= 0.9.7)
+    tern (>= 0.9.7.9003)
 Imports:
     pharmaverseadam (>= 1.1.0),
     random.cdisc.data (>= 0.3.16)
