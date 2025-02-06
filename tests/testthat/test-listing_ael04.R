@@ -29,3 +29,4 @@ testthat::test_that("AEL04 listing is produced correctly", {
 
   testthat::expect_snapshot(result)
 })
+
