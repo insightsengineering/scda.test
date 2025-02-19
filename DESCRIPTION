@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9094
-Date: 2025-02-06
+Version: 0.0.0.9095
+Date: 2025-02-18
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@roche.com", role = "aut"),
@@ -45,6 +45,8 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
+    insightsengineering/formatters@main,
+    insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
