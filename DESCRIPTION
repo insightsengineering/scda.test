@@ -45,7 +45,8 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@main,
+    insightsengineering/formatters@336_nearest_value_round,
+    insightsengineering/rtables@336_nearest_value_round,
     insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
