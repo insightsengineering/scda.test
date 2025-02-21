@@ -26,13 +26,6 @@ jobs:
       REPO_GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
     with:
       deps-installation-method: setup-r-dependencies
-      lookup-refs: |
-        insightsengineering/random.cdisc.data
-        insightsengineering/rtables
-        insightsengineering/formatters
-        insightsengineering/tern
-        insightsengineering/rlistings
-        pharmaverse/pharmaverseadam
       additional-env-vars: |
         _R_CHECK_CRAN_INCOMING_REMOTE_=false
       additional-r-cmd-check-params: --as-cran ### We need to test snapshots, not released
@@ -54,13 +47,6 @@ jobs:
       REPO_GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
     with:
       deps-installation-method: setup-r-dependencies
-      lookup-refs: |
-        insightsengineering/random.cdisc.data
-        insightsengineering/rtables
-        insightsengineering/formatters
-        insightsengineering/tern
-        insightsengineering/rlistings
-        pharmaverse/pharmaverseadam
       additional-env-vars: |
         NOT_CRAN=true
       enforce-note-blocklist: true
@@ -82,13 +68,6 @@ jobs:
       REPO_GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
     with:
       deps-installation-method: setup-r-dependencies
-      lookup-refs: |
-        insightsengineering/random.cdisc.data
-        insightsengineering/rtables
-        insightsengineering/formatters
-        insightsengineering/tern
-        insightsengineering/rlistings
-        pharmaverse/pharmaverseadam
       additional-env-vars: |
         NOT_CRAN=true
   linter:
@@ -102,13 +81,6 @@ jobs:
       REPO_GITHUB_TOKEN: ${{ secrets.REPO_GITHUB_TOKEN }}
     with:
       deps-installation-method: setup-r-dependencies
-      lookup-refs: |
-        insightsengineering/random.cdisc.data
-        insightsengineering/rtables
-        insightsengineering/formatters
-        insightsengineering/tern
-        insightsengineering/rlistings
-        pharmaverse/pharmaverseadam
       auto-update: true
   gitleaks:
     name: gitleaks 💧
