@@ -42,10 +42,3 @@ jobs:
     with:
       additional-unit-test-report-directories: unit-test-report-non-cran
       deps-installation-method: setup-r-dependencies
-      lookup-refs: |
-        insightsengineering/random.cdisc.data
-        insightsengineering/rtables
-        insightsengineering/formatters
-        insightsengineering/tern
-        insightsengineering/rlistings
-        pharmaverse/pharmaverseadam
