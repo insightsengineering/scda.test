@@ -51,3 +51,24 @@ testthat::test_that("AOVT01 variant with multiple endpoints is produced correctl
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
+
+testthat::test_that("AOVT01 variant with proportional weights is produced correctly", {
+  adqs_multi <- dplyr::filter(adqs, AVISIT == "WEEK 1 DAY 8")
+  n_per_arm <- table(adsl$ARM)
+
+  result <- basic_table() %>%
+    split_cols_by("ARMCD", ref_group = "ARM A", split_fun = ref_group_position("first")) %>%
+    add_colcounts() %>%
+    split_rows_by("PARAMCD") %>%
+    summarize_ancova(
+      vars = "CHG",
+      variables = list(arm = "ARMCD", covariates = c("BASE", "STRATA1")),
+      conf_level = 0.95, var_labels = "Adjusted mean",
+      weights_emmeans = "proportional"
+    ) %>%
+    build_table(adqs_multi, alt_counts_df = adsl)
+
+  res <- testthat::expect_silent(result)
+  testthat::expect_snapshot(res)
+})
+
