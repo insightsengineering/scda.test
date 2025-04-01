@@ -71,4 +71,3 @@ testthat::test_that("AOVT01 variant with proportional weights is produced correc
   res <- testthat::expect_silent(result)
   testthat::expect_snapshot(res)
 })
-
