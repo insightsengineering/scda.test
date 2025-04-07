@@ -41,9 +41,8 @@ adeg_f <- rbind(adeg_f_1, adeg_f_2)
 
 
 ### mapping dataframe
-
-mapdf <- unique(adeg_f %>%
-  select(PARCAT, PARAMCD, CRITDIR, ANRIND23)) %>%
+uniq_adeg <- unique(adeg_f %>% select(PARCAT, PARAMCD, CRITDIR, ANRIND23))
+mapdf <- uniq_adeg %>%
   arrange(PARCAT, PARAMCD, CRITDIR, ANRIND23) %>%
   mutate(across(where(is.factor), as.character))
 
