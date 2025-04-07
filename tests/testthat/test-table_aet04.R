@@ -25,11 +25,13 @@ adae <- level_reducer(adae, "AEDECOD", p_to_keep = 0.7)
 # Helper function to avoid filtering also the first part of the table, where general information is given.
 my_row_condition <- function(row_fnc_condition) {
   function(table_row) {
+    ret <- NULL
     if (indent_mod(table_row) == 0) {
-      return(TRUE)
+      ret <- TRUE
     } else {
-      row_fnc_condition(table_row)
+      ret <- row_fnc_condition(table_row)
     }
+    ret
   }
 }
 

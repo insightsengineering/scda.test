@@ -56,7 +56,6 @@ l <- basic_table() %>%
 testthat::test_that("PKPT05 Drug X is produced correctly", {
   adpp0 <- adpp_urine %>%
     filter(PPCAT == "XANOMELINE") %>%
-    # h_pkparam_sort() %>%
     dplyr::mutate(PKPARAM = factor(paste0(PPTEST, " (", AVALU, ")")))
   result <- build_table(l, df = adpp0)
   main_title(result) <- paste("Summary of", unique(adpp0$PPSPEC), "PK Parameter by Treatment Arm, PK Population")
