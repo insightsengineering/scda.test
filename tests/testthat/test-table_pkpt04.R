@@ -33,7 +33,6 @@ l <- basic_table() %>%
 testthat::test_that("PKPT04 is produced correctly for Drug X", {
   adpp0 <- adpp_urine %>%
     filter(PPCAT == "XANOMELINE") %>%
-    # h_pkparam_sort() %>%
     mutate(PKPARAM = factor(paste0(PPTEST, " (", AVALU, ")")))
 
   result <- build_table(l, df = adpp0)

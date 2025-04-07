@@ -24,8 +24,8 @@ Depends:
     formatters (>= 0.5.10.9001),
     R (>= 4.2),
     rlistings (>= 0.2.10),
-    rtables (>= 0.6.11),
-    tern (>= 0.9.7.9003)
+    rtables (>= 0.6.11.9017),
+    tern (>= 0.9.7.9018)
 Imports:
     pharmaverseadam (>= 1.1.0),
     random.cdisc.data (>= 0.3.16)
@@ -46,6 +46,7 @@ VignetteBuilder:
     knitr
 Remotes:
     insightsengineering/formatters@main,
+    insightsengineering/rtables@main,
     insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
