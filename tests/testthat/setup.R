@@ -190,7 +190,8 @@ advs_raw <- random.cdisc.data::cadvs
 # Data loading for pharmaverse
 
 adpp_pharmaverse <- pharmaverseadam::adpp
-adpc_pharmaverse <- pharmaverseadam::adpc
+adpc_pharmaverse <- pharmaverseadam::adpc %>%
+  filter(!is.na(AVAL))
 
 set.seed(99)
 
