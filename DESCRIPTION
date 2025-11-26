@@ -48,6 +48,7 @@ Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
+    insightsengineering/rlistings@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
