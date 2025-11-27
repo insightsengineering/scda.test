@@ -45,7 +45,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@main,
+    insightsengineering/formatters@363_default_format_label,
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
