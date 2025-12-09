@@ -47,7 +47,7 @@ VignetteBuilder:
 Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rlistings@main,
-    insightsengineering/rtables@main,
+    insightsengineering/rtables@1058_label_regex_chars,
     insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
