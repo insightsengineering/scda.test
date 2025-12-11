@@ -1,7 +1,7 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9102
+Version: 0.0.0.9103
 Date: 2025-11-26
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
@@ -13,6 +13,8 @@ Authors@R: c(
     person("Pawel", "Rucki", , "pawel.rucki@roche.com", role = "aut"),
     person("Chendi", "Liao", , "chendi.liao@roche.com", role = "aut"),
     person("Jennifer", "Li", , "li.jing@gene.com", role = "aut"),
+    person("David", "Munoz Tord", , "dtord@its.jnj.com", role = "ctb"),
+    person("Johnson & Johnson Innovative Medicine", role = c("cph", "fnd")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Tests of sample templates from TLG Catalog using data from
@@ -28,6 +30,8 @@ Depends:
     tern (>= 0.9.9.9004)
 Imports:
     pharmaverseadam (>= 1.1.0.9001),
+    pharmaverseadamjnj (>= 0.0.2),
+    pharmaversesdtmjnj (>= 0.0.1),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
@@ -49,7 +53,9 @@ Remotes:
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
+    johnsonandjohnson/pharmaversesdtmjnj@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
