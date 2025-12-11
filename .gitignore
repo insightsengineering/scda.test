@@ -28,6 +28,7 @@ vignettes/*.md
 vignettes/*.R
 coverage.*
 .vscode/
+.idea/
 node_modules/
 package-lock.json
 package.json
