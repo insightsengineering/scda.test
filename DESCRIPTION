@@ -45,13 +45,14 @@ Suggests:
     testthat (>= 3.0),
     tibble,
     tidyr,
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    labelled
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@1040_rtables_round_type,
-    insightsengineering/rlistings@1040_rtables_round_type,
-    insightsengineering/rtables@1040_rtables_round_type,
+    insightsengineering/formatters@main,
+    insightsengineering/rlistings@main,
+    insightsengineering/rtables@main,
     insightsengineering/tern@main,
     pharmaverse/pharmaverseadam@main,
     johnsonandjohnson/pharmaverseadamjnj@main,
