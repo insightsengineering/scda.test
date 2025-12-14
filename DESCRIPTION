@@ -47,8 +47,8 @@ VignetteBuilder:
 Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rlistings@main,
-    insightsengineering/rtables@main,
-    insightsengineering/tern@main,
+    insightsengineering/rtables@1041_formats_var,
+    insightsengineering/tern@1041_formats_var,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
