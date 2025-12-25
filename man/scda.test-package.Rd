@@ -20,4 +20,25 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Joe Zhu \email{joe.zhu@roche.com}
+
+Authors:
+\itemize{
+  \item Daniel Sabanés Bové \email{daniel.sabanes_bove@rconis.com}
+  \item Jana Stoilova \email{stoilova@dnli.com}
+  \item Heng Wang \email{Heng.Wang21@gilead.com}
+  \item Francois Collin
+  \item Adrian Waddell \email{adrian.waddell@gene.com}
+  \item Pawel Rucki \email{pawel.rucki@roche.com}
+  \item Chendi Liao
+  \item Jennifer Li
+}
+
+Other contributors:
+\itemize{
+  \item F. Hoffmann-La Roche AG [copyright holder, funder]
+}
+
+}
 \keyword{internal}
