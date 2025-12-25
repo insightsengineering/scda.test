@@ -23,11 +23,11 @@ Useful links:
 
 Authors:
 
-- Daniel Sabanés Bové <daniel.sabanes_bove@roche.com>
+- Daniel Sabanés Bové <daniel.sabanes_bove@rconis.com>
 
-- Jana Stoilova <jana.stoilova@roche.com>
+- Jana Stoilova <stoilova@dnli.com>
 
-- Heng Wang <wang.heng@gene.com>
+- Heng Wang <Heng.Wang21@gilead.com>
 
 - Francois Collin
 
@@ -35,9 +35,9 @@ Authors:
 
 - Pawel Rucki <pawel.rucki@roche.com>
 
-- Chendi Liao <chendi.liao@roche.com>
+- Chendi Liao
 
-- Jennifer Li <li.jing@gene.com>
+- Jennifer Li
 
 Other contributors:
 
