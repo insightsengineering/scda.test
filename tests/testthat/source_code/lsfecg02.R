@@ -42,9 +42,11 @@ trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1", "COL2", "COL3")
 disp_cols <- paste0("COL", 0:9)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -206,7 +208,7 @@ result <- set_titles(result, tab_titles)
 result1 <- result %>%
   filter(toupper(.data[[trtvar]]) == "XANOMELINE LOW DOSE")
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   head(result1, 100),
   file = paste0(fileid, "PART1OF3"),
   orientation = "landscape"
@@ -215,7 +217,7 @@ tt_to_tlgrtf(
 result2 <- result %>%
   filter(toupper(.data[[trtvar]]) == "XANOMELINE HIGH DOSE")
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   head(result2, 100),
   file = paste0(fileid, "PART2OF3"),
   orientation = "landscape"
@@ -224,7 +226,7 @@ tt_to_tlgrtf(
 result3 <- result %>%
   filter(toupper(.data[[trtvar]]) == "PLACEBO")
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   head(result3, 100),
   file = paste0(fileid, "PART3OF3"),
   orientation = "landscape"

@@ -34,9 +34,11 @@ library(junco)
 
 tblid <- "TSFLAB06"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -313,9 +315,11 @@ build_result_parcat3 <- function(
   .trtvar = trtvar
 ) {
   tblidx <- get_tblid(tblid, PARCAT3sel)
-  titles2 <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+  titles2 <- list(
+    title = "Dummy Title",
+    subtitles = NULL,
+    main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+  )
 
   lyt_filter <- function(PARCAT3sel = NULL, map) {
     if (!is.null(PARCAT3sel)) {

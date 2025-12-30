@@ -1,17 +1,17 @@
-
 opath <- tempdir()
 input <- "source_code"
 
 
-attach_me <- list(opath = opath,
-                  datapath = input)
+attach_me <- list(
+  opath = opath,
+  datapath = input
+)
 
 pos <- 2L
-attach(attach_me, name = "envsetup:paths", pos =  pos)
+attach(attach_me, name = "envsetup:paths", pos = pos)
 
 
 options(tidytlg.add_datetime = FALSE) # not to add datetime
-
 
 
 write_test_rtf_for <- function(x, rtf_name = NULL, part_num = NULL, total_parts = NULL) {
@@ -36,10 +36,10 @@ write_test_rtf_for <- function(x, rtf_name = NULL, part_num = NULL, total_parts 
         if (length(total_parts_matches) > 0) {
           total_parts <- max(as.numeric(total_parts_matches))
         } else {
-          total_parts <- part_num  # Default to part_num if can't determine
+          total_parts <- part_num # Default to part_num if can't determine
         }
       } else {
-        total_parts <- part_num  # Default to part_num if no existing files
+        total_parts <- part_num # Default to part_num if no existing files
       }
     }
     rtf_path <- file.path(opath, paste0(base_name, "part", part_num, "of", total_parts, ".rtf"))
@@ -51,7 +51,7 @@ write_test_rtf_for <- function(x, rtf_name = NULL, part_num = NULL, total_parts 
 }
 
 # Function to create test scripts for source code files
-create_test_scripts <- function(source_files = NULL, force=FALSE) {
+create_test_scripts <- function(source_files = NULL, force = FALSE) {
   # If no source files provided, get all R files from source_code directory
   if (is.null(source_files)) {
     source_files <- list.files(test_path("source_code"), pattern = "\\.R$", ignore.case = TRUE)
@@ -81,8 +81,10 @@ create_test_scripts <- function(source_files = NULL, force=FALSE) {
     }
 
     # Create test file content
-    test_content <- sprintf('test_that("%s", {\n  expect_snapshot_file(write_test_rtf_for("%s"), "%s.rtf")\n})\n', 
-                           base_name, source_file, base_name)
+    test_content <- sprintf(
+      'test_that("%s", {\n  expect_snapshot_file(write_test_rtf_for("%s"), "%s.rtf")\n})\n',
+      base_name, source_file, base_name
+    )
 
     # Write test file
     test_file_path <- test_path(test_file_name)

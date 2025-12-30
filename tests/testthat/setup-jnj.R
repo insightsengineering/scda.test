@@ -1,4 +1,3 @@
-
 if (!exists("level_reducer")) {
   source("setup.R", local = TRUE)
 }

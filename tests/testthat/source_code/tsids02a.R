@@ -35,9 +35,11 @@ tblid <- "TSIDS02a"
 fileid <- write_path(opath, tblid)
 popfl <- "FASFL"
 trtvar <- "TRT01P"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -104,8 +106,8 @@ ref_path <- c("colspan_trt", " ", trtvar, "Placebo")
 ################################################################################
 
 totdf <- tribble(
-  ~valname , ~label  , ~levelcombo                                                 , ~exargs ,
-  "Total"  , "Total" , c("Xanomeline High Dose", "Xanomeline Low Dose", "Placebo") , list()
+  ~valname, ~label, ~levelcombo, ~exargs,
+  "Total", "Total", c("Xanomeline High Dose", "Xanomeline Low Dose", "Placebo"), list()
 )
 
 

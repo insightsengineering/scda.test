@@ -36,9 +36,11 @@ library(junco)
 
 tblid <- "TSFECG05"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
