@@ -180,13 +180,6 @@ lsting <- var_relabel(
   COL9 = "Criteria"
 )
 
-
-# Now create a dummy dataframe with only one row per subject ID
-lsting <- lsting %>%
-  group_by(USUBJID) %>%
-  slice(n()) %>%
-  ungroup()
-
 ###############################################################################
 # Build listing
 ###############################################################################
@@ -203,8 +196,36 @@ result <- rlistings::as_listing(
 
 result <- set_titles(result, tab_titles)
 
+###############################################################################
+# Output listing
+###############################################################################
+# If resulting Listing output is too large of a file (>20MB) then the listing
+# should be split into multiple parts
+# The split below is based on the treatment groups
+# Update as-needed for your study
+result1 <- result %>%
+  filter(toupper(.data[[trtvar]]) == "XANOMELINE LOW DOSE")
+
 tt_to_tlgrtf( 
-  result,
-  file = paste0(fileid),
+  head(result1, 100),
+  file = paste0(fileid, "PART1OF3"),
+  orientation = "landscape"
+)
+
+result2 <- result %>%
+  filter(toupper(.data[[trtvar]]) == "XANOMELINE HIGH DOSE")
+
+tt_to_tlgrtf( 
+  head(result2, 100),
+  file = paste0(fileid, "PART2OF3"),
+  orientation = "landscape"
+)
+
+result3 <- result %>%
+  filter(toupper(.data[[trtvar]]) == "PLACEBO")
+
+tt_to_tlgrtf( 
+  head(result3, 100),
+  file = paste0(fileid, "PART3OF3"),
   orientation = "landscape"
 )

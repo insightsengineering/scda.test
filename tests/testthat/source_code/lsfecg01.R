@@ -203,12 +203,6 @@ lsting <- var_relabel(
   COL9 = "Criteria"
 )
 
-# Now create a dummy dataframe with only one row per subject ID
-lsting <- lsting %>%
-  group_by(USUBJID) %>%
-  slice(n()) %>%
-  ungroup()
-
 ###############################################################################
 # Build listing
 ###############################################################################
@@ -229,4 +223,4 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-tt_to_tlgrtf(result, file = fileid, orientation = "landscape")
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

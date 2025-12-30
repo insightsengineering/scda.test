@@ -469,14 +469,12 @@ remove_grade0 <- function(tr) {
 }
 
 result <- result %>% prune_table(prune_func = keep_rows(remove_grade0))
-result2 <- result2 %>% prune_table(prune_func = keep_rows(remove_grade0))
 
 ################################################################################
 # Remove colcount from rrisk_header:
 ################################################################################
 
 result <- remove_col_count(result)
-result2 <- remove_col_count(result2)
 
 ################################################################################
 # Add titles and footnotes:

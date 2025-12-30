@@ -10,7 +10,7 @@ pos <- 2L
 attach(attach_me, name = "envsetup:paths", pos =  pos)
 
 
-options(tidytlg.add_datetime = FALSE) # so not to add datetime , very important for snapshoting
+options(tidytlg.add_datetime = FALSE) # not to add datetime
 
 
 

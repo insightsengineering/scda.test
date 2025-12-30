@@ -553,31 +553,31 @@ build_result_parcat3 <- function(
 
 ### titles will not be retrieved for these, as the table identifiers are not in the DPS system
 ### study teams will have to ensure all versions that are needed are included in DPS system
-result1 <- build_result_parcat3(
-  PARCAT3sel = "Liver biochemistry",
-  tblid = tblid,
-  save2rtf = TRUE
-)
-result2 <- build_result_parcat3(
-  PARCAT3sel = "Kidney function",
-  tblid = tblid,
-  save2rtf = TRUE
-)
-result3 <- build_result_parcat3(
-  PARCAT3sel = "Lipids",
-  tblid = tblid,
-  save2rtf = TRUE
-)
-
-result4 <- build_result_parcat3(
-  PARCAT3sel = c(
-    "Complete blood count",
-    "WBC differential",
-    "Coagulation studies"
-  ),
-  tblid = tblid,
-  save2rtf = TRUE
-)
+# result1 <- build_result_parcat3(
+#   PARCAT3sel = "Liver biochemistry",
+#   tblid = tblid,
+#   save2rtf = TRUE
+# )
+# result2 <- build_result_parcat3(
+#   PARCAT3sel = "Kidney function",
+#   tblid = tblid,
+#   save2rtf = TRUE
+# )
+# result3 <- build_result_parcat3(
+#   PARCAT3sel = "Lipids",
+#   tblid = tblid,
+#   save2rtf = TRUE
+# )
+#
+# result4 <- build_result_parcat3(
+#   PARCAT3sel = c(
+#     "Complete blood count",
+#     "WBC differential",
+#     "Coagulation studies"
+#   ),
+#   tblid = tblid,
+#   save2rtf = TRUE
+# )
 
 ### if a certain category is not present, no rtf will be generated
 
