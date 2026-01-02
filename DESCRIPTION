@@ -45,7 +45,8 @@ Suggests:
     tibble,
     tidyr,
     withr (>= 2.0.0),
-    labelled
+    labelled,
+    envsetup
 VignetteBuilder:
     knitr
 Remotes:
