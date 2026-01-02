@@ -10,7 +10,7 @@ This package provides a testing suite for templates based on
 \code{scda} data and \code{tern} analysis methods.
 }
 \details{
-To learn mode about the package, check the documentation of \link{tern}.
+To learn mode about the package, check the documentation of \link[tern:tern-package]{tern::tern}.
 }
 \seealso{
 Useful links:
