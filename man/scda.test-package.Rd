@@ -29,7 +29,7 @@ Authors:
   \item Jana Stoilova \email{stoilova@dnli.com}
   \item Heng Wang \email{Heng.Wang21@gilead.com}
   \item Francois Collin
-  \item Adrian Waddell \email{adrian.waddell@gene.com}
+  \item Adrian Waddell \email{aadrian.waddell@gmail.com}
   \item Pawel Rucki \email{pawel.rucki@roche.com}
   \item Chendi Liao
   \item Jennifer Li
