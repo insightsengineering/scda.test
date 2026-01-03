@@ -10,7 +10,7 @@ This package provides a testing suite for templates based on
 \code{scda} data and \code{tern} analysis methods.
 }
 \details{
-To learn mode about the package, check the documentation of \link{tern}.
+To learn mode about the package, check the documentation of \link[tern:tern-package]{tern::tern}.
 }
 \seealso{
 Useful links:
@@ -25,14 +25,14 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Daniel Sabanés Bové \email{daniel.sabanes_bove@roche.com}
-  \item Jana Stoilova \email{jana.stoilova@roche.com}
-  \item Heng Wang \email{wang.heng@gene.com}
+  \item Daniel Sabanés Bové \email{daniel.sabanes_bove@rconis.com}
+  \item Jana Stoilova \email{stoilova@dnli.com}
+  \item Heng Wang \email{Heng.Wang21@gilead.com}
   \item Francois Collin
-  \item Adrian Waddell \email{adrian.waddell@gene.com}
+  \item Adrian Waddell \email{aadrian.waddell@gmail.com}
   \item Pawel Rucki \email{pawel.rucki@roche.com}
-  \item Chendi Liao \email{chendi.liao@roche.com}
-  \item Jennifer Li \email{li.jing@gene.com}
+  \item Chendi Liao
+  \item Jennifer Li
 }
 
 Other contributors:

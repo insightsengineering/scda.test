@@ -112,7 +112,7 @@ testthat::test_that("DTHT01 variant 4 is produced correctly", {
     mutate(
       DTHCAUS_other = factor(ifelse(
         DTHCAT == "OTHER" & DTHCAUS != "Post-study reporting of death", as.character(DTHCAUS), NA
-      ), levels = c("LOST TO FOLLOW UP", "SUICIDE", "UNKNOWN", "MISSING")) %>% explicit_na()
+      ), levels = c("LOST TO FOLLOW UP", "SUICIDE", "UNKNOWN", "MISSING")) %>% explicit_na(label = "<Missing>")
     )
 
   lyt <- basic_table(show_colcounts = TRUE) %>%

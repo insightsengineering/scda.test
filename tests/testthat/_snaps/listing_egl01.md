@@ -7,7 +7,7 @@
       
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
                                                                                           Heart Rate Result                    QT Duration Result                    RR Duration Result                 
-                                                                                  Study     (BEATS/MIN);        Heart Rate          (msec);          QT Duration          (msec);          RR Duration  
+                                                                                  Study     (beats/min);        Heart Rate           (ms);           QT Duration           (ms);           RR Duration  
       Treatment   Center/Subject ID            Age/Sex/Race             Visit      Day     Range:(40-100)     Change from BL    Range:(350-450)     Change from BL    Range:(600-1500)    Change from BL
       ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
        Placebo        701/1015                  63/F/WHITE             Baseline     1            73.67                NA            456.67/H                NA            519.00/L                NA    

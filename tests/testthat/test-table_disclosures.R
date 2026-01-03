@@ -34,8 +34,8 @@ adsl_local <- local({
 
   adsl_f$AGEGRP <- factor(adsl_f$AGEGRP, levels = c("< 65 yrs", ">= 65 yrs"))
   adsl_f$ETHNIC <- factor(adsl_f$ETHNIC, levels = c("Ethnicity 1", "Ethnicity 2", "Unknown"))
+  # adsl_f <- df_explicit_na(adsl_f)
   # nolint end
-  adsl_f <- df_explicit_na(adsl_f)
   adsl_f
 })
 
