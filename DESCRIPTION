@@ -9,7 +9,7 @@ Authors@R: c(
     person("Jana", "Stoilova", , "stoilova@dnli.com", role = "aut"),
     person("Heng", "Wang", , "Heng.Wang21@gilead.com", role = "aut"),
     person("Francois", "Collin", role = "aut"),
-    person("Adrian", "Waddell", , "adrian.waddell@gene.com", role = "aut"),
+    person("Adrian", "Waddell", , "aadrian.waddell@gmail.com", role = "aut"),
     person("Pawel", "Rucki", , "pawel.rucki@roche.com", role = "aut"),
     person("Chendi", "Liao", role = "aut"),
     person("Jennifer", "Li", role = "aut"),
