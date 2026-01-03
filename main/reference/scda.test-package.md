@@ -31,7 +31,7 @@ Authors:
 
 - Francois Collin
 
-- Adrian Waddell <adrian.waddell@gene.com>
+- Adrian Waddell <aadrian.waddell@gmail.com>
 
 - Pawel Rucki <pawel.rucki@roche.com>
 
