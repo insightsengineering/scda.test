@@ -1,5 +1,13 @@
 # scda.test 0.0.0.9104
 
+
+### New Features
+* Added jnj template scripts 
+
+
+
+# scda.test 0.0.0.9102
+
 ### New Features
 * Added table tests from `tern`.
 * Added tests for listings.

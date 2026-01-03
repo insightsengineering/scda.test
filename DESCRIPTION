@@ -25,9 +25,12 @@ Depends:
     R (>= 4.2),
     rlistings (>= 0.2.13),
     rtables (>= 0.6.15),
-    tern (>= 0.9.10)
+    tern (>= 0.9.10),
+    junco (>= 0.1.2)
 Imports:
     pharmaverseadam (>= 1.1.0.9001),
+    pharmaverseadamjnj (>= 0.0.2),
+    pharmaversesdtmjnj (>= 0.0.1),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
@@ -41,7 +44,9 @@ Suggests:
     testthat (>= 3.0),
     tibble,
     tidyr,
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    labelled,
+    envsetup
 VignetteBuilder:
     knitr
 Remotes:
@@ -49,7 +54,9 @@ Remotes:
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
+    johnsonandjohnson/pharmaversesdtmjnj@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
