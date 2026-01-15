@@ -43,11 +43,9 @@ library(junco)
 
 tblid <- "TSIEX11"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 
 trtvar <- "TRT01A"
@@ -223,15 +221,15 @@ ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
 
 split_map <- tribble(
-  ~XXX, ~AACTx,
-  "Prior to infusion", "Dose reduced",
-  "Prior to infusion", "Infusion delayed",
-  "Prior to infusion", "Infusion rate decreased",
-  "Prior to infusion", "Infusion skipped",
-  "Prior to infusion", "Study agent permanently discontinued",
-  "During infusion", "Infusion aborted",
-  "During infusion", "Infusion interrupted",
-  "During infusion", "Infusion rate increased"
+  ~XXX                , ~AACTx                                 ,
+  "Prior to infusion" , "Dose reduced"                         ,
+  "Prior to infusion" , "Infusion delayed"                     ,
+  "Prior to infusion" , "Infusion rate decreased"              ,
+  "Prior to infusion" , "Infusion skipped"                     ,
+  "Prior to infusion" , "Study agent permanently discontinued" ,
+  "During infusion"   , "Infusion aborted"                     ,
+  "During infusion"   , "Infusion interrupted"                 ,
+  "During infusion"   , "Infusion rate increased"
 )
 
 
