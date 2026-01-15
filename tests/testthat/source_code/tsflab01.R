@@ -33,9 +33,11 @@ library(junco)
 ################################################################################
 
 tblid <- "TSFLAB01"
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 fileid <- write_path(opath, tblid)
 
 popfl <- "SAFFL"
@@ -343,9 +345,11 @@ build_result_parcat3 <- function(
   .ref_path = ref_path
 ) {
   tblidx <- get_tblid(tblid, PARCAT3sel)
-  titles2 <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+  titles2 <- list(
+    title = "Dummy Title",
+    subtitles = NULL,
+    main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+  )
 
   .ctrl_grp <- utils::tail(.ref_path, n = 1)
 
@@ -484,11 +488,9 @@ build_result_parcat3 <- function(
         counts
       }
 
-    my_h_row_first_values <- function(
-      table_row,
-      col_names = NULL,
-      col_indices = NULL
-    ) {
+    my_h_row_first_values <- function(table_row,
+                                      col_names = NULL,
+                                      col_indices = NULL) {
       col_indices <- tern:::check_names_indices(
         table_row,
         col_names,
@@ -563,7 +565,7 @@ build_result_parcat3 <- function(
     ### add the proper abbreviation to the tblid, and add opath path
     fileid <- write_path(opath, tblidx)
 
-    tt_to_tlgrtf( 
+    tt_to_tlgrtf(
       result,
       file = fileid,
       orientation = "landscape",

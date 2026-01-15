@@ -36,9 +36,11 @@ tblid <- "TSFAE24d"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -199,7 +201,7 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table:
 ################################################################################
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

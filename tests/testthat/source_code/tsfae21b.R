@@ -44,9 +44,11 @@ library(junco)
 
 tblid <- "TSFAE21b"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 trtvar <- "TRT01A"
@@ -325,7 +327,7 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table
 ################################################################################
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

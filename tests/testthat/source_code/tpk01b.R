@@ -36,9 +36,11 @@ library(junco)
 
 tblid <- "TPK01b"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 popfl <- "PKFL"
 trtvar <- "TRT01A"
 
@@ -47,23 +49,22 @@ trt_grps <- c("Xanomeline High Dose", "Xanomeline Low Dose")
 for (i in seq_along(trt_grps)) {
   trt_grp <- trt_grps[i]
   path <- paste0(fileid, "part", i)
-  
+
   ##############################################################################
   # Process data:
   ##############################################################################
-  
+
   adsl <- adsl_jnj |>
     filter(.data[[popfl]] == "Y") |>
     select(USUBJID, all_of(trtvar), PKFL) |>
     filter(.data[[trtvar]] == trt_grp) |>
     mutate(colspan = "Observed")
-  
+
   adpc <- adpc_jnj |>
     filter(PARAMCD == "XAN") |>
     select(USUBJID, all_of(trtvar), AVISIT, ATPT, AVAL) |>
     filter(.data[[trtvar]] == trt_grp) |>
     inner_join(adsl) |>
-    
     # Concatenate and reorder time points
     mutate(AVISIT_ATPT = factor(paste(AVISIT, ATPT, sep = " - "), levels = c(
       "Day 1 - Pre-dose",
@@ -84,14 +85,14 @@ for (i in seq_along(trt_grps)) {
       "Day 2 - Pre-dose",
       "Day 2 - 36h Post-dose",
       "Day 2 - 24-48h Post-dose",
-      "Day 3 - 48h Post-dose", 
+      "Day 3 - 48h Post-dose",
       "Day 3 - Pre-dose"
     )))
-  
+
   ##############################################################################
   # Define layout and build table:
   ##############################################################################
-  
+
   lyt <- basic_table() |>
     split_cols_by(
       var = trtvar,
@@ -99,16 +100,13 @@ for (i in seq_along(trt_grps)) {
       colcount_format = "N=xx",
       split_fun = drop_split_levels
     ) |>
-    
     split_cols_by("colspan") |>
-    
     split_rows_by(
       var = "AVISIT_ATPT",
       split_label = "Time Point",
       label_pos = "topleft",
       child_labels = "hidden"
     ) |>
-    
     analyze_vars_in_cols(
       vars = "AVAL",
       .stats = c(
@@ -142,18 +140,18 @@ for (i in seq_along(trt_grps)) {
         geom_mean = jjcsformat_xx("xx.xx")
       )
     )
-  
+
   result <- build_table(lyt, df = adpc, alt_counts_df = adsl)
-  
+
   ##############################################################################
   # Add titles and footnotes:
   ##############################################################################
-  
+
   result <- set_titles(result, titles)
-  
+
   ##############################################################################
   # Convert to tbl file and output table:
   ##############################################################################
-  
+
   tt_to_tlgrtf(result, file = path, orientation = "landscape")
 }

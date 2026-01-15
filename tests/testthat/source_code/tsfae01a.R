@@ -36,9 +36,11 @@ tblid <- "TSFAE01a"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################

@@ -41,9 +41,11 @@ popfl <- "SAFFL"
 trtvar <- "TRT01A"
 aerelvar <- "AEREL"
 combined_colspan_trt <- TRUE
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 if (combined_colspan_trt == TRUE) {

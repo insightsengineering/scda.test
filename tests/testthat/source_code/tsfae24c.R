@@ -37,9 +37,11 @@ tblid <- "TSFAE24c"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -88,8 +90,8 @@ colspan_trt_map <- create_colspan_map(
 )
 
 combodf <- tribble(
-  ~valname  , ~label        , ~levelcombo , ~exargs ,
-  "RELATED" , "Related AEs" , c("AEs")    , list()
+  ~valname, ~label, ~levelcombo, ~exargs,
+  "RELATED", "Related AEs", c("AEs"), list()
 )
 
 extra_args1 <- list(

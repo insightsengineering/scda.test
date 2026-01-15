@@ -37,9 +37,11 @@ tblid <- "TSFAE24f"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -136,13 +138,13 @@ colspan_trt_map <- create_colspan_map(
 # This df generates facets with cumulative counts for .N_col. Note: These extra
 # records must then be removed from the numerator by a_freq_combos_j function.
 combodf <- tribble(
-  ~valname         , ~label             , ~levelcombo                                                                                                , ~exargs ,
-  "Total"          , "Total"            , c("Within 3 months", "4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months", "(Missing)") , list()  ,
-  "Thru 3 months"  , "Within 3 months"  , c("Within 3 months", "4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months")              , list()  ,
-  "Thru 6 months"  , "4 to 6 months"    , c("4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months")                                 , list()  ,
-  "Thru 9 months"  , "7 to 9 months"    , c("7 to 9 months", "10 to 12 months", "Beyond 13 months")                                                  , list()  ,
-  "Thru 12 months" , "10 to 12 months"  , c("10 to 12 months", "Beyond 13 months")                                                                   , list()  ,
-  "Over 13 months" , "Beyond 13 months" , c("Beyond 13 months")                                                                                      , list()
+  ~valname, ~label, ~levelcombo, ~exargs,
+  "Total", "Total", c("Within 3 months", "4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months", "(Missing)"), list(),
+  "Thru 3 months", "Within 3 months", c("Within 3 months", "4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months"), list(),
+  "Thru 6 months", "4 to 6 months", c("4 to 6 months", "7 to 9 months", "10 to 12 months", "Beyond 13 months"), list(),
+  "Thru 9 months", "7 to 9 months", c("7 to 9 months", "10 to 12 months", "Beyond 13 months"), list(),
+  "Thru 12 months", "10 to 12 months", c("10 to 12 months", "Beyond 13 months"), list(),
+  "Over 13 months", "Beyond 13 months", c("Beyond 13 months"), list()
 )
 
 
@@ -243,7 +245,7 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table:
 ################################################################################
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",
