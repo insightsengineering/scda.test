@@ -46,11 +46,9 @@ trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1", "COL2", "COL3")
 disp_cols <- paste0("COL", 0:9)
 concat_sep <- " / "
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 
 ###############################################################################
@@ -198,11 +196,6 @@ lsting <- var_relabel(
   # COL9 = "Grade"
 )
 
-# Now create a dummy dataframe with only one row per subject ID
-lsting <- lsting %>%
-  group_by(USUBJID) %>%
-  slice(n()) %>%
-  ungroup()
 
 ###############################################################################
 # Build listing
@@ -224,4 +217,4 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-tt_to_tlgrtf(result, file = fileid, orientation = "landscape")
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")
