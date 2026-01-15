@@ -40,11 +40,9 @@ popfl <- "RANDFL"
 key_cols <- c("COL1")
 disp_cols <- paste0("COL", 1:9)
 concat_sep <- " / "
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 
 ###############################################################################

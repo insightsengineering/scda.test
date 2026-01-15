@@ -42,11 +42,9 @@ popfl <- "SAFFL"
 trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:6)
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 
 ###############################################################################
