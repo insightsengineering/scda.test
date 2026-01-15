@@ -46,11 +46,9 @@ library(junco)
 
 tblid <- "TSFAE06b"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 
 trtvar <- "TRT01A"
@@ -163,7 +161,6 @@ lyt <- lyt %>%
 
 result <- build_table(lyt, ae, alt_counts_df = adsl)
 
-result <- head(result, 20)
 #########################################################################################
 # Post-Processing step to sort by descending count on chosen active treatment columns.
 # Default is the last treatment (inc. Combined if applicable) under the active treatment

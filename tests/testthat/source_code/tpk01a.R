@@ -37,11 +37,9 @@ library(junco)
 
 tblid <- "TPK01a"
 fileid <- write_path(opath, tblid)
-titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 popfl <- "PKFL"
 trtvar <- "TRT01A"
 
@@ -57,15 +55,18 @@ add_interquartile_range <- TRUE
 adsl <- adsl_jnj |>
   filter(.data[[popfl]] == "Y") |>
   select(USUBJID, all_of(trtvar), PKFL) |>
+  
   # Drop the control group
   filter(.data[[trtvar]] != "Placebo") |>
   mutate({{ trtvar }} := fct_drop(.data[[trtvar]])) |>
+  
   mutate(colspan_trt = "Active Study Agent")
 
 adpc <- adpc_jnj |>
   filter(PARAMCD == "XAN") |>
   select(USUBJID, all_of(trtvar), AVISIT, ATPT, AVAL) |>
   inner_join(adsl) |>
+  
   # Concatenate and reorder time points
   mutate(AVISIT_ATPT = factor(paste(AVISIT, ATPT, sep = " - "), levels = c(
     "Day 1 - Pre-dose",
@@ -86,7 +87,7 @@ adpc <- adpc_jnj |>
     "Day 2 - Pre-dose",
     "Day 2 - 36h Post-dose",
     "Day 2 - 24-48h Post-dose",
-    "Day 3 - 48h Post-dose",
+    "Day 3 - 48h Post-dose", 
     "Day 3 - Pre-dose"
   )))
 
@@ -99,18 +100,21 @@ lyt <- basic_table() |>
     var = "colspan_trt",
     split_fun = drop_split_levels
   ) |>
+  
   split_cols_by(
     var = trtvar,
     show_colcounts = TRUE,
     colcount_format = "N=xx",
     split_fun = add_overall_level("Combined", first = FALSE)
   ) |>
+  
   split_rows_by(
     var = "AVISIT_ATPT",
     split_label = "Time Point",
     label_pos = "topleft",
     section_div = " "
   ) |>
+  
   analyze(
     vars = "AVAL",
     afun = a_summary,
@@ -119,7 +123,7 @@ lyt <- basic_table() |>
         "n",
         "mean_sd",
         "median",
-        if (add_geometric_mean) "geom_mean" else NULL,
+        if (add_geometric_mean) "geom_mean" else NULL, 
         "range",
         if (add_cv) "cv" else NULL,
         if (add_interquartile_range) "quantiles" else NULL

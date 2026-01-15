@@ -58,11 +58,9 @@ library(junco)
 
 tblid <- "TSFLAB02"
 fileid <- write_path(opath, tblid)
-titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -306,8 +304,8 @@ adlb00 <- adlb_complete %>%
 
 
 combodf <- tribble(
-  ~valname, ~label, ~levelcombo, ~exargs,
-  "xan-comb", "Xanomeline Combined", c("Xanomeline High Dose", "Xanomeline Low Dose"), list()
+  ~valname   , ~label                , ~levelcombo                                      , ~exargs ,
+  "xan-comb" , "Xanomeline Combined" , c("Xanomeline High Dose", "Xanomeline Low Dose") , list()
 )
 
 ################################################################################
@@ -420,11 +418,9 @@ build_result_parcat3 <- function(
   ### filter of the data, original factor levels can remain, no need to drop these levels
 
   tblidx <- get_tblid(tblid, PARCAT3sel)
-  titles2 <- list(
-    title = "Dummy Title",
-    subtitles = NULL,
-    main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-  )
+  titles2 <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
   lyt_filter <- function(PARCAT3sel = NULL, map) {
     if (!is.null(PARCAT3sel)) {

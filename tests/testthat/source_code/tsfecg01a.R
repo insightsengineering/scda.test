@@ -34,11 +34,9 @@ library(junco)
 
 tblid <- "TSFECG01a"
 fileid <- write_path(opath, tblid)
-titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -437,7 +435,7 @@ result <- set_titles(result, titles)
 # Convert to tbl file and output table
 ################################################################################
 
-tt_to_tlgrtf(
+tt_to_tlgrtf( 
   result,
   file = fileid,
   nosplitin = list(cols = c(trtvar, "rrisk_header")),

@@ -51,11 +51,9 @@ library(junco)
 
 tblid <- "TSFLAB02a"
 fileid <- write_path(opath, tblid)
-titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -303,8 +301,8 @@ adlb00 <- adlb_complete %>%
 
 
 combodf <- tribble(
-  ~valname, ~label, ~levelcombo, ~exargs,
-  "xan-comb", "Xanomeline Combined", c("Xanomeline High Dose", "Xanomeline Low Dose"), list()
+  ~valname   , ~label                , ~levelcombo                                      , ~exargs ,
+  "xan-comb" , "Xanomeline Combined" , c("Xanomeline High Dose", "Xanomeline Low Dose") , list()
 )
 
 ################################################################################
@@ -405,11 +403,9 @@ build_result_parcat3 <- function(
   .indent_adj = indent_adj
 ) {
   tblidx <- get_tblid(tblid, PARCAT3sel)
-  titles2 <- list(
-    title = "Dummy Title",
-    subtitles = NULL,
-    main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-  )
+  titles2 <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
   .extra_args_rr <- list(
     method = "wald",

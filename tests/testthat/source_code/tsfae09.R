@@ -45,11 +45,9 @@ library(junco)
 
 tblid <- "TSFAE09"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
@@ -155,7 +153,7 @@ lyt <- lyt %>%
   analyze(
     "AEBODSYS",
     afun = a_freq_j,
-    extra_args = append(extra_args_rr, NULL),
+    extra_args = append(extra_args_rr, list(drop_levels = TRUE)),
     indent_mod = 0L
   ) %>%
   append_topleft("System Organ Class, n (%)")

@@ -36,11 +36,9 @@ library(junco)
 
 tblid <- "TSFLAB03a"
 fileid <- write_path(opath, tblid)
-titles <- list(
-  title = "Dummy Title",
-  subtitles = NULL,
-  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
-)
+titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -84,7 +82,7 @@ selparcat56 <- availparcat56[c(1, 2, 4)]
 ## get all
 selparcat56 <- availparcat56
 
-lbtoxgrade_file <- file.path(datapath, "lbtoxgrade.xlsx")
+lbtoxgrade_file <- read_path(dpspath, "lbtoxgrade.xlsx")
 lbtoxgrade_sheets <- readxl::excel_sheets(path = lbtoxgrade_file)
 
 ### CTC5 or DAIDS21c : default CTC5
