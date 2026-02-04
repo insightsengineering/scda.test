@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="char-support" timestamp="2026-02-04T15:43:28Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="3.352">
+    <testcase time="1.097" classname="char_support" name="CRITDIR_is_factor_and_one_PARAMCD_is_not_available_on_all_AVISITS"/>
+    <testcase time="0.356999999999999" classname="char_support" name="CRITDIR_is_factor_and_one_PARAMCD_is_not_available_on_all_AVISITS"/>
+    <testcase time="0.608000000000001" classname="char_support" name="CRITDIR_is_not_factor_and_all_PARAMCD_available_on_all_AVISITS"/>
+    <testcase time="0.387" classname="char_support" name="CRITDIR_is_not_factor_and_all_PARAMCD_available_on_all_AVISITS"/>
+    <testcase time="0.616999999999999" classname="char_support" name="CRITDIR_is_not_factor_and_one_PARAMCD_is_not_available_on_all_AVISITS"/>
+    <testcase time="0.286000000000001" classname="char_support" name="CRITDIR_is_not_factor_and_one_PARAMCD_is_not_available_on_all_AVISITS"/>
+  </testsuite>
+  <testsuite name="listing_adal02" timestamp="2026-02-04T15:43:31Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="1" errors="0" time="0.166">
+    <testcase time="0.165999999999999" classname="listing_adal02" name="ADAL02_listing_is_produced_correctly">
+      <failure type="failure" message="Snapshot of code has changed: ('test-listing_adal02.R:108:3')">Snapshot of code has changed:
+old vs new
+  Code
+    result
+  Output
+-   Listing of Anti-R1800000 Antibody Data for Treatment Emergent ADA Positive Patients, PK Population
+-   Protocol: A: Drug X Antibody
+-   
+-   Treatment Group: A: Drug X
+-   
+-   —————————————————————————————————————————————————————
+-                            Day 2     Patient Treatment 
+-        Subject ID         (Day 1)   Emergent ADA Status
+-   —————————————————————————————————————————————————————
+-   AB12345-BRA-1-id-105      ---          Enhanced      
+-   AB12345-BRA-1-id-134      ---          Enhanced      
+-    AB12345-BRA-1-id-42      ---          Enhanced      
+-    AB12345-BRA-1-id-93      ---          Enhanced      
+-   AB12345-BRA-11-id-217     ---          Enhanced      
+-   AB12345-BRA-11-id-345     ---          Enhanced      
+-   AB12345-BRA-11-id-397     ---          Enhanced      
+-   AB12345-BRA-11-id-50      ---          Enhanced      
+-   AB12345-BRA-13-id-177     ---          Enhanced      
+-   AB12345-BRA-14-id-23      ---          Enhanced      
+-   AB12345-BRA-15-id-36      ---          Enhanced      
+-   AB12345-BRA-2-id-296      ---          Enhanced      
+-   AB12345-BRA-6-id-369      ---          Enhanced      
+-    AB12345-CAN-1-id-18      ---          Enhanced      
+-   AB12345-CAN-11-id-139     ---          Enhanced      
+-   AB12345-CAN-14-id-104     ---          Enhanced      
+-   AB12345-CHN-1-id-119      ---          Enhanced      
+-   AB12345-CHN-1-id-123      ---          Enhanced      
+-   AB12345-CHN-1-id-133      ---          Enhanced      
+-   AB12345-CHN-1-id-199      ---          Enhanced      
+-   AB12345-CHN-1-id-216      ---          Enhanced      
+-   AB12345-CHN-1-id-235      ---          Enhanced      
+-    AB12345-CHN-1-id-25      ---          Enhanced      
+-    AB12345-CHN-1-id-26      ---          Enhanced      
+-   AB12345-CHN-1-id-275      ---          Enhanced      
+-   AB12345-CHN-1-id-277      ---          Enhanced      
+-   AB12345-CHN-1-id-287      ---          Enhanced      
+-   AB12345-CHN-1-id-315      ---          Enhanced      
+-   AB12345-CHN-1-id-316      ---          Enhanced      
+-   AB12345-CHN-1-id-329      ---          Enhanced      
+-   AB12345-CHN-1-id-360      ---          Enhanced      
+-   AB12345-CHN-1-id-371      ---          Enhanced      
+-    AB12345-CHN-1-id-47      ---          Enhanced      
+-    AB12345-CHN-1-id-53      ---          Enhanced      
+-    AB12345-CHN-1-id-62      ---          Enhanced      
+-    AB12345-CHN-1-id-69      ---          Enhanced      
+-    AB12345-CHN-1-id-71      ---          Enhanced      
+-   AB12345-CHN-11-id-116     ---          Enhanced      
+-   AB12345-CHN-11-id-124     ---          Enhanced      
+-   AB12345-CHN-11-id-132     ---          Enhanced      
+-   AB12345-CHN-11-id-153     ---          Enhanced      
+-   AB12345-CHN-11-id-167     ---          Enhanced      
+-   AB12345-CHN-11-id-256     ---          Enhanced      
+-   AB12345-CHN-11-id-354     ---          Enhanced      
+-   AB12345-CHN-11-id-356     ---          Enhanced      
+-   AB12345-CHN-11-id-377     ---          Enhanced      
+-   AB12345-CHN-11-id-379     ---          Enhanced      
+-   AB12345-CHN-11-id-392     ---          Enhanced      
+-   AB12345-CHN-11-id-88      ---          Enhanced      
+-   AB12345-CHN-12-id-258     ---          Enhanced      
+-   —————————————————————————————————————————————————————
+-   
+-   Minimum reportable titer = 1.10 (example only)
+-   --- = No sample evaluated
+-   ADA = Anti-Drug Antibodies (is also referred to as ATA, or Anti-Therapeutic Antibodies)
+-   Number of patients positive for Treatment Emergent ADA = the number of post-baseline evaluable patients determined to
+-   have treatment-induced ADA or treatment-enhanced ADA during the study period. Treatment-induced ADA = a patient with
+-   negative or missing baseline ADA result(s) and at least one positive post-baseline ADA result.
+-   Treatment-enhanced ADA = a patient with positive ADA result at baseline who has one or more post-baseline titer
+-   results that are at least 0.60 t.u. greater than the baseline titer result.
+-   Transient ADA = ADA positive result detected (a) at only one post-baseline sampling timepoint (excluding last
+-   timepoint) OR (b) at 2 or more timepoints during treatment where the first and last ADA positive samples  are
+-   separated by a period of &lt; 16 weeks, irrespective of any negative samples in between.
+-   Persistent ADA =  ADA positive result detected (a) at the last post-baseline sampling timepoint, OR (b) at 2 or more
+-   time points during treatment where the first and last ADA positive samples are separated by a period ≥ 16 weeks,
+-   irrespective of any negative samples in between.
+-   Asterisk denotes sample that tested positive for Neutralizing Antibodies.
++   [1] "No observation in the listing object."
+</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="listing_ael01" timestamp="2026-02-04T15:43:31Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.124">
+    <testcase time="0.124000000000001" classname="listing_ael01" name="AEL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_ael01_nollt" timestamp="2026-02-04T15:43:31Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.074">
+    <testcase time="0.0739999999999998" classname="listing_ael01_nollt" name="AEL01_NOLLT_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_ael02" timestamp="2026-02-04T15:43:32Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.274">
+    <testcase time="0.274000000000001" classname="listing_ael02" name="AEL02_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_ael02_ed" timestamp="2026-02-04T15:43:32Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.327">
+    <testcase time="0.327" classname="listing_ael02_ed" name="AEL02_ED_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_ael03" timestamp="2026-02-04T15:43:32Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.268">
+    <testcase time="0.267999999999999" classname="listing_ael03" name="AEL03_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_ael04" timestamp="2026-02-04T15:43:32Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.194">
+    <testcase time="0.194000000000001" classname="listing_ael04" name="AEL04_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_cml01" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.323">
+    <testcase time="0.323" classname="listing_cml01" name="CML01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_cml02a_gl" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.113">
+    <testcase time="0.113" classname="listing_cml02a_gl" name="CML02A_GL_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_cml02b_gl" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.16">
+    <testcase time="0.16" classname="listing_cml02b_gl" name="CML02B_GL_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_dsl01" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.175">
+    <testcase time="0.174999999999999" classname="listing_dsl01" name="DSL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_dsl02" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.075">
+    <testcase time="0.0750000000000011" classname="listing_dsl02" name="DSL02_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_dsur4" timestamp="2026-02-04T15:43:33Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.085">
+    <testcase time="0.0849999999999991" classname="listing_dsur4" name="DSUR4_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_egl01" timestamp="2026-02-04T15:43:34Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.412">
+    <testcase time="0.412000000000001" classname="listing_egl01" name="EGL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_exl01" timestamp="2026-02-04T15:43:34Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.207">
+    <testcase time="0.206999999999999" classname="listing_exl01" name="EXL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_lbl01" timestamp="2026-02-04T15:43:34Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.531">
+    <testcase time="0.531000000000001" classname="listing_lbl01" name="LBL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_lbl01_rls" timestamp="2026-02-04T15:43:35Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.526">
+    <testcase time="0.526" classname="listing_lbl01_rls" name="LBL01_RLS_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_lbl02a" timestamp="2026-02-04T15:43:35Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.247">
+    <testcase time="0.247" classname="listing_lbl02a" name="LBL02A_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_lbl02a_rls" timestamp="2026-02-04T15:43:35Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.788">
+    <testcase time="0.788" classname="listing_lbl02a_rls" name="LBL02A_RLS_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_lbl02b" timestamp="2026-02-04T15:43:36Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.248">
+    <testcase time="0.248000000000001" classname="listing_lbl02b" name="LBL02B_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_mhl01" timestamp="2026-02-04T15:43:36Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.257">
+    <testcase time="0.256999999999998" classname="listing_mhl01" name="MHL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_oncl01" timestamp="2026-02-04T15:43:37Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.207">
+    <testcase time="0.207000000000001" classname="listing_oncl01" name="ONCL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_pkcl01" timestamp="2026-02-04T15:43:37Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="2" errors="0" time="0.565">
+    <testcase time="0.188000000000002" classname="listing_pkcl01" name="PKCL01_listing_is_produced_correctly">
+      <failure type="failure" message="Snapshot of code has changed: ('test-listing_pkcl01.R:28:3')">Snapshot of code has changed:
+old[5:62] vs new[5:62]
+    Protocol: xxnnnnn
+    Analyte: Pharmacokinetic concentration of Xanomeline
+    
+-   ——————————————————————————————————————————————————————————————————————————————————————————————————————————
++   ————————————————————————————————————————————————————————————————————————————————————————————————————————————
+-                                                                         Actual Time                         
++                                                                           Actual Time                         
+-                                                   Nominal Sampling       From First         Concentration   
++                                                    Nominal Sampling        From First         Concentration   
+-     Treatment Group      Subject ID     Visit        Time (hr)           Dose (hr)             (ug/ml)      
++     Treatment Group      Subject ID     Visit         Time (hr)            Dose (hr)             (ug/ml)      
+-   ——————————————————————————————————————————————————————————————————————————————————————————————————————————
++   ————————————————————————————————————————————————————————————————————————————————————————————————————————————
+-   Xanomeline High Dose   01-701-1028   BASELINE          0                  -0.5                  0         
++   Xanomeline High Dose   01-701-1028   BASELINE           0                   -0.5                  0         
+-                                                         0.08         0.0833333333333333   0.101566224882241 
++                                                   0.0833333333333333   0.0833333333333333   0.101566224882241 
+-                                                         0.5                 0.5           0.546901773708848 
++                                                          0.5                  0.5           0.546901773708848 
+-                                                          1                   1            0.925465387145289 
++                                                           1                    1            0.925465387145289 
+-                                                         1.5                 1.5            1.18750587834024 
++                                                          1.5                  1.5            1.18750587834024 
+-                                                          2                   2             1.36888944661923 
++                                                           2                    2             1.36888944661923 
+-                                                          4                   4             1.68314757616444 
++                                                           4                    4             1.68314757616444 
+-                                                          3                   6             24.9423721084785 
++                                                           3                    6             24.9423721084785 
+-                                                          6                   6             1.75529231526602 
++                                                           6                    6             1.75529231526602 
+-                                                          8                   8             1.77185469787668 
++                                                           8                    8             1.77185469787668 
+-                                                          9                   12            20.527751057357  
++                                                           9                    12            20.527751057357  
+-                                                          12                  12           0.495035846465258 
++                                                           12                   12           0.495035846465258 
+-                                                          16                  16            0.13792316325323 
++                                                           16                   16            0.13792316325323 
+-                                                          18                  24            11.698508955114  
++                                                           18                   24            11.698508955114  
+-                                                          24                  24           0.0107062734363561
++                                                           24                   24           0.0107062734363561
+-                                                          24                  24           0.0107062734363561
++                                                           24                   24           0.0107062734363561
+-                                                          36                  36                 0.005       
++                                                           36                   36                 0.005       
+-                                                          37                  48                 0.005       
++                                                           36                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                          01-701-1034   BASELINE          0                  -0.5                  0         
++                          01-701-1034   BASELINE           0                   -0.5                  0         
+-                                                         0.08         0.0833333333333333   0.105029863593155 
++                                                   0.0833333333333333   0.0833333333333333   0.105029863593155 
+-                                                         0.5                 0.5           0.568527191476215 
++                                                          0.5                  0.5           0.568527191476215 
+-                                                          1                   1            0.967379251905314 
++                                                           1                    1            0.967379251905314 
+-                                                         1.5                 1.5            1.24719518418372 
++                                                          1.5                  1.5            1.24719518418372 
+-                                                          2                   2             1.44350094194412 
++                                                           2                    2             1.44350094194412 
+-                                                          4                   4             1.79317182280164 
++                                                           4                    4             1.79317182280164 
+-                                                          3                   6             26.2155023255361 
++                                                           3                    6             26.2155023255361 
+-                                                          6                   6             1.87787542178579 
++                                                           6                    6             1.87787542178579 
+-                                                          8                   8             1.89839385804583 
++                                                           8                    8             1.89839385804583 
+-                                                          9                   12            21.9619994856393 
++                                                           9                    12            21.9619994856393 
+-                                                          12                  12           0.556083982494217 
++                                                           12                   12           0.556083982494217 
+-                                                          16                  16           0.162329138205261 
++                                                           16                   16           0.162329138205261 
+-                                                          18                  24            13.4549938058456 
++                                                           18                   24            13.4549938058456 
+-                                                          24                  24           0.0138327547613956
++                                                           24                   24           0.0138327547613956
+-                                                          24                  24           0.0138327547613956
++                                                           24                   24           0.0138327547613956
+-                                                          36                  36                 0.005       
++                                                           36                   36                 0.005       
+-                                                          37                  48                 0.005       
++                                                           36                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                          01-701-1133   BASELINE          0                  -0.5                  0         
++                          01-701-1133   BASELINE           0                   -0.5                  0         
+-                                                         0.08         0.0833333333333333   0.0971863457467728
++                                                   0.0833333333333333   0.0833333333333333   0.0971863457467728
+-                                                         0.5                 0.5            0.53006481166812 
++                                                          0.5                  0.5            0.53006481166812 
+-                                                          1                   1            0.909178227769616 
++                                                           1                    1            0.909178227769616 
+-                                                         1.5                 1.5            1.18032805530832 
++                                                          1.5                  1.5            1.18032805530832 
+-                                                          2                   2             1.37426007103679 
++                                                           2                    2             1.37426007103679 
+-                                                          4                   4             1.73386831910854 
++                                                           4                    4             1.73386831910854 
+-                                                          3                   6             28.2010767396803 
++                                                           3                    6             28.2010767396803 
+-                                                          6                   6             1.82796847875567 
++                                                           6                    6             1.82796847875567 
+-                                                          8                   8             1.85259205202768 
++                                                           8                    8             1.85259205202768 
+</failure>
+    </testcase>
+    <testcase time="0.376999999999999" classname="listing_pkcl01" name="PKCL01_listing_key_columns_values_are_repeated_when_entries_span_multiple_pages">
+      <failure type="failure" message="Snapshot of code has changed: ('test-listing_pkcl01.R:56:3')">Snapshot of code has changed:
+old vs new
+  Code
+    result %&gt;% cat()
+  Output
+-                                                                         Actual Time                         
++                                                                           Actual Time                         
+-                                                   Nominal Sampling       From First         Concentration   
++                                                    Nominal Sampling        From First         Concentration   
+-     Treatment Group      Subject ID     Visit         Time (h)            Dose (h)             (ug/ml)      
++     Treatment Group      Subject ID     Visit        Time (HOURS)         Dose (HOURS)           (ug/ml)      
+-   ——————————————————————————————————————————————————————————————————————————————————————————————————————————
++   ————————————————————————————————————————————————————————————————————————————————————————————————————————————
+-   Xanomeline High Dose   01-701-1028   BASELINE          0                  -0.5                  0         
++   Xanomeline High Dose   01-701-1028   BASELINE           0                   -0.5                  0         
+-                                                          0                   0                    54        
++                                                           0                    0                    54        
+-                                                         0.08         0.0833333333333333   0.101566224882241 
++                                                   0.0833333333333333   0.0833333333333333   0.101566224882241 
+-                                                         0.5                 0.5           0.546901773708848 
++                                                          0.5                  0.5           0.546901773708848 
+-                                                          1                   1            0.925465387145289 
++                                                           1                    1            0.925465387145289 
+-                                                         1.5                 1.5            1.18750587834024 
++                                                          1.5                  1.5            1.18750587834024 
+-                                                          2                   2             1.36888944661923 
++                                                           2                    2             1.36888944661923 
+-                                                          3                   6             24.9423721084785 
++                                                           3                    6             24.9423721084785 
+-                                                          4                   4             1.68314757616444 
++                                                           4                    4             1.68314757616444 
+-                                                          6                   6             1.75529231526602 
++                                                           6                    6             1.75529231526602 
+-                                                          8                   8             1.77185469787668 
++                                                           8                    8             1.77185469787668 
+-                                                          9                   12            20.527751057357  
++                                                           9                    12            20.527751057357  
+-                                                          12                  12           0.495035846465258 
++                                                           12                   12           0.495035846465258 
+-                                                          16                  16            0.13792316325323 
++                                                           16                   16            0.13792316325323 
+-                                                          18                  24            11.698508955114  
++                                                           18                   24            11.698508955114  
+-                                                          24                  24           0.0107062734363561
++                                                           24                   24           0.0107062734363561
+-                                                          24                  24           0.0107062734363561
++                                                           24                   24           0.0107062734363561
+-                                                          24                  24                   54        
++                                                           24                   24                   54        
+-                                                          36                  36                 0.005       
++                                                           36                   36                 0.005       
+-                                                          37                  48                 0.005       
++                                                           36                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                   54        
++                                                           48                   48                   54        
+-                          01-701-1034   BASELINE          0                  -0.5                  0         
++                          01-701-1034   BASELINE           0                   -0.5                  0         
+-                                                          0                   0                    54        
++                                                           0                    0                    54        
+-                                                         0.08         0.0833333333333333   0.105029863593155 
++                                                   0.0833333333333333   0.0833333333333333   0.105029863593155 
+-   \s\n                                                                      Actual Time                         
++   \s\n                                                                        Actual Time                         
+-                                                   Nominal Sampling       From First         Concentration   
++                                                    Nominal Sampling        From First         Concentration   
+-     Treatment Group      Subject ID     Visit         Time (h)            Dose (h)             (ug/ml)      
++     Treatment Group      Subject ID     Visit        Time (HOURS)         Dose (HOURS)           (ug/ml)      
+-   ——————————————————————————————————————————————————————————————————————————————————————————————————————————
++   ————————————————————————————————————————————————————————————————————————————————————————————————————————————
+-   Xanomeline High Dose   01-701-1034   BASELINE         0.5                 0.5           0.568527191476215 
++   Xanomeline High Dose   01-701-1034   BASELINE          0.5                  0.5           0.568527191476215 
+-                                                          1                   1            0.967379251905314 
++                                                           1                    1            0.967379251905314 
+-                                                         1.5                 1.5            1.24719518418372 
++                                                          1.5                  1.5            1.24719518418372 
+-                                                          2                   2             1.44350094194412 
++                                                           2                    2             1.44350094194412 
+-                                                          3                   6             26.2155023255361 
++                                                           3                    6             26.2155023255361 
+-                                                          4                   4             1.79317182280164 
++                                                           4                    4             1.79317182280164 
+-                                                          6                   6             1.87787542178579 
++                                                           6                    6             1.87787542178579 
+-                                                          8                   8             1.89839385804583 
++                                                           8                    8             1.89839385804583 
+-                                                          9                   12            21.9619994856393 
++                                                           9                    12            21.9619994856393 
+-                                                          12                  12           0.556083982494217 
++                                                           12                   12           0.556083982494217 
+-                                                          16                  16           0.162329138205261 
++                                                           16                   16           0.162329138205261 
+-                                                          18                  24            13.4549938058456 
++                                                           18                   24            13.4549938058456 
+-                                                          24                  24           0.0138327547613956
++                                                           24                   24           0.0138327547613956
+-                                                          24                  24           0.0138327547613956
++                                                           24                   24           0.0138327547613956
+-                                                          24                  24                   54        
++                                                           24                   24                   54        
+-                                                          36                  36                 0.005       
++                                                           36                   36                 0.005       
+-                                                          37                  48                 0.005       
++                                                           36                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                 0.005       
++                                                           48                   48                 0.005       
+-                                                          48                  48                   54        
++                                                           48                   48                   54        
+-                          01-701-1133   BASELINE          0                  -0.5                  0         
++                          01-701-1133   BASELINE           0                   -0.5                  0         
+-                                                          0                   0                    54        
++                                                           0                    0                    54        
+-                                                         0.08         0.0833333333333333   0.0971863457467728
++                                                   0.0833333333333333   0.0833333333333333   0.0971863457467728
+-                                                         0.5                 0.5            0.53006481166812 
++                                                          0.5                  0.5            0.53006481166812 
+</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="listing_pkcl02" timestamp="2026-02-04T15:43:38Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.21">
+    <testcase time="0.210000000000001" classname="listing_pkcl02" name="PKCL02_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_pkpl01" timestamp="2026-02-04T15:43:38Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.207">
+    <testcase time="0.206999999999997" classname="listing_pkpl01" name="PKPL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_pkpl02" timestamp="2026-02-04T15:43:38Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.132">
+    <testcase time="0.132000000000001" classname="listing_pkpl02" name="PKPL02_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_pkpl04" timestamp="2026-02-04T15:43:38Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.229">
+    <testcase time="0.228999999999999" classname="listing_pkpl04" name="PKPL04_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="listing_vsl01" timestamp="2026-02-04T15:43:38Z" hostname="cea6b35c13be" tests="1" skipped="0" failures="0" errors="0" time="0.417">
+    <testcase time="0.417000000000002" classname="listing_vsl01" name="VSL01_listing_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="pagination_listing" timestamp="2026-02-04T15:43:39Z" hostname="cea6b35c13be" tests="13" skipped="0" failures="0" errors="0" time="3.832">
+    <testcase time="0.0339999999999989" classname="pagination_listing" name="Direct_pagination_works_fine"/>
+    <testcase time="0.640000000000001" classname="pagination_listing" name="Direct_pagination_works_fine"/>
+    <testcase time="0.00300000000000011" classname="pagination_listing" name="Direct_pagination_works_fine"/>
+    <testcase time="0.558" classname="pagination_listing" name="Direct_pagination_works_fine"/>
+    <testcase time="0.959" classname="pagination_listing" name="Direct_pagination_works_fine"/>
+    <testcase time="0.800999999999998" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00600000000000023" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00499999999999901" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00400000000000134" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.806999999999999" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00600000000000023" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00500000000000256" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+    <testcase time="0.00399999999999778" classname="pagination_listing" name="pagination_counts_the_right_number_of_lines_when_wrapping_on_keycols_is_present"/>
+  </testsuite>
+  <testsuite name="pagination_table" timestamp="2026-02-04T15:43:44Z" hostname="cea6b35c13be" tests="30" skipped="0" failures="0" errors="0" time="14.364">
+    <testcase time="1.854" classname="pagination_table" name="Direct_pagination_with_standard_values"/>
+    <testcase time="0.00500000000000256" classname="pagination_table" name="Direct_pagination_with_standard_values"/>
+    <testcase time="0.00399999999999778" classname="pagination_table" name="Direct_pagination_with_standard_values"/>
+    <testcase time="1.341" classname="pagination_table" name="Pagination_with_specific_column_widths_and_minimum_lines_per_page"/>
+    <testcase time="0.00400000000000134" classname="pagination_table" name="Pagination_with_specific_column_widths_and_minimum_lines_per_page"/>
+    <testcase time="0.0969999999999978" classname="pagination_table" name="Pagination_with_specific_column_widths_and_minimum_lines_per_page"/>
+    <testcase time="1.084" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.564" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.852" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.694000000000003" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="1.648" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.305" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.00399999999999778" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.0100000000000016" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.122" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.0809999999999995" classname="pagination_table" name="Pagination_works_also_if_table_is_decorated"/>
+    <testcase time="0.648999999999997" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.0690000000000026" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.652999999999999" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.0609999999999999" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.603999999999999" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.356999999999999" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.670000000000002" classname="pagination_table" name="Pagination_works_for_page_width_and_height"/>
+    <testcase time="0.115000000000002" classname="pagination_table" name="Pagination_works_for_page_width_and_height"/>
+    <testcase time="0.740000000000002" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.146000000000001" classname="pagination_table" name="Pagination_works_for_page_types"/>
+    <testcase time="0.907999999999994" classname="pagination_table" name="AET04_variant_2_page_by_pagination_tests"/>
+    <testcase time="0.599000000000004" classname="pagination_table" name="AET04_variant_2_page_by_pagination_tests"/>
+    <testcase time="0.00200000000000244" classname="pagination_table" name="AET04_variant_2_page_by_pagination_tests"/>
+    <testcase time="0.122" classname="pagination_table" name="AET04_variant_2_page_by_pagination_tests"/>
+  </testsuite>
+  <testsuite name="table_adat03" timestamp="2026-02-04T15:43:57Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.571">
+    <testcase time="0.451999999999998" classname="table_adat03" name="ADAT03_is_produced_correctly"/>
+    <testcase time="0.119" classname="table_adat03" name="ADAT03_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet01" timestamp="2026-02-04T15:43:58Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.821">
+    <testcase time="0.397999999999996" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected"/>
+    <testcase time="0.106999999999999" classname="table_aet01" name="Safety_Summary_Variant_1_works_as_expected"/>
+    <testcase time="0.355000000000004" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected"/>
+    <testcase time="0.0970000000000013" classname="table_aet01" name="Safety_Summary_Variant_2_with_Medical_Concepts_Section_works_as_expected"/>
+    <testcase time="0.284999999999997" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected"/>
+    <testcase time="0.0739999999999981" classname="table_aet01" name="Safety_Summary_Variant_3_with_Modified_Rows_works_as_expected"/>
+    <testcase time="0.402000000000001" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected"/>
+    <testcase time="0.103000000000002" classname="table_aet01" name="Safety_Summary_Variant_4_with_Rows_Counting_Events_and_Additional_Sections_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_aet01_aesi" timestamp="2026-02-04T15:43:59Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="2.73">
+    <testcase time="0.303000000000004" classname="table_aet01_aesi" name="AET01_AESI_Variant_1_works_as_expected"/>
+    <testcase time="0.0789999999999935" classname="table_aet01_aesi" name="AET01_AESI_Variant_1_works_as_expected"/>
+    <testcase time="0.5" classname="table_aet01_aesi" name="AET01_AESI_Variant_2_works_as_expected"/>
+    <testcase time="0.133000000000003" classname="table_aet01_aesi" name="AET01_AESI_Variant_2_works_as_expected"/>
+    <testcase time="0.713999999999999" classname="table_aet01_aesi" name="AET01_AESI_Variant_3_works_as_expected"/>
+    <testcase time="0.186" classname="table_aet01_aesi" name="AET01_AESI_Variant_3_works_as_expected"/>
+    <testcase time="0.624000000000002" classname="table_aet01_aesi" name="AET01_AESI_Variant_4_works_as_expected"/>
+    <testcase time="0.191000000000003" classname="table_aet01_aesi" name="AET01_AESI_Variant_4_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_aet02" timestamp="2026-02-04T15:44:02Z" hostname="cea6b35c13be" tests="26" skipped="0" failures="0" errors="0" time="8.479">
+    <testcase time="0.625" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
+    <testcase time="0.161999999999999" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
+    <testcase time="0.411999999999999" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
+    <testcase time="0.097999999999999" classname="table_aet02" name="AET02_variant_1_is_produced_correctly"/>
+    <testcase time="0.656999999999996" classname="table_aet02" name="AET02_variant_2_is_produced_correctly"/>
+    <testcase time="0.161000000000001" classname="table_aet02" name="AET02_variant_2_is_produced_correctly"/>
+    <testcase time="0.992000000000004" classname="table_aet02" name="AET02_variant_3_is_produced_correctly"/>
+    <testcase time="0.308" classname="table_aet02" name="AET02_variant_3_is_produced_correctly"/>
+    <testcase time="0.126999999999995" classname="table_aet02" name="AET02_variant_4_is_produced_correctly"/>
+    <testcase time="0.0930000000000035" classname="table_aet02" name="AET02_variant_4_is_produced_correctly"/>
+    <testcase time="0.436" classname="table_aet02" name="AET02_variant_5_is_produced_correctly"/>
+    <testcase time="0.149000000000001" classname="table_aet02" name="AET02_variant_5_is_produced_correctly"/>
+    <testcase time="0.430999999999997" classname="table_aet02" name="AET02_variant_6_is_produced_correctly"/>
+    <testcase time="0.105000000000004" classname="table_aet02" name="AET02_variant_6_is_produced_correctly"/>
+    <testcase time="1.008" classname="table_aet02" name="AET02_variant_7_is_produced_correctly"/>
+    <testcase time="0.134" classname="table_aet02" name="AET02_variant_7_is_produced_correctly"/>
+    <testcase time="0.445" classname="table_aet02" name="AET02_variant_8_is_produced_correctly"/>
+    <testcase time="0.0609999999999999" classname="table_aet02" name="AET02_variant_8_is_produced_correctly"/>
+    <testcase time="0.442999999999998" classname="table_aet02" name="AET02_variant_9_is_produced_correctly"/>
+    <testcase time="0.0840000000000032" classname="table_aet02" name="AET02_variant_9_is_produced_correctly"/>
+    <testcase time="0.450000000000003" classname="table_aet02" name="AET02_variant_10_is_produced_correctly"/>
+    <testcase time="0.0789999999999935" classname="table_aet02" name="AET02_variant_10_is_produced_correctly"/>
+    <testcase time="0.436" classname="table_aet02" name="AET02_variant_11_is_produced_correctly"/>
+    <testcase time="0.0770000000000053" classname="table_aet02" name="AET02_variant_11_is_produced_correctly"/>
+    <testcase time="0.439" classname="table_aet02" name="AET02_variant_12_is_produced_correctly"/>
+    <testcase time="0.0670000000000002" classname="table_aet02" name="AET02_variant_12_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet02_smq" timestamp="2026-02-04T15:44:11Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.453">
+    <testcase time="0.140000000000001" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.0549999999999997" classname="table_aet02_smq" name="AET02SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.177" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly"/>
+    <testcase time="0.080999999999996" classname="table_aet02_smq" name="AET02SMQ_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet03" timestamp="2026-02-04T15:44:11Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="5.144">
+    <testcase time="1.282" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="0.433999999999997" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="1.579" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="0.631" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="1.006" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+    <testcase time="0.212000000000003" classname="table_aet03" name="AET03_variant_1_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet04" timestamp="2026-02-04T15:44:17Z" hostname="cea6b35c13be" tests="30" skipped="0" failures="0" errors="0" time="12.589">
+    <testcase time="0.774999999999999" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.311" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.725999999999999" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.0420000000000016" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.0399999999999991" classname="table_aet04" name="AET04_variant_1_is_produced_correctly"/>
+    <testcase time="0.698999999999998" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.262999999999998" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.672000000000004" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.0390000000000015" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.036999999999999" classname="table_aet04" name="AET04_variant_2_is_produced_correctly_Fill_in_of_Treatment_Groups_"/>
+    <testcase time="0.714999999999996" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.323999999999998" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.797000000000004" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.0429999999999993" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.0399999999999991" classname="table_aet04" name="AET04_variant_3_is_produced_correctly_Fill_in_of_Grades_"/>
+    <testcase time="0.783000000000001" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_"/>
+    <testcase time="0.308" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_"/>
+    <testcase time="0.777999999999999" classname="table_aet04" name="AET04_variant_4_is_produced_correctly_Collapsing_of_Grades_grades_1_2_grades_3_4_5_"/>
+    <testcase time="0.787000000000006" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
+    <testcase time="0.326999999999998" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
+    <testcase time="0.771000000000001" classname="table_aet04" name="AET04_variant_6_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_5_totals_restricted_"/>
+    <testcase time="0.0109999999999957" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_"/>
+    <testcase time="0.311999999999998" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_"/>
+    <testcase time="0.771000000000001" classname="table_aet04" name="AET04_variant_8_is_produced_correctly_with_an_Incidence_Rate_of_at_Least_X_Patients_"/>
+    <testcase time="0.0109999999999957" classname="table_aet04" name="AET04_variant_9_is_produced_correctly_with_a_Difference_in_Incidence_Rate_of_at_Least_X_"/>
+    <testcase time="0.312000000000012" classname="table_aet04" name="AET04_variant_9_is_produced_correctly_with_a_Difference_in_Incidence_Rate_of_at_Least_X_"/>
+    <testcase time="0.780000000000001" classname="table_aet04" name="AET04_variant_9_is_produced_correctly_with_a_Difference_in_Incidence_Rate_of_at_Least_X_"/>
+    <testcase time="0.012999999999991" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_"/>
+    <testcase time="0.299999999999997" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_"/>
+    <testcase time="0.802000000000007" classname="table_aet04" name="AET04_variant_11_is_produced_correctly_with_Incidence_Rate_of_at_Least_X_all_SOCs_w_o_preferred_terms_removed_"/>
+  </testsuite>
+  <testsuite name="table_aet04_pi" timestamp="2026-02-04T15:44:29Z" hostname="cea6b35c13be" tests="18" skipped="0" failures="0" errors="0" time="7.219">
+    <testcase time="0.658000000000001" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly"/>
+    <testcase time="0.203999999999994" classname="table_aet04_pi" name="AET04_PI_full_table_is_produced_correctly"/>
+    <testcase time="0.682000000000002" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly"/>
+    <testcase time="0.156999999999996" classname="table_aet04_pi" name="AET04_PI_variant_1_is_produced_correctly"/>
+    <testcase time="0.691000000000003" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly"/>
+    <testcase time="0.112000000000009" classname="table_aet04_pi" name="AET04_PI_variant_2_is_produced_correctly"/>
+    <testcase time="0.665999999999997" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly"/>
+    <testcase time="0.131" classname="table_aet04_pi" name="AET04_PI_variant_3_is_produced_correctly"/>
+    <testcase time="0.679999999999993" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly"/>
+    <testcase time="0.100999999999999" classname="table_aet04_pi" name="AET04_PI_variant_4_is_produced_correctly"/>
+    <testcase time="0.669000000000011" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly"/>
+    <testcase time="0.150999999999996" classname="table_aet04_pi" name="AET04_PI_variant_5_is_produced_correctly"/>
+    <testcase time="0.829999999999998" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly"/>
+    <testcase time="0.155000000000001" classname="table_aet04_pi" name="AET04_PI_variant_6_is_produced_correctly"/>
+    <testcase time="0.837000000000003" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly"/>
+    <testcase time="0.155999999999992" classname="table_aet04_pi" name="AET04_PI_variant_7_is_produced_correctly"/>
+    <testcase time="0.210000000000008" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly"/>
+    <testcase time="0.128999999999991" classname="table_aet04_pi" name="AET04_PI_variant_8_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet05" timestamp="2026-02-04T15:44:36Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.287">
+    <testcase time="0.108000000000004" classname="table_aet05" name="AET05_variant_1_is_produced_correctly"/>
+    <testcase time="0.0630000000000024" classname="table_aet05" name="AET05_variant_1_is_produced_correctly"/>
+    <testcase time="0.0679999999999978" classname="table_aet05" name="AET05_variant_2_is_produced_correctly"/>
+    <testcase time="0.0480000000000018" classname="table_aet05" name="AET05_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet05_all" timestamp="2026-02-04T15:44:36Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.534">
+    <testcase time="0.373000000000005" classname="table_aet05_all" name="AET05_ALL_variant_1_is_produced_correctly"/>
+    <testcase time="0.0459999999999923" classname="table_aet05_all" name="AET05_ALL_variant_1_is_produced_correctly"/>
+    <testcase time="0.0619999999999976" classname="table_aet05_all" name="AET05_ALL_variant_2_is_produced_correctly"/>
+    <testcase time="0.0529999999999973" classname="table_aet05_all" name="AET05_ALL_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet06" timestamp="2026-02-04T15:44:37Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="3.618">
+    <testcase time="0.599000000000004" classname="table_aet06" name="AET06_variant_1_is_produced_correctly"/>
+    <testcase time="0.191000000000003" classname="table_aet06" name="AET06_variant_1_is_produced_correctly"/>
+    <testcase time="0.980999999999995" classname="table_aet06" name="AET06_variant_3_is_produced_correctly"/>
+    <testcase time="0.266000000000005" classname="table_aet06" name="AET06_variant_3_is_produced_correctly"/>
+    <testcase time="1.256" classname="table_aet06" name="AET06_variant_5_is_produced_correctly"/>
+    <testcase time="0.325000000000003" classname="table_aet06" name="AET06_variant_5_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet06_smq" timestamp="2026-02-04T15:44:40Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1">
+    <testcase time="0.387999999999991" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.124000000000009" classname="table_aet06_smq" name="AET06_SMQ_variant_1_is_produced_correctly"/>
+    <testcase time="0.363" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly"/>
+    <testcase time="0.125" classname="table_aet06_smq" name="AET06_SMQ_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet07" timestamp="2026-02-04T15:44:41Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.184">
+    <testcase time="0.0600000000000023" classname="table_aet07" name="AET07_variant_1_is_produced_correctly"/>
+    <testcase time="0.0289999999999964" classname="table_aet07" name="AET07_variant_1_is_produced_correctly"/>
+    <testcase time="0.0660000000000025" classname="table_aet07" name="AET07_variant_2_is_produced_correctly"/>
+    <testcase time="0.0289999999999964" classname="table_aet07" name="AET07_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet09" timestamp="2026-02-04T15:44:42Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.936">
+    <testcase time="0.561999999999998" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug"/>
+    <testcase time="0.158000000000001" classname="table_aet09" name="AET09_variant_1_is_produced_correctly_AE_related_to_study_drug"/>
+    <testcase time="0.956000000000003" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_"/>
+    <testcase time="0.259999999999991" classname="table_aet09" name="AET09_variant_2_is_produced_correctly_AE_related_to_study_drug_including_high_level_terms_"/>
+  </testsuite>
+  <testsuite name="table_aet09_smq" timestamp="2026-02-04T15:44:43Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.473">
+    <testcase time="0.122000000000014" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly"/>
+    <testcase time="0.0619999999999976" classname="table_aet09_smq" name="AET09_variant_1_AEs_related_to_study_drug_by_SMQ_is_produced_correctly"/>
+    <testcase time="0.210999999999999" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly"/>
+    <testcase time="0.078000000000003" classname="table_aet09_smq" name="AET09_variant_2_AEs_related_to_study_drug_by_SMQ_with_customized_queries_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aet10" timestamp="2026-02-04T15:44:44Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.164">
+    <testcase time="0.120999999999995" classname="table_aet10" name="AET10_default_variant_is_produced_correctly"/>
+    <testcase time="0.0429999999999922" classname="table_aet10" name="AET10_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aovt01" timestamp="2026-02-04T15:44:44Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="1.584">
+    <testcase time="0.280000000000001" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly"/>
+    <testcase time="0.105000000000004" classname="table_aovt01" name="AOVT01_variant_with_single_endpoint_is_produced_correctly"/>
+    <testcase time="0.457000000000008" classname="table_aovt01" name="AOVT01_variant_with_multiple_endpoints_is_produced_correctly"/>
+    <testcase time="0.141999999999996" classname="table_aovt01" name="AOVT01_variant_with_multiple_endpoints_is_produced_correctly"/>
+    <testcase time="0.456999999999994" classname="table_aovt01" name="AOVT01_variant_with_proportional_weights_is_produced_correctly"/>
+    <testcase time="0.143000000000001" classname="table_aovt01" name="AOVT01_variant_with_proportional_weights_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aovt02" timestamp="2026-02-04T15:44:46Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.351">
+    <testcase time="0.269000000000005" classname="table_aovt02" name="AOVT02_is_produced_correctly"/>
+    <testcase time="0.0819999999999936" classname="table_aovt02" name="AOVT02_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_aovt03" timestamp="2026-02-04T15:44:46Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.698">
+    <testcase time="0.558000000000007" classname="table_aovt03" name="AOVT03_is_produced_correctly"/>
+    <testcase time="0.140000000000001" classname="table_aovt03" name="AOVT03_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cfbt01" timestamp="2026-02-04T15:44:47Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.679">
+    <testcase time="0.474000000000004" classname="table_cfbt01" name="CFBT01_default_variant_is_produced_correctly"/>
+    <testcase time="0.204999999999998" classname="table_cfbt01" name="CFBT01_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cmht01" timestamp="2026-02-04T15:44:47Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.725">
+    <testcase time="0.393000000000001" classname="table_cmht01" name="CMHT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.070999999999998" classname="table_cmht01" name="CMHT01_variant_1_is_produced_correctly"/>
+    <testcase time="1.015" classname="table_cmht01" name="CMHT01_variant_2_is_produced_correctly"/>
+    <testcase time="0.245999999999995" classname="table_cmht01" name="CMHT01_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cmt01" timestamp="2026-02-04T15:44:49Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="3.777">
+    <testcase time="0.698999999999998" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.259" classname="table_cmt01" name="CMT01_default_variant_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.748999999999995" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly"/>
+    <testcase time="0.268000000000001" classname="table_cmt01" name="CMT01_variant_1_prior_medications_is_produced_correctly"/>
+    <testcase time="0.631" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.220000000000013" classname="table_cmt01" name="CMT01_variant_3_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.685999999999993" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly"/>
+    <testcase time="0.265000000000001" classname="table_cmt01" name="CMT01_variant_4_Concomitant_medications_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cmt01a" timestamp="2026-02-04T15:44:53Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="4.913">
+    <testcase time="1.107" classname="table_cmt01a" name="CMT01A_variant_1_is_produced_correctly"/>
+    <testcase time="0.230999999999995" classname="table_cmt01a" name="CMT01A_variant_1_is_produced_correctly"/>
+    <testcase time="0.963000000000008" classname="table_cmt01a" name="CMT01A_variant_2_is_produced_correctly"/>
+    <testcase time="0.245000000000005" classname="table_cmt01a" name="CMT01A_variant_2_is_produced_correctly"/>
+    <testcase time="0.966000000000008" classname="table_cmt01a" name="CMT01A_variant_3_is_produced_correctly"/>
+    <testcase time="0.22999999999999" classname="table_cmt01a" name="CMT01A_variant_3_is_produced_correctly"/>
+    <testcase time="0.965000000000003" classname="table_cmt01a" name="CMT01A_variant_4_is_produced_correctly"/>
+    <testcase time="0.206000000000003" classname="table_cmt01a" name="CMT01A_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cmt01b" timestamp="2026-02-04T15:44:58Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="5.524">
+    <testcase time="1.598" classname="table_cmt01b" name="CMT01B_variant_1_is_produced_correctly"/>
+    <testcase time="0.381" classname="table_cmt01b" name="CMT01B_variant_1_is_produced_correctly"/>
+    <testcase time="1.14400000000001" classname="table_cmt01b" name="CMT01B_variant_2_is_produced_correctly"/>
+    <testcase time="0.317999999999998" classname="table_cmt01b" name="CMT01B_variant_2_is_produced_correctly"/>
+    <testcase time="1.70699999999999" classname="table_cmt01b" name="CMT01B_variant_4_is_produced_correctly"/>
+    <testcase time="0.376000000000005" classname="table_cmt01b" name="CMT01B_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_cmt02_pt" timestamp="2026-02-04T15:45:03Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.555">
+    <testcase time="0.402000000000001" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly"/>
+    <testcase time="0.152999999999992" classname="table_cmt02_pt" name="CMT02_PT_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_coxt01" timestamp="2026-02-04T15:45:04Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.743">
+    <testcase time="0.274000000000001" classname="table_coxt01" name="1._Cox_Regression"/>
+    <testcase time="0.0649999999999977" classname="table_coxt01" name="1._Cox_Regression"/>
+    <testcase time="0.370000000000005" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_"/>
+    <testcase time="0.0820000000000078" classname="table_coxt01" name="2._Cox_Regression_with_Interaction_Term_"/>
+    <testcase time="0.373999999999995" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_"/>
+    <testcase time="0.0900000000000034" classname="table_coxt01" name="3._Cox_Regression_specifying_covariates_"/>
+    <testcase time="0.399000000000001" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_"/>
+    <testcase time="0.0889999999999986" classname="table_coxt01" name="4._Cox_Regression_setting_strata_ties_and_alpha_level_"/>
+  </testsuite>
+  <testsuite name="table_coxt02" timestamp="2026-02-04T15:45:06Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.658">
+    <testcase time="0.283999999999992" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly"/>
+    <testcase time="0.0600000000000023" classname="table_coxt02" name="COXT02_default_variant_1_is_produced_correctly"/>
+    <testcase time="0.25" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly"/>
+    <testcase time="0.0640000000000072" classname="table_coxt02" name="COXT02_variant_5_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_disclosures" timestamp="2026-02-04T15:45:06Z" hostname="cea6b35c13be" tests="12" skipped="0" failures="0" errors="0" time="1.966">
+    <testcase time="0.179999999999993" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly"/>
+    <testcase time="0.0750000000000028" classname="table_disclosures" name="Patient_Disposition_table_is_produced_correctly"/>
+    <testcase time="0.254999999999995" classname="table_disclosures" name="Demographic_table_is_produced_correctly"/>
+    <testcase time="0.131" classname="table_disclosures" name="Demographic_table_is_produced_correctly"/>
+    <testcase time="0.097999999999999" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly"/>
+    <testcase time="0.0919999999999987" classname="table_disclosures" name="Enrollment_by_Country_Table_is_produced_correctly"/>
+    <testcase time="0.0820000000000078" classname="table_disclosures" name="Death_table_is_produced_correctly"/>
+    <testcase time="0.0549999999999926" classname="table_disclosures" name="Death_table_is_produced_correctly"/>
+    <testcase time="0.372" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_"/>
+    <testcase time="0.0840000000000032" classname="table_disclosures" name="Table_of_Serious_Adverse_Events_is_produced_correctly_for_one_specific_treatment_arm_"/>
+    <testcase time="0.421999999999997" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
+    <testcase time="0.120000000000005" classname="table_disclosures" name="Table_of_Non_Serious_Adverse_Events_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_dmt01" timestamp="2026-02-04T15:45:09Z" hostname="cea6b35c13be" tests="10" skipped="0" failures="0" errors="0" time="2.907">
+    <testcase time="1.22199999999999" classname="table_dmt01" name="DMT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.167000000000002" classname="table_dmt01" name="DMT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.254000000000005" classname="table_dmt01" name="DMT01_variant_2_is_produced_correctly"/>
+    <testcase time="0.146000000000001" classname="table_dmt01" name="DMT01_variant_2_is_produced_correctly"/>
+    <testcase time="0.303999999999988" classname="table_dmt01" name="DMT01_variant_3_is_produced_correctly"/>
+    <testcase time="0.15100000000001" classname="table_dmt01" name="DMT01_variant_3_is_produced_correctly"/>
+    <testcase time="0.224999999999994" classname="table_dmt01" name="DMT01_variant_4_is_produced_correctly"/>
+    <testcase time="0.131" classname="table_dmt01" name="DMT01_variant_4_is_produced_correctly"/>
+    <testcase time="0.191000000000003" classname="table_dmt01" name="DMT01_variant_5_is_produced_correctly"/>
+    <testcase time="0.116" classname="table_dmt01" name="DMT01_variant_5_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_dort01" timestamp="2026-02-04T15:45:11Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.577">
+    <testcase time="0.334000000000003" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.0919999999999987" classname="table_dort01" name="DORT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.305999999999997" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly"/>
+    <testcase time="0.0990000000000038" classname="table_dort01" name="DORT01_variant_2_selecting_sectons_is_produced_correctly"/>
+    <testcase time="0.289999999999992" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly"/>
+    <testcase time="0.0840000000000032" classname="table_dort01" name="DORT01_variant_3_modifying_conftype_and_alpha_level_is_produced_correctly"/>
+    <testcase time="0.289000000000001" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly"/>
+    <testcase time="0.0829999999999984" classname="table_dort01" name="DORT01_variant_4_modifying_time_point_for_the_xx_duration_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_dst01" timestamp="2026-02-04T15:45:13Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="0.801">
+    <testcase time="0.161000000000001" classname="table_dst01" name="DST01_default_variant_is_produced_correctly"/>
+    <testcase time="0.0889999999999986" classname="table_dst01" name="DST01_default_variant_is_produced_correctly"/>
+    <testcase time="0.262" classname="table_dst01" name="DST01_variants_2_and_3_are_produced_correctly"/>
+    <testcase time="0.097999999999999" classname="table_dst01" name="DST01_variants_2_and_3_are_produced_correctly"/>
+    <testcase time="0.0880000000000081" classname="table_dst01" name="DST01_variants_2_and_3_are_produced_correctly"/>
+    <testcase time="0.102999999999994" classname="table_dst01" name="DST01_variants_2_and_3_are_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_dtht01" timestamp="2026-02-04T15:45:14Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.189">
+    <testcase time="0.138999999999996" classname="table_dtht01" name="DTHT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.0600000000000023" classname="table_dtht01" name="DTHT01_variant_1_is_produced_correctly"/>
+    <testcase time="0.305000000000007" classname="table_dtht01" name="DTHT01_variant_2_is_produced_correctly"/>
+    <testcase time="0.140999999999991" classname="table_dtht01" name="DTHT01_variant_2_is_produced_correctly"/>
+    <testcase time="0.170000000000002" classname="table_dtht01" name="DTHT01_variant_3_is_produced_correctly"/>
+    <testcase time="0.070999999999998" classname="table_dtht01" name="DTHT01_variant_3_is_produced_correctly"/>
+    <testcase time="0.219999999999999" classname="table_dtht01" name="DTHT01_variant_4_is_produced_correctly"/>
+    <testcase time="0.0829999999999984" classname="table_dtht01" name="DTHT01_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_egt01" timestamp="2026-02-04T15:45:16Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="3.741">
+    <testcase time="2.881" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly"/>
+    <testcase time="0.859999999999999" classname="table_egt01" name="EGT01_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_egt02" timestamp="2026-02-04T15:45:20Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.616">
+    <testcase time="1.289" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline"/>
+    <testcase time="0.0630000000000024" classname="table_egt02" name="_EGT02_1._Regardless_of_Abnormality_at_Baseline"/>
+    <testcase time="0.201000000000008" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline"/>
+    <testcase time="0.0630000000000024" classname="table_egt02" name="_EGT02_2._Among_Subjects_Without_Abnormality_at_Baseline"/>
+  </testsuite>
+  <testsuite name="table_egt03" timestamp="2026-02-04T15:45:20Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.431">
+    <testcase time="0.483999999999995" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly"/>
+    <testcase time="0.097999999999999" classname="table_egt03" name="EGT03_variant_1_is_produced_correctly"/>
+    <testcase time="0.149000000000001" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly"/>
+    <testcase time="0.0840000000000032" classname="table_egt03" name="EGT03_variant_2_is_produced_correctly"/>
+    <testcase time="0.202999999999989" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly"/>
+    <testcase time="0.106000000000009" classname="table_egt03" name="EGT03_variant_3_is_produced_correctly"/>
+    <testcase time="0.201999999999998" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly"/>
+    <testcase time="0.105000000000004" classname="table_egt03" name="EGT03_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_egt04" timestamp="2026-02-04T15:45:23Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="1.254">
+    <testcase time="1.17399999999999" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly"/>
+    <testcase time="0.0799999999999983" classname="table_egt04" name="EGT04_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_egt05_qtcat" timestamp="2026-02-04T15:45:24Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="2.265">
+    <testcase time="1.83800000000001" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly"/>
+    <testcase time="0.426999999999992" classname="table_egt05_qtcat" name="EGT05_QTCAT_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_ent" timestamp="2026-02-04T15:45:25Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="14.066">
+    <testcase time="3.499" classname="table_ent" name="ENT01_IT_is_produced_correctly"/>
+    <testcase time="0.574000000000012" classname="table_ent" name="ENT01_IT_is_produced_correctly"/>
+    <testcase time="2.333" classname="table_ent" name="ENT01a_IT_is_produced_correctly"/>
+    <testcase time="0.516999999999996" classname="table_ent" name="ENT01a_IT_is_produced_correctly"/>
+    <testcase time="3.667" classname="table_ent" name="ENT02_IT_is_produced_correctly"/>
+    <testcase time="0.557999999999993" classname="table_ent" name="ENT02_IT_is_produced_correctly"/>
+    <testcase time="2.393" classname="table_ent" name="ENT02a_IT_is_produced_correctly"/>
+    <testcase time="0.525000000000006" classname="table_ent" name="ENT02a_IT_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_eudrat01" timestamp="2026-02-04T15:45:39Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.621">
+    <testcase time="0.512" classname="table_eudrat01" name="EUDRAT01_is_produced_correctly"/>
+    <testcase time="0.109000000000009" classname="table_eudrat01" name="EUDRAT01_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_eudrat02" timestamp="2026-02-04T15:45:40Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.487">
+    <testcase time="0.402999999999992" classname="table_eudrat02" name="EUDRAT02_is_produced_correctly"/>
+    <testcase time="0.0840000000000032" classname="table_eudrat02" name="EUDRAT02_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_ext01" timestamp="2026-02-04T15:45:40Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="1.663">
+    <testcase time="0.408999999999992" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly"/>
+    <testcase time="0.169000000000011" classname="table_ext01" name="EXT01_default_variant_with_numeric_parameters_is_produced_correctly"/>
+    <testcase time="0.304000000000002" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters"/>
+    <testcase time="0.171999999999997" classname="table_ext01" name="EXT01_variant_with_both_numeric_and_categorical_parameters"/>
+    <testcase time="0.384999999999991" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses"/>
+    <testcase time="0.224000000000018" classname="table_ext01" name="EXT01_variant_with_user_specified_categories_for_missed_doses"/>
+  </testsuite>
+  <testsuite name="table_jnj_tbl1" timestamp="2026-02-04T15:45:42Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.288">
+    <testcase time="0.206999999999994" classname="table_jnj_tbl1" name="DMT01_variant_factor_with_only_Missing_values"/>
+    <testcase time="0.0809999999999889" classname="table_jnj_tbl1" name="DMT01_variant_factor_with_only_Missing_values"/>
+  </testsuite>
+  <testsuite name="table_lbt01" timestamp="2026-02-04T15:45:43Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="2.179">
+    <testcase time="1.66300000000001" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly"/>
+    <testcase time="0.515999999999991" classname="table_lbt01" name="LBT01_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt02" timestamp="2026-02-04T15:45:44Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="1.482">
+    <testcase time="1.006" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly"/>
+    <testcase time="0.475999999999999" classname="table_lbt02" name="LBT02_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt03" timestamp="2026-02-04T15:45:46Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.271">
+    <testcase time="0.188000000000017" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly"/>
+    <testcase time="0.0829999999999984" classname="table_lbt03" name="LBT03_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt04" timestamp="2026-02-04T15:45:47Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="1.348">
+    <testcase time="1.16" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly"/>
+    <testcase time="0.187999999999988" classname="table_lbt04" name="LBT04_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt05" timestamp="2026-02-04T15:45:48Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="6.772">
+    <testcase time="2.44800000000001" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly"/>
+    <testcase time="0.329999999999984" classname="table_lbt05" name="LBT05_variant_1_is_produced_correctly"/>
+    <testcase time="1.45400000000001" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly"/>
+    <testcase time="0.433999999999997" classname="table_lbt05" name="LBT05_variant_2_is_produced_correctly"/>
+    <testcase time="1.792" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly"/>
+    <testcase time="0.313999999999993" classname="table_lbt05" name="LBT05_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt06" timestamp="2026-02-04T15:45:54Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.532">
+    <testcase time="0.364000000000004" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly"/>
+    <testcase time="0.168000000000006" classname="table_lbt06" name="LBT06_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt07" timestamp="2026-02-04T15:45:55Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="2.386">
+    <testcase time="2.10400000000001" classname="table_lbt07" name="LBT07_is_produced_correctly"/>
+    <testcase time="0.281999999999982" classname="table_lbt07" name="LBT07_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt08" timestamp="2026-02-04T15:45:57Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.399">
+    <testcase time="0.289999999999992" classname="table_lbt08" name="LBT08_produce_correctly"/>
+    <testcase time="0.109000000000009" classname="table_lbt08" name="LBT08_produce_correctly"/>
+  </testsuite>
+  <testsuite name="table_lbt09" timestamp="2026-02-04T15:45:58Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.985">
+    <testcase time="0.366000000000014" classname="table_lbt09" name="LBT09_variant_1_works_as_expected"/>
+    <testcase time="0.132000000000005" classname="table_lbt09" name="LBT09_variant_1_works_as_expected"/>
+    <testcase time="0.339999999999975" classname="table_lbt09" name="LBT09_variant_2_works_as_expected"/>
+    <testcase time="0.14700000000002" classname="table_lbt09" name="LBT09_variant_2_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt10" timestamp="2026-02-04T15:45:59Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.335">
+    <testcase time="0.777999999999992" classname="table_lbt10" name="LBT10_variant_1_works_as_expected"/>
+    <testcase time="0.0560000000000116" classname="table_lbt10" name="LBT10_variant_1_works_as_expected"/>
+    <testcase time="0.453999999999979" classname="table_lbt10" name="LBT10_variant_2_works_as_expected"/>
+    <testcase time="0.046999999999997" classname="table_lbt10" name="LBT10_variant_2_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt10_bl" timestamp="2026-02-04T15:46:00Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.502">
+    <testcase time="0.27200000000002" classname="table_lbt10_bl" name="LBT10_BL_variant_1_works_as_expected"/>
+    <testcase time="0.0579999999999927" classname="table_lbt10_bl" name="LBT10_BL_variant_1_works_as_expected"/>
+    <testcase time="0.126000000000005" classname="table_lbt10_bl" name="LBT10_BL_variant_2_works_as_expected"/>
+    <testcase time="0.0459999999999923" classname="table_lbt10_bl" name="LBT10_BL_variant_2_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt11" timestamp="2026-02-04T15:46:00Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="0.737">
+    <testcase time="0.205999999999989" classname="table_lbt11" name="LBT11_variant_1_works_as_expected"/>
+    <testcase time="0.0810000000000173" classname="table_lbt11" name="LBT11_variant_1_works_as_expected"/>
+    <testcase time="0.111999999999995" classname="table_lbt11" name="LBT11_variant_2_works_as_expected"/>
+    <testcase time="0.0670000000000073" classname="table_lbt11" name="LBT11_variant_2_works_as_expected"/>
+    <testcase time="0.162000000000006" classname="table_lbt11" name="LBT11_variant_3_works_as_expected"/>
+    <testcase time="0.10899999999998" classname="table_lbt11" name="LBT11_variant_3_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt11_bl" timestamp="2026-02-04T15:46:01Z" hostname="cea6b35c13be" tests="6" skipped="0" failures="0" errors="0" time="0.845">
+    <testcase time="0.207999999999998" classname="table_lbt11_bl" name="LBT11_BL_variant_1_works_as_expected"/>
+    <testcase time="0.0970000000000084" classname="table_lbt11_bl" name="LBT11_BL_variant_1_works_as_expected"/>
+    <testcase time="0.115999999999985" classname="table_lbt11_bl" name="LBT11_BL_variant_2_works_as_expected"/>
+    <testcase time="0.0690000000000168" classname="table_lbt11_bl" name="LBT11_BL_variant_2_works_as_expected"/>
+    <testcase time="0.257000000000005" classname="table_lbt11_bl" name="LBT11_BL_variant_3_works_as_expected"/>
+    <testcase time="0.0979999999999848" classname="table_lbt11_bl" name="LBT11_BL_variant_3_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt12" timestamp="2026-02-04T15:46:02Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.41">
+    <testcase time="0.340000000000003" classname="table_lbt12" name="LBT12_works_as_expected"/>
+    <testcase time="0.0699999999999932" classname="table_lbt12" name="LBT12_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt12_bl" timestamp="2026-02-04T15:46:02Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.396">
+    <testcase time="0.325000000000017" classname="table_lbt12_bl" name="LBT12_BL_works_as_expected"/>
+    <testcase time="0.070999999999998" classname="table_lbt12_bl" name="LBT12_BL_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt13" timestamp="2026-02-04T15:46:03Z" hostname="cea6b35c13be" tests="10" skipped="0" failures="0" errors="0" time="2.343">
+    <testcase time="0.808999999999997" classname="table_lbt13" name="LBT13_variant_1_LOW_works_as_expected"/>
+    <testcase time="0.0989999999999895" classname="table_lbt13" name="LBT13_variant_1_LOW_works_as_expected"/>
+    <testcase time="0.15100000000001" classname="table_lbt13" name="LBT13_variant_2_HIGH_works_as_expected"/>
+    <testcase time="0.0529999999999973" classname="table_lbt13" name="LBT13_variant_2_HIGH_works_as_expected"/>
+    <testcase time="0.25800000000001" classname="table_lbt13" name="LBT13_variant_3_LOW_without_baseline_missing_works_as_expected"/>
+    <testcase time="0.0769999999999982" classname="table_lbt13" name="LBT13_variant_3_LOW_without_baseline_missing_works_as_expected"/>
+    <testcase time="0.163999999999987" classname="table_lbt13" name="LBT13_variant_4_HIGH_with_missing_baseline_considered_as_grade_0_works_as_expected"/>
+    <testcase time="0.054000000000002" classname="table_lbt13" name="LBT13_variant_4_HIGH_with_missing_baseline_considered_as_grade_0_works_as_expected"/>
+    <testcase time="0.477000000000004" classname="table_lbt13" name="LBT14_variant_5_HIGH_with_filled_in_grades_works_as_expected"/>
+    <testcase time="0.200999999999993" classname="table_lbt13" name="LBT14_variant_5_HIGH_with_filled_in_grades_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt14" timestamp="2026-02-04T15:46:06Z" hostname="cea6b35c13be" tests="10" skipped="0" failures="0" errors="0" time="31.226">
+    <testcase time="6.435" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected"/>
+    <testcase time="0.445999999999998" classname="table_lbt14" name="LBT14_variant_1_HIGH_works_as_expected"/>
+    <testcase time="5.928" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected"/>
+    <testcase time="0.313000000000017" classname="table_lbt14" name="LBT14_variant_2_LOW_works_as_expected"/>
+    <testcase time="3.76599999999999" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected"/>
+    <testcase time="0.425000000000011" classname="table_lbt14" name="LBT14_variant_3_LOW_without_baseline_missing_works_as_expected"/>
+    <testcase time="5.899" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected"/>
+    <testcase time="0.220999999999975" classname="table_lbt14" name="LBT14_variant_4_LOW_and_force_1_missing_both_baseline_and_post_baseline_then_force_the_missing_baseline_as_0_as_expected"/>
+    <testcase time="5.351" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected"/>
+    <testcase time="2.44200000000001" classname="table_lbt14" name="LBT14_variant_5_HIGH_with_fillings_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lbt15" timestamp="2026-02-04T15:46:36Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.493">
+    <testcase time="0.606999999999999" classname="table_lbt15" name="LBT15_variant_1_works_as_expected"/>
+    <testcase time="0.181000000000012" classname="table_lbt15" name="LBT15_variant_1_works_as_expected"/>
+    <testcase time="0.525999999999982" classname="table_lbt15" name="LBT15_variant_2_works_as_expected"/>
+    <testcase time="0.179000000000002" classname="table_lbt15" name="LBT15_variant_2_works_as_expected"/>
+  </testsuite>
+  <testsuite name="table_lgrt02" timestamp="2026-02-04T15:46:38Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="2.837">
+    <testcase time="0.515000000000015" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly"/>
+    <testcase time="0.120000000000005" classname="table_lgrt02" name="LGRT02_without_interaction_term_is_produced_correctly"/>
+    <testcase time="0.628999999999991" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly"/>
+    <testcase time="0.143000000000001" classname="table_lgrt02" name="LGRT02_with_categorical_interaction_is_produced_correctly"/>
+    <testcase time="0.653999999999996" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly"/>
+    <testcase time="0.158999999999992" classname="table_lgrt02" name="LGRT02_with_continuous_interaction_is_produced_correctly"/>
+    <testcase time="0.499000000000024" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly"/>
+    <testcase time="0.117999999999995" classname="table_lgrt02" name="LGRT02_with_setting_values_indicating_an_event_and_custom_alpha_level_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_mht01" timestamp="2026-02-04T15:46:41Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.46">
+    <testcase time="0.328000000000003" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately"/>
+    <testcase time="0.123999999999995" classname="table_mht01" name="MHT01_variant_1_is_produced_accurately"/>
+    <testcase time="0.0999999999999943" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately"/>
+    <testcase time="0.0529999999999973" classname="table_mht01" name="MHT01_variant_2_is_produced_accurately"/>
+    <testcase time="0.272999999999996" classname="table_mht01" name="MHT01_variant_3_is_produced_accurately"/>
+    <testcase time="0.103000000000009" classname="table_mht01" name="MHT01_variant_3_is_produced_accurately"/>
+    <testcase time="0.356999999999999" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately"/>
+    <testcase time="0.121999999999986" classname="table_mht01" name="MHT01_variant_5_is_produced_accurately"/>
+  </testsuite>
+  <testsuite name="table_onct05" timestamp="2026-02-04T15:46:42Z" hostname="cea6b35c13be" tests="10" skipped="0" failures="0" errors="0" time="2.726">
+    <testcase time="0.523000000000025" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly"/>
+    <testcase time="0.0979999999999848" classname="table_onct05" name="ONCT05_variant_1_Objective_Response_Rate_by_Subgroup_is_produced_correctly"/>
+    <testcase time="0.507000000000005" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly"/>
+    <testcase time="0.109000000000009" classname="table_onct05" name="ONCT05_variant_2_Specifying_class_variables_is_produced_correctly"/>
+    <testcase time="0.217999999999989" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly"/>
+    <testcase time="0.078000000000003" classname="table_onct05" name="ONCT05_variant_3_selecting_columns_and_changing_the_alpha_level_is_produced_correctly"/>
+    <testcase time="0.466000000000008" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly"/>
+    <testcase time="0.11099999999999" classname="table_onct05" name="ONCT05_variant_4_setting_values_indicating_response_is_produced_correctly"/>
+    <testcase time="0.49799999999999" classname="table_onct05" name="ONCT05_with_risk_difference_column_is_produced_correctly"/>
+    <testcase time="0.117999999999995" classname="table_onct05" name="ONCT05_with_risk_difference_column_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_pdt01" timestamp="2026-02-04T15:46:45Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.404">
+    <testcase time="0.286000000000001" classname="table_pdt01" name="PDT01_is_produced_correctly"/>
+    <testcase time="0.118000000000023" classname="table_pdt01" name="PDT01_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_pdt02" timestamp="2026-02-04T15:46:45Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.253">
+    <testcase time="0.195999999999998" classname="table_pdt02" name="PDT02_is_produced_correctly"/>
+    <testcase time="0.0569999999999879" classname="table_pdt02" name="PDT02_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_pkct01" timestamp="2026-02-04T15:46:46Z" hostname="cea6b35c13be" tests="10" skipped="0" failures="1" errors="0" time="3.255">
+    <testcase time="0.289000000000016" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
+    <testcase time="0.070999999999998" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
+    <testcase time="0.161999999999978" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
+    <testcase time="0.0400000000000205" classname="table_pkct01" name="PKCT01_is_produced_correctly"/>
+    <testcase time="1.011" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.22999999999999" classname="table_pkct01" name="Specific_PKCT01_features_are_present">
+      <failure type="failure" message="Snapshot of code has changed: ('test-table_pkct01.R:120:3')">Snapshot of code has changed:
+old[14:20] vs new[14:20]
+    Xanomeline High Dose                                                                                                                                    
+      BASELINE                                                                                                                                              
+        0                               144       72        27      27.1        100.3            NE                 NE              27        0        54   
+-       0.08                            72        0         0.1    0.00489       4.9            0.1                 4.9            0.1     0.0912     0.112 
++       0.0833333333333333              72        0         0.1    0.00489       4.9            0.1                 4.9            0.1     0.0912     0.112 
+        0.5                             72        0        0.544   0.0241        4.4           0.543                4.4           0.543     0.499     0.603 
+        1                               72        0        0.927    0.037        4.0           0.926                4.0           0.926     0.859     1.02  
+        1.5                             72        0         1.2    0.0438        3.7            1.2                 3.6            1.2      1.12      1.31  
+old[28:35] vs new[28:34]
+        16                              72        0        0.165   0.0181       11.0           0.164               11.1           0.165     0.134     0.198 
+        18                              72        0        14.3     2.04        14.3            14.2               14.6            14.3     11.1      17.4  
+        24                              216       0         18      25.5        141.6          0.225             191466.4         0.0177    0.01       54   
+-       36                              72        72       0.005      0          0.0           0.005                0.0           0.005     0.005     0.005 
+-       37                              72        51       0.278    0.531       191.0          0.0208             1414.0          0.005     0.005     1.78  
++       36                              144      123       0.142    0.399       281.6          0.0102              470.9          0.005     0.005     1.78  
+        48                              216      144        18      25.5        141.7          0.111             1518935.1        0.005     0.005      54   
+    ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+    
+</failure>
+    </testcase>
+    <testcase time="0.213999999999999" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.00300000000001432" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.667000000000002" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+    <testcase time="0.567999999999984" classname="table_pkct01" name="Specific_PKCT01_features_are_present"/>
+  </testsuite>
+  <testsuite name="table_pkpt02" timestamp="2026-02-04T15:46:49Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.608">
+    <testcase time="0.403999999999996" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.204000000000008" classname="table_pkpt02" name="PKPT02_is_produced_correctly_for_Drug_X"/>
+  </testsuite>
+  <testsuite name="table_pkpt03" timestamp="2026-02-04T15:46:49Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="1.238">
+    <testcase time="1.036" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly"/>
+    <testcase time="0.201999999999998" classname="table_pkpt03" name="PKPT03_Drug_X_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_pkpt04" timestamp="2026-02-04T15:46:51Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.187">
+    <testcase time="0.115999999999985" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.0710000000000264" classname="table_pkpt04" name="PKPT04_is_produced_correctly_for_Drug_X"/>
+  </testsuite>
+  <testsuite name="table_pkpt05" timestamp="2026-02-04T15:46:51Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.459">
+    <testcase time="0.345999999999975" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly"/>
+    <testcase time="0.113" classname="table_pkpt05" name="PKPT05_Drug_X_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_pkpt06" timestamp="2026-02-04T15:46:51Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.29">
+    <testcase time="0.099000000000018" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.0490000000000066" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_X"/>
+    <testcase time="0.0929999999999893" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y"/>
+    <testcase time="0.0490000000000066" classname="table_pkpt06" name="PKPT06_is_produced_correctly_for_Drug_Y"/>
+  </testsuite>
+  <testsuite name="table_pkpt07" timestamp="2026-02-04T15:46:52Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.538">
+    <testcase time="0.218999999999994" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly"/>
+    <testcase time="0.111999999999995" classname="table_pkpt07" name="PKPT07_Drug_X_is_produced_correctly"/>
+    <testcase time="0.121000000000009" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly"/>
+    <testcase time="0.0859999999999843" classname="table_pkpt07" name="PKPT07_Drug_Y_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_ratet01" timestamp="2026-02-04T15:46:52Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.97">
+    <testcase time="0.822000000000003" classname="table_ratet01" name="RATET01_is_produced_correctly"/>
+    <testcase time="0.147999999999996" classname="table_ratet01" name="RATET01_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rmpt01" timestamp="2026-02-04T15:46:53Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.24">
+    <testcase time="0.197000000000003" classname="table_rmpt01" name="RMPT01_is_produced_correctly"/>
+    <testcase time="0.0430000000000064" classname="table_rmpt01" name="RMPT01_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rmpt03" timestamp="2026-02-04T15:46:53Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="0.563">
+    <testcase time="0.228000000000009" classname="table_rmpt03" name="RMPT03_variant_1_is_produced_correctly"/>
+    <testcase time="0.0759999999999934" classname="table_rmpt03" name="RMPT03_variant_1_is_produced_correctly"/>
+    <testcase time="0.162000000000006" classname="table_rmpt03" name="RMPT03_variant_2_is_produced_correctly"/>
+    <testcase time="0.09699999999998" classname="table_rmpt03" name="RMPT03_variant_2_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rmpt04" timestamp="2026-02-04T15:46:54Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.186">
+    <testcase time="0.143000000000001" classname="table_rmpt04" name="RMPT04_variant_1_is_produced_correctly"/>
+    <testcase time="0.0430000000000064" classname="table_rmpt04" name="RMPT04_variant_1_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rmpt05" timestamp="2026-02-04T15:46:54Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="0.24">
+    <testcase time="0.188000000000017" classname="table_rmpt05" name="RMPT05_is_produced_correctly"/>
+    <testcase time="0.0519999999999925" classname="table_rmpt05" name="RMPT05_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rmpt06" timestamp="2026-02-04T15:46:54Z" hostname="cea6b35c13be" tests="8" skipped="0" failures="0" errors="0" time="1.613">
+    <testcase time="0.35499999999999" classname="table_rmpt06" name="RMPT06_variant_1_is_produced_correctly"/>
+    <testcase time="0.110000000000014" classname="table_rmpt06" name="RMPT06_variant_1_is_produced_correctly"/>
+    <testcase time="0.210000000000008" classname="table_rmpt06" name="RMPT06_variant_2_is_produced_correctly"/>
+    <testcase time="0.0919999999999845" classname="table_rmpt06" name="RMPT06_variant_2_is_produced_correctly"/>
+    <testcase time="0.313999999999993" classname="table_rmpt06" name="RMPT06_variant_3_is_produced_correctly"/>
+    <testcase time="0.0930000000000177" classname="table_rmpt06" name="RMPT06_variant_3_is_produced_correctly"/>
+    <testcase time="0.319999999999993" classname="table_rmpt06" name="RMPT06_variant_4_is_produced_correctly"/>
+    <testcase time="0.119" classname="table_rmpt06" name="RMPT06_variant_4_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_rspt01" timestamp="2026-02-04T15:46:56Z" hostname="cea6b35c13be" tests="12" skipped="0" failures="0" errors="0" time="2.427">
+    <testcase time="0.307999999999993" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response"/>
+    <testcase time="0.0960000000000036" classname="table_rspt01" name="RSPT01_1._Best_Overall_Response"/>
+    <testcase time="0.265000000000015" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_"/>
+    <testcase time="0.0919999999999845" classname="table_rspt01" name="RSPT01_2._Best_Overall_Response_selecting_sections_to_display_"/>
+    <testcase time="0.335000000000008" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_"/>
+    <testcase time="0.115999999999985" classname="table_rspt01" name="RSPT01_3._Best_Overall_Response_modifying_settings_"/>
+    <testcase time="0.361000000000018" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_"/>
+    <testcase time="0.114000000000004" classname="table_rspt01" name="RSPT01_4._Best_Overall_Response_with_stratified_analysis_"/>
+    <testcase time="0.283999999999992" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_"/>
+    <testcase time="0.135999999999996" classname="table_rspt01" name="RSPT01_5._Best_Overall_Response_modifying_the_definition_of_overall_response_"/>
+    <testcase time="0.228999999999985" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_"/>
+    <testcase time="0.0910000000000082" classname="table_rspt01" name="RSPT01_6._Best_Overall_Response_define_new_sections_to_display_"/>
+  </testsuite>
+  <testsuite name="table_ttet01" timestamp="2026-02-04T15:46:58Z" hostname="cea6b35c13be" tests="14" skipped="0" failures="0" errors="0" time="3.626">
+    <testcase time="0.420999999999992" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly"/>
+    <testcase time="0.177000000000021" classname="table_ttet01" name="TTET01_default_variant_is_produced_correctly"/>
+    <testcase time="0.419999999999987" classname="table_ttet01" name="TTET01_default_variant_with_Placebo_arm"/>
+    <testcase time="0.176999999999992" classname="table_ttet01" name="TTET01_default_variant_with_Placebo_arm"/>
+    <testcase time="0.235000000000014" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display"/>
+    <testcase time="0.111999999999995" classname="table_ttet01" name="TTET01_variant_2_selecting_sections_to_display"/>
+    <testcase time="0.340000000000003" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level"/>
+    <testcase time="0.120000000000005" classname="table_ttet01" name="TTET01_variant_3_modifying_analysis_details_like_conftype_ties_alpha_level"/>
+    <testcase time="0.423000000000002" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis"/>
+    <testcase time="0.133999999999986" classname="table_ttet01" name="TTET01_variant_4_with_stratified_analysis"/>
+    <testcase time="0.336000000000013" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point"/>
+    <testcase time="0.155000000000001" classname="table_ttet01" name="TTET01_variant_5_modifying_time_point"/>
+    <testcase time="0.418999999999983" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value"/>
+    <testcase time="0.157000000000011" classname="table_ttet01" name="TTET01_variant_6_requesting_more_than_one_p_value"/>
+  </testsuite>
+  <testsuite name="table_vst01" timestamp="2026-02-04T15:47:03Z" hostname="cea6b35c13be" tests="2" skipped="0" failures="0" errors="0" time="2.45">
+    <testcase time="2.059" classname="table_vst01" name="VST01_default_variant_is_produced_correctly"/>
+    <testcase time="0.390999999999991" classname="table_vst01" name="VST01_default_variant_is_produced_correctly"/>
+  </testsuite>
+  <testsuite name="table_vst02" timestamp="2026-02-04T15:47:05Z" hostname="cea6b35c13be" tests="4" skipped="0" failures="0" errors="0" time="1.486">
+    <testcase time="1.08000000000001" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_"/>
+    <testcase time="0.078000000000003" classname="table_vst02" name="1._Vital_Sign_Abnormalities_Regardless_of_Abnormality_at_Baseline_VST02_1_"/>
+    <testcase time="0.251000000000005" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_"/>
+    <testcase time="0.0769999999999982" classname="table_vst02" name="2._Vital_Sign_Abnormalities_Among_Subject_Without_Abnormality_at_Baseline_VST02_2_"/>
+  </testsuite>
+</testsuites>
