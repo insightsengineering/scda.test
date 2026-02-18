@@ -1,5 +1,5 @@
 testthat::test_that("ADAL02 listing is produced correctly", {
-  adab <- adab_raw %>%
+  adab <- adab_raw |>
     filter(NFRLT %% 1 == 0 & NFRLT > 0)
 
   trt <- "A: Drug X"
@@ -7,19 +7,18 @@ testthat::test_that("ADAL02 listing is produced correctly", {
   drugcd <- unique(adab$PARAMCD[adab$PARAM == "Antibody titer units"])[1]
   min_titer <- 1.10
 
-  adab_x <- adab %>%
+  adab_x <- adab |>
     filter(
       ARM == trt,
       PARCAT1 == drug_a,
       ADPBLPFL == "Y"
-    ) %>%
-    select(-PARAMCD, -AVALC, -AVALU, -ARRLT, -NRRLT) %>%
-    unique() %>%
+    ) |>
+    select(-PARAMCD, -AVALC, -AVALU, -ARRLT, -NRRLT) |>
+    unique() |>
     tidyr::pivot_wider(
       names_from = PARAM,
       values_from = AVAL
-    ) %>%
-    filter(if_any(matches("Treatment Emergent - Positive"), ~ .x == 1)) %>%
+    ) |>
     mutate(
       VISN = factor(paste0(
         VISIT, "\n(Day ",
@@ -31,7 +30,7 @@ testthat::test_that("ADAL02 listing is produced correctly", {
         ")"
       )),
       PTES = ifelse(
-        ifelse("Treatment induced ADA" %in% names(.), `Treatment induced ADA` == 1, FALSE),
+        ifelse("Treatment induced ADA" %in% names(.data), `Treatment induced ADA` == 1, FALSE),
         ifelse(
           "Transient ADA" %in% names(.) & `Transient ADA` == 1,
           "Induced (Transient)",
@@ -39,14 +38,16 @@ testthat::test_that("ADAL02 listing is produced correctly", {
         ),
         "Enhanced"
       )
-    ) %>%
+    ) |>
     mutate(
       AVAL = paste0(
         ifelse(
-          ifelse("ADA interpreted per sample result" %in% names(.), `ADA interpreted per sample result` == 0, FALSE),
+          ifelse("ADA interpreted per sample result" %in% names(.data),
+            `ADA interpreted per sample result` == 0, FALSE
+          ),
           "NEGATIVE",
           ifelse(
-            ifelse("Antibody titer units" %in% names(.), !is.na(`Antibody titer units`), FALSE),
+            ifelse("Antibody titer units" %in% names(.data), !is.na(`Antibody titer units`), FALSE),
             ifelse(
               `Antibody titer units` < min_titer,
               paste0("<", format(min_titer, nsmall = 2)),
@@ -56,24 +57,26 @@ testthat::test_that("ADAL02 listing is produced correctly", {
           )
         ),
         ifelse(
-          ifelse("NAB interpreted per sample result" %in% names(.), `NAB interpreted per sample result` == 1, FALSE),
+          ifelse("NAB interpreted per sample result" %in% names(.data),
+            `NAB interpreted per sample result` == 1, FALSE
+          ),
           "*",
           ""
         )
       )
     )
 
-  out <- adab_x %>%
-    select(USUBJID, VISN, AVAL, PTES) %>%
+  out <- adab_x |>
+    select(USUBJID, VISN, AVAL, PTES) |>
     tidyr::pivot_wider(
       names_from = VISN,
       values_from = AVAL
-    ) %>%
+    ) |>
     select(USUBJID, unique(adab_x$VISN[order(adab_x$NFRLT)]), PTES)
 
   var_labels(out) <- names(out)
 
-  out <- out %>%
+  out <- out |>
     var_relabel(
       USUBJID = "Subject ID",
       PTES = "Patient Treatment\nEmergent ADA Status"
@@ -103,7 +106,7 @@ Persistent ADA =  ADA positive result detected (a) at the last post-baseline sam
 time points during treatment where the first and last ADA positive samples are separated by a period ≥ 16 weeks,
 irrespective of any negative samples in between.
 Asterisk denotes sample that tested positive for Neutralizing Antibodies."
-  ) %>% head(50)
+  ) |> head(50)
 
   testthat::expect_snapshot(result)
 })

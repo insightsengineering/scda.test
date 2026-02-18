@@ -49,7 +49,7 @@ Remotes:
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@147_refresh_of_data
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
