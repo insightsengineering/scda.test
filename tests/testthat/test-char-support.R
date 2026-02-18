@@ -39,7 +39,6 @@ adeg_f_2 <- adeg_f %>%
 adeg_f <- rbind(adeg_f_1, adeg_f_2)
 
 
-
 ### mapping dataframe
 uniq_adeg <- unique(adeg_f %>% select(PARCAT, PARAMCD, CRITDIR, ANRIND23))
 mapdf <- uniq_adeg %>%
@@ -59,10 +58,6 @@ adeg_f <- adeg_f %>%
 adeg_f2 <- adeg_f
 ### also part of the issue
 adeg_f2$CRITDIR <- factor(adeg_f2$CRITDIR)
-
-
-
-
 
 
 ################################################################################
