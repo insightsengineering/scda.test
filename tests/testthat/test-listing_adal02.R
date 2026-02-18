@@ -19,7 +19,6 @@ testthat::test_that("ADAL02 listing is produced correctly", {
       names_from = PARAM,
       values_from = AVAL
     ) %>%
-    filter(if_any(matches("Treatment Emergent - Positive"), ~ .x == 1)) %>%
     mutate(
       VISN = factor(paste0(
         VISIT, "\n(Day ",
