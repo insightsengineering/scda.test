@@ -42,7 +42,8 @@ testthat::test_that("ADAL02 listing is produced correctly", {
     mutate(
       AVAL = paste0(
         ifelse(
-          ifelse("ADA interpreted per sample result" %in% names(.data), `ADA interpreted per sample result` == 0, FALSE),
+          ifelse("ADA interpreted per sample result" %in% names(.data),
+                 `ADA interpreted per sample result` == 0, FALSE),
           "NEGATIVE",
           ifelse(
             ifelse("Antibody titer units" %in% names(.data), !is.na(`Antibody titer units`), FALSE),
@@ -55,7 +56,8 @@ testthat::test_that("ADAL02 listing is produced correctly", {
           )
         ),
         ifelse(
-          ifelse("NAB interpreted per sample result" %in% names(.data), `NAB interpreted per sample result` == 1, FALSE),
+          ifelse("NAB interpreted per sample result" %in% names(.data),
+                 `NAB interpreted per sample result` == 1, FALSE),
           "*",
           ""
         )
