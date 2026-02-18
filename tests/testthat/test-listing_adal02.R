@@ -1,19 +1,20 @@
 testthat::test_that("ADAL02 listing is produced correctly", {
-  adab <- adab_raw %>%
+  adab <- pharmaverseadam::adab %>%
     filter(NFRLT %% 1 == 0 & NFRLT > 0)
 
-  trt <- "A: Drug X"
-  drug_a <- "A: Drug X Antibody"
+  trt <- "Xanomeline High Dose" # "A: Drug X"
+  drug_a <- "Anti-XANOMELINE Antibody" #"A: Drug X Antibody"
   drugcd <- unique(adab$PARAMCD[adab$PARAM == "Antibody titer units"])[1]
   min_titer <- 1.10
 
   adab_x <- adab %>%
     filter(
-      ARM == trt,
+      TRT01A == trt,
       PARCAT1 == drug_a,
       ADPBLPFL == "Y"
     ) %>%
-    select(-PARAMCD, -AVALC, -AVALU, -ARRLT, -NRRLT) %>%
+    # select(-PARAMCD, -AVALC, -AVALU, -ARRLT, -NRRLT) %>%
+    select(-PARAMCD, -AVALC, -AVALU) %>%
     unique() %>%
     tidyr::pivot_wider(
       names_from = PARAM,
