@@ -32,7 +32,7 @@ Imports:
 Suggests:
     broom,
     checkmate,
-    dplyr,
+    dplyr (>= 1.2.0),
     forcats,
     ggplot2 (>= 3.5.0),
     knitr,
