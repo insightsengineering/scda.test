@@ -27,7 +27,7 @@ Depends:
     rtables (>= 0.6.15),
     tern (>= 0.9.10)
 Imports:
-    pharmaverseadam (>= 1.1.0.9001),
+    pharmaverseadam (>= 1.3.0),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
@@ -49,7 +49,7 @@ Remotes:
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
-    pharmaverse/pharmaverseadam@147_refresh_of_data
+    pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
