@@ -113,7 +113,7 @@ lyt <- basic_table(
     nested = FALSE,
     show_labels = "hidden",
     afun = a_patyrs_j,
-    extra_args = list(.labels = c(patyrs = "Subject years\u1D43"))
+    extra_args = list(.labels = c(patyrs = "Subject years~[super a]"))
   ) %>%
   analyze(
     vars = "AEDECOD",
