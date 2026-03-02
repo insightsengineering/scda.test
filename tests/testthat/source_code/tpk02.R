@@ -54,7 +54,7 @@ trt_grps <- c("Xanomeline High Dose", "Xanomeline Low Dose")
 
 for (i in seq_along(trt_grps)) {
   trt_grp <- trt_grps[i]
-  path <- paste0(fileid, "part", i)
+  path <- paste0(fileid, "part", i, "of", length(trt_grps))
 
   ##############################################################################
   # Process data:
