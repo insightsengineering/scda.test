@@ -84,14 +84,14 @@ lyt <- basic_table(
   summarize_num_patients(
     var = "USUBJID",
     .stats = "unique",
-    .formats = c("unique" = jjcsformat_count_fraction),
+    .formats = c("unique" = "xx (xx.xx%)"),
     .labels = c(unique = "Screening failures")
   ) %>%
   count_occurrences(
     vars = "DCSCREEN",
     drop = FALSE,
     .stats = "count_fraction_fixed_dp",
-    .formats = c("count_fraction_fixed_dp" = jjcsformat_count_fraction)
+    .formats = c("count_fraction_fixed_dp" = "xx (xx.xx%)")
   ) %>%
   count_patients_with_flags(
     var = "USUBJID",
@@ -104,7 +104,7 @@ lyt <- basic_table(
     flag_variables = c("RANDFL"),
     nested = FALSE,
     .stats = "count_fraction",
-    .formats = c("count_fraction" = jjcsformat_count_fraction)
+    .formats = c("count_fraction" = "xx (xx.xx%)")
   )
 
 result <- build_table(lyt, df = adsl, alt_counts_df = adsl_unq)
