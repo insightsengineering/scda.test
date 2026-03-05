@@ -137,6 +137,7 @@ for (i in seq_along(trt_grps)) {
           quantiles = "Interquartile range"
         ),
         .formats = c(
+          n = jjcsformat_xx("xx"),
           mean_sd = jjcsformat_xx("xx.xx (xx.xx)"),
           median = jjcsformat_xx("xx.xx"),
           geom_mean = jjcsformat_xx("xx.xx"),

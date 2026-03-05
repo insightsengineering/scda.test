@@ -134,6 +134,7 @@ lyt <- basic_table() |>
         quantiles = "Interquartile range"
       ),
       .formats = c(
+        n = jjcsformat_xx("xx"),
         mean_sd = jjcsformat_xx("xx.xx (xx.xx)"),
         median = jjcsformat_xx("xx.xx"),
         geom_mean = jjcsformat_xx("xx.xx"),
