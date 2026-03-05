@@ -50,7 +50,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@main,
+    munoztd0/formatters@jnj_templates_scripts_3_formatters_change_width,
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
