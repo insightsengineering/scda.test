@@ -24,7 +24,7 @@
 ###############################################################################
 
 library(envsetup)
-library(tern)
+#library(tern)
 library(dplyr)
 library(rtables)
 library(junco)
@@ -97,7 +97,8 @@ lyt <- basic_table(
     var = "USUBJID",
     flag_variables = c("RESCRNFL"),
     nested = FALSE,
-    .stats = "count"
+    .stats = "count",
+    .formats = c("count_fraction" = jjcsformat_count_fraction)
   ) %>%
   count_patients_with_flags(
     var = "USUBJID",
