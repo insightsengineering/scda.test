@@ -24,7 +24,7 @@
 ###############################################################################
 
 library(envsetup)
-#library(tern)
+library(tern)
 library(dplyr)
 library(rtables)
 library(junco)
