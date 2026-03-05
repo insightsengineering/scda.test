@@ -98,7 +98,7 @@ lyt <- basic_table(
     flag_variables = c("RESCRNFL"),
     nested = FALSE,
     .stats = "count",
-    .formats = c("count_fraction" = jjcsformat_count_fraction)
+    .formats = c("count" = jjcsformat_xx("xx"))
   ) %>%
   count_patients_with_flags(
     var = "USUBJID",
