@@ -198,9 +198,9 @@ result <- rlistings::as_listing(
 
 result <- set_titles(result, tab_titles)
 
+colwidth <- c(21, 13, 18, 31, 74, 18, 50, 26, 15, 19)
 
-
-tt_to_tlgrtf(
+tt_to_tlgrtf(colwidths = colwidth,
   result,
   file = paste0(fileid),
   orientation = "landscape"

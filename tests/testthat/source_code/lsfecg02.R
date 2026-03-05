@@ -208,7 +208,9 @@ result <- set_titles(result, tab_titles)
 result1 <- result %>%
   filter(toupper(.data[[trtvar]]) == "XANOMELINE LOW DOSE")
 
-tt_to_tlgrtf(
+colwidth <- c(21, 13, 18, 38, 75, 15, 50, 24, 15, 14)
+
+tt_to_tlgrtf(colwidths = colwidth,
   result1,
   file = paste0(fileid, "PART1OF3"),
   orientation = "landscape"
@@ -217,7 +219,9 @@ tt_to_tlgrtf(
 result2 <- result %>%
   filter(toupper(.data[[trtvar]]) == "XANOMELINE HIGH DOSE")
 
-tt_to_tlgrtf(
+colwidth <- c(21, 13, 18, 29, 74, 27, 50, 24, 15, 14)
+
+tt_to_tlgrtf(colwidths = colwidth,
   head(result2, 100),
   file = paste0(fileid, "PART2OF3"),
   orientation = "landscape"
@@ -226,7 +230,9 @@ tt_to_tlgrtf(
 result3 <- result %>%
   filter(toupper(.data[[trtvar]]) == "PLACEBO")
 
-tt_to_tlgrtf(
+colwidth <- c(18, 13, 18, 41, 75, 16, 50, 24, 15, 14)
+
+tt_to_tlgrtf(colwidths = colwidth,
   head(result3, 100),
   file = paste0(fileid, "PART3OF3"),
   orientation = "landscape"

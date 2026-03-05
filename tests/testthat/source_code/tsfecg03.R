@@ -192,4 +192,6 @@ result <- set_titles(result, titles)
 # Convert to tbl file and output table
 ################################################################################
 
-tt_to_tlgrtf(result, file = fileid)
+colwidth <- c(54, 21, 21, 21)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid)

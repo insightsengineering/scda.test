@@ -142,4 +142,6 @@ result <- set_titles(result, titles)
 # Convert to tbl file and output table:
 ################################################################################
 
-tt_to_tlgrtf(result, file = fileid, orientation = "portrait")
+colwidth <- c(64, 23, 23, 25)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "portrait")

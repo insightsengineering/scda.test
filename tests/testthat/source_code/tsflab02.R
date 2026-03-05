@@ -532,7 +532,7 @@ build_result_parcat3 <- function(
     ### add the proper abbreviation to the tblid, and add opath path
     fileid <- write_path(opath, tblidx)
 
-    tt_to_tlgrtf(result, file = fileid, orientation = "landscape")
+    tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
   }
 
   return(result)
@@ -583,4 +583,9 @@ build_result_parcat3 <- function(
 
 ### if a certain category is not present, no rtf will be generated
 
-result <- build_result_parcat3(PARCAT3sel = "General chemistry", tblid = tblid)
+result <- build_result_parcat3(PARCAT3sel = "General chemistry", tblid = tblid, save2rtf = FALSE)
+
+
+colwidth <- c(45, 21, 21, 21, 30, 30)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

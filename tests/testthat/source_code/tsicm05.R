@@ -202,4 +202,6 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
-tt_to_tlgrtf(result, file = fileid, orientation = "landscape")
+colwidth <- c(57, 21, 21, 21, 21, 23)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

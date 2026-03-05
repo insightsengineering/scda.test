@@ -169,5 +169,5 @@ for (i in seq_along(trt_grps)) {
   # Convert to tbl file and output table:
   ##############################################################################
 
-  tt_to_tlgrtf(result, file = path, orientation = "portrait")
+  tt_to_tlgrtf(colwidths = colwidth, result, file = path, orientation = "portrait")
 }

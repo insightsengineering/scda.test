@@ -437,7 +437,9 @@ result <- set_titles(result, titles)
 # Convert to tbl file and output table
 ################################################################################
 
-tt_to_tlgrtf(
+colwidth <- c(56, 29, 36, 41, 29, 36, 41, 29, 36, 41, 41, 41)
+
+tt_to_tlgrtf(colwidths = colwidth,
   result,
   file = fileid,
   nosplitin = list(cols = c(trtvar, "rrisk_header")),
