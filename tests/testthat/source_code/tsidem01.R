@@ -232,8 +232,9 @@ lyt <- basic_table(
       .stats = c("n", "mean_sd", "median", "range", "count_fraction"),
       .labels = c("n" = "N", "range" = "Min, max"),
       .formats = c(P1_precision,
-                   n = jjcsformat_xx("xx"),
-                   "count_fraction" = jjcsformat_count_fraction),
+        n = jjcsformat_xx("xx"),
+        "count_fraction" = jjcsformat_count_fraction
+      ),
       .indent_mods = c(
         "n" = 0L,
         "mean_sd" = 1L,
@@ -265,8 +266,9 @@ lyt <- basic_table(
       .stats = c("n", "mean_sd", "median", "range", "count_fraction"),
       .labels = c("n" = "N", "range" = "Min, max"),
       .formats = c(P2a_precision,
-                   n = jjcsformat_xx("xx"),
-                   "count_fraction" = jjcsformat_count_fraction),
+        n = jjcsformat_xx("xx"),
+        "count_fraction" = jjcsformat_count_fraction
+      ),
       .indent_mods = c(
         "n" = 0L,
         "mean_sd" = 1L,
@@ -285,8 +287,9 @@ lyt <- basic_table(
       .stats = c("n", "mean_sd", "median", "range", "count_fraction"),
       .labels = c("n" = "N", "range" = "Min, max"),
       .formats = c(P2b_precision,
-                   n = jjcsformat_xx("xx"),
-                   "count_fraction" = jjcsformat_count_fraction),
+        n = jjcsformat_xx("xx"),
+        "count_fraction" = jjcsformat_count_fraction
+      ),
       .indent_mods = c(
         "n" = 0L,
         "mean_sd" = 1L,

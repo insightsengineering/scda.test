@@ -194,6 +194,6 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table
 ################################################################################
 
-tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape", alignments =list(
-    list(row = 1:10, col =1:4, value = "left")
-  ))
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape", alignments = list(
+  list(row = 1:10, col = 1:4, value = "left")
+))
