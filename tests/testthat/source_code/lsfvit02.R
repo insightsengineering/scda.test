@@ -200,7 +200,8 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(21, 13, 18, 31, 74, 18, 50, 26, 15, 19)
 
-tt_to_tlgrtf(colwidths = colwidth,
+tt_to_tlgrtf(
+  colwidths = colwidth,
   head(result, 100),
   file = paste0(fileid),
   orientation = "landscape"

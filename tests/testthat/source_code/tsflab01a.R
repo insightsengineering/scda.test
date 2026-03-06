@@ -661,7 +661,8 @@ build_result_parcat3 <- function(
     ### add the proper abbreviation to the tblid, and add opath path
     fileid <- write_path(opath, tblidx)
 
-    tt_to_tlgrtf(colwidths = colwidth,
+    tt_to_tlgrtf(
+      colwidths = colwidth,
       result,
       file = fileid,
       orientation = "landscape",
@@ -721,9 +722,10 @@ result <- build_result_parcat3(PARCAT3sel = "General chemistry", tblid = tblid, 
 
 colwidth <- c(39, 29, 46, 47, 29, 46, 47, 29, 46, 48, 47, 49)
 
-tt_to_tlgrtf(colwidths = colwidth,
-      result,
-      file = fileid,
-      orientation = "landscape",
-      nosplitin = list(cols = c(trtvar, "rrisk_header"))
-    )
+tt_to_tlgrtf(
+  colwidths = colwidth,
+  result,
+  file = fileid,
+  orientation = "landscape",
+  nosplitin = list(cols = c(trtvar, "rrisk_header"))
+)

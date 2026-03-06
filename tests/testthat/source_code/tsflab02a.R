@@ -640,6 +640,3 @@ result <- build_result_parcat3(
 colwidth <- c(47, 21, 21, 19, 35, 35)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
-
-
-
