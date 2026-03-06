@@ -208,7 +208,9 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape",
+tt_to_tlgrtf(head(result, 100),
+  file = fileid, orientation = "landscape",
   alignments = list(
     list(row = 1:100, col = 1:8, value = "left")
-  ))
+  )
+)
