@@ -272,6 +272,6 @@ colwidths <- def_colwidths(
 acolwidths <- colwidths
 acolwidths[3:length(acolwidths)] <- 12
 
-colwidth <- c(58, 7, 7, 5, 5, 5, 7)
+acolwidths <- c(58, 11, 12, 12, 12, 12, 12)
 
-tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, colwidths = acolwidths)
+tt_to_tlgrtf(result, file = fileid, colwidths = acolwidths)
