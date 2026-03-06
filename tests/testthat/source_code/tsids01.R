@@ -84,7 +84,7 @@ lyt <- basic_table(
   summarize_num_patients(
     var = "USUBJID",
     .stats = "unique",
-    .formats = c("unique" = jjcsformat_count_fraction),
+    .formats = c("unique" = "xx (xx.xx%)"),
     .labels = c(unique = "Screening failures")
   ) %>%
   count_occurrences(
