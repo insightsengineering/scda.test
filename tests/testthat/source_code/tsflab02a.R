@@ -569,7 +569,7 @@ build_result_parcat3 <- function(
     ### add the proper abbreviation to the tblid, and add opath path
     fileid <- write_path(opath, tblidx)
 
-    tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
+    tt_to_tlgrtf(result, file = fileid, orientation = "landscape")
   }
 
   return(result)
@@ -634,5 +634,12 @@ result <- build_result_parcat3(
   tblid = tblid,
   subgroup = subgrpvar,
   label_fstr = subgrplbl,
-  save2rtf = TRUE
+  save2rtf = FALSE
 )
+
+colwidth <- c(47, 21, 21, 19, 35, 35)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
+
+
+
