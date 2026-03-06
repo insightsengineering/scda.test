@@ -353,7 +353,8 @@ result <- set_titles(result, titles)
 
 colwidth <- c(56, 29, 36, 39, 29, 36, 41, 29, 36, 37, 41, 41)
 
-tt_to_tlgrtf(colwidths = colwidth,
+tt_to_tlgrtf(
+  colwidths = colwidth,
   result,
   file = fileid,
   nosplitin = list(cols = c(trtvar, "rrisk_header")),

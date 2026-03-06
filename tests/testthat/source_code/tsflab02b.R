@@ -656,7 +656,8 @@ build_result_parcat3 <- function(
 result <- build_result_parcat3(
   PARCAT3sel = "General chemistry",
   tblid = tblid,
-  save2rtf = FALSE)
+  save2rtf = FALSE
+)
 
 colwidth <- c(49, 19, 19, 19, 33, 33)
 

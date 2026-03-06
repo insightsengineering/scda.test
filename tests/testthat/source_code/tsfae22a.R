@@ -295,7 +295,8 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(64, 21, 21, 21, 23, 21, 21, 19, 19, 19, 21, 21, 21, 19, 21, 21, 21, 19, 19, 19, 21)
 
-tt_to_tlgrtf(colwidths = colwidth,
+tt_to_tlgrtf(
+  colwidths = colwidth,
   result,
   file = fileid,
   orientation = "portrait",

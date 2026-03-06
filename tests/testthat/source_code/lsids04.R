@@ -97,6 +97,6 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 13, 18,23)
+colwidth <- c(21, 13, 18, 23)
 
 tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
