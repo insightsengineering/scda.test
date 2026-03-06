@@ -57,7 +57,7 @@ Remotes:
     pharmaverse/pharmaverseadam@main,
     johnsonandjohnson/pharmaverseadamjnj@main,
     johnsonandjohnson/pharmaversesdtmjnj@main,
-    johnsonandjohnson/junco@dev
+    johnsonandjohnson/junco@200-bug-a_freq_j-fails-with-denom-n_altdf-in-nested-row-splits-using-alt_counts_df
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
