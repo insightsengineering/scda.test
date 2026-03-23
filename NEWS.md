@@ -2,7 +2,7 @@
 
 
 ### New Features
-* Added jnj template scripts 
+* Added jnj template scripts. 
 * Added table tests from `tern`.
 * Added tests for listings.
 * Added pagination tests for tables.
