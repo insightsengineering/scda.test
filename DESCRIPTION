@@ -1,8 +1,8 @@
 Type: Package
 Package: scda.test
 Title: Template Tests
-Version: 0.0.0.9107
-Date: 2026-02-21
+Version: 0.0.0.9108
+Date: 2026-03-23
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@rconis.com", role = "aut"),
@@ -13,6 +13,8 @@ Authors@R: c(
     person("Pawel", "Rucki", , "pawel.rucki@roche.com", role = "aut"),
     person("Chendi", "Liao", role = "aut"),
     person("Jennifer", "Li", role = "aut"),
+    person("David", "Munoz Tord", , "david.munoztord@mailbox.org", role = "ctb"),
+    person("Johnson & Johnson Innovative Medicine", role = c("cph", "fnd")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
 Description: Tests of sample templates from TLG Catalog using data from
@@ -25,9 +27,14 @@ Depends:
     R (>= 4.2),
     rlistings (>= 0.2.13),
     rtables (>= 0.6.15),
-    tern (>= 0.9.10)
+    tern (>= 0.9.10),
+    junco (>= 0.1.5)
 Imports:
+    pharmaverseadamjnj (>= 0.0.2),
+    pharmaversesdtmjnj (>= 0.0.1),
     pharmaverseadam (>= 1.3.0),
+    pharmaverseadamjnj (>= 0.0.2),
+    pharmaversesdtmjnj (>= 0.0.1),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
@@ -41,7 +48,9 @@ Suggests:
     testthat (>= 3.0),
     tibble,
     tidyr,
-    withr (>= 2.0.0)
+    withr (>= 2.0.0),
+    labelled,
+    envsetup
 VignetteBuilder:
     knitr
 Remotes:
@@ -49,7 +58,10 @@ Remotes:
     insightsengineering/rlistings@main,
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
-    pharmaverse/pharmaverseadam@main
+    pharmaverse/pharmaverseadam@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
+    johnsonandjohnson/pharmaversesdtmjnj@main,
+    johnsonandjohnson/junco@dev
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/testthat/edition: 3
