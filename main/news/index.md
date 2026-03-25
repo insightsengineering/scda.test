@@ -1,9 +1,10 @@
 # Changelog
 
-## scda.test 0.0.0.9107
+## scda.test 0.0.0.9109
 
 #### New Features
 
+- Added jnj template scripts.
 - Added table tests from `tern`.
 - Added tests for listings.
 - Added pagination tests for tables.

@@ -41,4 +41,8 @@ Authors:
 
 Other contributors:
 
+- David Munoz Tord <david.munoztord@mailbox.org> \[contributor\]
+
+- Johnson & Johnson Innovative Medicine \[copyright holder, funder\]
+
 - F. Hoffmann-La Roche AG \[copyright holder, funder\]
