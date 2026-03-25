@@ -37,6 +37,8 @@ Authors:
 
 Other contributors:
 \itemize{
+  \item David Munoz Tord \email{david.munoztord@mailbox.org} [contributor]
+  \item Johnson & Johnson Innovative Medicine [copyright holder, funder]
   \item F. Hoffmann-La Roche AG [copyright holder, funder]
 }
 
