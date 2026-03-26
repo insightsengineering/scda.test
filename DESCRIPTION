@@ -32,9 +32,6 @@ Depends:
 Imports:
     pharmaverseadam (>= 1.3.0),
     pharmaverseadamjnj (>= 0.0.2),
-    pharmaverseadamjnj (>= 0.0.2),
-    pharmaversesdtmjnj (>= 0.0.1),
-    pharmaversesdtmjnj (>= 0.0.1),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
