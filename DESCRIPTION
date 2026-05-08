@@ -27,7 +27,7 @@ Depends:
     junco (>= 0.1.6),
     R (>= 4.2),
     rlistings (>= 0.2.13),
-    rtables (>= 0.6.15),
+    rtables (>= 0.6.16),
     tern (>= 0.9.10)
 Imports:
     pharmaverseadam (>= 1.3.0),
@@ -54,7 +54,7 @@ VignetteBuilder:
 Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rlistings@main,
-    insightsengineering/rtables@main,
+    insightsengineering/rtables@1084_v0.6.16,
     insightsengineering/tern@main,
     johnsonandjohnson/junco@release-candidate-v0.1.6,
     johnsonandjohnson/pharmaverseadamjnj@v0.0.5,
