@@ -13,7 +13,7 @@ Authors@R: c(
     person("Pawel", "Rucki", , "pawel.rucki@roche.com", role = "aut"),
     person("Chendi", "Liao", role = "aut"),
     person("Jennifer", "Li", role = "aut"),
-    person("David", "Munoz Tord", , "david.munoztord@mailbox.org", role = "ctb"),
+    person("David", "Munoz Tord", ,"david.munoztord@mailbox.org", role = "ctb"),
     person("Johnson & Johnson Innovative Medicine", role = c("cph", "fnd")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
