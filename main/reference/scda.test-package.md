@@ -6,7 +6,7 @@ and `tern` analysis methods.
 ## Details
 
 To learn mode about the package, check the documentation of
-[tern::tern](https://insightsengineering.github.io/tern/latest-tag/reference/tern-package.html).
+[tern](https://insightsengineering.github.io/tern/latest-tag/reference/tern-package.html).
 
 ## See also
 
@@ -22,6 +22,8 @@ Useful links:
 **Maintainer**: Joe Zhu <joe.zhu@roche.com>
 
 Authors:
+
+- Joe Zhu <joe.zhu@roche.com>
 
 - Daniel Sabanés Bové <daniel.sabanes_bove@rconis.com>
 
