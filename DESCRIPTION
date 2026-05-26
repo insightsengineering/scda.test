@@ -54,7 +54,7 @@ VignetteBuilder:
 Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rlistings@main,
-    insightsengineering/rtables@1084_v0.6.16,
+    insightsengineering/rtables@main,
     insightsengineering/tern@main,
     johnsonandjohnson/junco@313_bug_get_stats,
     johnsonandjohnson/pharmaverseadamjnj@v0.0.5,
