@@ -14,6 +14,8 @@ Authors@R: c(
     person("Chendi", "Liao", role = "aut"),
     person("Jennifer", "Li", role = "aut"),
     person("David", "Munoz Tord", , "david.munoztord@mailbox.org", role = "ctb"),
+    person("Jan", "Szczypiński", , "jan.szczypinski@external.roche.com", role = "aut",
+    comment = c(ORCID = "0000-0002-5682-5840")),
     person("Johnson & Johnson Innovative Medicine", role = c("cph", "fnd")),
     person("F. Hoffmann-La Roche AG", role = c("cph", "fnd"))
   )
@@ -54,7 +56,6 @@ VignetteBuilder:
 Remotes:
     insightsengineering/formatters@main,
     insightsengineering/rlistings@main,
-    insightsengineering/rtables@1084_v0.6.16,
     insightsengineering/tern@main,
     johnsonandjohnson/junco@release-candidate-v0.1.6,
     johnsonandjohnson/pharmaverseadamjnj@v0.0.5,
