@@ -34,6 +34,7 @@ Authors:
   \item Pawel Rucki \email{pawel.rucki@roche.com}
   \item Chendi Liao
   \item Jennifer Li
+  \item Jan Szczypiński \email{jan.szczypinski@external.roche.com} (\href{https://orcid.org/0000-0002-5682-5840}{ORCID})
 }
 
 Other contributors:
