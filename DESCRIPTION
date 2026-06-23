@@ -32,7 +32,7 @@ Depends:
 Imports:
     pharmaverseadam (>= 1.3.0),
     pharmaverseadamjnj (>= 0.0.5),
-    pharmaversesdtmjnj (>= 0.0.5),
+    pharmaversesdtmjnj (>= 0.0.4),
     random.cdisc.data (>= 0.3.16)
 Suggests:
     broom,
@@ -58,7 +58,7 @@ Remotes:
     insightsengineering/tern@main,
     johnsonandjohnson/junco@main,
     johnsonandjohnson/pharmaverseadamjnj@main,
-    johnsonandjohnson/pharmaversesdtmjnj@v0.0.5,
+    johnsonandjohnson/pharmaversesdtmjnj@v0.0.4,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
