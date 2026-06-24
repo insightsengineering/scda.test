@@ -109,6 +109,9 @@ jobs:
   style:
     if: github.event_name == 'pull_request' && github.actor != 'insights-engineering-bot'
     name: Style Check 👗
+    permissions:
+      contents: read
+      pull-requests: read
     uses: insightsengineering/r.pkg.template/.github/workflows/style.yaml@main
     with:
       auto-update: true
