@@ -107,7 +107,7 @@ jobs:
     name: License Check 🃏
     uses: insightsengineering/r.pkg.template/.github/workflows/licenses.yaml@main
   style:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.actor != 'insights-engineering-bot'
     name: Style Check 👗
     uses: insightsengineering/r.pkg.template/.github/workflows/style.yaml@main
     with:
