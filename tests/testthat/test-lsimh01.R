@@ -14,9 +14,4 @@ test_that("lsimh01", {
     identical(normalize_rtf_snapshot(old), normalize_rtf_snapshot(new))
   }
 
-  # expect_snapshot_file(
-  #   write_test_rtf_for("lsimh01.R"),
-  #   "lsimh01.rtf",
-  #   compare = compare_normalized_rtf
-  # )
 })
