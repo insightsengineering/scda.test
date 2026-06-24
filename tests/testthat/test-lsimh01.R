@@ -13,5 +13,4 @@ test_that("lsimh01", {
   compare_normalized_rtf <- function(old, new) {
     identical(normalize_rtf_snapshot(old), normalize_rtf_snapshot(new))
   }
-
 })
