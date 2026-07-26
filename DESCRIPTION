@@ -57,7 +57,7 @@ Remotes:
     insightsengineering/rtables@main,
     insightsengineering/tern@main,
     johnsonandjohnson/junco@main,
-    johnsonandjohnson/pharmaversesdtmjnj@v0.0.4,
+    johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
