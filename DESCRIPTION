@@ -52,10 +52,10 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@main,
-    insightsengineering/rlistings@main,
-    insightsengineering/rtables@main,
-    insightsengineering/tern@main,
+    pharmaverse/formatters@main,
+    pharmaverse/rlistings@main,
+    pharmaverse/rtables@main,
+    pharmaverse/tern@main,
     johnsonandjohnson/junco@main,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/pharmaverseadam@main
