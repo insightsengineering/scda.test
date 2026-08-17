@@ -124,7 +124,8 @@ lyt <- basic_table(
       occ_var = "AOCCPFL",
       occ_dy = "ASTDY",
       ref_path = ref_path,
-      drop_levels = TRUE
+      drop_levels = TRUE,
+      row_labels_adj = TRUE
     )
   ) %>%
   append_topleft("Preferred Term, EAIR Per 100 SY")

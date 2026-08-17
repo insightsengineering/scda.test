@@ -52,16 +52,16 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    insightsengineering/formatters@main,
-    insightsengineering/rlistings@main,
-    insightsengineering/rtables@main,
-    insightsengineering/tern@main,
-    johnsonandjohnson/junco@main,
+    pharmaverse/formatters@main,
+    pharmaverse/rlistings@main,
+    pharmaverse/rtables@main,
+    pharmaverse/tern@main,
+    johnsonandjohnson/junco@dev,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/pharmaverseadam@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
