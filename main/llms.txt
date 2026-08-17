@@ -15,7 +15,7 @@ please ensure you have the latest versions of the `tern` and
 `random.cdisc.data` packages installed. Installation instructions are
 provided for each at these links:
 
-- [`tern`](https://github.com/insightsengineering/tern#installation)
+- [`tern`](https://github.com/pharmaverse/tern#installation)
 - [`random.cdisc.data`](https://github.com/insightsengineering/random.cdisc.data#installation)
 
 ### Installing scda.test

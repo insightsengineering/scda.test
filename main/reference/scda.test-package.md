@@ -6,7 +6,7 @@ and `tern` analysis methods.
 ## Details
 
 To learn mode about the package, check the documentation of
-[tern](https://rdrr.io/pkg/tern/man/tern-package.html).
+[tern](https://insightsengineering.github.io/tern/latest-tag/reference/tern-package.html).
 
 ## See also
 
