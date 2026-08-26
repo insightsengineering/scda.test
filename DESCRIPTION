@@ -57,7 +57,7 @@ Remotes:
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    insightsengineering/rtables@1095_intermediate_nesting,
+    pharmaverse/rtables@1095_intermediate_nesting,
     pharmaverse/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
