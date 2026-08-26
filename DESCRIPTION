@@ -52,7 +52,7 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@dev,
+    johnsonandjohnson/junco@main,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
