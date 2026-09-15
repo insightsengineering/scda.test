@@ -2,7 +2,7 @@ Type: Package
 Package: scda.test
 Title: Template Tests
 Version: 0.0.0.9117
-Date: 2026-08-17
+Date: 2026-10-17
 Authors@R: c(
     person("Joe", "Zhu", , "joe.zhu@roche.com", role = c("aut", "cre")),
     person("Daniel", "Sabanés Bové", , "daniel.sabanes_bove@rconis.com", role = "aut"),
@@ -52,13 +52,14 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@dev,
+    johnsonandjohnson/junco@514_add_safe_2x2,
     johnsonandjohnson/pharmaversesdtmjnj@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    pharmaverse/rtables@1095_intermediate_nesting,
-    pharmaverse/tern@main
+    pharmaverse/rtables@main,
+    pharmaverse/tern@1514_add_safe_2x2_table
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
