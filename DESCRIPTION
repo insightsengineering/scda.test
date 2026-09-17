@@ -52,12 +52,12 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@dev,
+    johnsonandjohnson/junco@add-diff-ci-3d-to-proportion-diff,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    pharmaverse/rtables@1095_intermediate_nesting,
+    pharmaverse/rtables@main,
     vikram-rawat/tern@feat/add-diff-ci-3d-to-proportion-diff
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
