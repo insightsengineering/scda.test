@@ -59,7 +59,7 @@ Remotes:
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
     pharmaverse/rtables@main,
-    pharmaverse/tern@1514_add_safe_2x2_table
+    wwojciech/tern@1514_add_safe_2x2_table
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
