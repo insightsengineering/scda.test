@@ -58,7 +58,7 @@ Remotes:
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
     pharmaverse/rtables@1095_intermediate_nesting,
-    pharmaverse/tern@main
+    vikram-rawat/tern@feat/add-diff-ci-3d-to-proportion-diff
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
