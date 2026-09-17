@@ -52,12 +52,12 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@dev,
+    johnsonandjohnson/junco@453-bug-s_freq_j-returns-empty-count-lists-instead-of-0,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    pharmaverse/rtables@1095_intermediate_nesting,
+    pharmaverse/rtables@main,
     pharmaverse/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
