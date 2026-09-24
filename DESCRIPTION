@@ -59,7 +59,7 @@ Remotes:
     pharmaverse/rlistings@main,
     pharmaverse/rtables@1095_intermediate_nesting,
     pharmaverse/tern@main
-biocViews:
+biocViews: 
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
