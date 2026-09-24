@@ -52,14 +52,14 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@dev,
+    johnsonandjohnson/junco@rtables_1095_int_nesting,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
     pharmaverse/rtables@1095_intermediate_nesting,
     pharmaverse/tern@main
-biocViews:
+biocViews: 
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
