@@ -52,12 +52,12 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@rtables_1095_int_nesting,
+    johnsonandjohnson/junco@1089_always_avail_alt_df,
     johnsonandjohnson/pharmaversesdtmjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    pharmaverse/rtables@1095_intermediate_nesting,
+    pharmaverse/rtables@1089_always_avail_alt_df,
     pharmaverse/tern@main
 biocViews: 
 Config/Needs/website: insightsengineering/nesttemplate
