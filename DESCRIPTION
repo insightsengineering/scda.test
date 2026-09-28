@@ -54,10 +54,11 @@ VignetteBuilder:
 Remotes:
     johnsonandjohnson/junco@dev,
     johnsonandjohnson/pharmaversesdtmjnj@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
-    pharmaverse/rtables@1095_intermediate_nesting,
+    pharmaverse/rtables@main,
     pharmaverse/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
