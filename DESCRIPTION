@@ -54,6 +54,7 @@ VignetteBuilder:
 Remotes:
     johnsonandjohnson/junco@dev,
     johnsonandjohnson/pharmaversesdtmjnj@main,
+    johnsonandjohnson/pharmaverseadamjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
