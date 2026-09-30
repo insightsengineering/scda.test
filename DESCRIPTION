@@ -52,14 +52,14 @@ Suggests:
 VignetteBuilder:
     knitr
 Remotes:
-    johnsonandjohnson/junco@1535_solves_bug_in_h_diff_cmh,
+    johnsonandjohnson/junco@dev,
     johnsonandjohnson/pharmaverseadamjnj@main,
     johnsonandjohnson/pharmaverseadamjnj@main,
     pharmaverse/formatters@main,
     pharmaverse/pharmaverseadam@main,
     pharmaverse/rlistings@main,
     pharmaverse/rtables@main,
-    wwojciech/tern@1535_solves_bug_in_h_diff_cmh
+    pharmaverse/tern@main
 biocViews:
 Config/Needs/website: insightsengineering/nesttemplate
 Config/roxygen2/version: 8.1.0
