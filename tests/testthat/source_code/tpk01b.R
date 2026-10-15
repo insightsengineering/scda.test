@@ -1,31 +1,6 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tpk01b
-## R version:                 4.4.2
-## Short Description:         Program to create tpk01b:
-##                            [Matrix] [Active Study Agent/Analyte]
-##                            Concentrations ([units]) Over Time;
-##                            Pharmacokinetics Analysis Set (Study jjcs - core)
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      19AUG2025
-## Input:                     adpc.rds, adsl.rds
-## Output:                    tpk01b.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep environment:
-################################################################################
-
 library(envsetup)
 library(dplyr)
+library(forcats)
 library(rtables)
 library(tern)
 library(junco)
@@ -36,123 +11,132 @@ library(junco)
 
 tblid <- "TPK01b"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 popfl <- "PKFL"
 trtvar <- "TRT01A"
+add_geometric_mean <- TRUE
+add_cv <- TRUE
+paramcd <- "XAN"
 
-trt_grps <- c("Xanomeline High Dose", "Xanomeline Low Dose")
 
-for (i in seq_along(trt_grps)) {
-  trt_grp <- trt_grps[i]
-  path <- paste0(fileid, "part", i, "of", length(trt_grps))
+# flag to indicate if ATPT is present in the study
+# if TRUE, time point is concatenation of AVISIT and ATPT
+# if FALSE, time point is AVISIT only
+use_atpt <- TRUE
 
-  ##############################################################################
-  # Process data:
-  ##############################################################################
 
-  adsl <- adsl_jnj |>
-    filter(.data[[popfl]] == "Y") |>
-    select(USUBJID, all_of(trtvar), PKFL) |>
-    filter(.data[[trtvar]] == trt_grp) |>
-    mutate(colspan = "Observed")
+trt_grps <- c("Xanomeline Low Dose", "Xanomeline High Dose")
 
-  adpc <- adpc_jnj |>
-    filter(PARAMCD == "XAN") |>
-    select(USUBJID, all_of(trtvar), AVISIT, ATPT, AVAL) |>
-    filter(.data[[trtvar]] == trt_grp) |>
-    inner_join(adsl) |>
-    # Concatenate and reorder time points
-    mutate(AVISIT_ATPT = factor(paste(AVISIT, ATPT, sep = " - "), levels = c(
-      "Day 1 - Pre-dose",
-      "Day 1 - 5 Min Post-dose",
-      "Day 1 - 30 Min Post-dose",
-      "Day 1 - 1h Post-dose",
-      "Day 1 - 1.5h Post-dose",
-      "Day 1 - 2h Post-dose",
-      "Day 1 - 4h Post-dose",
-      "Day 1 - 0-6h Post-dose",
-      "Day 1 - 6h Post-dose",
-      "Day 1 - 8h Post-dose",
-      "Day 1 - 6-12h Post-dose",
-      "Day 1 - 12h Post-dose",
-      "Day 1 - 16h Post-dose",
-      "Day 1 - 12-24h Post-dose",
-      "Day 2 - 24h Post-dose",
-      "Day 2 - Pre-dose",
-      "Day 2 - 36h Post-dose",
-      "Day 2 - 24-48h Post-dose",
-      "Day 3 - 48h Post-dose",
-      "Day 3 - Pre-dose"
-    )))
+################################################################################
+# Process data:
+################################################################################
 
-  ##############################################################################
-  # Define layout and build table:
-  ##############################################################################
-
-  lyt <- basic_table() |>
-    split_cols_by(
-      var = trtvar,
-      show_colcounts = TRUE,
-      colcount_format = "N=xx",
-      split_fun = drop_split_levels
-    ) |>
-    split_cols_by("colspan") |>
-    split_rows_by(
-      var = "AVISIT_ATPT",
-      split_label = "Time Point",
-      label_pos = "topleft",
-      child_labels = "hidden"
-    ) |>
-    analyze_vars_in_cols(
-      vars = "AVAL",
-      .stats = c(
-        "n",
-        "mean",
-        "sd",
-        "median",
-        "min",
-        "max",
-        "cv",
-        "geom_mean"
-      ),
-      .labels = c(
-        n = "N",
-        mean = "Mean",
-        sd = "SD",
-        median = "Med",
-        min = "Min",
-        max = "Max",
-        cv = "% CV",
-        geom_mean = "Geometric Mean"
-      ),
-      .formats = c(
-        n = jjcsformat_xx("xx"),
-        mean = jjcsformat_xx("xx.xx"),
-        sd = jjcsformat_xx("xx.xx"),
-        median = jjcsformat_xx("xx.xx"),
-        min = jjcsformat_xx("xx.xx"),
-        max = jjcsformat_xx("xx.xx"),
-        cv = jjcsformat_xx("xx.x"),
-        geom_mean = jjcsformat_xx("xx.xx")
-      )
+adsl <- adsl_jnj |>
+  filter(.data[[popfl]] == "Y") |>
+  filter(.data[[trtvar]] == trt_grps) |>
+  select(STUDYID, USUBJID, all_of(trtvar), PKFL) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = trt_grps
     )
+  )
 
-  result <- build_table(lyt, df = adpc, alt_counts_df = adsl)
+adpc <- adpc_jnj |>
+  filter(PARAMCD == paramcd) |> # If not required this filter can be removed
+  select(STUDYID, USUBJID, AVISIT, AVISITN, any_of(c("ATPT", "ATPTN")), AVAL) |>
+  inner_join(adsl, by = c("USUBJID", "STUDYID"))
 
-  ##############################################################################
-  # Add titles and footnotes:
-  ##############################################################################
-
-  result <- set_titles(result, titles)
-
-  colwidth <- c(44, 11, 16, 14, 16, 16, 16, 16, 16)
-  ##############################################################################
-  # Convert to tbl file and output table:
-  ##############################################################################
-
-  tt_to_tlgrtf(colwidths = colwidth, result, file = path, orientation = "landscape")
+# derive selvisit from data, ordered by AVISITN then ATPTN
+selvisit <- if (use_atpt) {
+  adpc |>
+    arrange(AVISITN, ATPTN) |>
+    distinct(AVISIT, ATPT) |>
+    mutate(AVISIT_ATPT = paste(AVISIT, ATPT, sep = ", ")) |>
+    pull(AVISIT_ATPT)
+} else {
+  adpc |>
+    arrange(AVISITN) |>
+    distinct(AVISIT) |>
+    pull(AVISIT)
 }
+
+adpc <- adpc |>
+  mutate(
+    AVISIT_ATPT = factor(
+      if (use_atpt) paste(AVISIT, ATPT, sep = ", ") else as.character(AVISIT),
+      levels = selvisit
+    )
+  )
+
+################################################################################
+# Define layout and build table:
+################################################################################
+
+lyt <- basic_table() |>
+  split_cols_by(
+    var = trtvar,
+    show_colcounts = TRUE,
+    colcount_format = "N=xx",
+    split_fun = drop_split_levels
+  ) |>
+  split_rows_by(
+    var = "AVISIT_ATPT",
+    split_label = "Time Point",
+    label_pos = "topleft",
+    child_labels = "hidden"
+  ) |>
+  analyze_vars_in_cols(
+    vars = "AVAL",
+    .stats = c(
+      "n",
+      "mean",
+      "sd",
+      "median",
+      "min",
+      "max",
+      if (add_cv) "cv" else NULL,
+      if (add_geometric_mean) "geom_mean" else NULL
+    ),
+    .labels = c(
+      n = "N",
+      mean = "Mean",
+      sd = "SD",
+      median = "Med",
+      min = "Min",
+      max = "Max",
+      cv = "% CV",
+      geom_mean = "Geometric Mean"
+    ),
+    .formats = c(
+      n = jjcsformat_xx("xx"),
+      mean = format_sigfig_j(3, format = "xx"),
+      sd = format_sigfig_j(3, format = "xx"),
+      median = format_sigfig_j(3, format = "xx"),
+      min = format_sigfig_j(3, format = "xx"),
+      max = format_sigfig_j(3, format = "xx"),
+      cv = jjcsformat_xx("xx.x"),
+      geom_mean = format_sigfig_j(3, format = "xx")
+    )
+  )
+
+result <- build_table(lyt, df = adpc, alt_counts_df = adsl, round_type = "sas")
+
+################################################################################
+# Add titles and footnotes:
+################################################################################
+
+result <- set_titles(result, tab_titles)
+
+################################################################################
+# Convert to tbl file and output table:
+################################################################################
+
+
+colwidth <- c(42, 7, 16, 16, 16, 16, 16, 12, 16, 7, 16, 16, 16, 16, 16, 12, 16)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape", combined_rtf = TRUE, nosplitin = list(cols = trtvar))

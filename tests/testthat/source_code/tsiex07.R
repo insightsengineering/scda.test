@@ -1,27 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsiex07.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsiex07: Dose Levels Over Time
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      15 Jan 2024
-## Input:                     ADSL, ADEX
-## Output:                    TSIEX07.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -51,53 +27,62 @@ tab_titles <- list(
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
 
-dose_order <- c("60", "120", "180", "240", "300", "480", "720", "960", "Total")
-
+dose_order <- c("7.5", "15", "Total")
 ################################################################################
 # Process Data:
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y" & !!rlang::sym(trtvar) != "Placebo") %>%
-  select(USUBJID, all_of(trtvar), all_of(popfl))
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y" & !!rlang::sym(trtvar) != "Placebo") |>
+  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl)) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose"
+      )
+    )
+  )
 
-adex <- adex_jnj %>%
-  filter(!grepl("UNSCHEDULED", AVISIT, ignore.case = TRUE)) %>%
-  filter(!is.na(ADOSE)) %>%
-  mutate(ADOSEC = as.factor(ADOSE)) %>%
-  select(USUBJID, ADOSEC, AVISIT, AVISITN)
-
-# Convert AVISIT to sentence case and apply levels to maintain ordering
-avisit_levs <- stringr::str_to_sentence(levels(adex$AVISIT))
-adex$AVISIT <- stringr::str_to_sentence(adex$AVISIT)
-adex$AVISIT <- factor(adex$AVISIT, levels = avisit_levs)
+adex <- adex_jnj |>
+  filter(!is.na(ADOSE) & !is.na(AVISIT) & !grepl("SCREENING", AVISIT, ignore.case = TRUE)) |>
+  mutate(ADOSEC = as.factor(ADOSE)) |>
+  select(STUDYID, USUBJID, ADOSEC, AVISIT, AVISITN) |>
+  mutate(
+    AVISIT := factor(
+      stringr::str_to_sentence(as.character(AVISIT)),
+      levels = stringr::str_to_sentence(unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))])
+    )
+  )
 
 # Create Total column manually as we cannot use the table layout option since patients can
 # appear in multiple dose level columns
 
-extot_ <- adex %>%
-  group_by(USUBJID, AVISIT) %>%
-  slice(1) %>%
-  mutate(ADOSEC = "Total") %>%
+extot_ <- adex |>
+  group_by(USUBJID, AVISIT) |>
+  slice(1) |>
+  mutate(ADOSEC = "Total") |>
   ungroup()
 
 extot <- bind_rows(adex, extot_)
 
 # join data together
-ex <- extot %>% inner_join(., adsl, by = c("USUBJID"))
+ex <- extot |> inner_join(adsl, by = c("STUDYID", "USUBJID"))
 
 ex$colspan_trt <- factor(
   ifelse(ex$ADOSEC == "Total", " ", "Active Study Agent"),
   levels = c("Active Study Agent", " ")
 )
 
+
 ex$ADOSEC <- factor(ex$ADOSEC, levels = dose_order)
 
 # Create dataset to be used for column counts
-adex_unique <- ex %>%
-  group_by(USUBJID, ADOSEC) %>%
-  slice(1) %>%
+adex_unique <- ex |>
+  group_by(USUBJID, ADOSEC) |>
+  slice(1) |>
   ungroup()
 
 ################################################################################
@@ -108,19 +93,25 @@ lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
-  split_cols_by("colspan_trt", split_fun = trim_levels_in_group("ADOSEC")) %>%
-  split_cols_by("ADOSEC") %>%
-  tern::count_occurrences(
+) |>
+  split_cols_by(
+    "colspan_trt",
+    split_fun = trim_levels_in_group("ADOSEC")
+  ) |>
+  split_cols_by("ADOSEC") |>
+  analyze(
     "AVISIT",
-    .stats = "count_fraction_fixed_dp",
-    .formats = c("count_fraction_fixed_dp" = jjcsformat_count_fraction),
-    var_labels = " ",
-    show_labels = "hidden"
-  ) %>%
+    afun = a_freq_j,
+    show_labels = "hidden",
+    extra_args = list(
+      .stats = "count_unique_fraction",
+      denom = "N_col"
+    )
+  ) |>
   append_topleft("Time Point, n (%)")
 
-result <- build_table(lyt, ex, alt_counts_df = adex_unique)
+result <- build_table(lyt, ex, alt_counts_df = adex_unique, round_type = "sas")
+
 
 ################################################################################
 # Add titles and footnotes:
@@ -131,6 +122,7 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
-colwidth <- c(15, 19, 19, 21, 19, 21, 21, 21, 25)
+
+colwidth <- c(15, 21, 23, 23)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

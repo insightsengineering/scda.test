@@ -1,28 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsiex06.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsiex06: Subjects Who Received Study
-##                            Treatment by Time Point
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      29 Jan 2024
-## Input:                     ADSL, ADEX
-## Output:                    TSIEX06.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -78,18 +53,30 @@ if (combined_colspan_trt == TRUE) {
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
-  select(USUBJID, all_of(trtvar), all_of(popfl))
+adsl <- adsl_jnj |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  filter(!!rlang::sym(popfl) == "Y") |>
+  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl))
 
-adex <- adex_jnj %>%
-  filter(AOCCUR == "Y" & !grepl("UNSCHEDULED", AVISIT, ignore.case = TRUE)) %>%
-  select(USUBJID, AOCCUR, AVISIT, AVISITN)
+adex <- adex_jnj |>
+  filter(AOCCUR == "Y" & !is.na(AVISIT) & !grepl("UNSCHEDULED|SCREENING", AVISIT, ignore.case = TRUE)) |>
+  select(STUDYID, USUBJID, AOCCUR, AVISIT, AVISITN) |>
+  mutate(
+    AVISIT := factor(
+      stringr::str_to_sentence(as.character(AVISIT)),
+      levels = stringr::str_to_sentence(unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))])
+    )
+  )
 
-# Convert AVISIT to sentence case and apply levels to maintain ordering
-avisit_levs <- stringr::str_to_sentence(levels(adex$AVISIT))
-adex$AVISIT <- stringr::str_to_sentence(adex$AVISIT)
-adex$AVISIT <- factor(adex$AVISIT, levels = avisit_levs)
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
@@ -97,7 +84,15 @@ adsl$colspan_trt <- factor(
 )
 
 # join data together
-ex <- adex %>% inner_join(., adsl, by = c("USUBJID"))
+ex <- adex |> inner_join(adsl, by = c("STUDYID", "USUBJID"))
+
+ex <- ex |>
+  mutate(
+    SUBJ_FLAG = factor(
+      "Subjects receiving study treatment, n (%)",
+      levels = "Subjects receiving study treatment, n (%)"
+    )
+  )
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -116,30 +111,35 @@ lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
-lyt <- lyt %>%
-  tern::count_occurrences(
+lyt <- lyt |>
+  split_rows_by(
+    "SUBJ_FLAG",
+    split_fun = drop_split_levels,
+    indent_mod = 0L
+  ) |>
+  analyze(
     "AVISIT",
-    .stats = "count_fraction_fixed_dp",
-    .formats = c("count_fraction_fixed_dp" = jjcsformat_count_fraction),
-    var_labels = "Subjects receiving study treatment, n (%)",
-    show_labels = "visible"
+    afun = a_freq_j,
+    extra_args = list(.stats = "count_unique_fraction"),
+    indent_mod = 0L
   )
 
-result <- build_table(lyt, ex, alt_counts_df = adsl)
+
+result <- build_table(lyt, ex, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Add titles and footnotes:
@@ -150,6 +150,7 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
-colwidth <- c(64, 21, 21, 21, 21)
+
+colwidth <- c(64, 21, 23, 21, 21)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "portrait")

@@ -1,32 +1,7 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsiex01.R
-## R version:                 4.2.1
-## Short Description:         Create LSIEX01: Listing of Study Treatment
-##                            Administration
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-18
-## Input:                     ADEX
-## Output:                    lsiex01.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
+library(tidyr)
 library(rtables)
 library(rlistings)
 library(junco)
@@ -40,7 +15,8 @@ fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1", "COL2")
-disp_cols <- paste0("COL", 0:10)
+sort_cols <- c("COL0", "COL1", "COL2")
+disp_cols <- paste0("COL", 0:11)
 concat_sep <- " / "
 tab_titles <- list(
   title = "Dummy Title",
@@ -53,14 +29,59 @@ tab_titles <- list(
 # Process data
 ###############################################################################
 
-adex <- adex_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y")
-
-lsting <- adex %>%
+adex <- adex_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+    ),
+    SEX = factor(
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
+      levels = c("Male", "Female", "Intersex", "Unknown")
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    )
+  )
+
+lsting <- adex |>
+  mutate(
+    across(matches("^ADECOD\\d+$"), stringr::str_to_sentence)
+  ) |>
+  unite(
+    "decod",
+    matches("^ADECOD\\d+$"),
+    sep = ", ",
+    na.rm = TRUE,
+    remove = FALSE
+  ) |>
+  mutate(
+    decod = ifelse(decod == "", NA, decod),
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     ASTDT = ifelse(
       !is.na(ASTDT) & nchar(as.character(ASTDT)) == 10,
       toupper(format(ASTDT, "%d%b%Y")),
@@ -76,72 +97,84 @@ lsting <- adex %>%
     ),
     AENTM = ifelse(!is.na(AENDTM), substr(as.character(AENDTM), 12, 16), ""),
     AENDY = ifelse(!is.na(AENDY), AENDY, ""),
-    AREASOC = explicit_na(AREASOC, ""),
-    AREASOO = explicit_na(AREASOO, ""),
-    AADJ = explicit_na(AADJ, ""),
-    AADJOTH = explicit_na(AADJOTH, ""),
+    PRDOSE = ifelse(is.na(ASCHDOSE), "", paste(ASCHDOSE, ASCHDOSU)),
+    preas = case_when(
+      toupper(AADJP) == "ADVERSE EVENT" ~ paste0(stringr::str_to_sentence(AADJP), " (AE: ", decod, ")"),
+      toupper(AADJP) == "OTHER" ~ paste0(stringr::str_to_sentence(AADJP), ": ", stringr::str_to_sentence(AADJPOTH)),
+      !is.na(AADJP) ~ stringr::str_to_sentence(AADJP),
+      TRUE ~ ""
+    ),
+    dreas = case_when(
+      toupper(AADJ) == "ADVERSE EVENT" ~ paste0(stringr::str_to_sentence(AADJ), " (AE: ", decod, ")"),
+      toupper(AADJ) == "OTHER" ~ paste0(stringr::str_to_sentence(AADJ), ": ", stringr::str_to_sentence(AADJOTH)),
+      !is.na(AADJ) ~ stringr::str_to_sentence(AADJ),
+      TRUE ~ ""
+    ),
+    dly_reas = case_when(
+      toupper(ARSDOSD) == "OTHER" ~ paste0(stringr::str_to_sentence(ARSDOSD), ": ", stringr::str_to_sentence(ARSDSDO)),
+      !is.na(ARSDOSD) ~ stringr::str_to_sentence(ARSDOSD),
+      TRUE ~ ""
+    ),
+    ACTDOSE = ifelse(is.na(ADOSE), "", paste(ADOSE, ADOSU)),
+    ADOSFRQ = explicit_na(ADOSFRQ, ""),
+    ADOSFRQP = explicit_na(ADOSFRQP, ""),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
-    COL2 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
-    # Optional Column: COL3/AVISIT
-    COL3 = explicit_na(AVISIT, ""),
-    # Optional Column: COL4/ASCHDOSE/ASCHDOSU
-    COL4 = ifelse(is.na(ASCHDOSE), "", paste(ASCHDOSE, ASCHDOSU)),
-    COL5 = ifelse(is.na(ADOSE), "", paste(ADOSE, ADOSU)),
-    # Optional Column: COL6/ADOSFRM/ADOSFRQ/AROUTE
-    COL6 = paste(
+    COL2 = paste(AGE, SEX, RACE, sep = concat_sep),
+    # Optional Column: COL3/ATPT
+    COL3 = explicit_na(stringr::str_to_sentence(ATPT), ""),
+    COL4 = paste(
+      PRDOSE,
+      ADOSFRQP,
+      sep = concat_sep
+    ),
+    # Optional Column: COL5/ADOSFRM/AROUTE
+    COL5 = paste(
       stringr::str_to_sentence(ADOSFRM),
-      ADOSFRQ,
       stringr::str_to_sentence(AROUTE),
       sep = concat_sep
     ),
-    # Optional Variable: ASTTM
+    # Optional Column: COL6/AACTPR/AADJP/AADJPOTH/AEDECODy(if Adverse Event)
+    COL6 = case_when(
+      !is.na(AACTPR) & preas != "" ~ paste(stringr::str_to_sentence(AACTPR), preas, sep = concat_sep),
+      !is.na(AACTPR) & preas == "" ~ paste(stringr::str_to_sentence(AACTPR), "", sep = concat_sep),
+      TRUE ~ ""
+    ),
+    # Optional column: COL7/ADOSDLY/ARSDOSD/ARSDSDO (Add when it is collected on study)
     COL7 = case_when(
-      ASTDT == "" ~ "",
-      ASTDT != "" & ASTTM != "" & ASTDY != "" ~
-        paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")"),
-      ASTDT != "" & ASTTM == "" & ASTDY != "" ~
-        paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")"),
-      ASTDT != "" & ASTTM != "" & ASTDY == "" ~
-        paste0(ASTDT, concat_sep, ASTTM, " (-)"),
-      ASTDT != "" & ASTTM == "" & ASTDY == "" ~
-        paste0(ASTDT, concat_sep, "--:--", " (-)"),
+      !is.na(ADOSDLY) & dly_reas != "" ~ paste(stringr::str_to_sentence(ADOSDLY), dly_reas, sep = concat_sep),
+      !is.na(ADOSDLY) & ADOSDLY == "Y" & dly_reas == "" ~ paste(
+        stringr::str_to_sentence(ADOSDLY),
+        "",
+        sep = concat_sep
+      ),
+      !is.na(ADOSDLY) & dly_reas == "" ~ stringr::str_to_sentence(ADOSDLY),
+      TRUE ~ ""
     ),
-    # Optional Variable: AENTM
     COL8 = case_when(
-      AENDT == "" ~ "",
-      AENDT != "" & AENTM != "" & AENDY != "" ~
-        paste0(AENDT, concat_sep, AENTM, " (", AENDY, ")"),
-      AENDT != "" & AENTM == "" & AENDY != "" ~
-        paste0(AENDT, concat_sep, "--:--", " (", AENDY, ")"),
-      AENDT != "" & AENTM != "" & AENDY == "" ~
-        paste0(AENDT, concat_sep, AENTM, " (-)"),
-      AENDT != "" & AENTM == "" & AENDY == "" ~
-        paste0(AENDT, concat_sep, "--:--", " (-)"),
+      !is.na(AACTDU) & dreas != "" ~ paste(stringr::str_to_sentence(AACTDU), dreas, sep = concat_sep),
+      !is.na(AACTDU) & dreas == "" ~ paste(stringr::str_to_sentence(AACTDU), "", sep = concat_sep),
+      TRUE ~ ""
     ),
-    # Optional Column: COL9/AREASOC/AREASOO
-    COL9 = case_when(
-      toupper(AREASOC) == "OTHER" ~
-        paste(
-          stringr::str_to_sentence(AREASOC),
-          stringr::str_to_sentence(AREASOO),
-          sep = ": "
-        ),
-      !is.na(AREASOC) ~ stringr::str_to_sentence(AREASOC),
-      is.na(AREASOC) ~ ""
+    COL9 = paste(
+      stringr::str_to_sentence(ACTDOSE),
+      ADOSFRQ,
+      sep = concat_sep
     ),
-    # Optional Column: COL10/AADJ/AADJOTH
     COL10 = case_when(
-      toupper(AADJ) == "OTHER" ~
-        paste(
-          stringr::str_to_sentence(AADJ),
-          stringr::str_to_sentence(AADJOTH),
-          sep = ": "
-        ),
-      !is.na(AADJ) ~ stringr::str_to_sentence(AADJ),
-      is.na(AADJ) ~ ""
+      ASTDT == "" ~ "",
+      ASTDT != "" & ASTTM != "" & ASTDY != "" ~ paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")"),
+      ASTDT != "" & ASTTM == "" & ASTDY != "" ~ paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")"),
+      ASTDT != "" & ASTTM != "" & ASTDY == "" ~ paste0(ASTDT, concat_sep, ASTTM, " (-)"),
+      ASTDT != "" & ASTTM == "" & ASTDY == "" ~ paste0(ASTDT, concat_sep, "--:--", " (-)"),
+    ),
+    # Optional column: COL11/AENDT/AENDY
+    COL11 = case_when(
+      AENDT == "" ~ "",
+      AENDT != "" & AENDY != "" ~ paste0(AENDT, concat_sep, " (", AENDY, ")"),
+      AENDT != "" & AENDY == "" ~ paste0(AENDT, concat_sep, " (-)"),
     )
-  ) %>%
+  ) |>
   arrange(COL0, COL1, COL2, !is.na(ASTDYN), ASTDYN, ASTDTM, AVISITN)
 
 lsting <- var_relabel(
@@ -149,21 +182,20 @@ lsting <- var_relabel(
   COL0 = "Treatment Group",
   COL1 = "Subject ID",
   COL2 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
-  # Optional Column: COL3/AVISIT
-  COL3 = "Visit",
-  # Optional Column: COL4/ASCHDOSE/ASCHDOSU
-  COL4 = "Prescribed Dose Level (unit)",
-  COL5 = "Dose (unit)",
-  # Optional Column: COL6/ADOSFRM/ADOSFRQ/AROUTE
-  COL6 = paste("Formulation", "Frequency", "Route", sep = concat_sep),
-  # Optional Variable: ASTTM
-  COL7 = paste("Start Date", "Time (Study Day~[super a])", sep = concat_sep),
-  # Optional Variable: AENTM
-  COL8 = paste("End Date", "Time (Study Day~[super a])", sep = concat_sep),
-  # Optional Column: COL9/AREASOC/AREASOO
-  COL9 = "Reason Dose Not Administered, if Applicable",
-  # Optional Column: COL10/AADJ/AADJOTH
-  COL10 = "Reason Dose Adjusted, if Applicable"
+  # Optional Column: COL3/ATPT
+  COL3 = "Time Point",
+  COL4 = paste("Prescribed Dose (unit)", "Frequency", sep = concat_sep),
+  # Optional Column: COL5/ADOSFRM/AROUTE
+  COL5 = paste("Formulation", "Route", sep = concat_sep),
+  # Optional Column: COL6/AACTPR/AADJP/AADJPOTH/AEDECODy(if Adverse Event)
+  COL6 = paste("Action Taken to Prescribed Dose~[super a]", "Reason", sep = concat_sep),
+  # Optional column: COL7/ADOSDLY/ARSDOSD/ARSDSDO (Add when it is collected on study)
+  COL7 = paste("Dose Delayed?", "Reason", sep = concat_sep),
+  COL8 = paste("Action Taken With Study Treatment", "Reason", sep = concat_sep),
+  COL9 = paste("Actual Dose (unit)", "Frequency", sep = concat_sep),
+  COL10 = paste("Start Date", "Time (Study Day~[super a])", sep = concat_sep),
+  # Optional column: COL11/AENDT/AENDY
+  COL11 = paste("End Date", "(Study Day~[super a])", sep = concat_sep)
 )
 
 ###############################################################################
@@ -173,7 +205,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  sort_cols = sort_cols,
+  disp_cols = disp_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -186,6 +220,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 13, 18, 21, 19, 10, 73, 25, 25, 28, 21)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(21, 13, 18, 15, 21, 23, 39, 32, 33, 20, 25, 25)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

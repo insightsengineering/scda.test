@@ -1,29 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tpk01a
-## R version:                 4.4.2
-## Short Description:         Program to create tpk01a:
-##                            [Matrix] [Active Study Agent/Analyte]
-##                            Concentrations ([units]) Over Time;
-##                            Pharmacokinetics Analysis Set (Study jjcs - core)
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      12AUG2025
-## Input:                     adpc.rds, adsl.rds
-## Output:                    tpk01a.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep environment:
-################################################################################
-
 library(envsetup)
 library(dplyr)
 library(forcats)
@@ -37,18 +11,25 @@ library(junco)
 
 tblid <- "TPK01a"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 popfl <- "PKFL"
 trtvar <- "TRT01A"
+paramcd <- "XAN"
+
 
 # Flags indicating whether to include certain statistics in the table
 add_geometric_mean <- TRUE
 add_cv <- TRUE
 add_interquartile_range <- TRUE
+
+# flag to indicate if ATPT is present in the study
+# if TRUE, time point is concatenation of AVISIT and ATPT
+# if FALSE, time point is AVISIT only
+use_atpt <- TRUE
 
 ################################################################################
 # Process data:
@@ -56,39 +37,49 @@ add_interquartile_range <- TRUE
 
 adsl <- adsl_jnj |>
   filter(.data[[popfl]] == "Y") |>
-  select(USUBJID, all_of(trtvar), PKFL) |>
+  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl)) |>
   # Drop the control group
   filter(.data[[trtvar]] != "Placebo") |>
   mutate({{ trtvar }} := fct_drop(.data[[trtvar]])) |>
-  mutate(colspan_trt = "Active Study Agent")
+  mutate(colspan_trt = "Active Study Agent") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose"
+      )
+    )
+  )
+
 
 adpc <- adpc_jnj |>
-  filter(PARAMCD == "XAN") |>
-  select(USUBJID, all_of(trtvar), AVISIT, ATPT, AVAL) |>
-  inner_join(adsl) |>
-  # Concatenate and reorder time points
-  mutate(AVISIT_ATPT = factor(paste(AVISIT, ATPT, sep = " - "), levels = c(
-    "Day 1 - Pre-dose",
-    "Day 1 - 5 Min Post-dose",
-    "Day 1 - 30 Min Post-dose",
-    "Day 1 - 1h Post-dose",
-    "Day 1 - 1.5h Post-dose",
-    "Day 1 - 2h Post-dose",
-    "Day 1 - 4h Post-dose",
-    "Day 1 - 0-6h Post-dose",
-    "Day 1 - 6h Post-dose",
-    "Day 1 - 8h Post-dose",
-    "Day 1 - 6-12h Post-dose",
-    "Day 1 - 12h Post-dose",
-    "Day 1 - 16h Post-dose",
-    "Day 1 - 12-24h Post-dose",
-    "Day 2 - 24h Post-dose",
-    "Day 2 - Pre-dose",
-    "Day 2 - 36h Post-dose",
-    "Day 2 - 24-48h Post-dose",
-    "Day 3 - 48h Post-dose",
-    "Day 3 - Pre-dose"
-  )))
+  filter(PARAMCD == paramcd) |> # If not required this filter can be removed
+  select(STUDYID, USUBJID, AVISIT, AVISITN, any_of(c("ATPT", "ATPTN")), AVAL) |>
+  inner_join(adsl, by = c("STUDYID", "USUBJID"))
+
+# derive selvisit from data, ordered by AVISITN then ATPTN
+selvisit <- if (use_atpt) {
+  adpc |>
+    arrange(AVISITN, ATPTN) |>
+    distinct(AVISIT, ATPT) |>
+    mutate(AVISIT_ATPT = paste(AVISIT, ATPT, sep = ", ")) |>
+    pull(AVISIT_ATPT)
+} else {
+  adpc |>
+    arrange(AVISITN) |>
+    distinct(AVISIT) |>
+    pull(AVISIT)
+}
+
+
+adpc <- adpc |>
+  mutate(
+    AVISIT_ATPT = factor(
+      if (use_atpt) paste(AVISIT, ATPT, sep = ", ") else as.character(AVISIT),
+      levels = selvisit
+    )
+  )
 
 ################################################################################
 # Define layout and build table:
@@ -135,12 +126,16 @@ lyt <- basic_table() |>
       ),
       .formats = c(
         n = jjcsformat_xx("xx"),
-        mean_sd = jjcsformat_xx("xx.xx (xx.xx)"),
-        median = jjcsformat_xx("xx.xx"),
-        geom_mean = jjcsformat_xx("xx.xx"),
-        range = jjcsformat_xx("xx.xx, xx.xx"),
+        mean_sd = format_sigfig_j(3, format = "xx (xx)"),
+        median = format_sigfig_j(3, format = "xx"),
+        geom_mean = format_sigfig_j(3, format = "xx"),
+        range = format_sigfig_j(3, format = "(xx, xx)"),
         cv = jjcsformat_xx("xx.x"),
-        quantiles = jjcsformat_xx("xx.xx, xx.xx")
+        quantiles = format_sigfig_j(3, format = "(xx, xx)")
+      ),
+      control = control_analyze_vars(
+        quantiles = c(0.25, 0.75),
+        quantile_type = 2
       ),
       .indent_mods = c(
         n = 0,
@@ -154,18 +149,19 @@ lyt <- basic_table() |>
     )
   )
 
-result <- build_table(lyt, df = adpc, alt_counts_df = adsl)
+result <- build_table(lyt, df = adpc, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
 # Convert to tbl file and output table:
 ################################################################################
 
-colwidth <- c(44, 23, 23, 23)
+
+colwidth <- c(41, 29, 29, 29)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "portrait")
