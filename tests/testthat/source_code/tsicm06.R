@@ -1,0 +1,239 @@
+library(envsetup)
+library(tern)
+library(dplyr)
+library(rtables)
+library(junco)
+
+################################################################################
+# Define script level parameters:
+################################################################################
+
+################################################################################
+# - Define output ID and file location
+# - Define treatment variable used (default=TRT01A)
+# - Define population flag used (default=SAFFL)
+# - Define substitution flag for concomitant medications (default=PREFL)
+# - Define standard mediation variable (default=CMBASPRF)
+# - Define ATC variables
+# - Choose whether or not you want to present a combined active treatment column (default=TRUE)
+# - Define how to create combined treatment columns (if required)
+################################################################################
+
+tblid <- "TSICM06"
+fileid <- write_path(opath, tblid)
+tab_titles <- list(title = "Dummy Title",
+                     subtitles = NULL,
+                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+
+
+trtvar <- "TRT01A"
+popfl <- "SAFFL"
+substfl <- "PREFL"
+
+smnvar <- "CMBASPRF"
+atcvars <- c("CMLVL1", "CMLVL2", "CMLVL3", "CMLVL4")
+
+combined_colspan_trt <- TRUE
+
+if (combined_colspan_trt == TRUE) {
+  # Set up levels and label for the required combined columns
+  add_combo <- add_combo_facet(
+    "Combined",
+    label = "Combined",
+    levels = c("Xanomeline High Dose", "Xanomeline Low Dose")
+  )
+
+  # choose if any facets need to be removed - e.g remove the combined column for placebo
+  rm_combo_from_placebo <- cond_rm_facets(
+    facets = "Combined",
+    ancestor_pos = NA,
+    value = " ",
+    split = "colspan_trt"
+  )
+
+  mysplit <- make_split_fun(post = list(add_combo, rm_combo_from_placebo))
+}
+
+################################################################################
+# Process Data:
+################################################################################
+
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  select(USUBJID, all_of(trtvar), all_of(popfl))
+
+adcm <- adcm_jnj |>
+  filter(!!rlang::sym(substfl) == "Y") |>
+  select(USUBJID, all_of(substfl), all_of(atcvars), all_of(smnvar), CMTRT) |>
+  mutate(
+    across(
+      all_of(atcvars),
+      ~ case_when(
+        .x == "" ~ "Uncoded",
+        .default = .x
+      )
+    ),
+    across(
+      all_of(atcvars),
+      ~ as.factor(stringr::str_to_sentence(.x))
+    ),
+    !!rlang::sym(smnvar) := case_when(
+      .data[[smnvar]] == "" ~ paste0("Uncoded: ", CMTRT),
+      .default = .data[[smnvar]]
+    ),
+    across(
+      all_of(smnvar),
+      ~ as.factor(stringr::str_to_sentence(.x))
+    )
+  )
+
+adsl$colspan_trt <- factor(
+  ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
+  levels = c("Active Study Agent", " ")
+)
+
+# join data together
+cm <- adcm |> inner_join(adsl, by = c("USUBJID"))
+
+if (length(adcm[[substfl]]) == 0) {
+  cm <- adcm |> right_join(adsl, by = c("USUBJID"))
+}
+
+colspan_trt_map <- create_colspan_map(
+  adsl,
+  non_active_grp = "Placebo",
+  non_active_grp_span_lbl = " ",
+  active_grp_span_lbl = "Active Study Agent",
+  colspan_var = "colspan_trt",
+  trt_var = trtvar
+)
+
+################################################################################
+# Define layout and build table:
+################################################################################
+
+extra_args_1 <- list(.stats = "count_unique_fraction")
+
+lyt <- rtables::basic_table(
+  top_level_section_div = " ",
+  show_colcounts = TRUE,
+  colcount_format = "N=xx"
+) |>
+  split_cols_by(
+    "colspan_trt",
+    split_fun = trim_levels_to_map(map = colspan_trt_map)
+  )
+
+if (combined_colspan_trt == TRUE) {
+  lyt <- lyt |>
+    split_cols_by(trtvar, split_fun = mysplit)
+} else {
+  lyt <- lyt |>
+    split_cols_by(trtvar)
+}
+
+lyt <- lyt |>
+  add_overall_col("Total") |>
+  analyze(
+    substfl,
+    afun = a_freq_j,
+    extra_args = append(
+      extra_args_1,
+      list(label = "Subjects with >=1 prior medication")
+    )
+  )
+
+for (i in seq_along(atcvars)) {
+  atcvar <- atcvars[[i]]
+
+  lyt <- lyt |>
+    split_rows_by(
+      atcvar,
+      child_labels = "hidden",
+      split_label = paste0("ATC Level ", sub(".*([0-9]{1,2})$", "\\1", atcvar)),
+      label_pos = "topleft",
+      split_fun = trim_levels_in_group(smnvar),
+      section_div = c(" "),
+      indent_mod = 0L
+    ) |>
+    summarize_row_groups(atcvar, cfun = a_freq_j, extra_args = extra_args_1)
+}
+
+lyt <- lyt |>
+  analyze(smnvar, afun = a_freq_j, extra_args = (extra_args_1)) |>
+  append_topleft(paste(strrep("  ", length(atcvars) - 1), " Base Preferred Term, n (%)"))
+
+result <- build_table(lyt, cm, alt_counts_df = adsl, round_type = "sas")
+
+# If there is no data remove top row and display "No data to display" text
+if (length(adcm[[substfl]]) == 0) {
+  result <- safe_prune_table(
+    result,
+    prune_func = remove_rows(
+      removerowtext = "Subjects with >=1 prior medication"
+    )
+  )
+}
+
+#########################################################################################
+# Post-Processing step to sort by descending count on total column:
+#########################################################################################
+
+if (length(adcm[[substfl]]) != 0) {
+  for (i in seq_along(atcvars)) {
+    atcvar <- atcvars[[1]]
+    paths <- unlist(lapply(seq_along(atcvars), function(i) c(atcvars[[i]], "*")))
+
+    result <- sort_at_path(
+      result,
+      c("root", atcvar),
+      scorefun = jj_complex_scorefun(colpath = "Total")
+    )
+    result <- sort_at_path(
+      result,
+      c("root", paths, smnvar),
+      scorefun = jj_complex_scorefun(colpath = "Total")
+    )
+  }
+}
+
+################################################################################
+# Add titles and footnotes:
+################################################################################
+
+result <- set_titles(result, tab_titles)
+
+# derivation of number of rows column header takes
+cps <- col_paths(result)[[1]]
+cps <- cps[seq(from = 1, by = 2, length.out = length(cps) / 2)]
+### as showcolcounts = TRUE, 1 extra row in columns
+levels_cols <- length(cps) + 1
+
+bordmat <- junco:::make_header_bordmat(obj = result)
+if (levels_cols < length(top_left(result))) {
+  # Create extra_row(s) based on the difference between top_left length and levels_cols
+  num_extra_rows <- length(top_left(result)) - levels_cols
+  for (i in 1:num_extra_rows) {
+    extra_row <- rep(0, ncol(bordmat))
+    bordmat <- rbind(extra_row, bordmat)
+  }
+  rownames(bordmat) <- NULL
+}
+
+################################################################################
+# Convert to tbl file and output table
+################################################################################
+
+colwidth <- c(63, 21, 21, 21, 21, 23)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, border_mat = bordmat, label_width_ins = 2.4, orientation = "landscape")
