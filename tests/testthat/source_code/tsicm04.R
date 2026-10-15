@@ -23,9 +23,11 @@ library(stringr)
 
 tblid <- "TSICM04"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 trtvar <- "TRT01A"
@@ -99,7 +101,7 @@ adcm <- adcm_jnj |>
       all_of(smnvar),
       ~ str_to_sentence(.x)
     )
-)
+  )
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
@@ -205,8 +207,7 @@ if (length(adcm$ONTRTFL) != 0) {
   }
   result <- sort_at_path(
     result,
-    c(path_i, "*", smnvar),
-    ,
+    c(path_i, "*", smnvar), ,
     scorefun = jj_complex_scorefun(colpath = "Total")
   )
 

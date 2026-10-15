@@ -21,9 +21,11 @@ sort_cols <- c(trtvarnum, "COL1", "AVISITN", "ATPTN")
 disp_cols <- c("COL3", "COL4")
 
 study_agent <- "active study agent"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 ###############################################################################
 # Process data

@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSIMH01"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 popfls <- c("FASFL", "SAFFL")
 popfl <- popfls[1]
 trtvar <- "TRT01A"
@@ -50,7 +52,7 @@ adsl <- adsl_jnj |>
 
 mh <- mh_jnj |>
   select(all_of(c("USUBJID", table_vars))) |>
-  #user can filter appropriate value of MHCAT for medical histrory of intreset.
+  # user can filter appropriate value of MHCAT for medical histrory of intreset.
   filter(MHOCCUR == "Y" & stringr::str_to_upper(MHCAT) == "GENERAL MEDICAL HISTORY")
 
 mh[table_vars] <- lapply(mh[table_vars], stringr::str_to_sentence)

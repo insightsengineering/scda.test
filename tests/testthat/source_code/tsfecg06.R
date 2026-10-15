@@ -22,9 +22,11 @@ library(haven)
 
 tblid <- "TSFECG06"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -150,7 +152,7 @@ adeg <- adeg |>
     # Baseline records: label AVISIT as "Baseline" using ABLFL flag
     AVISIT = factor(
       ifelse(ABLFL == "Y" & !is.na(ABLFL), "Baseline", as.character(AVISIT)),
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     ),
     # Apply ordered levels to AVALC for consistent display
     AVALC := factor(

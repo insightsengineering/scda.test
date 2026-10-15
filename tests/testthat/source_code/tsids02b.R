@@ -12,9 +12,11 @@ tblid <- "TSIDS02b"
 fileid <- write_path(opath, tblid)
 popfl <- "ENRLFL"
 trtvar <- "TRT01P"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -151,13 +153,13 @@ colspan_trt_map <- create_colspan_map(
 )
 
 totdf <- tribble(
-  ~valname                                                    ,
-  ~label                                                      ,
-  ~levelcombo                                                 ,
-  ~exargs                                                     ,
-  "Total"                                                     ,
-  "Total"                                                     ,
-  c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo") ,
+  ~valname,
+  ~label,
+  ~levelcombo,
+  ~exargs,
+  "Total",
+  "Total",
+  c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo"),
   list()
 )
 
@@ -172,20 +174,20 @@ extra_args_rr <- list(
 
 
 map1 <- tribble(
-  ~var                                               ,
-  ~value                                             ,
-  ~label                                             ,
-  "ONGOING_SUB"                                      ,
-  "Y"                                                ,
-  "Subjects ongoing any treatment"                   ,
-  "COMPL_SUB"                                        ,
-  "Y"                                                ,
-  "Completed treatment~[super a]"                    ,
-  "DISC_BOTH_TREATMENT"                              ,
-  "Y"                                                ,
-  paste("Discontinued", count_label, "study agents") ,
-  "DISC_ONE_TREATMENT"                               ,
-  "Y"                                                ,
+  ~var,
+  ~value,
+  ~label,
+  "ONGOING_SUB",
+  "Y",
+  "Subjects ongoing any treatment",
+  "COMPL_SUB",
+  "Y",
+  "Completed treatment~[super a]",
+  "DISC_BOTH_TREATMENT",
+  "Y",
+  paste("Discontinued", count_label, "study agents"),
+  "DISC_ONE_TREATMENT",
+  "Y",
   paste("Discontinued one study agent")
 )
 

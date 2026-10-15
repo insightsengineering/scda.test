@@ -23,9 +23,11 @@ library(junco)
 
 tblid <- "TSFDTH01"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
@@ -33,7 +35,7 @@ popfl <- "SAFFL"
 days <- 30
 dthcausevar <- "DTHCAUS"
 
-#Either Combined column or highest JnJ Dose level based on study
+# Either Combined column or highest JnJ Dose level based on study
 sort_colpath <- "Combined"
 
 combined_colspan_trt <- TRUE

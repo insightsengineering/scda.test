@@ -18,9 +18,11 @@ key_cols <- c("COL0", "COL1", "COL2", "COL3", "COL4", "COL5")
 sort_cols <- c("COL0", "COL1", "COL2", "COL3", "COL4", "COL5")
 disp_cols <- paste0("COL", 0:8)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -35,7 +37,7 @@ adsl <- adsl_jnj |>
       levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     RACE = factor(

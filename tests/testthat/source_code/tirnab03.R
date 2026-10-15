@@ -14,9 +14,11 @@ library(purrr)
 
 tblid <- "TIRNAB03"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -180,7 +182,7 @@ adishum_final <- adishum_f |>
     N4FL = ifelse(NABSTAT == "NEGATIVE" & TRDISCFL == "Y", "Y", NA),
     NNDOSDT = ifelse(NABSTAT == "NEGATIVE", NDOSDT, NA),
     NTINFUS = ifelse(NABSTAT == "NEGATIVE", TINFUS, NA)
-  ) 
+  )
 
 
 ################################################################################

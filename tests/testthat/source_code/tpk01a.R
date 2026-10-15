@@ -11,9 +11,11 @@ library(junco)
 
 tblid <- "TPK01a"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 popfl <- "PKFL"
 trtvar <- "TRT01A"
 paramcd <- "XAN"

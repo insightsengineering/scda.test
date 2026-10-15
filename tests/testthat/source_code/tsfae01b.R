@@ -13,9 +13,11 @@ tblid <- "TSFAE01b"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 combined_colspan_trt <- TRUE
 risk_diff <- TRUE
 ctrl_grp <- "Placebo"
@@ -436,7 +438,7 @@ for (i in seq_along(comb_acnvars)) {
         extra_args_rr,
         list(
           excl_levels = excl_aeacn_levels,
-          #label_map = dosemod_lblmap,
+          # label_map = dosemod_lblmap,
           drop_levels = TRUE
         )
       )

@@ -17,9 +17,11 @@ key_cols <- c("COL1")
 sort_cols <- c("COL1")
 disp_cols <- paste0("COL", 1:9)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -37,7 +39,7 @@ adsl <- adsl_jnj |>
       )
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     COUNTRY = factor(
@@ -96,13 +98,13 @@ strat_expr <- lapply(strat_cols, function(x) {
 
 # To build fixed expression of mutate for fixed columns
 fixed_expr <- list(
-  #col1
+  # col1
   expr(explicit_na(USUBJID, "")),
-  #col2
+  # col2
   expr(explicit_na(REGION1, "")),
-  #col3
+  # col3
   expr(explicit_na(COUNTRY, "")),
-  #col4
+  # col4
   expr(case_when(
     !is.na(RANDDT) & any(names(adsl) == "RANDDTM") & !is.na(RANDDTM) ~
       paste0(
@@ -114,7 +116,7 @@ fixed_expr <- list(
       paste0(toupper(format(RANDDT, "%d%b%Y")), concat_sep, "--:--"),
     !is.na(RANDDT) & !any(names(adsl) == "RANDDTM") ~ paste0(toupper(format(RANDDT, "%d%b%Y"))),
   )),
-  #col5
+  # col5
   expr(explicit_na(RANUM, ""))
 )
 
@@ -137,20 +139,20 @@ lsting <- adsl |>
   arrange(COL1)
 
 # To create a list of variables and it's labels programmatically to include in the output
-#list of COL names
+# list of COL names
 col_names <- colnames(lsting)[grep("^COL\\d+$", colnames(lsting))]
 
 # Fixed COL labels
 fixed_labels <- c(
-  #col1
+  # col1
   "Subject ID",
-  #col2
+  # col2
   "Region",
-  #col3
-  paste('Country', 'Territory', sep = concat_sep),
-  #col4
-  paste('Randomization Date', 'Time', sep = concat_sep),
-  #col5
+  # col3
+  paste("Country", "Territory", sep = concat_sep),
+  # col4
+  paste("Randomization Date", "Time", sep = concat_sep),
+  # col5
   "Randomization Number"
 )
 
@@ -184,7 +186,7 @@ label_list <- as.list(setNames(all_labels, col_names))
 
 # Adding COL names and it's labels
 for (nm in names(label_list)) {
-  attr(lsting[[nm]], 'label') <- label_list[[nm]]
+  attr(lsting[[nm]], "label") <- label_list[[nm]]
 }
 
 ###############################################################################

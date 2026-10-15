@@ -19,9 +19,11 @@ library(junco)
 
 tblid <- "TSIEX10"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 trtvar <- "TRT01A"
@@ -100,8 +102,8 @@ ex$COMP_CAT_LBL <- factor(
 # prec <- dplyr::tibble(PARAMCD, d = 1)
 # prec$d[prec$PARAMCD == "TRTCOMP"] <- 0
 
-#alternative: use tidytlg make_precision function
-#cutoff for decimal is defined in function and if DTYPE="AVERAGE" those records excluded from precison
+# alternative: use tidytlg make_precision function
+# cutoff for decimal is defined in function and if DTYPE="AVERAGE" those records excluded from precison
 
 .stats_all <- c("mean_sd", "median", "range")
 dp <- 1

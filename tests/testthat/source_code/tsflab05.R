@@ -14,9 +14,11 @@ library(junco)
 ################################################################################
 
 tblid <- "TSFLAB05"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 fileid <- write_path(opath, tblid)
 
 # Population flag (default=SAFFL).

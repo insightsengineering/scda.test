@@ -35,15 +35,17 @@ study_specific_col <- c(
 
 study_agent <- "active study agent"
 agent_antibody_label <- sprintf("antibodies to %s", study_agent)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 ###############################################################################
 # Process data
 ###############################################################################
 
 # Read adishum with population and PARQUAL filters
-adishum <- adishum_jnj |> 
+adishum <- adishum_jnj |>
   filter(
     !!rlang::sym(popfl) == "Y",
     toupper(PARQUAL) == toupper(parqual_value)
@@ -184,7 +186,7 @@ lsting <- lsting |>
       is.na(TITER_AVAL),
       "",
       formatC(TITER_AVAL, format = "fg")
-    ) #,
+    ) # ,
     # STUDY-SPECIFIC: replace later
     # COL9 = "STUDY-SPECIFIC",
     # COL10 = "STUDY-SPECIFIC"
@@ -211,7 +213,7 @@ lsting <- var_relabel(
   COL8 = sprintf(
     "%s Status/Titer",
     stringi::stri_trans_totitle(agent_antibody_label)
-  ) #,
+  ) # ,
   # STUDY-SPECIFIC: update label to Success Criteria, Continuous Response, or Concomitant Medications
   # COL9 = "[Success Criteria / Continuous Response]"
   # COL10 = "[Success Criteria / Concomitant Medications]"

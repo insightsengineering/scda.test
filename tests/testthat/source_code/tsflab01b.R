@@ -9,9 +9,11 @@ library(haven)
 ################################################################################
 
 tblid <- "TSFLAB01b"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Population flag (default=SAFFL).
 popfl <- "SAFFL"
@@ -23,7 +25,7 @@ trtvar <- "TRT01A"
 ctrl_grp <- "Placebo"
 
 # Lab parameters Category of interest on PARCAT1 (name = file suffix).
-param_cat <- c(chm = "CHEMISTRY") #, hem = "HEMATOLOGY")
+param_cat <- c(chm = "CHEMISTRY") # , hem = "HEMATOLOGY")
 
 # Lab sign parameters of interest.
 param_cd <- NULL
@@ -123,7 +125,7 @@ adlb <- pharmaverseadamjnj::adlb |>
     }),
     AVISIT = factor(
       ifelse(ABLFL == "Y" & !is.na(ABLFL), "Baseline", as.character(AVISIT)),
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   )
 
@@ -409,5 +411,4 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(64, 37, 37, 37, 34)
 
-x = tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
-
+x <- tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

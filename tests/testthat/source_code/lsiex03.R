@@ -18,9 +18,11 @@ key_cols <- c("COL0", "COL1", "COL2")
 sort_cols <- c("COL0", "COL1", "COL2")
 disp_cols <- paste0("COL", 0:15)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -35,7 +37,7 @@ adex <- adex_jnj |>
       levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     RACE = factor(
@@ -63,8 +65,8 @@ adex <- adex_jnj |>
       )
     ),
     AVISIT = factor(
-      .data[['AVISIT']],
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      .data[["AVISIT"]],
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   )
 
@@ -142,7 +144,7 @@ lsting <- adex |>
     # Optional Column: COL7/ADOSDLY/ARSDOSD
     COL7 = case_when(
       !is.na(ADOSDLY) & dly_reas != "" ~ paste(stringr::str_to_sentence(ADOSDLY), dly_reas, sep = concat_sep),
-      !is.na(ADOSDLY) & toupper(ADOSDLY) == 'Y' & dly_reas == "" ~ paste(
+      !is.na(ADOSDLY) & toupper(ADOSDLY) == "Y" & dly_reas == "" ~ paste(
         stringr::str_to_sentence(ADOSDLY),
         "",
         sep = concat_sep
@@ -249,7 +251,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(21, 13, 17, 17, 18, 32, 18, 32, 23, 33, 25, 15, 23, 25, 25, 16)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

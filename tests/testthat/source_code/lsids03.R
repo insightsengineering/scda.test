@@ -18,9 +18,11 @@ key_cols <- c("COL0", "COL1")
 sort_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:9)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -101,13 +103,13 @@ lsting <- adsl_adexsum |>
     COL2 = paste(AGE, SEX, RACE, sep = concat_sep),
     # Optional Column: COL3/LTVISIT
     COL3 = explicit_na(LTVISIT, ""),
-    #COL4 = explicit_na(as.character(UNBLNDDY), ""),
+    # COL4 = explicit_na(as.character(UNBLNDDY), ""),
     COL4 = ifelse(
       is.na(UNBLNDDT),
       "",
       toupper(format(as.Date(UNBLNDDT), format = "%d%b%Y"))
     ),
-    #COL5 = explicit_na(as.character(TRTEDY), ""),
+    # COL5 = explicit_na(as.character(TRTEDY), ""),
     COL5 = ifelse(
       is.na(TRTEDT),
       "",

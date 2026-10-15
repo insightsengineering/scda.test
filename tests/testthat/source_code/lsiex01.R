@@ -18,9 +18,11 @@ key_cols <- c("COL0", "COL1", "COL2")
 sort_cols <- c("COL0", "COL1", "COL2")
 disp_cols <- paste0("COL", 0:11)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -35,7 +37,7 @@ adex <- adex_jnj |>
       levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     RACE = factor(
@@ -141,7 +143,7 @@ lsting <- adex |>
     # Optional column: COL7/ADOSDLY/ARSDOSD/ARSDSDO (Add when it is collected on study)
     COL7 = case_when(
       !is.na(ADOSDLY) & dly_reas != "" ~ paste(stringr::str_to_sentence(ADOSDLY), dly_reas, sep = concat_sep),
-      !is.na(ADOSDLY) & ADOSDLY == 'Y' & dly_reas == "" ~ paste(
+      !is.na(ADOSDLY) & ADOSDLY == "Y" & dly_reas == "" ~ paste(
         stringr::str_to_sentence(ADOSDLY),
         "",
         sep = concat_sep

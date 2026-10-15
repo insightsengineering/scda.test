@@ -12,9 +12,11 @@ tblid <- "TSFAE20a"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ################################################################################
@@ -76,13 +78,13 @@ colspan_trt_map <- create_colspan_map(
 )
 
 combodf <- tribble(
-  ~valname      ,
-  ~label        ,
-  ~levelcombo   ,
-  ~exargs       ,
-  "RELATED"     ,
-  "Related AEs" ,
-  c("AEs")      ,
+  ~valname,
+  ~label,
+  ~levelcombo,
+  ~exargs,
+  "RELATED",
+  "Related AEs",
+  c("AEs"),
   list()
 )
 
@@ -163,7 +165,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(64, 21, 21, 21, 21, 21, 21)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

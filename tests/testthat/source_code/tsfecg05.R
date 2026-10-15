@@ -11,9 +11,11 @@ library(haven)
 
 tblid <- "TSFECG05"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -136,7 +138,7 @@ adeg <- adeg_complete |>
     PARAMCD := factor(PARAMCD, levels = selparamcd),
     PARAM := factor(PARAM),
     # Baseline records: label AVISIT as "Baseline" using ABLFL flag
-    AVISIT := factor(as.character(AVISIT), levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))])
+    AVISIT := factor(as.character(AVISIT), levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))])
   ) |>
   select(
     STUDYID,

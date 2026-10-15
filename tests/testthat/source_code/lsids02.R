@@ -17,9 +17,11 @@ key_cols <- c("COL0", "COL1")
 sort_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:9)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # If your data has CUMDOSE and CUMDOSSx then set cumdose_components <- TRUE
 cumdose_components <- FALSE
@@ -87,7 +89,7 @@ if ("AVAL" %in% names(adexsum)) {
 }
 
 adexsum <- adexsum |>
-  #This step convert NA to empty string ("") to align with listing
+  # This step convert NA to empty string ("") to align with listing
   mutate(
     across(
       c(
@@ -99,21 +101,21 @@ adexsum <- adexsum |>
       ~ ifelse(is.na(.x), "", as.character(.x))
     )
   ) |>
-  #Extract the unit from PARAM_CUMDOSE
+  # Extract the unit from PARAM_CUMDOSE
   mutate(
     PARAM_CUMDOSE = case_when(
       !is.na(PARAM_CUMDOSE) | PARAM_CUMDOSE != "" ~
         stringr::str_extract(PARAM_CUMDOSE, "(?<=\\()([^()]*?)(?=\\)[^()]*$)"),
       is.na(PARAM_CUMDOSE) | PARAM_CUMDOSE == "" ~ ""
     ),
-    #This step extract the study agent name and unit from PARAM_CUMDOSSx and combine with AVAL_CUMDOSSx
+    # This step extract the study agent name and unit from PARAM_CUMDOSSx and combine with AVAL_CUMDOSSx
     across(
       starts_with("PARAM_CUMDOSS"),
       ~ {
         suffix <- sub("PARAM_", "", cur_column())
         aval_col <- paste0("AVAL_", suffix)
         aval <- pick(everything())[[aval_col]]
-        #user may need to change the pattern if they have any other value in their PARAM_CUMDOSS
+        # user may need to change the pattern if they have any other value in their PARAM_CUMDOSS
         agent <- trimws(ifelse(
           grepl("<[^>]*>", .x),
           sub(".*<([^>]*)>.*", "\\1", .x),
@@ -128,7 +130,7 @@ adexsum <- adexsum |>
       },
       .names = "study_agent_{col}"
     ),
-    #This step combine all the cumulative dose information into one column
+    # This step combine all the cumulative dose information into one column
     Cum_dose = apply(
       pick(everything()),
       1,
@@ -208,7 +210,7 @@ lsting <- var_relabel(
   COL2 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
   # Optional Column: COL3/LSVISIT
   COL3 = "Last Study Visit~[super a]",
-  #COL4 = "Study Day~[super b] of Discontinuation",
+  # COL4 = "Study Day~[super b] of Discontinuation",
   # Optional Column: COL5/LTVISIT
   COL4 = "Last Treatment Visit~[super b]",
   # Optional Column: COL6/TRTEDY

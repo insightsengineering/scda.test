@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSFVIT03"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -146,7 +148,7 @@ if (worst) {
   filtered_advs_2 <- advs_jnj |>
     filter(PARAMCD %in% selparamcd) |>
     # 2 records per subject selected : min (ANL06) / max (ANL03)
-    filter(ANL03FL == "Y" | ANL06FL == "Y" & ONTRTFL == 'Y') |>
+    filter(ANL03FL == "Y" | ANL06FL == "Y" & ONTRTFL == "Y") |>
     select(
       STUDYID,
       USUBJID,
@@ -212,7 +214,7 @@ filtered_advs$PARAM <- factor(
 ### reorder AVISIT factor levels by it's AVISTN order
 filtered_advs$AVISIT <- factor(
   as.character(filtered_advs$AVISIT),
-  levels = unique(filtered_advs[['AVISIT']])[order(unique(filtered_advs[['AVISITN']]))]
+  levels = unique(filtered_advs[["AVISIT"]])[order(unique(filtered_advs[["AVISITN"]]))]
 )
 
 ### for analysis of treatment emergent abnormalities only :
@@ -248,12 +250,12 @@ filtered_advs$CRIT8FL <- factor(
 
 filtered_advs$PARAM <- factor(
   filtered_advs$PARAM,
-  levels = unique(filtered_advs[['PARAM']])[order(unique(filtered_advs[['PARAMN']]))]
+  levels = unique(filtered_advs[["PARAM"]])[order(unique(filtered_advs[["PARAMN"]]))]
 )
 
 filtered_advs$AVISIT <- factor(
   filtered_advs$AVISIT,
-  levels = unique(filtered_advs[['AVISIT']])[order(unique(filtered_advs[['AVISITN']]))]
+  levels = unique(filtered_advs[["AVISIT"]])[order(unique(filtered_advs[["AVISITN"]]))]
 )
 
 ### Mapping for CRIT7&CRIT8

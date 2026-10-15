@@ -19,9 +19,11 @@ key_cols <- c("COL0", "COL1", "COL2", "COL3")
 sort_cols <- c("COL0", "COL1", "COL2", "COL3")
 disp_cols <- paste0("COL", 0:10)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 ###############################################################################
 # Process data
@@ -35,7 +37,7 @@ adeg <- adeg_jnj |>
       levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     RACE = factor(
@@ -64,11 +66,11 @@ adeg <- adeg_jnj |>
     ),
     PARAM = factor(
       .data$PARAM,
-      levels = unique(.data[['PARAM']])[order(unique(.data[['PARAMN']]))]
+      levels = unique(.data[["PARAM"]])[order(unique(.data[["PARAMN"]]))]
     ),
     AVISIT = factor(
-      .data[['AVISIT']],
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      .data[["AVISIT"]],
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   )
 

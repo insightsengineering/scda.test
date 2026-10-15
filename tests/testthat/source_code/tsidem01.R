@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSIDEM01"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "FASFL"
 trtvar <- "TRT01P"
@@ -41,7 +43,7 @@ adsl <- adsl_jnj |>
       levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
     ),
     SEX = factor(
-      case_when(SEX == "M" ~ "Male", SEX == "F" ~ 'Female', TRUE ~ SEX),
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
       levels = c("Male", "Female", "Intersex", "Unknown")
     ),
     COUNTRY = factor(
@@ -86,10 +88,10 @@ adsl <- adsl_jnj |>
       )
     ),
     BMIBLG1 = factor(
-      .data[['BMIBLG1']],
+      .data[["BMIBLG1"]],
       levels = c("Underweight <18.5", "Normal >=18.5 to <25", "Overweight >=25 to <30", "Obese >=30")
     ),
-    WGTGR1 = factor(.data[['WGTGR1']], levels = c("<30", ">=30 to <60", ">=60 to <90", ">=90"))
+    WGTGR1 = factor(.data[["WGTGR1"]], levels = c("<30", ">=30 to <60", ">=60 to <90", ">=90"))
   ) |>
   labelled::set_variable_labels(
     COUNTRY = "Country/Territory",
@@ -229,7 +231,7 @@ demog_vars_d[names(var_d)] <- var_d
 fmt_d <- fmt_spec_var_d(demog_vars_d, stats_in = .stats_tbl, fmt_d_def = junco_def_d_all, fmt_d_in = NULL)
 
 ### AGEGR1 needs special attention - as need an extra combined age level
-pos_AGEGR1 <- which(demog_displ_vars == 'AGEGR1')
+pos_AGEGR1 <- which(demog_displ_vars == "AGEGR1")
 
 if (identical(pos_AGEGR1, integer(0))) {
   P1 <- 1:length(demog_displ_vars)
@@ -278,7 +280,7 @@ lyt <- basic_table(
   ) |>
   ### special requirements for AGEGR1 : add extra combined level
   analyze(
-    vars = 'AGEGR1',
+    vars = "AGEGR1",
     afun = a_freq_j,
     extra_args = list(
       denom = "n_df",
@@ -324,13 +326,13 @@ result <- build_table(lyt, adsl, round_type = "sas")
 section_div(result, only_sep_sections = TRUE) <- " "
 
 # remove N and label for BMI, AGEGR1, WGTGR1 (only label)
-tt_at_path(result, path = c('BMIBLG1', "n")) <- NULL
+tt_at_path(result, path = c("BMIBLG1", "n")) <- NULL
 
-tt_at_path(result, path = c('WGTGR1', "n")) <- NULL
+tt_at_path(result, path = c("WGTGR1", "n")) <- NULL
 
-label_at_path(result, path = c('AGEGR1')) <- NULL
-label_at_path(result, path = c('BMIBLG1')) <- NULL
-label_at_path(result, path = c('WGTGR1')) <- NULL
+label_at_path(result, path = c("AGEGR1")) <- NULL
+label_at_path(result, path = c("BMIBLG1")) <- NULL
+label_at_path(result, path = c("WGTGR1")) <- NULL
 
 # Remove some section dividers : after AGE, BMIBL, WEIGHTBL
 rpths <- row_paths(result)
@@ -377,13 +379,13 @@ upd_indent_mod <- function(result, var, levels, addindent) {
 
 result <- upd_indent_mod(
   result,
-  var = 'BMIBLG1',
+  var = "BMIBLG1",
   levels = levels(adsl$BMIBLG1),
   addindent = rep(1, times = length(levels(adsl$BMIBLG1)))
 )
 result <- upd_indent_mod(
   result,
-  var = 'WGTGR1',
+  var = "WGTGR1",
   levels = levels(adsl$WGTGR1),
   addindent = rep(1, times = length(levels(adsl$WGTGR1)))
 )

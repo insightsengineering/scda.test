@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSFVIT02"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -20,8 +22,8 @@ ctrl_grp <- "Placebo"
 
 selparamcd <- c("SYSBP", "DIABP")
 
-###criteria flags to consider for output
-crit_flags <- paste0('CRIT', 1:6, 'FL')
+### criteria flags to consider for output
+crit_flags <- paste0("CRIT", 1:6, "FL")
 
 ### as in dataset, order is important for later processing
 ### not automated, hard coded approach for ease of reading
@@ -114,7 +116,7 @@ advs00 <- advs_jnj |>
 
 ### note: by filter ANL03FL, this table is restricted to maximum On-treatment values, per definition of ANL03FL
 filtered_advs <- advs00 |>
-  filter(ANL03FL == 'Y')
+  filter(ANL03FL == "Y")
 
 # Factor the data columns to ensure they sort correctly in the output
 filtered_advs$PARAM <- factor(
@@ -133,13 +135,13 @@ filtered_advs2 <- filtered_advs |>
 
 ### note: by filter ANL06FL, this table is restricted to On-treatment values, per definition of ANL06FL
 filtered_advs3 <- advs00 |>
-  filter(ANL06FL == 'Y') |>
+  filter(ANL06FL == "Y") |>
   mutate(
     CRIT1FL_SYS = case_when(
-      PARAMCD == 'SYSBP' ~ CRIT1FL
+      PARAMCD == "SYSBP" ~ CRIT1FL
     ),
     CRIT1FL_DIA = case_when(
-      PARAMCD == 'DIABP' ~ CRIT1FL
+      PARAMCD == "DIABP" ~ CRIT1FL
     ),
     PARAM = "Hypotension (mmHg)",
     CRIT1 = case_when(
@@ -150,7 +152,7 @@ filtered_advs3 <- advs00 |>
   )
 
 #### create a label data frame to use in labels_map argument on analysis of each criteria flag
-crit_cat <- sub('FL$', "", crit_flags)
+crit_cat <- sub("FL$", "", crit_flags)
 
 xlabel_map_sys <- unique(filtered_advs1 |> select(PARAM, all_of(crit_cat))) |>
   tidyr::pivot_longer(
@@ -256,7 +258,7 @@ lyt1 <- lyt0 |>
     split_label = "Parameter, n (%)",
     section_div = " ",
     ## ensure only the appropriate levels inside PARAM-AVALCAT1 will be included
-    split_fun = trim_levels_in_group('PARAM')
+    split_fun = trim_levels_in_group("PARAM")
   ) |>
   #### this assumes subjects always have both systolic and diastolic parameters
   analyze(
@@ -266,7 +268,7 @@ lyt1 <- lyt0 |>
     table_names = "CRIT1_SYS_N",
     extra_args = extra_args1
   ) |>
-  #CRIT1FL
+  # CRIT1FL
   analyze(
     crit_flags,
     a_freq_j,
@@ -291,7 +293,7 @@ lyt2 <- lyt0 |>
     split_label = "Parameter, n (%)",
     section_div = " ",
     ## ensure only the appropriate levels inside PARAM-AVALCAT1 will be included
-    split_fun = trim_levels_in_group('PARAM')
+    split_fun = trim_levels_in_group("PARAM")
   ) |>
   #### this assumes subjects always have both systolic and diastolic parameters
   analyze(
@@ -301,7 +303,7 @@ lyt2 <- lyt0 |>
     table_names = "CRIT1_DIA_N",
     extra_args = extra_args1
   ) |>
-  #CRIT1FL
+  # CRIT1FL
   analyze(
     crit_flags,
     a_freq_j,
@@ -336,7 +338,7 @@ lyt3 <- lyt0 |>
     table_names = "CRIT1_HYP_N",
     extra_args = extra_args1
   ) |>
-  #CRIT1FL_SYS
+  # CRIT1FL_SYS
   analyze(
     "CRIT1FL_SYS",
     a_freq_j,
@@ -350,7 +352,7 @@ lyt3 <- lyt0 |>
     indent_mod = 1L,
     show_labels = "hidden"
   ) |>
-  #CRIT1FL_DIA
+  # CRIT1FL_DIA
   analyze(
     "CRIT1FL_DIA",
     a_freq_j,

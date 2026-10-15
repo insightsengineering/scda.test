@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSFVIT04"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -165,7 +167,7 @@ if (over_time) {
 ### reorder AVISIT factor levels by it's AVISTN order
 filtered_advs$AVISIT <- factor(
   as.character(filtered_advs$AVISIT),
-  levels = unique(filtered_advs[['AVISIT']])[order(unique(filtered_advs[['AVISITN']]))]
+  levels = unique(filtered_advs[["AVISIT"]])[order(unique(filtered_advs[["AVISITN"]]))]
 )
 
 #### remove subjects abnormal for "ORTHYP","ORTHYPS" & "ORTHYPD" at baseline

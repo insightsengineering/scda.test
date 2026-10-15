@@ -17,9 +17,11 @@ key_cols <- c("COL0", "COL1", "COL2")
 sort_cols <- c("COL0", "COL1", "COL2", "ADT", "ADY")
 disp_cols <- paste0("COL", 0:8)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 central_lab <- c("CENTRAL")
 ###############################################################################
@@ -98,12 +100,12 @@ addili_list <- addili_joined |>
       R2ANRHI_CHAR,
       if_else(!is.na(LBNAM) & toupper(LBNAM) != toupper(central_lab), "*", ""),
       if_else(
-        PARAMCD == "BILI" & !is.na(ANL05FL) & ANL05FL == 'Y' & !is.na(CRIT1FL) & CRIT1FL == 'Y',
+        PARAMCD == "BILI" & !is.na(ANL05FL) & ANL05FL == "Y" & !is.na(CRIT1FL) & CRIT1FL == "Y",
         "^",
         ""
       ),
       if_else(
-        PARAMCD == "BILI" & !is.na(ANL07FL) & ANL07FL == 'Y' & !is.na(CRIT1FL) & CRIT1FL == 'Y',
+        PARAMCD == "BILI" & !is.na(ANL07FL) & ANL07FL == "Y" & !is.na(CRIT1FL) & CRIT1FL == "Y",
         "#",
         ""
       )
@@ -193,7 +195,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(21, 38, 51, 73, 22, 19, 19, 19, 22)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   head(result, 100),
   file = fileid,
   orientation = "landscape"

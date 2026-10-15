@@ -21,9 +21,11 @@ library(stringr)
 
 tblid <- "TSFECG01"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
@@ -140,7 +142,7 @@ adeg <- adeg |>
     )
   )
 
-#restrict to these - ordered by PARAMN
+# restrict to these - ordered by PARAMN
 selparamcd <- as.character(
   adeg |> arrange(PARAMN) |> pull(PARAMCD) |> unique()
 )
@@ -155,7 +157,7 @@ adeg <- adeg |>
     # Baseline records: label AVISIT as "Baseline" using ABLFL flag
     AVISIT := factor(
       ifelse(ABLFL == "Y" & !is.na(ABLFL), "Baseline", as.character(AVISIT)),
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   )
 
@@ -208,8 +210,8 @@ adeg <- filter(adeg, !is.na(AVAL))
 prec <- dplyr::tibble(PARAMCD = selparamcd, d = 1)
 prec$d[prec$PARAMCD == "EGHRMN"] <- 0
 
-#alternative: use tidytlg make_precision function
-#cutoff for decimal is defined in function and if DTYPE="AVERAGE" those records excluded from precison
+# alternative: use tidytlg make_precision function
+# cutoff for decimal is defined in function and if DTYPE="AVERAGE" those records excluded from precison
 
 # adeg_avg <- adeg |> filter(!DTYPE=="AVERAGE")
 

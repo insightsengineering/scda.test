@@ -19,15 +19,17 @@ key_cols <- c("COL0", "COL1", "COL2", "COL3")
 sort_cols <- c("COL0", "COL1", "COL2", "COL3")
 disp_cols <- paste0("COL", 0:12)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 # Parameter to control whether time should be displayed
 include_time <- TRUE
 # Parameter to control whether imputed date to be displayed
 include_imputed_dates <- FALSE
 
-#Combination treatment parameters
+# Combination treatment parameters
 
 # Provide whether this is a combination treatments
 combination_trt <- FALSE
@@ -385,12 +387,12 @@ lsting <- lsting |>
 
 lsting <- var_relabel(
   lsting,
-  COL0 = "AE of Interest Category", #"Special" is optional
+  COL0 = "AE of Interest Category", # "Special" is optional
   COL1 = "Treatment Group",
   COL2 = "Subject ID",
   COL3 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
   COL4 = paste(
-    "Onset Dose (unit)", #"Onset Dose (unit)" is optional
+    "Onset Dose (unit)", # "Onset Dose (unit)" is optional
     "Day of Last Dose~[super a,b]",
     sep = concat_sep
   ),

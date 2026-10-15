@@ -18,15 +18,17 @@ key_cols <- c("COL0", "COL1", "COL2")
 sort_cols <- c("COL0", "COL1", "COL2")
 disp_cols <- paste0("COL", 0:11)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 # Parameter to control whether time should be displayed
 include_time <- TRUE
 # Parameter to control whether imputed date to be displayed
 include_imputed_dates <- FALSE
 
-#Combination treatment parameters
+# Combination treatment parameters
 
 # Provide whether this is a combination treatments
 combination_trt <- FALSE

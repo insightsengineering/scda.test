@@ -20,9 +20,11 @@ key_cols <- c("COL0", "COL1")
 sort_cols <- c(trtvarnum, "COL1", "ADT")
 disp_cols <- "COL2"
 
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 ###############################################################################
 # Process data

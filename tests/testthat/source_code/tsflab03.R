@@ -15,9 +15,11 @@ library(junco)
 
 tblid <- "TSFLAB03"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 
@@ -151,7 +153,7 @@ adlb00 <- adlb_complete |>
 
 # Filtered ADLB
 filtered_adlb <- adlb00 |>
-  filter(PARCAT4 == "Graded tests" & ONTRTFL == 'Y')
+  filter(PARCAT4 == "Graded tests" & ONTRTFL == "Y")
 
 ### low grades : ATOXDSCL ATOXGRL ANL04FL
 ### Note on Worst On-treatment
@@ -303,7 +305,7 @@ lyt <- lyt |>
     indent_mod = 0L
   )
 
-result <- build_table(lyt, filtered_adlb_tox, alt_counts_df = adsl, round_type = 'sas')
+result <- build_table(lyt, filtered_adlb_tox, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Post-Processing:

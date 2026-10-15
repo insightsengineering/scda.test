@@ -21,9 +21,11 @@ library(tidyr)
 
 tblid <- "TSIEX12"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
@@ -67,7 +69,7 @@ adex1 <- adex_jnj |>
   mutate(
     AVISIT := factor(
       stringr::str_to_sentence(as.character(AVISIT)),
-      levels = stringr::str_to_sentence(unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))])
+      levels = stringr::str_to_sentence(unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))])
     )
   )
 
@@ -151,7 +153,6 @@ for (i in idxs) {
         .data[[paste0("ABODSYS", i)]],
         NA_character_
       ),
-
       !!paste0("AE_PT", i) := if_else(
         !is.na(AE_FLAG) &
           !is.na(.data[[paste0("ADECOD", i)]]) &
@@ -174,7 +175,6 @@ adex_no_events <- adex_ |>
   mutate(
     DOSE_MOD = NA_character_,
     AE_FLAG = NA_character_,
-
     !!!setNames(
       rep(list(NA_character_), length(c(soc_cols, pt_cols))),
       c(soc_cols, pt_cols)
@@ -267,7 +267,6 @@ lyt <- rtables::basic_table(
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   ) |>
   split_cols_by(trtvar, split_fun = split_combined) |>
-
   # Hierarchy Level 1: Time Point
   split_rows_by(
     "AVISIT",

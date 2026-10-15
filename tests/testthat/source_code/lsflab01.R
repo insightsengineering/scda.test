@@ -17,9 +17,11 @@ key_cols <- c("COL0", "COL1", "COL2", "COL3")
 sort_cols <- c("COL0", "COL1", "COL2", "COL3")
 disp_cols <- paste0("COL", 0:11)
 concat_sep <- " / "
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Parameter to control Criteria Flag column: "CRIT" (default MCRIT1FL & MCRIT2FL),
 # -- "ATOXGR" if user needs ATOXGR to be displayed
@@ -308,7 +310,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(21, 13, 18, 30, 75, 15, 25, 15, 22, 15, 18, 18)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   head(result, 100),
   file = fileid,
   orientation = "landscape"

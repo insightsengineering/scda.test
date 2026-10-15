@@ -15,9 +15,11 @@ popfl <- "SCRNFL"
 key_cols <- c("COL1")
 sort_cols <- c("COL1")
 disp_cols <- paste0("COL", 1:2)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 ###############################################################################
 # Process data

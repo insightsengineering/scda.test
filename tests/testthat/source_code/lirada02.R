@@ -26,9 +26,11 @@ study_specific_col <- c(
 
 study_agent <- "active study agent"
 antibody_study_agent <- sprintf("antibodies to %s", study_agent)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 ###############################################################################
 # Process data
 ###############################################################################
@@ -115,7 +117,7 @@ lsting <- lsting |>
       is.na(TITER_AVAL),
       "",
       formatC(TITER_AVAL, format = "fg")
-    ) #,
+    ) # ,
     # STUDY-SPECIFIC: replace later
     # COL7 = "STUDY-SPECIFIC",
     # COL8 = "STUDY-SPECIFIC"

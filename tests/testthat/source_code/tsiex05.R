@@ -11,9 +11,11 @@ library(haven)
 
 tblid <- "TSIEX05"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
@@ -33,7 +35,7 @@ show_dose_level <- TRUE
 # Dose delay then use ADOSDLY == "Y" and DLYCAT
 analysis_flag <- "ANL03FL"
 analysis_variable <- "INTCAT"
-analysis_label <- 'dose interruptions'
+analysis_label <- "dose interruptions"
 
 # Threshold for dose delay; adjust according to study
 dly_threshold <- 3
@@ -272,11 +274,11 @@ lyt <- lyt |>
   # ── Section 3: Dose interruptions / dose skipped / dose delay ──────────────
   analyze(
     "ANL_SEC3_FL",
-    var_labels = stringr::str_to_sentence(analysis_label), #/Dose skipped (and not made up)/Dose delay
+    var_labels = stringr::str_to_sentence(analysis_label), # /Dose skipped (and not made up)/Dose delay
     afun = a_freq_j,
     extra_args = list(
       val = "Y",
-      label = paste(">=1", analysis_label), #/dose skipped (and not made up)/dose delay
+      label = paste(">=1", analysis_label), # /dose skipped (and not made up)/dose delay
       denom = "n_df",
       .stats = "count_unique_fraction"
     ),

@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSFLAB06"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "SAFFL"
 
@@ -24,7 +26,7 @@ ctrl_grp <- "Placebo"
 ad_domain <- "ADLB"
 
 ## select a Single time point only — set to NULL to include all visits
-selvisit <- NULL #c("Cycle 02")
+selvisit <- NULL # c("Cycle 02")
 
 # PARCAT1 categories to produce: CHEMISTRY -> CHM, HEMATOLOGY -> HM
 parcat1_categories <- list(
@@ -58,8 +60,8 @@ adlb00 <- adlb_complete |>
   mutate(AVISIT = stringr::str_to_sentence(AVISIT)) |>
   mutate(
     AVISIT = factor(
-      .data[['AVISIT']],
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      .data[["AVISIT"]],
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   ) |>
   select(
@@ -309,7 +311,7 @@ build_result_parcat1 <- function(
   # Set title
   ################################################################################
 
- 
+
   return(result)
 }
 

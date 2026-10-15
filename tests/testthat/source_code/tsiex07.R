@@ -17,9 +17,11 @@ library(junco)
 
 tblid <- "TSIEX07"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 trtvar <- "TRT01A"
@@ -51,7 +53,7 @@ adex <- adex_jnj |>
   mutate(
     AVISIT := factor(
       stringr::str_to_sentence(as.character(AVISIT)),
-      levels = stringr::str_to_sentence(unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))])
+      levels = stringr::str_to_sentence(unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))])
     )
   )
 

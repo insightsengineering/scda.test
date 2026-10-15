@@ -12,9 +12,11 @@ library(junco)
 
 tblid <- "TSFLAB08"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Population flag variable (default=SAFFL).
 popfl <- "SAFFL"
@@ -49,7 +51,11 @@ if (combined_colspan_trt == TRUE) {
 # Process Data:
 ################################################################################
 
-enzyme_label <- switch(alt_ast, alt = "ALT", ast = "AST", "ALT or AST")
+enzyme_label <- switch(alt_ast,
+  alt = "ALT",
+  ast = "AST",
+  "ALT or AST"
+)
 
 adsl <- adsl_jnj |>
   filter(.data[[popfl]] == "Y") |>

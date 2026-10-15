@@ -10,9 +10,11 @@ library(junco)
 
 tblid <- "TSIDEM03"
 fileid <- write_path(opath, tblid)
-titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 popfl <- "FASFL"
 trtvar <- "TRT01P"
@@ -37,8 +39,8 @@ stratd_cols <- grep("^STRAT\\d+D$", names(adsl), value = TRUE)
 # Sort them in numeric order
 stratd_cols <- stratd_cols[order(as.numeric(gsub("\\D", "", stratd_cols)))]
 
-#to create labels list
-stratd_labels <- lapply(stratd_cols, function(x) attr(adsl[[x]], 'label'))
+# to create labels list
+stratd_labels <- lapply(stratd_cols, function(x) attr(adsl[[x]], "label"))
 
 # To pull labels of STRATxD variables from ADSL
 stratr_cols <- sub(".$", "R", stratd_cols)

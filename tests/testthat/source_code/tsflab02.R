@@ -17,9 +17,11 @@ library(junco)
 
 tblid <- "TSFLAB02"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Population flag variable (default=SAFFL).
 popfl <- "SAFFL"
@@ -66,11 +68,10 @@ anl_low_fl <- "ANL04FL"
 anl_high_fl <- "ANL05FL"
 
 
-
 ################################################################################
 # Initial processing of data + check if table is valid for trial:
 ################################################################################
-adlb_complete <- adlb_jnj 
+adlb_complete <- adlb_jnj
 
 
 ################################################################################
@@ -245,8 +246,8 @@ adlb_mcrit <- rbind(adlb_mcrit1, adlb_mcrit2) |>
       unique(PARAMCD[order(PARCAT3N, PARAM)])
     }),
     AVISIT = factor(
-      .data[['AVISIT']],
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      .data[["AVISIT"]],
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   ) |>
   inner_join(adsl)

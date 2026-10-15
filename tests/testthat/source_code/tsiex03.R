@@ -33,9 +33,11 @@ library(junco)
 
 tblid <- "TSIEX03"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 trtvar <- "TRT01A"
@@ -128,7 +130,7 @@ adsl <- adsl_jnj |>
 # Duration of treatment parameter
 adexsum1 <- adexsum_jnj |>
   mutate(VISIT = if (exists("AVISIT")) AVISIT else "Overall") |>
-  filter((PARAMCD == trtdur | PARAMCD == 'TRTDURD') & !is.na(AVAL) & VISIT == "Overall") |>
+  filter((PARAMCD == trtdur | PARAMCD == "TRTDURD") & !is.na(AVAL) & VISIT == "Overall") |>
   mutate(
     AVAL1 = ifelse(PARAMCD == trtdur, AVAL, NA),
     # Added AVAL_yr for subject years derivation from TRTDURD, /365.25 converts from days to years

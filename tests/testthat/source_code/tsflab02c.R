@@ -9,9 +9,11 @@ library(junco)
 ################################################################################
 
 tblid <- "TSFLAB02c"
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Population flag variable (default=SAFFL).
 popfl <- "SAFFL"
@@ -58,7 +60,7 @@ trtemfl <- TRUE
 ################################################################################
 # Initial processing of data + check if table is valid for trial:
 ################################################################################
-adlb_complete <- adlb_jnj 
+adlb_complete <- adlb_jnj
 
 ################################################################################
 # Process markedly abnormal values from spreadsheet:
@@ -78,26 +80,26 @@ lbmarkedlyabnormal_defs <- readxl::read_excel(
 # Data Fix needed on abnormal file: This section should be removed on actual study data
 # No criteria available on markedlyabnormal file — using manual values
 crit_defs_data <- tibble::tribble(
-  ~PARAMCD , ~VARNAME , ~CRIT    ,
-  "ALT"    , "CRIT2"  , ">3xULN" ,
-  "ALT"    , "CRIT1"  , ">2xULN" ,
-  "AST"    , "CRIT2"  , ">3xULN" ,
-  "AST"    , "CRIT1"  , ">2xULN" ,
-  "BILI"   , "CRIT1"  , ">2xULN" ,
-  "BILI"   , "CRIT2"  , ">3xULN" ,
-  "CK"     , "CRIT1"  , ">2xULN" ,
-  "CK"     , "CRIT2"  , ">3xULN" ,
-  "CREAT"  , "CRIT1"  , ">2xULN" ,
-  "GGT"    , "CRIT1"  , ">2xULN" ,
-  "GGT"    , "CRIT2"  , ">3xULN" ,
-  "HGB"    , "CRIT1"  , ">2xULN" ,
-  "HGB"    , "CRIT2"  , ">3xULN" ,
-  "PROT"   , "CRIT1"  , ">2xULN" ,
-  "PROT"   , "CRIT2"  , ">3xULN" ,
-  "SODIUM" , "CRIT2"  , ">3xULN" ,
-  "SODIUM" , "CRIT1"  , ">2xULN" ,
-  "WBC"    , "CRIT1"  , ">2xULN" ,
-  "WBC"    , "CRIT2"  , ">3xULN"
+  ~PARAMCD, ~VARNAME, ~CRIT,
+  "ALT", "CRIT2", ">3xULN",
+  "ALT", "CRIT1", ">2xULN",
+  "AST", "CRIT2", ">3xULN",
+  "AST", "CRIT1", ">2xULN",
+  "BILI", "CRIT1", ">2xULN",
+  "BILI", "CRIT2", ">3xULN",
+  "CK", "CRIT1", ">2xULN",
+  "CK", "CRIT2", ">3xULN",
+  "CREAT", "CRIT1", ">2xULN",
+  "GGT", "CRIT1", ">2xULN",
+  "GGT", "CRIT2", ">3xULN",
+  "HGB", "CRIT1", ">2xULN",
+  "HGB", "CRIT2", ">3xULN",
+  "PROT", "CRIT1", ">2xULN",
+  "PROT", "CRIT2", ">3xULN",
+  "SODIUM", "CRIT2", ">3xULN",
+  "SODIUM", "CRIT1", ">2xULN",
+  "WBC", "CRIT1", ">2xULN",
+  "WBC", "CRIT2", ">3xULN"
 ) |>
   mutate(CRITN = as.character(as.numeric(factor(CRIT))), SEX = NA_character_)
 
@@ -150,7 +152,7 @@ colspan_trt_map <- create_colspan_map(
 ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
 adlb00 <- adlb_complete |>
-  filter(ONTRTFL == 'Y') |>
+  filter(ONTRTFL == "Y") |>
   # Filter to keep records where at least one of the specified CRIT flags is "Y"
   filter(if_any(all_of(paste0("CRIT", crit_indices, "FL")), ~ . == "Y")) |>
   select(
@@ -360,7 +362,7 @@ colwidth <- c(34, 23, 23, 23, 23, 30, 33)
 fileid <- write_path(opath, tblid)
 
 tt_to_tlgrtf(
-  #colwidths = colwidth,
+  # colwidths = colwidth,
   result,
   file = fileid,
   orientation = "landscape"

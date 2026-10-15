@@ -10,9 +10,11 @@ library(haven)
 
 tblid <- "TSFVIT01"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Safety population flag (default=SAFFL).
 popfl <- "SAFFL"
@@ -87,15 +89,15 @@ advs <- advs_jnj |>
     APOBLFL := factor(ifelse(APOBLFL == "Y" & !is.na(APOBLFL), "Y", "N")),
     PARAMCD = factor(
       .data$PARAMCD,
-      levels = unique(.data[['PARAMCD']])[order(unique(.data[['PARAMN']]))]
+      levels = unique(.data[["PARAMCD"]])[order(unique(.data[["PARAMN"]]))]
     ),
     PARAM = factor(
       .data$PARAM,
-      levels = unique(.data[['PARAM']])[order(unique(.data[['PARAMN']]))]
+      levels = unique(.data[["PARAM"]])[order(unique(.data[["PARAMN"]]))]
     ),
     AVISIT = factor(
       ifelse(ABLFL == "Y" & !is.na(ABLFL), "Baseline", as.character(AVISIT)),
-      levels = unique(.data[['AVISIT']])[order(unique(.data[['AVISITN']]))]
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
     )
   )
 

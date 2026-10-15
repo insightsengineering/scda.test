@@ -12,9 +12,11 @@ library(junco)
 
 tblid <- "TSFLAB10"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 # Population flag variable (default=SAFFL).
 popfl <- "SAFFL"
@@ -56,7 +58,7 @@ markedlyabnormal_sheets <- readxl::excel_sheets(markedlyabnormal_file)
 
 lbmarkedlyabnormal_defs <- readxl::read_excel(
   markedlyabnormal_file,
-  sheet = toupper('ADDILI')
+  sheet = toupper("ADDILI")
 ) |>
   filter(PARAMCD != "Parameter Code") |>
   filter(grepl("CRIT", VARNAME)) |>
@@ -70,7 +72,11 @@ CRITs <- lbmarkedlyabnormal_defs |>
 # Process Data
 ################################################################################
 
-enzyme_label <- switch(alt_ast, alt = "ALT", ast = "AST", "ALT or AST")
+enzyme_label <- switch(alt_ast,
+  alt = "ALT",
+  ast = "AST",
+  "ALT or AST"
+)
 
 adsl <- adsl_jnj |>
   filter(.data[[popfl]] == "Y") |>
@@ -143,7 +149,7 @@ xlabel_map <- lbmarkedlyabnormal_defs |>
   mutate(
     var = paste0(VARNAME, "FL"),
     label = CRIT,
-    value = 'Y'
+    value = "Y"
   ) |>
   mutate(CRIT_ = as.numeric(stringr::str_extract(label, "\\d+"))) |>
   arrange(PARCAT1, PARAMCD, CRIT_, label, VARNAME) |>
@@ -185,7 +191,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "enzyme",
     split_fun = keep_split_levels(enzyme_label),
-    child_labels = 'visible',
+    child_labels = "visible",
     nested = FALSE,
   ) |>
   split_rows_by(
@@ -221,7 +227,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "pc_av_enzyme",
     split_fun = keep_split_levels(enzyme_label),
-    child_labels = 'hidden'
+    child_labels = "hidden"
   ) |>
   split_rows_by(
     "AVISIT",
@@ -257,7 +263,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "enzyme",
     split_fun = keep_split_levels("TBILI"),
-    child_labels = 'visible',
+    child_labels = "visible",
     nested = FALSE,
   ) |>
   split_rows_by(
@@ -293,7 +299,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "pc_av_enzyme",
     split_fun = keep_split_levels("TBILI"),
-    child_labels = 'hidden'
+    child_labels = "hidden"
   ) |>
   split_rows_by(
     "AVISIT",
@@ -329,7 +335,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "enzyme",
     split_fun = keep_split_levels("ALP"),
-    child_labels = 'visible',
+    child_labels = "visible",
     nested = FALSE,
   ) |>
   split_rows_by(
@@ -365,7 +371,7 @@ lyt <- lyt |>
     "PARCAT1",
     parent_name = "pc_av_enzyme",
     split_fun = keep_split_levels("ALP"),
-    child_labels = 'hidden'
+    child_labels = "hidden"
   ) |>
   split_rows_by(
     "AVISIT",

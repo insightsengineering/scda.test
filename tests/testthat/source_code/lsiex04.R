@@ -19,9 +19,11 @@ sort_cols <- c("COL0", "COL1", "COL2")
 disp_cols <- paste0("COL", 0:13)
 concat_sep <- " / "
 end_time <- TRUE
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 
 ###############################################################################
@@ -100,7 +102,6 @@ lsting <- adex |>
     ),
     ASTDY = ifelse(!is.na(ASTDY), ASTDY, ""),
     ASTDYL = ifelse(!is.na(ASTDT) & is.na(ASTDY), "-", as.character(ASTDY)),
-
     ASTTM = ifelse(!is.na(ASTDTM), substr(as.character(ASTDTM), 12, 16), ""),
     AENTM = if_else(end_time & !is.na(AENDTM), substr(as.character(AENDTM), 12, 16), ""),
     preas = case_when(
@@ -166,7 +167,6 @@ lsting <- adex |>
       !is.na(ASTDT) & is.na(ASTDYL) ~ toupper(ASTDT),
       TRUE ~ ""
     ),
-
     COL13 = case_when(
       !end_time & ASTTM != "" ~ ASTTM,
       !end_time ~ "",
@@ -237,7 +237,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(21, 13, 17, 17, 18, 18, 32, 18, 32, 33, 22, 23, 23, 13)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

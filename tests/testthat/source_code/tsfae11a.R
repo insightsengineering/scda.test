@@ -18,9 +18,11 @@ library(junco)
 
 tblid <- "TSFAE11a"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
@@ -298,7 +300,7 @@ result <- set_titles(result, tab_titles)
 
 colwidth <- c(64, 21, 21, 21, 17, 21, 21, 21, 17, 21, 21, 21, 17, 21, 19, 17, 17)
 
-tt_to_tlgrtf( 
+tt_to_tlgrtf(
   result,
   file = fileid,
   orientation = "landscape",

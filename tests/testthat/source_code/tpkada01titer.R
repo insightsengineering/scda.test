@@ -11,9 +11,11 @@ library(junco)
 
 tblid <- "TPKADA01titer"
 fileid <- write_path(opath, tblid)
-tab_titles <- list(title = "Dummy Title",
-                     subtitles = NULL,
-                     main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}")
+tab_titles <- list(
+  title = "Dummy Title",
+  subtitles = NULL,
+  main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
+)
 popfl <- "PKFL"
 trtvar <- "TRT01A"
 paramcd <- "XAN"
@@ -93,7 +95,7 @@ adishum_titer <- adishum_jnj |>
   ) |>
   filter(!is.na(TITER_CAT))
 
-#Spanning header for titer columns
+# Spanning header for titer columns
 titer_header <- paste(
   "Peak Titers for Subjects Positive for Treatment-emergent",
   treatment_label
@@ -168,8 +170,8 @@ adslx_titer <- adishum_titer |>
 
 
 # Table 1: ADA status columns (Negative + Positive) — blank top-level span to match tbl_titer header depth
-#adpc_ada <- adpc_ada |> mutate(BLANK_HEADER = factor(" ", levels = " "))
-#adslx_ada <- adslx_ada |> mutate(BLANK_HEADER = factor(" ", levels = " "))
+# adpc_ada <- adpc_ada |> mutate(BLANK_HEADER = factor(" ", levels = " "))
+# adslx_ada <- adslx_ada |> mutate(BLANK_HEADER = factor(" ", levels = " "))
 
 ################################################################################
 # Define layout and build table:
