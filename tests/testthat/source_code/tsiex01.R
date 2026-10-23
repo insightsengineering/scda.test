@@ -1,28 +1,5 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsiex01.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsiex01: Duration of Treatment
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      08 Feb 2024
-## Input:                     ADSL, ADEXSUM
-## Output:                    TSIEX01.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
+library(haven)
 library(tern)
 library(dplyr)
 library(rtables)
@@ -36,12 +13,15 @@ library(junco)
 # - Define output ID and file location
 # - Define treatment variable used (default=TRT01A)
 # - Define population flag used (default=SAFFL)
+# - Define subgroup variable for subgroup analyses (default=NULL, no subgroup)
 # - Define parameter code needed for duration of treatment
 # - Conversion to get the unit of PARAMCD selected for treatment
 #     (i.e 1 if original PARAMCD unit is days, 30.4375 if original PARAMCD unit is in months)
 # - Define levels which will control ordering for AVALCAT1 in the table
 # - Choose whether or not you want to present a combined active treatment column (default=TRUE)
 # - Define how to create combined treatment columns (if required)
+# - Choose whether or not to include Interquartile range row (default=TRUE)
+# - Choose whether or not to include Total treatment (subject years) row (default=TRUE)
 ################################################################################
 
 tblid <- "TSIEX01"
@@ -57,12 +37,21 @@ trtvar <- "TRT01A"
 popfl <- "SAFFL"
 ctrl_grp <- "Placebo"
 
-comp_btw_group <- TRUE
-ancova <- TRUE
+# Subgroup variable used for subgroup analyses. Set to NULL to suppress subgroup splits,
+# or set to a character string with the variable name (e.g. "SEX", "AGEGR1").
+subgrpvar <- "AGEGR1"
+
+# Set to TRUE to include Interquartile range row in summary statistics blocks (default=TRUE)
+show_iqr <- TRUE
+
+# Set to TRUE to include Total treatment (subject years) row (default=TRUE)
+show_subj_years <- TRUE
 
 trtdur <- "TRTDURM"
-daysconv <- 30.4375
-catlevels <- c(
+
+# Levels for AVALCAT7 (treatment duration categories, derived from PARAMCD=trtdur).
+# Set as a character vector to control ordering of rows in the duration category table.
+trtdurlevels <- c(
   "0 to <3 months",
   "3 to <6 months",
   "6 to <9 months",
@@ -104,39 +93,65 @@ if (combined_colspan_trt == TRUE) {
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
-  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl))
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl), all_of(subgrpvar))
 
 # If AVISIT is not present in ADEXSUM than create 'Overall' as the Visit, which is used
 # for the filtering AVISIT records if it does exist
-adexsum <- adexsum_jnj %>%
-  mutate(VISIT = if (exists("AVISIT")) AVISIT else "Overall") %>%
-  filter(PARAMCD == trtdur & !is.na(AVAL) & VISIT == "Overall") %>%
+adexsum <- adexsum_jnj |>
+  mutate(VISIT = if (exists("AVISIT")) AVISIT else "Overall") |>
+  filter((PARAMCD == trtdur | PARAMCD == "TRTDURD") & !is.na(AVAL) & VISIT == "Overall") |>
   mutate(
     CRIT0FL = "Y",
     CRIT0 = as.factor("Any duration (at least 1 dose)")
-  ) %>%
-  select(USUBJID, PARAMCD, AVAL, AVALCAT1, starts_with("CRIT"))
+  ) |>
+  select(USUBJID, PARAMCD, PARAM, AVAL, AVALCAT1, starts_with("CRIT")) |>
+  # Added AVAL_yr for subject years derivation from TRTDURD, /365.25 converts from days to years
+  mutate(AVAL_yr = ifelse(PARAMCD == "TRTDURD", AVAL / 365.25, NA), AVAL_anly = ifelse(PARAMCD == trtdur, AVAL, NA))
 
 adexsum$CRIT0FL <- factor(adexsum$CRIT0FL, levels = c("Y", "N"))
+
+# Extract unit from PARAM: captures content of first parentheses e.g. "Duration of Treatment (months)" -> "months"
+# If unit is present in middle parentheses (not last), e.g. "Average daily dose ([unit]/day) (including days off treatment)" -> "[unit]/day"
+unit_map <- adexsum |>
+  distinct(PARAMCD, PARAM) |>
+  filter(!is.na(PARAM)) |>
+  mutate(
+    unit = ifelse(
+      grepl("\\(.+\\)", PARAM),
+      gsub("^[^(]*\\(([^)]+)\\).*$", "\\1", PARAM),
+      ""
+    )
+  ) |>
+  select(PARAMCD, unit) |>
+  tibble::deframe()
+
+get_unit <- function(paramcd) unit_map[[paramcd]] %||% ""
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
   levels = c("Active Study Agent", " ")
 )
 
-adsl$diff_header <- "Difference in Means (95% CI)"
-adsl$diff_label <- paste(adsl[[trtvar]], paste("vs", ctrl_grp))
-
 # join data together
-ex <- adexsum %>% inner_join(., adsl, by = c("USUBJID"))
+ex <- adexsum |> inner_join(adsl, by = c("USUBJID"))
 
 # Keep only columns with some data in which will remove any unwanted CRITy variables
 ex <- ex[, colSums(is.na(ex)) < nrow(ex)]
 
 # Work out how many CRITy vars (ignoring CRIT0 we created) we have left
-excritvars <- ex %>%
+excritvars <- ex |>
   select(num_range("CRIT", 1:99))
 
 countcritvars <- length(names(excritvars))
@@ -150,7 +165,7 @@ for (i in 1:countcritvars) {
 
 # drop unwanted levels from AVALCAT1 and assign levels from specified section at the top of script
 ex$AVALCAT1 <- droplevels(ex$AVALCAT1)
-ex$AVALCAT1 <- factor(ex$AVALCAT1, levels = catlevels)
+ex$AVALCAT1 <- factor(ex$AVALCAT1, levels = trtdurlevels)
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -166,28 +181,39 @@ ref_path <- c("colspan_trt", "", trtvar, ctrl_grp)
 # Create label_map to be utilized in the Criterion variables (CRIT)
 ###################################################################
 
-ex_lblmap <- ex %>%
-  select(-CRIT0, -CRIT0FL) %>%
+ex_lblmap <- ex |>
+  select(-CRIT0, -CRIT0FL) |>
+  select(starts_with("CRIT")) |>
   tidyr::pivot_longer(
     cols = starts_with("CRIT") & ends_with("FL"),
-    names_to = "value",
-    values_to = "CF_value"
-  ) %>%
-  # Create the label by selecting the corresponding values from the CRIT columns
-  mutate(
-    label = case_when(
-      value == "CRIT1FL" ~ CRIT1,
-      value == "CRIT2FL" ~ CRIT2,
-      value == "CRIT3FL" ~ CRIT3,
-      value == "CRIT4FL" ~ CRIT4,
-      value == "CRIT5FL" ~ CRIT5,
-      value == "CRIT6FL" ~ CRIT6,
-      value == "CRIT7FL" ~ CRIT7
-    )
-  ) %>%
-  select(value, label) %>%
-  distinct()
+    names_to = "var",
+    values_to = "value"
+  ) |>
+  filter(value == "Y") |>
+  distinct() |>
+  tidyr::pivot_longer(
+    cols = starts_with("CRIT"),
+    names_to = "lbl_var",
+    values_to = "label"
+  ) |>
+  filter(var == paste0(lbl_var, "FL")) |>
+  select(var, value, label) |>
+  mutate(label = as.character(label)) |>
+  arrange(var)
 
+################################################################################
+# Formats for decimal precision control
+################################################################################
+
+.stats_all <- c("mean_sd", "median", "range", "sum", "quantiles")
+dp <- 1
+.formats_all <- junco:::fmt_spec_single_d(
+  d = dp,
+  stats_in = .stats_all,
+  fmt_d_def = junco_def_d_all,
+  fmt_d_in = NULL
+)
+fmt_details <- get_fmt_details(.formats_all, as_tibble = TRUE)
 
 ################################################################################
 # Define layout and build table:
@@ -195,49 +221,73 @@ ex_lblmap <- ex %>%
 
 extra_args_rr <- list(.stats = c("count_unique_fraction"), riskdiff = FALSE)
 
+if (!is.null(subgrpvar)) {
+  extra_args_rr <- append(extra_args_rr, list(denom = c("n_df"), denom_by = c(subgrpvar)))
+}
+
 lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
-lyt <- lyt %>%
-  split_cols_by("diff_header", nested = FALSE) %>%
-  split_cols_by(
-    trtvar,
-    split_fun = remove_split_levels(ctrl_grp),
-    labels_var = "diff_label"
-  ) %>%
+if (!is.null(subgrpvar)) {
+  lyt <- lyt |>
+    split_rows_by(subgrpvar, section_div = " ") |>
+    summarize_row_groups(
+      var = subgrpvar,
+      cfun = a_freq_j,
+      extra_args = list(.stats = "n_df", label_fstr = "Subgroup: %s")
+    )
+}
+
+lyt <- lyt |>
   analyze(
-    "AVAL",
-    afun = a_summarize_ex_j,
-    var_labels = "Duration of treatment~[super a], ([unit])",
+    "AVAL_anly",
+    afun = a_summary,
+    var_labels = sprintf("Duration of treatment~[super a], (%s)", get_unit(trtdur)),
     show_labels = "visible",
     indent_mod = 0L,
     extra_args = list(
-      daysconv = daysconv,
       ref_path = ref_path,
-      ancova = ancova,
-      comp_btw_group = comp_btw_group,
-      variables = list(arm = trtvar, covariates = NULL),
-      .formats = c(
-        range = jjcsformat_xx("xx.x, xx.x"),
-        "diff_mean_est_ci" = jjcsformat_xx("xx.xx (xx.xx, xx.xx)")
-      )
+      .stats = c("mean_sd", "median", "range", if (show_iqr) "quantiles"),
+      .formats = .formats_all,
+      .labels = c(range = "Min, max", quantiles = "Interquartile range"),
+      .indent_mods = c("mean_sd" = 0L, "median" = 0L, "range" = 0L, "quantiles" = 0L)
     )
-  ) %>%
+  )
+
+if (show_subj_years) {
+  lyt <- lyt |>
+    analyze(
+      "AVAL_yr",
+      afun = a_summary,
+      var_labels = sprintf("Duration of treatment~[super a], (%s)", get_unit(trtdur)),
+      show_labels = "hidden",
+      indent_mod = 1L,
+      extra_args = list(
+        ref_path = ref_path,
+        .stats = c("sum"),
+        .formats = .formats_all,
+        .labels = c(sum = "Total treatment (subject years)")
+      ),
+      section_div = " "
+    )
+}
+
+lyt <- lyt |>
   analyze(
     "AVALCAT1",
     var_labels = "Duration of treatment, n (%)",
@@ -245,43 +295,47 @@ lyt <- lyt %>%
     extra_args = extra_args_rr,
     indent_mod = 1L,
     show_labels = "visible",
-    nested = FALSE
-  ) %>%
+    section_div = " "
+  )
+
+# Add in analyze for all CRIT variables contained in ex
+
+lyt <- lyt |>
   analyze(
-    paste0("CRIT", 1, "FL"),
+    "CRIT1FL",
     var_labels = "Duration of treatment~[super b], n (%)",
     afun = a_freq_j,
     extra_args = append(
       extra_args_rr,
-      list(label = as.character(ex_lblmap$label[1]), val = "Y")
+      list(label_map = ex_lblmap, val = "Y")
     ),
     indent_mod = 1L,
-    show_labels = "visible",
-    nested = FALSE
+    show_labels = "visible"
   )
 
-# Add in analyze for all others CRIT variables contained in ex
-for (i in 2:countcritvars) {
-  lyt <- lyt %>%
+if (countcritvars > 1) {
+  critvars <- paste0("CRIT", 2:countcritvars, "FL")
+  lyt <- lyt |>
     analyze(
-      paste0("CRIT", i, "FL"),
+      critvars,
       afun = a_freq_j,
       extra_args = append(
         extra_args_rr,
-        list(label = as.character(ex_lblmap$label[i]), val = "Y")
+        list(label_map = ex_lblmap, val = "Y")
       ),
       indent_mod = 2L,
       show_labels = "hidden"
     )
 }
 
-lyt <- lyt %>%
+lyt <- lyt |>
   append_topleft("Parameter")
 
-result <- build_table(lyt, ex, alt_counts_df = adsl)
+result <- build_table(lyt, ex, alt_counts_df = adsl, round_type = "sas")
 
-## Remove the N=xx column headers for the Difference (95% CI) columns
-result <- remove_col_count(result, span_label_var = "diff_header")
+if (!is.null(subgrpvar)) {
+  section_div_at_path(result, c("*", "@content", "n_df")) <- " "
+}
 
 ################################################################################
 # Add titles and footnotes:
@@ -292,6 +346,7 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
-colwidth <- c(64, 27, 27, 27, 27, 35, 32)
+
+colwidth <- c(64, 34, 34, 34, 34)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

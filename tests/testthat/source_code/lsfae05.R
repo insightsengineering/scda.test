@@ -1,29 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsfae05.R
-## R version:                 4.2.1
-## Short Description:         Create LSFAE05: Listing of Treatment-emergent
-##                            Adverse Events of Special Interest
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-22
-## Input:                     ADAE
-## Output:                    lsfae05.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #: 1
-##  Modified By:
-##  Reporting Effort: JJCS_TLGS_R
-##  Date: 2024-05-15
-##  Description: Added option to display time in start and end dates
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -39,9 +13,11 @@ library(stringi)
 tblid <- "LSFAE05"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
+aesivars <- "^CQ[0-9]{2}NAM$"
 trtvar <- "TRT01A"
-key_cols <- c("COL0", "COL1", "COL2")
-disp_cols <- paste0("COL", 0:11)
+key_cols <- c("COL0", "COL1", "COL2", "COL3")
+sort_cols <- c("COL0", "COL1", "COL2", "COL3")
+disp_cols <- paste0("COL", 0:12)
 concat_sep <- " / "
 tab_titles <- list(
   title = "Dummy Title",
@@ -50,20 +26,201 @@ tab_titles <- list(
 )
 # Parameter to control whether time should be displayed
 include_time <- TRUE
+# Parameter to control whether imputed date to be displayed
+include_imputed_dates <- FALSE
+
+# Combination treatment parameters
+
+# Provide whether this is a combination treatments
+combination_trt <- FALSE
+
+if (combination_trt) {
+  comb_trtvars <- c("AEDRGS1", "AEDRGS2") # Provide the variables containing combination treatment information in sequence
+
+  n_comb_trt <- length(comb_trtvars)
+
+  comb_relvars <- paste0("AERELS", seq_len(n_comb_trt)) # This will create a variable list like AERELS1, AERELS2 etc
+  comb_acnvars <- paste0("AEACNS", seq_len(n_comb_trt)) # This will create a variable list like AEACNS1, AEACNS2 etc
+  comb_dosvars <- paste0("DOSS", seq_len(n_comb_trt), "ON") # This will create a variable list like DOSS1ON, DOSS2ON etc
+  comb_dosuvars <- paste0("DOSS", seq_len(n_comb_trt), "U") # This will create a variable list like DOSS1U, DOSS2U etc
+  comb_dosdyvars <- paste0("DOSS", seq_len(n_comb_trt), "DY") # This will create a variable list like DOSS1DY, DOSS2DY etc
+}
 
 ###############################################################################
 # Process data
 ###############################################################################
 
-adae <- adae_jnj %>%
+adae <- adae_jnj |>
+  mutate(
+    AEDECOD = case_when(
+      AEDECOD == "" ~ paste0("Uncoded: ", AETERM),
+      .default = AEDECOD
+    )
+  ) |>
   # Update CQzzNAM variabe based on study requirements
-  filter(!!rlang::sym(popfl) == "Y" & TRTEMFL == "Y" & CQ01NAM != "")
+  filter(!!rlang::sym(popfl) == "Y" & TRTEMFL == "Y" & if_any(matches(aesivars), ~ !is.na(.))) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    ),
+    SEX = factor(
+      dplyr::case_when(
+        SEX == "F" ~ "Female",
+        SEX == "M" ~ "Male",
+        SEX == "U" ~ "Unknown",
+        SEX == "INTERSEX" ~ "Intersex"
+      ),
+      levels = c("Male", "Female", "Intersex", "Unknown")
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    ),
+    AEOUT = factor(
+      case_when(
+        AEOUT == "FATAL" ~ "Fatal",
+        AEOUT == "NOT RECOVERED/NOT RESOLVED" ~ "Not Recovered/Not Resolved",
+        AEOUT == "RECOVERED/RESOLVED" ~ "Recovered/Resolved"
+      ),
+      levels = c(
+        "Fatal",
+        "Not Recovered/Not Resolved",
+        "Recovered/Resolved"
+      )
+    ),
+    AESER = factor(
+      case_when(
+        AESER == "Y" ~ "Yes",
+        AESER == "N" ~ "No"
+      ),
+      levels = c(
+        "Yes",
+        "No"
+      )
+    ),
+    AEREL = factor(
+      case_when(
+        AEREL == "NOT RELATED" ~ "Not Related",
+        AEREL == "RELATED" ~ "Related"
+      ),
+      levels = c(
+        "Not Related",
+        "Related"
+      )
+    ),
+    AEACN = factor(
+      case_when(
+        AEACN == "DOSE NOT CHANGED" ~ "Dose Not Changed",
+        AEACN == "NOT APPLICABLE" ~ "Not Applicable",
+        AEACN == "DRUG WITHDRAWN" ~ "Drug Withdrawn",
+        AEACN == "DOSE REDUCED" ~ "Dose Reduced",
+        AEACN == "DOSE RATE REDUCED" ~ "Dose Rate Reduced",
+        AEACN == "DRUG INTERRUPTED" ~ "Drug Interrupted",
+        AEACN == "DOSE INCREASED" ~ "Dose Increased",
+        AEACN == "UNKNOWN" ~ "Unknown"
+      ),
+      levels = c(
+        "Dose Not Changed",
+        "Not Applicable",
+        "Drug Withdrawn",
+        "Dose Reduced",
+        "Dose Rate Reduced",
+        "Drug Interrupted",
+        "Dose Increased",
+        "Unknown"
+      )
+    )
+  )
 
-lsting <- adae %>%
+###################################
+# Section for combination treatment
+###################################
+
+if (combination_trt) {
+  adae <- adae |>
+    mutate(
+      across(
+        all_of(comb_relvars),
+        ~ factor(
+          case_when(
+            . == "NOT RELATED" ~ "Not Related",
+            . == "RELATED" ~ "Related"
+          ),
+          levels = c(
+            "Not Related",
+            "Related"
+          )
+        )
+      ),
+      across(
+        all_of(comb_acnvars),
+        ~ factor(
+          case_when(
+            . == "DOSE NOT CHANGED" ~ "Dose Not Changed",
+            . == "NOT APPLICABLE" ~ "Not Applicable",
+            . == "DRUG WITHDRAWN" ~ "Drug Withdrawn",
+            . == "DOSE REDUCED" ~ "Dose Reduced",
+            . == "DOSE RATE REDUCED" ~ "Dose Rate Reduced",
+            . == "DRUG INTERRUPTED" ~ "Drug Interrupted",
+            . == "DOSE INCREASED" ~ "Dose Increased",
+            . == "UNKNOWN" ~ "Unknown"
+          ),
+          levels = c(
+            "Dose Not Changed",
+            "Not Applicable",
+            "Drug Withdrawn",
+            "Dose Reduced",
+            "Dose Rate Reduced",
+            "Drug Interrupted",
+            "Dose Increased",
+            "Unknown"
+          )
+        )
+      )
+    )
+}
+
+###################################
+
+adae_pvt <- adae |>
+  tidyr::pivot_longer(
+    cols = matches(aesivars),
+    names_to = "CQ",
+    values_to = "AESIVAR"
+  ) |>
+  filter(!is.na(AESIVAR))
+
+
+lsting <- adae_pvt |>
   mutate(
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     DOSEON = explicit_na(as.character(DOSEON), ""),
     DOSEU = explicit_na(DOSEU, ""),
     DOSEDY = explicit_na(as.character(DOSEDY), ""),
@@ -86,6 +243,7 @@ lsting <- adae %>%
     ASTDYN = ifelse(!is.na(ASTDY), ASTDY, NA),
     ASTDY = ifelse(!is.na(ASTDY), ASTDY, ""),
     ASTDTFS = ifelse(!is.na(ASTDTF), "*", ""),
+    ASTDTFSC = ifelse(!is.na(ASTDTF), paste0(ASTDTF, "*"), ""),
     AENDT = explicit_na(as.character(AENDT), ""),
     AENDT = ifelse(
       nchar(AENDT) == 10,
@@ -99,56 +257,124 @@ lsting <- adae %>%
     ),
     AENDY = ifelse(!is.na(AENDY), AENDY, ""),
     AENDTFS = ifelse(!is.na(AENDTF), "*", ""),
+    AENDTFSC = ifelse(!is.na(AENDTF), paste0(AENDTF, "*"), ""),
     ADURN = explicit_na(as.character(ADURN), ""),
-    AEOUTC = explicit_na(AEOUT_DECODE, ""),
+    AEOUTC = explicit_na(AEOUT, ""),
     # Optional Variable: COL11/AESEV/AETOXGR
     # AESEV = explicit_na(AESEV,""),
     AETOXGR = explicit_na(AETOXGR, ""),
-    AESER_DECODE = explicit_na(AESER_DECODE, ""),
-    COL0 = explicit_na(.data[[trtvar]], ""),
-    COL1 = explicit_na(USUBJID, ""),
-    COL2 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
-    COL3 = paste(paste0(DOSEON, " ", DOSEU), DOSEDY, sep = concat_sep),
-    COL4 = explicit_na(CQ01NAM, ""),
+    AESER = explicit_na(AESER, "")
+  )
+
+if (combination_trt) {
+  lsting <- lsting |>
+    mutate(
+      across(
+        all_of(comb_dosvars),
+        ~ explicit_na(as.character(.), "")
+      ),
+      across(
+        all_of(comb_dosuvars),
+        ~ explicit_na(., "")
+      ),
+      across(
+        all_of(comb_dosdyvars),
+        ~ explicit_na(as.character(.), "")
+      )
+    )
+}
+
+lsting <- lsting |>
+  (\(x) {
+    if (!combination_trt) {
+      mutate(
+        x,
+        COL4 = paste(paste0(DOSEON, " ", DOSEU), DOSEDY, sep = concat_sep),
+        # To be used if Dose Unit is not used
+        # COL4 = explicit_na(DOSEDY, ""),
+        # Optional Column: COL9/AEACN
+        COL9 = explicit_na(AEACN, ""),
+        COL10 = explicit_na(AEREL, "")
+      )
+    } else if (combination_trt) {
+      rowwise(x) |>
+        mutate(
+          COL4 = paste(
+            paste0(
+              c_across(all_of(comb_trtvars)),
+              ": ",
+              c_across(all_of(comb_dosvars)),
+              " ",
+              c_across(all_of(comb_dosuvars)),
+              concat_sep,
+              c_across(all_of(comb_dosdyvars))
+            ),
+            collapse = "; "
+          ),
+          # To be used if Dose Unit is not used
+          # COL4 = paste(
+          #   paste0(c_across(all_of(comb_trtvars)), ": ", c_across(all_of(comb_dosdyvars))),
+          #   collapse = "; "
+          # ),
+          # Optional Column: COL9/AEACNSx
+          COL9 = paste(
+            paste0(c_across(all_of(comb_trtvars)), ": ", c_across(all_of(comb_acnvars))),
+            collapse = "; "
+          ),
+          COL10 = paste(
+            paste0(c_across(all_of(comb_trtvars)), ": ", c_across(all_of(comb_relvars))),
+            collapse = "; "
+          )
+        )
+    }
+  })() |>
+  mutate(
+    COL0 = explicit_na(AESIVAR, ""),
+    COL1 = explicit_na(.data[[trtvar]], ""),
+    COL2 = explicit_na(USUBJID, ""),
+    COL3 = paste(AGE, SEX, RACE, sep = concat_sep),
     COL5 = paste(AEDECOD, AETERM, sep = concat_sep),
     COL6 = case_when(
       ASTDT == "" ~ "",
-      include_time & ASTDT != "" & ASTTM != "" & ASTDY != "" & ASTDTFS != "" ~
-        paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")", ASTDTFS),
-      include_time & ASTDT != "" & ASTTM != "" & ASTDY != "" & ASTDTFS == "" ~
+      include_time & include_imputed_dates & ASTDT != "" & ASTTM != "" & ASTDY != "" & ASTDTFSC != "" ~
+        paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")", concat_sep, ASTDTFSC),
+      include_time & include_imputed_dates & ASTDT != "" & ASTTM != "" & ASTDY != "" & ASTDTFSC == "" ~
         paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")"),
-      include_time & ASTDT != "" & ASTTM == "" & ASTDY != "" & ASTDTFS != "" ~
-        paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")", ASTDTFS),
-      include_time & ASTDT != "" & ASTTM == "" & ASTDY != "" & ASTDTFS == "" ~
+      include_time & include_imputed_dates & ASTDT != "" & ASTTM == "" & ASTDY != "" & ASTDTFSC != "" ~
+        paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")", concat_sep, ASTDTFSC),
+      include_time & include_imputed_dates & ASTDT != "" & ASTTM == "" & ASTDY != "" & ASTDTFSC == "" ~
         paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")"),
-      ASTDT != "" & ASTDY != "" & ASTDTFS != "" ~
-        paste0(ASTDT, " (", ASTDY, ")", ASTDTFS),
-      ASTDT != "" & ASTDY != "" & ASTDTFS == "" ~
-        paste0(ASTDT, " (", ASTDY, ")"),
+      include_time & ASTDT != "" & ASTTM != "" & ASTDY != "" ~ paste0(ASTDT, concat_sep, ASTTM, " (", ASTDY, ")"),
+      include_time & ASTDT != "" & ASTTM == "" & ASTDY != "" ~ paste0(ASTDT, concat_sep, "--:--", " (", ASTDY, ")"),
+      include_imputed_dates & ASTDT != "" & ASTDY != "" & ASTDTFSC != "" ~
+        paste0(ASTDT, " (", ASTDY, ")", concat_sep, ASTDTFSC),
+      include_imputed_dates & ASTDT != "" & ASTDY != "" & ASTDTFSC == "" ~ paste0(ASTDT, " (", ASTDY, ")"),
+      ASTDT != "" & ASTDY != "" ~ paste0(ASTDT, " (", ASTDY, ")"),
     ),
     COL7 = case_when(
       AENDT == "" ~ "",
-      include_time & AENDT != "" & AENTM != "" & AENDY != "" & AENDTFS != "" ~
-        paste0(AENDT, concat_sep, AENTM, " (", AENDY, ")", AENDTFS),
-      include_time & AENDT != "" & AENTM != "" & AENDY != "" & AENDTFS == "" ~
+      include_time & include_imputed_dates & AENDT != "" & AENTM != "" & AENDY != "" & AENDTFSC != "" ~
+        paste0(AENDT, concat_sep, AENTM, " (", AENDY, ")", concat_sep, AENDTFSC),
+      include_time & include_imputed_dates & AENDT != "" & AENTM != "" & AENDY != "" & AENDTFSC == "" ~
         paste0(AENDT, concat_sep, AENTM, " (", AENDY, ")"),
-      include_time & AENDT != "" & AENTM == "" & AENDY != "" & AENDTFS != "" ~
-        paste0(AENDT, concat_sep, "--:--", " (", AENDY, ")", AENDTFS),
-      include_time & AENDT != "" & AENTM == "" & AENDY != "" & AENDTFS == "" ~
+      include_time & include_imputed_dates & AENDT != "" & AENTM == "" & AENDY != "" & AENDTFSC != "" ~
+        paste0(AENDT, concat_sep, "--:--", " (", AENDY, ")", concat_sep, AENDTFSC),
+      include_time & include_imputed_dates & AENDT != "" & AENTM == "" & AENDY != "" & AENDTFSC == "" ~
         paste0(AENDT, concat_sep, "--:--", " (", AENDY, ")"),
-      AENDT != "" & AENDY != "" & AENDTFS != "" ~
-        paste0(AENDT, " (", AENDY, ")", AENDTFS),
-      AENDT != "" & AENDY != "" & AENDTFS == "" ~
-        paste0(AENDT, " (", AENDY, ")"),
+      include_time & AENDT != "" & AENTM != "" & AENDY != "" ~ paste0(AENDT, concat_sep, AENTM, " (", AENDY, ")"),
+      include_time & AENDT != "" & AENTM == "" & AENDY != "" ~ paste0(AENDT, concat_sep, "--:--", " (", AENDY, ")"),
+      include_imputed_dates & AENDT != "" & AENDY != "" & AENDTFSC != "" ~
+        paste0(AENDT, " (", AENDY, ")", concat_sep, AENDTFSC),
+      include_imputed_dates & AENDT != "" & AENDY != "" & AENDTFSC == "" ~ paste0(AENDT, " (", AENDY, ")"),
+      AENDT != "" & AENDY != "" ~ paste0(AENDT, " (", AENDY, ")"),
     ),
     COL8 = explicit_na(ADURN, ""),
-    # Optional Column: COL9/AEACN
-    COL9 = explicit_na(AEACN_DECODE, ""),
-    COL10 = explicit_na(AEREL_DECODE, ""),
     # Optional Variable: COL11/AESEV/AETOXGR
-    # COL11 = paste(AEOUTC, AESEV, AESER_DECODE, sep = concat_sep)
-    COL11 = paste(AEOUTC, AETOXGR, AESER_DECODE, sep = concat_sep)
-  ) %>%
+    # COL11 = paste(AEOUTC, AESEV, AESER, sep = concat_sep)
+    COL11 = paste(AEOUTC, AETOXGR, AESER, sep = concat_sep),
+    # Optional Column: COL12/AESCAT
+    COL12 = explicit_na(AESCAT, "")
+  ) |>
   arrange(
     COL0,
     COL1,
@@ -162,15 +388,15 @@ lsting <- adae %>%
 
 lsting <- var_relabel(
   lsting,
-  COL0 = "Treatment Group",
-  COL1 = "Subject ID",
-  COL2 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
-  COL3 = paste(
-    "Onset Dose (unit)",
+  COL0 = "AE of Special Interest Category", # "Special" is optional
+  COL1 = "Treatment Group",
+  COL2 = "Subject ID",
+  COL3 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
+  COL4 = paste(
+    "Onset Dose (unit)", # "Onset Dose (unit)" is optional
     "Day of Last Dose~[super a,b]",
     sep = concat_sep
   ),
-  COL4 = "AE of Special Interest Category",
   COL5 = paste("Preferred Term", "Reported Term", sep = concat_sep),
   COL6 = if (include_time) {
     paste("Start Date", "Time (Study Day~[super b])", sep = concat_sep)
@@ -188,7 +414,9 @@ lsting <- var_relabel(
   COL10 = "Relationship to Study Treatment~[super c]",
   # Optional Variable: COL11/AESEV/AETOXGR
   # COL11 = paste("Outcome", "Severity", "Serious", sep = concat_sep)
-  COL11 = paste("Outcome", "Toxicity Grade", "Serious", sep = concat_sep)
+  COL11 = paste("Outcome", "Toxicity Grade", "Serious", sep = concat_sep),
+  # Optional Column: COL12/AESCAT
+  COL12 = "Event Type"
 )
 
 ###############################################################################
@@ -198,7 +426,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  disp_cols = disp_cols,
+  sort_cols = sort_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -211,6 +441,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 13, 18, 23, 23, 41, 25, 25, 16, 22, 22, 37)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(23, 21, 13, 18, 23, 25, 25, 25, 16, 22, 22, 37, 16)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

@@ -1,28 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsicm01.R
-## R version:                 4.2.1
-## Short Description:         Create LSICM01: Listing of Medications
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-17
-## Input:                     ADCM
-## Output:                    lsicm01.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -40,6 +15,7 @@ fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1")
+sort_cols <- c("COL0", "COL1", "ASTDT")
 disp_cols <- paste0("COL", 0:11)
 concat_sep <- " / "
 tab_titles <- list(
@@ -48,37 +24,68 @@ tab_titles <- list(
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 
+# CM ATC levels - User input parameter to specify which ATC levels to include in the listing
+atclvls <- c("CMLVL1", "CMLVL2")
+
+# User input parameter to specify Base Preferred Term or Standardized Medication Name to include in the listing
+medname_var <- c("CMDECOD") # Standardized Medication Name or/and Base Preferred Term
+
+medname_label <- ifelse(
+  length(medname_var) > 1,
+  paste(c("Standardized Medication Name", "Base Preferred Term"), collapse = concat_sep),
+  ifelse(medname_var == "CMBASPRF", "Base Preferred Term", "Standardized Medication Name")
+)
 
 ###############################################################################
 # Process data
 ###############################################################################
 
-adcm <- adcm_jnj %>%
+adcm <- adcm_jnj |>
   filter(
     !!rlang::sym(popfl) == "Y" &
       ((CMPRESP == "Y" & CMOCCUR == "Y") |
         (is.na(CMPRESP)))
+  ) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+    )
   )
 
-lsting <- adcm %>%
+lsting <- adcm |>
   # Update CQzzNAM variabes based on study requirements
   unite(
     "CQNAM",
-    CQ01NAM,
-    CQ02NAM,
-    CQ03NAM,
-    CQ04NAM,
-    CQ05NAM,
-    CQ06NAM,
-    CQ07NAM,
+    starts_with("CQ"),
     sep = ", ",
     na.rm = TRUE,
     remove = FALSE
-  ) %>%
-  mutate(across(
-    c(CMLVL1:CMLVL4, CMTRT, CMDECOD, CMDOSFRQ, CMROUTE, CMINDCSP),
-    ~ ifelse(. == "", "-", as.character(.))
-  )) %>%
+  ) |>
+  mutate(
+    across(
+      c(CMTRT, CMDOSFRQ, CMROUTE, CMINDCSP),
+      ~ ifelse(. == "", "-", as.character(.))
+    ),
+    across(
+      c(all_of(atclvls)),
+      ~ case_when(
+        .x == "" ~ "Uncoded",
+        .default = .x
+      )
+    ),
+    across(
+      c(CMDECOD, CMBASPRF),
+      ~ case_when(
+        .x == "" ~ paste0("Uncoded: ", CMTRT),
+        .default = .x
+      )
+    ),
+    across(
+      all_of(atclvls),
+      ~ stringr::str_to_sentence(.x)
+    )
+  ) |>
   mutate(
     CMSTDT = as.Date(CMSTDTC, format = "%Y-%m-%d"),
     CMSTYR = ifelse(
@@ -132,7 +139,7 @@ lsting <- adcm %>%
     PREFLL = ifelse(is.na(PREFL), NA, "P"),
     ONTRTFLL = ifelse(is.na(ONTRTFL), NA, "C"),
     FUPFLL = ifelse(is.na(FUPFL), NA, "F")
-  ) %>%
+  ) |>
   unite(
     "CMSTDTL",
     CMSTDAY,
@@ -141,7 +148,7 @@ lsting <- adcm %>%
     sep = "",
     na.rm = TRUE,
     remove = FALSE
-  ) %>%
+  ) |>
   unite(
     "CMENDTL",
     CMENDAY,
@@ -150,7 +157,7 @@ lsting <- adcm %>%
     sep = "",
     na.rm = TRUE,
     remove = FALSE
-  ) %>%
+  ) |>
   unite(
     "POF",
     PREFLL,
@@ -159,20 +166,16 @@ lsting <- adcm %>%
     sep = ";",
     na.rm = TRUE,
     remove = FALSE
-  ) %>%
+  ) |>
   mutate(
     STDATE = case_when(
-      CMSTDTL != "" & CMSTDYL != "" ~
-        paste0(toupper(CMSTDTL), " (", CMSTDYL, ")"),
-      CMSTDTL != "" & CMSTDYL == "" ~
-        paste0(toupper(CMSTDTL), ""),
+      CMSTDTL != "" & CMSTDYL != "" ~ paste0(toupper(CMSTDTL), " (", CMSTDYL, ")"),
+      CMSTDTL != "" & CMSTDYL == "" ~ paste0(toupper(CMSTDTL), ""),
       TRUE ~ ""
     ),
     ENDATE = case_when(
-      CMENDTL != "" & CMENDYL != "" ~
-        paste0(toupper(CMENDTL), " (", CMENDYL, ")"),
-      CMENDTL != "" & CMENDYL == "" ~
-        paste0(toupper(CMENDTL), ""),
+      CMENDTL != "" & CMENDYL != "" ~ paste0(toupper(CMENDTL), " (", CMENDYL, ")"),
+      CMENDTL != "" & CMENDYL == "" ~ paste0(toupper(CMENDTL), ""),
       CMENDTL == "" & CMENRF == "AFTER" ~ "Ongoing",
       TRUE ~ ""
     ),
@@ -183,21 +186,16 @@ lsting <- adcm %>%
     ),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
-    # Optional Variable: CMDECOD/CMBASPRF
+    # Common medication name variable based on user selection
     COL2 = paste(
       stringr::str_to_sentence(CMTRT),
-      stringr::str_to_sentence(CMDECOD),
+      stringr::str_to_sentence(.data[[medname_var]]),
       sep = concat_sep
     ),
     COL3 = explicit_na(POF, ""),
     # Optional Column: COL4/CQzzNAM
     COL4 = explicit_na(CQNAM, ""),
-    # Optional Variable: CMLVL1/CMLVL2/CMLVL3/CMLVL4
-    COL5 = paste(
-      stringr::str_to_sentence(CMLVL1),
-      stringr::str_to_sentence(CMLVL2),
-      sep = concat_sep
-    ),
+    COL5 = do.call(paste, c(across(all_of(atclvls)), sep = concat_sep)),
     COL6 = explicit_na(STDATE, ""),
     COL7 = explicit_na(ENDATE, ""),
     COL8 = explicit_na(DOSEU, ""),
@@ -205,34 +203,33 @@ lsting <- adcm %>%
     # Optional Column: COL10/CMROUTE
     COL10 = explicit_na(stringr::str_to_sentence(CMROUTE), ""),
     COL11 = explicit_na(CMINDCSP, "")
-  ) %>%
+  ) |>
   arrange(COL0, COL1, ASTDT)
+
+atclvls_label <- sub(".*(\\d+)$", "ATC Level \\1", atclvls) |>
+  paste(collapse = concat_sep)
 
 lsting <- var_relabel(
   lsting,
   COL0 = "Treatment Group",
   COL1 = "Subject ID",
-  # Optional Variable: CMDECOD/CMBASPRF
-  # COL2 = paste("Medication (Verbatim)",
-  #              "Standardized Medication Name",
-  #              sep = concat_sep),
   COL2 = paste(
     "Medication (Verbatim)",
-    "Base Preferred Term",
+    medname_label,
     sep = concat_sep
   ),
-  COL3 = paste("Prior", "Concomitant", sep = concat_sep),
+  COL3 = "Medication Timing",
   # Optional Column: COL4/CQzzNAM
   COL4 = "Interest Category",
-  # Optional Variable: CMLVL1/CMLVL2/CMLVL3/CMLVL4
-  COL5 = paste("ATC Level 1", "ATC Level 2", sep = concat_sep),
+  # COL5: Based on input parameter atclvls
+  COL5 = atclvls_label,
   COL6 = "Start Date of Medication (Study Day~[super a])",
   COL7 = "End Date of Medication (Study Day~[super a])",
   COL8 = "Dose (Unit)",
   COL9 = "Frequency",
   # Optional Column: COL10/CMROUTE
   COL10 = "Route",
-  COL11 = "Indication:Specify"
+  COL11 = "Indication: Specify"
 )
 
 ###############################################################################
@@ -242,7 +239,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  disp_cols = disp_cols,
+  sort_cols = sort_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -255,6 +254,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 13, 29, 22, 16, 50, 22, 22, 16, 18, 24, 31)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(21, 13, 39, 20, 25, 38, 22, 22, 19, 18, 19, 29)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

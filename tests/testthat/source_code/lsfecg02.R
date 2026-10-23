@@ -1,28 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsfecg02.R
-## R version:                 4.2.1
-## Short Description:         Create LSFECG02: Listing of ECG Values
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-09-12
-## Input:                     ADEG
-## Output:                    lsfecg02.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -40,7 +15,8 @@ fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1", "COL2", "COL3")
-disp_cols <- paste0("COL", 0:9)
+sort_cols <- c("COL0", "COL1", "COL2", "COL3")
+disp_cols <- paste0("COL", 0:10)
 concat_sep <- " / "
 tab_titles <- list(
   title = "Dummy Title",
@@ -53,25 +29,67 @@ tab_titles <- list(
 # Process data
 ###############################################################################
 
-adeg <- adeg_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y" & PARAMCD != "EGALL")
+adeg <- adeg_jnj |>
+  filter(!!rlang::sym(popfl) == "Y" & PARAMCD != "EGALL") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+    ),
+    SEX = factor(
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
+      levels = c("Male", "Female", "Intersex", "Unknown")
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    ),
+    PARAM = factor(
+      .data$PARAM,
+      levels = unique(.data[["PARAM"]])[order(unique(.data[["PARAMN"]]))]
+    ),
+    AVISIT = factor(
+      .data[["AVISIT"]],
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
+    )
+  )
 
 adeg_dig <- tidytlg:::make_precision_data(
   df = adeg,
   decimal = 4,
   precisionby = "PARAMCD",
   precisionon = "AVAL"
-) %>%
+) |>
   rename(c(VALDIGMAX = "decimal"))
 
-adeg_list <- adeg %>%
+adeg_list <- adeg |>
   inner_join(adeg_dig, by = c("PARAMCD" = "PARAMCD"))
 
-lsting <- adeg_list %>%
+lsting <- adeg_list |>
   mutate(
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     ADT = ifelse(
       nchar(as.character(ADT)) == 10,
       toupper(format(ADT, "%d%b%Y")),
@@ -81,47 +99,27 @@ lsting <- adeg_list %>%
     ADYN = ifelse(!is.na(ADY), ADY, NA),
     ADY = ifelse(!is.na(ADY), ADY, "--"),
     VAL_RES = case_when(
-      is.na(VALDIGMAX) & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 0 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 1 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 1, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 2 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 2, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 3 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 3, as_char = TRUE, na_char = NULL),
-      VALDIGMAX >= 4 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 4, as_char = TRUE, na_char = NULL),
+      is.na(VALDIGMAX) & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 0 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 1 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 1, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 2 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 2, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 3 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 3, as_char = TRUE, na_char = NULL),
+      VALDIGMAX >= 4 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 4, as_char = TRUE, na_char = NULL),
       !is.na(AVALC) ~ AVALC
     ),
-    VAL_HL = case_when(
-      !is.na(ANRIND) ~ substr(ANRIND, 1, 1),
-      .default = NA
-    ),
     VAL_CS = case_when(
-      EGCLSIG == "Y" ~ "CS",
-      EGCLSIG == "N" ~ "NCS",
+      EGCLSIG == "Y" & PARAMCD == "INTP" ~ "CS",
+      EGCLSIG == "N" & PARAMCD == "INTP" ~ "NCS",
       .default = NA
     ),
     VAL = case_when(
-      !is.na(VAL_RES) & !is.na(VAL_HL) & !is.na(VAL_CS) ~ paste(
-        VAL_RES,
-        VAL_HL,
-        VAL_CS,
-        sep = " "
-      ),
-      !is.na(VAL_RES) & !is.na(VAL_HL) & is.na(VAL_CS) ~ paste(
-        VAL_RES,
-        VAL_HL,
-        sep = " "
-      ),
-      !is.na(VAL_RES) & is.na(VAL_HL) & !is.na(VAL_CS) ~ paste(
-        VAL_RES,
-        VAL_CS,
-        sep = " "
-      ),
-      !is.na(VAL_RES) & is.na(VAL_HL) & is.na(VAL_CS) ~ VAL_RES,
+      !is.na(VAL_RES) & !is.na(VAL_CS) ~
+        paste(
+          VAL_RES,
+          VAL_CS,
+          sep = " "
+        ),
+      !is.na(VAL_RES) & is.na(VAL_CS) ~ VAL_RES,
       .default = NA
     ),
     CRIT = case_when(
@@ -129,9 +127,13 @@ lsting <- adeg_list %>%
       !is.na(CRIT1) & CRIT1FL == "Y" ~ CRIT1,
       !is.na(CRIT2) & CRIT2FL == "Y" ~ CRIT2,
     ),
+    TREM_FL = case_when(
+      TRTEMFL == "Y" ~ "Yes",
+      .default = NA
+    ),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
-    COL2 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
+    COL2 = paste(AGE, SEX, RACE, sep = concat_sep),
     COL3 = explicit_na(PARAM, ""),
     # Optional Variable: ATM
     COL4 = paste(ADT, concat_sep, ATM, " (", ADY, ")", sep = ""),
@@ -144,20 +146,16 @@ lsting <- adeg_list %>%
       is.na(CHG) ~ "",
       is.na(VALDIGMAX) & !is.na(AVAL) & !is.na(CHG) ~
         tidytlg::roundSAS(CHG, digits = 0, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 0 & !is.na(CHG) ~
-        tidytlg::roundSAS(CHG, digits = 0, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 1 & !is.na(CHG) ~
-        tidytlg::roundSAS(CHG, digits = 1, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 2 & !is.na(CHG) ~
-        tidytlg::roundSAS(CHG, digits = 2, as_char = TRUE, na_char = NULL),
-      VALDIGMAX == 3 & !is.na(CHG) ~
-        tidytlg::roundSAS(CHG, digits = 3, as_char = TRUE, na_char = NULL),
-      VALDIGMAX >= 4 & !is.na(CHG) ~
-        tidytlg::roundSAS(CHG, digits = 4, as_char = TRUE, na_char = NULL)
+      VALDIGMAX == 0 & !is.na(CHG) ~ tidytlg::roundSAS(CHG, digits = 0, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 1 & !is.na(CHG) ~ tidytlg::roundSAS(CHG, digits = 1, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 2 & !is.na(CHG) ~ tidytlg::roundSAS(CHG, digits = 2, as_char = TRUE, na_char = NULL),
+      VALDIGMAX == 3 & !is.na(CHG) ~ tidytlg::roundSAS(CHG, digits = 3, as_char = TRUE, na_char = NULL),
+      VALDIGMAX >= 4 & !is.na(CHG) ~ tidytlg::roundSAS(CHG, digits = 4, as_char = TRUE, na_char = NULL)
     ),
     # Optional Column: COL9/CRITy
-    COL9 = explicit_na(CRIT, "")
-  ) %>%
+    COL9 = explicit_na(CRIT, ""),
+    COL10 = explicit_na(TREM_FL, "")
+  ) |>
   arrange(COL0, COL1, COL2, COL3, !is.na(ADYN), ADYN, ADTM)
 
 lsting <- var_relabel(
@@ -177,9 +175,10 @@ lsting <- var_relabel(
   COL6 = "Time Point",
   COL7 = "Result",
   # Optional Column: COL8/CHG
-  COL8 = "Change from Baseline",
+  COL8 = "Change From Baseline",
   # Optional Column: COL9/CRITy
-  COL9 = "Criteria"
+  COL9 = "Criteria",
+  COL10 = "Treatment-emergent?"
 )
 
 ###############################################################################
@@ -189,7 +188,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  sort_cols = sort_cols,
+  disp_cols = disp_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -205,38 +206,14 @@ result <- set_titles(result, tab_titles)
 # should be split into multiple parts
 # The split below is based on the treatment groups
 # Update as-needed for your study
-result1 <- result %>%
+result1 <- result |>
   filter(toupper(.data[[trtvar]]) == "XANOMELINE LOW DOSE")
 
-colwidth <- c(21, 13, 18, 38, 75, 15, 50, 24, 15, 14)
+
+colwidth <- c(21, 13, 18, 28, 75, 15, 43, 25, 15, 14, 18)
 
 tt_to_tlgrtf(
-  colwidths = colwidth,
-  head(result1, 100),
-  file = paste0(fileid, "PART1OF3"),
-  orientation = "landscape"
-)
-
-result2 <- result %>%
-  filter(toupper(.data[[trtvar]]) == "XANOMELINE HIGH DOSE")
-
-colwidth <- c(21, 13, 18, 29, 74, 27, 50, 24, 15, 14)
-
-tt_to_tlgrtf(
-  colwidths = colwidth,
-  head(result2, 100),
-  file = paste0(fileid, "PART2OF3"),
-  orientation = "landscape"
-)
-
-result3 <- result %>%
-  filter(toupper(.data[[trtvar]]) == "PLACEBO")
-
-colwidth <- c(18, 13, 18, 41, 75, 16, 50, 24, 15, 14)
-
-tt_to_tlgrtf(
-  colwidths = colwidth,
-  head(result3, 100),
-  file = paste0(fileid, "PART3OF3"),
+  head(result, 100),
+  file = paste0(fileid),
   orientation = "landscape"
 )
