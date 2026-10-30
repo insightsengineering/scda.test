@@ -1,28 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsfdth01.R
-## R version:                 4.2.1
-## Short Description:         Create LSFDTH01: Listing of Deaths
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-12
-## Input:                     ADSL, ADEXSUM
-## Output:                    lsfdth01.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -38,7 +13,9 @@ tblid <- "LSFDTH01"
 fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
-key_cols <- c("COL0", "COL1")
+paramcd_dur <- "TRTDURM"
+key_cols <- c("COL0", "COL1", "COL2")
+sort_cols <- c("COL0", "COL1", "COL2")
 disp_cols <- paste0("COL", 0:8)
 concat_sep <- " / "
 tab_titles <- list(
@@ -47,48 +24,88 @@ tab_titles <- list(
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 
+
 ###############################################################################
 # Process data
 ###############################################################################
 
-adsl <- adsl_jnj %>%
+adsl <- adsl_jnj |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    ),
+    SEX = factor(
+      case_when(
+        SEX == "F" ~ "Female",
+        SEX == "M" ~ "Male"
+      ),
+      levels = c("Male", "Female")
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    )
+  ) |>
   filter(!!rlang::sym(popfl) == "Y" & DTHFL == "Y")
 
-adexsum <- adexsum_jnj %>%
-  filter(PARAMCD == "TRTDURM") %>%
-  select(STUDYID, USUBJID, AVAL)
+adexsum <- adexsum_jnj |>
+  filter(PARAMCD == paramcd_dur) |>
+  select(STUDYID, USUBJID, AVAL, PARAM)
 
 adexsum_dig <- tidytlg:::make_precision_data(
   df = adexsum,
   decimal = 4,
   precisionby = "STUDYID",
   precisionon = "AVAL"
-) %>%
+) |>
   rename(c(VALDIGMAX = "decimal"))
 
-adsl_adexsum <- adsl %>%
-  inner_join(adexsum, by = c("STUDYID", "USUBJID")) %>%
+adsl_adexsum <- adsl |>
+  inner_join(adexsum, by = c("STUDYID", "USUBJID")) |>
   left_join(adexsum_dig, by = c("STUDYID" = "STUDYID"))
 
-lsting <- adsl_adexsum %>%
+lsting <- adsl_adexsum |>
   mutate(
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     LDOSE = explicit_na(as.character(LDOSE), ""),
     LDOSU = explicit_na(LDOSU, ""),
     DTHCAUS = explicit_na(stringr::str_to_sentence(DTHCAUS), ""),
     DTHTERM = explicit_na(stringr::str_to_sentence(DTHTERM), ""),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
-    COL2 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
-    COL3 = paste(LDOSE, LDOSU),
+    COL2 = paste(AGE, SEX, RACE, sep = concat_sep),
+    COL3 = paste0(LDOSE, " (", LDOSU, ")"),
     COL4 = case_when(
       is.na(AVAL) ~ "",
-      VALDIGMAX == 0 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
-      VALDIGMAX >= 1 & !is.na(AVAL) ~
-        tidytlg::roundSAS(AVAL, digits = 1, as_char = TRUE, na_char = NULL)
+      VALDIGMAX == 0 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 0, as_char = TRUE, na_char = NULL),
+      VALDIGMAX >= 1 & !is.na(AVAL) ~ tidytlg::roundSAS(AVAL, digits = 1, as_char = TRUE, na_char = NULL)
     ),
     # Optional Column: COL5/TRTEDT/TRTEDY
     COL5 = ifelse(
@@ -114,7 +131,7 @@ lsting <- adsl_adexsum %>%
       )
     ),
     COL8 = paste(DTHCAUS, DTHTERM, sep = concat_sep)
-  ) %>%
+  ) |>
   arrange(COL0, COL1)
 
 lsting <- var_relabel(
@@ -122,8 +139,18 @@ lsting <- var_relabel(
   COL0 = "Treatment Group",
   COL1 = "Subject ID",
   COL2 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
-  COL3 = "Last Dose of Study Treatment",
-  COL4 = "Duration of Treatment Months~[super a]",
+  # Optional Column: COL3/LDOSE/LDOSU
+  COL3 = "Dose (Unit) of Last Dose of Study Treatment",
+  COL4 = paste0(
+    "Duration of Treatment ",
+    tolower(trimws(gsub(
+      "[()]",
+      "",
+      sub("(?i)^duration of treatment[, ]*", "", adsl_adexsum[["PARAM"]][1], perl = TRUE)
+    ))),
+    "~[super a]"
+  ),
+
   # Optional Column: COL5/TRTEDT/TRTEDY
   COL5 = "Date of Last Dose of Study Treatment (Study Day~[super b])",
   # Optional Column: COL6/LDSTODTH
@@ -131,7 +158,7 @@ lsting <- var_relabel(
   COL7 = "Date of Death (Study Day~[super d])",
   COL8 = paste(
     "Primary Cause of Death (Preferred Term",
-    "Verbatim",
+    "Verbatim)",
     sep = concat_sep
   )
 )
@@ -143,7 +170,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  disp_cols = disp_cols,
+  sort_cols = sort_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -156,6 +185,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 63, 24, 18, 19, 31, 41, 22, 46)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(21, 63, 33, 27, 19, 31, 41, 22, 28)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

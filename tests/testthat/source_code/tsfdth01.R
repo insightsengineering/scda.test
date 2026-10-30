@@ -1,27 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsfdth01.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsfdth01: Table of deaths
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      15 Jan 2024
-## Input:                     ADSL
-## Output:                    TSFDTH01.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -59,6 +35,9 @@ popfl <- "SAFFL"
 days <- 30
 dthcausevar <- "DTHCAUS"
 
+# Either Combined column or highest JnJ Dose level based on study
+sort_colpath <- "Combined"
+
 combined_colspan_trt <- TRUE
 risk_diff <- TRUE
 rr_method <- "wald"
@@ -87,8 +66,8 @@ if (combined_colspan_trt == TRUE) {
 # Process Data:
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   # remove DTHB60FL variable from below if Deaths within 60 days section is not required
   select(
     STUDYID,
@@ -97,39 +76,44 @@ adsl <- adsl_jnj %>%
     all_of(popfl),
     DTHFL,
     DTHTRTFL,
-    DTHB60FL,
     DTHAFTFL,
+    DTHB60FL,
     all_of(dthcausevar)
-  )
-
-adsl$colspan_trt <- factor(
-  ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
-  levels = c("Active Study Agent", " ")
-)
-
-if (risk_diff == TRUE) {
-  adsl$rrisk_header <- "Risk Difference (%) (95% CI)"
-  adsl$rrisk_label <- paste(adsl[[trtvar]], paste("vs", ctrl_grp))
-}
-
-adsl <- adsl %>%
+  ) |>
   mutate(
-    DTHVAR = !!as.name(dthcausevar),
-    DTHVAR = as.factor(DTHVAR)
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  create_colspan_var(
+    non_active_grp = "Placebo",
+    non_active_grp_span_lbl = " ",
+    active_grp_span_lbl = "Active Study Agent",
+    colspan_var = "colspan_trt",
+    trt_var = trtvar
+  ) |>
+  mutate(
+    rrisk_header = "Risk Difference (%) (95% CI)",
+    rrisk_label = paste(!!rlang::sym(trtvar), "vs Placebo")
+  ) |>
+  mutate(
+    DTHVAR = !!as.name(dthcausevar)
   )
 
-# re-order so OTHER becomes the last category in the table (if there is an OTHER)
-is_other <- adsl %>%
-  filter(DTHVAR == "OTHER")
-
-if (length(is_other$DTHVAR) != 0) {
-  adsl <- adsl %>%
-    mutate(DTHVAR = forcats::fct_relevel(DTHVAR, "OTHER", after = Inf))
-}
 
 # Convert Reasons to sentence case
 adsl$DTHVAR <- stringr::str_to_sentence(adsl$DTHVAR)
 adsl$DTHVAR <- as.factor(adsl$DTHVAR)
+
+
+################################################################################
+# Define layout and build table:
+################################################################################
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -139,11 +123,9 @@ colspan_trt_map <- create_colspan_map(
   colspan_var = "colspan_trt",
   trt_var = trtvar
 )
-ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
-################################################################################
-# Define layout and build table:
-################################################################################
+
+ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
 extra_args_rr <- list(
   method = rr_method,
@@ -154,30 +136,30 @@ extra_args_rr <- list(
 )
 
 # check if we actually have any deaths so this can be used for the layout
-anydth <- adsl %>%
+anydth <- adsl |>
   filter(DTHFL == "Y")
 
 lyt <- basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
 if (risk_diff == TRUE) {
-  lyt <- lyt %>%
-    split_cols_by("rrisk_header", nested = FALSE) %>%
+  lyt <- lyt |>
+    split_cols_by("rrisk_header", nested = FALSE) |>
     split_cols_by(
       trtvar,
       labels_var = "rrisk_label",
@@ -186,19 +168,19 @@ if (risk_diff == TRUE) {
 }
 
 if (length(anydth$DTHFL) != 0) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_rows_by(
       "DTHFL",
       split_fun = keep_split_levels("Y"),
       split_label = "Deaths",
       label_pos = "topleft",
       section_div = " "
-    ) %>%
+    ) |>
     summarize_row_groups(
       "DTHFL",
       cfun = a_freq_j,
       extra_args = append(extra_args_rr, list(label = "Total deaths"))
-    ) %>%
+    ) |>
     analyze(
       "DTHVAR",
       var_labels = " ",
@@ -206,12 +188,12 @@ if (length(anydth$DTHFL) != 0) {
       extra_args = extra_args_rr,
       indent_mod = 0,
       show_labels = "hidden"
-    ) %>%
+    ) |>
     split_rows_by(
       "DTHTRTFL",
       split_fun = keep_split_levels("Y"),
       section_div = " "
-    ) %>%
+    ) |>
     summarize_row_groups(
       "DTHTRTFL",
       cfun = a_freq_j,
@@ -219,7 +201,7 @@ if (length(anydth$DTHFL) != 0) {
         extra_args_rr,
         list(label = paste0("Deaths within ", days, " days of last dose"))
       )
-    ) %>%
+    ) |>
     analyze(
       "DTHVAR",
       var_labels = " ",
@@ -227,12 +209,12 @@ if (length(anydth$DTHFL) != 0) {
       extra_args = extra_args_rr,
       indent_mod = 0,
       show_labels = "hidden"
-    ) %>%
+    ) |>
     split_rows_by(
       "DTHAFTFL",
       split_fun = keep_split_levels("Y"),
       section_div = " "
-    ) %>%
+    ) |>
     summarize_row_groups(
       "DTHAFTFL",
       cfun = a_freq_j,
@@ -240,7 +222,7 @@ if (length(anydth$DTHFL) != 0) {
         extra_args_rr,
         list(label = paste0("Deaths beyond ", days, " days of last dose"))
       )
-    ) %>%
+    ) |>
     analyze(
       "DTHVAR",
       var_labels = " ",
@@ -248,13 +230,13 @@ if (length(anydth$DTHFL) != 0) {
       extra_args = extra_args_rr,
       indent_mod = 0,
       show_labels = "hidden"
-    ) %>%
+    ) |>
     # Remove below section if the Deaths within 60 days section is not required
     split_rows_by(
       "DTHB60FL",
       split_fun = keep_split_levels("Y"),
       section_div = " "
-    ) %>%
+    ) |>
     summarize_row_groups(
       "DTHB60FL",
       cfun = a_freq_j,
@@ -262,7 +244,7 @@ if (length(anydth$DTHFL) != 0) {
         extra_args_rr,
         list(label = "Deaths within 60 days of first dose")
       )
-    ) %>%
+    ) |>
     analyze(
       "DTHVAR",
       var_labels = " ",
@@ -272,7 +254,7 @@ if (length(anydth$DTHFL) != 0) {
       show_labels = "hidden"
     )
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     analyze(
       "DTHFL",
       a_freq_j,
@@ -281,10 +263,10 @@ if (length(anydth$DTHFL) != 0) {
     )
 }
 
-lyt <- lyt %>%
-  append_topleft("  Cause of Death, n (%)")
+lyt <- lyt |>
+  append_topleft("  Primary Cause of Death, n (%)")
 
-result <- build_table(lyt, adsl, alt_counts_df = adsl)
+result <- build_table(lyt, adsl, alt_counts_df = adsl, round_type = "sas")
 
 ## Remove the N=xx column headers for the risk difference columns
 result <- remove_col_count(result)
@@ -308,22 +290,22 @@ if (length(anydth$DTHFL) != 0) {
   result <- sort_at_path(
     result,
     c("root", "DTHFL", "*", "DTHVAR"),
-    scorefun = jj_complex_scorefun()
+    scorefun = jj_complex_scorefun(colpath = sort_colpath, lastcat = "count_unique_fraction.Other")
   )
   result <- sort_at_path(
     result,
     c("root", "DTHTRTFL", "*", "DTHVAR"),
-    scorefun = jj_complex_scorefun()
+    scorefun = jj_complex_scorefun(colpath = sort_colpath, lastcat = "count_unique_fraction.Other")
   )
   result <- sort_at_path(
     result,
     c("root", "DTHAFTFL", "*", "DTHVAR"),
-    scorefun = jj_complex_scorefun()
+    scorefun = jj_complex_scorefun(colpath = sort_colpath, lastcat = "count_unique_fraction.Other")
   )
   result <- sort_at_path(
     result,
     c("root", "DTHB60FL", "*", "DTHVAR"),
-    scorefun = jj_complex_scorefun()
+    scorefun = jj_complex_scorefun(colpath = sort_colpath, lastcat = "count_unique_fraction.Other")
   )
 }
 
@@ -337,6 +319,7 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table
 ################################################################################
 
-colwidth <- c(57, 5, 17, 17, 17, 29, 29)
+
+colwidth <- c(57, 17, 17, 17, 17, 29, 29)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

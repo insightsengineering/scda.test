@@ -1,31 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tpk03
-## R version:                 4.4.2
-## Short Description:         Program to create tpk03:
-##                            Subjects With [Matrix]
-##                            [Active Study Agent/Analyte] Concentrations Below
-##                            the Lowest Quantification Level ([LLOQ/LLOQxMRD
-##                            and units]) Over Time; Pharmacokinetics Analysis
-##                            Set (Study jjcs - core)
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      22AUG2025
-## Input:                     adpc.rds, adsl.rds
-## Output:                    tpk03.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep environment:
-################################################################################
-
 library(envsetup)
 library(dplyr)
 library(forcats)
@@ -39,13 +11,24 @@ library(junco)
 
 tblid <- "TPK03"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 popfl <- "PKFL"
 trtvar <- "TRT01A"
+paramcd <- "XAN"
+
+# flag to indicate if ATPT is present in the study
+# if TRUE, time point is concatenation of AVISIT and ATPT
+# if FALSE, time point is AVISIT only
+use_atpt <- TRUE
+
+# lloq_label: the threshold term to display in the label
+# e.g. "LLOQxMRD" or "LLOQ"
+lloq_label <- "LLOQxMRD"
+
 
 ################################################################################
 # Process data:
@@ -53,39 +36,53 @@ trtvar <- "TRT01A"
 
 adsl <- adsl_jnj |>
   filter(.data[[popfl]] == "Y") |>
-  select(USUBJID, all_of(trtvar), PKFL) |>
+  select(STUDYID, USUBJID, all_of(c(trtvar, popfl))) |>
   # Drop the control group
   filter(.data[[trtvar]] != "Placebo") |>
   mutate({{ trtvar }} := fct_drop(.data[[trtvar]])) |>
-  mutate(colspan_trt = "Active Study Agent")
+  mutate(colspan_trt = "Active Study Agent") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose"
+      )
+    )
+  )
+
+
+# IF ATPT not present user can remove it from select statement
 
 adpc <- adpc_jnj |>
-  filter(PARAMCD == "XAN") |>
-  select(USUBJID, all_of(trtvar), AVISIT, ATPT, CRIT1FL) |>
-  inner_join(adsl) |>
-  # Concatenate and reorder time points
-  mutate(AVISIT_ATPT = factor(paste(AVISIT, ATPT, sep = " - "), levels = c(
-    "Day 1 - Pre-dose",
-    "Day 1 - 5 Min Post-dose",
-    "Day 1 - 30 Min Post-dose",
-    "Day 1 - 1h Post-dose",
-    "Day 1 - 1.5h Post-dose",
-    "Day 1 - 2h Post-dose",
-    "Day 1 - 4h Post-dose",
-    "Day 1 - 0-6h Post-dose",
-    "Day 1 - 6h Post-dose",
-    "Day 1 - 8h Post-dose",
-    "Day 1 - 6-12h Post-dose",
-    "Day 1 - 12h Post-dose",
-    "Day 1 - 16h Post-dose",
-    "Day 1 - 12-24h Post-dose",
-    "Day 2 - 24h Post-dose",
-    "Day 2 - Pre-dose",
-    "Day 2 - 36h Post-dose",
-    "Day 2 - 24-48h Post-dose",
-    "Day 3 - 48h Post-dose",
-    "Day 3 - Pre-dose"
-  )))
+  filter(PARAMCD == paramcd) |> # If not required this filter can be removed
+  select(STUDYID, USUBJID, AVISIT, AVISITN, any_of(c("ATPT", "ATPTN")), CRIT1FL) |>
+  inner_join(adsl, by = c("STUDYID", "USUBJID"))
+
+
+# derive selvisit from data, ordered by AVISITN then ATPTN
+selvisit <- if (use_atpt) {
+  adpc |>
+    arrange(AVISITN, ATPTN) |>
+    distinct(AVISIT, ATPT) |>
+    mutate(AVISIT_ATPT = paste(AVISIT, ATPT, sep = ", ")) |>
+    pull(AVISIT_ATPT)
+} else {
+  adpc |>
+    arrange(AVISITN) |>
+    distinct(AVISIT) |>
+    pull(AVISIT)
+}
+
+
+adpc <- adpc |>
+  # Concatenate or use AVISIT only depending on use_atpt
+  mutate(
+    AVISIT_ATPT = factor(
+      if (use_atpt) paste(AVISIT, ATPT, sep = ", ") else as.character(AVISIT),
+      levels = selvisit
+    )
+  )
 
 ################################################################################
 # Define layout and build table:
@@ -124,23 +121,24 @@ lyt <- basic_table() |>
     afun = a_freq_j,
     extra_args = list(
       val = "Y",
-      label = "Number of subjects with values below LLOQxMRD, n (%)",
+      label = paste0("Number of subjects with values below ", lloq_label, ", n (%)"),
       .stats = "count_unique_fraction",
       .indent_mods = 1
     )
   )
 
-result <- build_table(lyt, df = adpc, alt_counts_df = adsl)
+result <- build_table(lyt, df = adpc, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
 # Convert to tbl file and output table:
 ################################################################################
+
 
 colwidth <- c(64, 23, 23, 25)
 

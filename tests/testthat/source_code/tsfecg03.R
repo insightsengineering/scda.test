@@ -1,32 +1,9 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsfecg03
-## R version:                 4.2.1
-## Short Description:         Program to create tsfecg03: Categorized Change From
-##                            Baseline to Maximum On-treatment Corrected QT Interval
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      30JAN2024
-## Input:                     adsl.RDS, adeg.RDS
-## Output:                    tsfecg03.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
 library(rtables)
 library(junco)
+library(haven)
 
 ################################################################################
 # Define script level parameters:
@@ -34,7 +11,7 @@ library(junco)
 
 tblid <- "TSFECG03"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
@@ -44,90 +21,107 @@ popfl <- "SAFFL"
 trtvar <- "TRT01A"
 ctrl_grp <- "Placebo"
 
-ad_domain <- "adeg"
-
-selvisit <- c(
-  "Baseline",
-  "Month 1",
-  "Month 3",
-  "Month 6",
-  "Month 9",
-  "Month 12",
-  "Month 15",
-  "Month 18",
-  "Month 24"
-)
+# Add Active Study Agent Combined column?
+combined_colspan_trt <- TRUE
 
 ## selection of QTC parameters
-selparamcd <- c("QTCFAG", "QTCBAG", "QTCS", "QTCLAG")
-
-################################################################################
-# initial read of data
-################################################################################
-
-adeg_complete <- adeg_jnj
-
-### available QTC parameters in study
-selparamcd <- intersect(selparamcd, unique(adeg_complete$PARAMCD))
+selparamcd <- c("QTCBAG", "QTCFAG", "QTCS", "QTCLAG")
 
 
-catvar <- "CHGCAT1"
-## all parameters have the same levels for CHGCAT1 -- there is no need to create a map dataframe
+if (combined_colspan_trt == TRUE) {
+  # Set up levels and label for the required combined columns
+  add_combo <- add_combo_facet(
+    "Combined",
+    label = "Combined",
+    levels = c("Xanomeline High Dose", "Xanomeline Low Dose")
+  )
+
+  # choose if any facets need to be removed - e.g remove the combined column for placebo
+  rm_combo_from_placebo <- cond_rm_facets(
+    facets = "Combined",
+    ancestor_pos = NA,
+    value = " ",
+    split = "colspan_trt"
+  )
+
+  mysplit <- make_split_fun(post = list(add_combo, rm_combo_from_placebo))
+}
 
 ################################################################################
 # Process Data:
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(.data[[popfl]] == "Y") %>%
-  select(USUBJID, all_of(c(popfl, trtvar)))
+adsl <- adsl_jnj |>
+  filter(.data[[popfl]] == "Y") |>
+  select(
+    STUDYID,
+    USUBJID,
+    all_of(c(popfl, trtvar))
+  ) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  create_colspan_var(
+    non_active_grp = ctrl_grp,
+    non_active_grp_span_lbl = " ",
+    active_grp_span_lbl = "Active Study Agent",
+    colspan_var = "colspan_trt",
+    trt_var = trtvar
+  )
 
+adeg <- adeg_jnj
 
-adsl$colspan_trt <- factor(
-  ifelse(adsl[[trtvar]] == ctrl_grp, " ", "Active Study Agent"),
-  levels = c("Active Study Agent", " ")
+### available QT Interval parameters in study
+selparamcd <- intersect(selparamcd, unique(adeg$PARAMCD))
+
+adeg <- adeg |>
+  filter(
+    !is.na(USUBJID),
+    .data[[popfl]] == "Y",
+    !is.na(.data[[trtvar]]),
+    PARAMCD %in% selparamcd,
+    ### Maximum On-treatment
+    ### note: by filter ANL03FL, this table is restricted to On-treatment values, per definition of ANL03FL
+    ANL03FL == "Y"
+  ) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  select(
+    STUDYID,
+    USUBJID,
+    PARAM,
+    PARAMN,
+    PARAMCD,
+    CHGCAT1,
+    ANL03FL
+  )
+
+# restrict to these - ordered by PARAMN
+selparamcd <- as.character(
+  adeg |> arrange(PARAMN) |> pull(PARAMCD) |> unique()
 )
 
-adsl$rrisk_header <- "Risk Difference (%) (95% CI)"
-adsl$rrisk_label <- paste(adsl[[trtvar]], paste("vs", ctrl_grp))
-
-
-adeg <- adeg_complete %>%
-  filter(PARAMCD %in% selparamcd) %>%
-  # filter(AVISIT %in% selvisit) %>%
-  ### Maximum On-treatment
-  ### note: by filter ANL03FL, this table is restricted to On-treatment values, per definition of ANL03FL
-  ### therefor, no need to add ONTRTFL in filter
-  ### if derivation of ANL03FL is not restricted to ONTRTFL records, adding ONTRTFL here will not give the correct answer either
-  ### as mixing worst with other period is not giving the proper selection !!!
-  filter(ANL03FL == "Y") %>%
-  select(
-    USUBJID,
-    ONTRTFL,
-    TRTEMFL,
-    PARAM,
-    PARAMCD,
-    AVISITN,
-    AVISIT,
-    AVAL,
-    BASE,
-    CHG,
-    CRIT1,
-    CRIT1FL,
-    CRIT2,
-    CRIT2FL,
-    all_of(catvar),
-    ONTRTFL,
-    TRTEMFL,
-    ANL01FL,
-    ANL02FL
-  ) %>%
-  inner_join(., adsl)
-
-
-check1 <- adeg %>%
-  group_by(TRT01A, PARAMCD, AVISIT) %>%
-  summarize(n = n_distinct(USUBJID))
+adeg <- adeg |>
+  mutate(
+    PARAMCD := factor(PARAMCD, levels = selparamcd),
+    PARAM := factor(PARAM)
+  ) |>
+  inner_join(adsl, by = c("STUDYID", "USUBJID"))
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -137,8 +131,6 @@ colspan_trt_map <- create_colspan_map(
   colspan_var = "colspan_trt",
   trt_var = trtvar
 )
-
-ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
 ################################################################################
 # Define layout and build table:
@@ -150,48 +142,64 @@ extra_args_rr <- list(
 )
 
 
-lyt <- basic_table(show_colcounts = TRUE, colcount_format = "N=xx") %>%
+lyt <- basic_table(
+  show_colcounts = TRUE,
+  colcount_format = "N=xx"
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
-  ) %>%
-  split_cols_by(
-    trtvar
-    # , split_fun = add_combo_levels(combodf)
-  ) %>%
-  ### if risk diff columns are wanted - re-enable next 2 split_cols_by lines
-  # split_cols_by("rrisk_header", nested = FALSE) %>%
-  # split_cols_by(trtvar, labels_var = "rrisk_label",
-  #               split_fun = remove_split_levels(ctrl_grp))  %>%
+  )
 
+if (combined_colspan_trt == TRUE) {
+  lyt <- lyt |>
+    split_cols_by(trtvar, split_fun = mysplit)
+} else {
+  lyt <- lyt |>
+    split_cols_by(trtvar)
+}
+
+
+lyt <- lyt |>
   split_rows_by(
-    "PARAM",
+    "PARAMCD",
+    labels_var = "PARAM",
     split_label = "QTc Interval",
     label_pos = "topleft",
     split_fun = drop_split_levels,
     section_div = " "
-  ) %>%
+  ) |>
   analyze(
     c("CHGCAT1"),
     a_freq_j,
     extra_args = extra_args_rr,
     show_labels = "hidden",
-    indent_mod = 1L
-  ) %>%
-  append_topleft("   Criteria, n (%)")
+    indent_mod = 0L
+  ) |>
+  append_topleft("  Criteria, n (%)")
 
-result <- build_table(lyt, adeg, alt_counts_df = adsl)
+result <- build_table(lyt, adeg, alt_counts_df = adsl, round_type = "sas")
+
+
+################################################################################
+# Post-Processing:
+# - remove unwanted colcounts
+# - adjust Combined column N if combined_colspan_trt = TRUE
+################################################################################
+
+result <- remove_col_count(result)
 
 ################################################################################
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
 
-colwidth <- c(54, 21, 21, 21)
+
+colwidth <- c(51, 21, 21, 21, 21)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid)

@@ -1,24 +1,4 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsflab04b
-## R version:                 4.2.1
-## Short Description:         Program to create tsflab04b:
-##                            Subjects With [Last/Any] On-treatment
-##                            Hematology Values [= Level 2] Criteria
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      30JAN2024
-## Input:                     adsl.RDS, adlb.RDS or adlbc.RDS
-## Output:                    tsflab04b.rtf
-## Remarks:                   Should only be used when abnormalities are based upon markedly abnormal file
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
+#### BEFORE YOU START USING THIS PROGRAM ENSURE THE FOLLOWING: For your trial you should EITHER use lab toxicity grading (lbtoxgrade file) or Abnormality criteria (markedly abnormal file)
 ################################################################################
 # Prep Environment
 ################################################################################
@@ -37,15 +17,37 @@ test_stop <- FALSE #### !!!! set to FALSE for actual study!!
 
 tblid <- "TSFLAB04b"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 
 popfl <- "SAFFL"
+
 trtvar <- "TRT01A"
+
 ctrl_grp <- "Placebo"
+
+# Add Active Study Agent Combined column
+combined_colspan_trt <- TRUE
+
+if (combined_colspan_trt == TRUE) {
+  add_combo <- add_combo_facet(
+    "Combined",
+    label = "Combined",
+    levels = c("Xanomeline High Dose", "Xanomeline Low Dose")
+  )
+
+  rm_combo_from_placebo <- cond_rm_facets(
+    facets = "Combined",
+    ancestor_pos = NA,
+    value = " ",
+    split = "colspan_trt"
+  )
+
+  mysplit <- make_split_fun(post = list(add_combo, rm_combo_from_placebo))
+}
 
 level_threshold <- "2"
 
@@ -68,76 +70,73 @@ trtemfl <- TRUE
 ################################################################################
 adlb_complete <- adlb_jnj
 
-
 ################################################################################
 # Retrieve markedly abnormal values from spreadsheet:
 ################################################################################
 ### Markedly Abnormal spreadsheet
 
-markedlyabnormal_file <- file.path(datapath, "markedlyabnormal.xlsx")
+markedlyabnormal_file <- read_path(datapath, "markedlyabnormal.xlsx")
 
-
-
+markedlyabnormal_sheets <- readxl::excel_sheets(markedlyabnormal_file)
 
 lbmarkedlyabnormal_defs <- readxl::read_excel(
   markedlyabnormal_file,
   sheet = toupper(ad_domain)
-) %>%
+) |>
   filter(PARAMCD != "Parameter Code")
 
 MCRITs <- unique(
-  lbmarkedlyabnormal_defs %>%
-    filter(!stringr::str_ends(VARNAME, "ML")) %>%
+  lbmarkedlyabnormal_defs |>
+    filter(!stringr::str_ends(VARNAME, "ML")) |>
     pull(VARNAME)
 )
 
 
 MCRITs_def <- unique(
-  lbmarkedlyabnormal_defs %>%
-    filter(VARNAME %in% MCRITs) %>%
+  lbmarkedlyabnormal_defs |>
+    filter(VARNAME %in% MCRITs) |>
     select(PARAMCD, VARNAME, CRIT, SEX)
-) %>%
-  mutate(VARNAME = paste0(VARNAME, "ML")) %>%
+) |>
+  mutate(VARNAME = paste0(VARNAME, "ML")) |>
   rename(CRITNAME = CRIT)
 
 
-MCRITs_def2 <- lbmarkedlyabnormal_defs %>%
+MCRITs_def2 <- lbmarkedlyabnormal_defs |>
   filter(VARNAME %in% paste0(MCRITs, "ML"))
 
 
-MCRITs_def3 <- MCRITs_def2 %>%
-  left_join(., MCRITs_def, relationship = "many-to-one") %>%
+MCRITs_def3 <- MCRITs_def2 |>
+  left_join(MCRITs_def, relationship = "many-to-one") |>
   mutate(
     CRITx = paste0("(", stringr::str_split_i(CRIT, stringr::fixed("("), 2))
-  ) %>%
-  mutate(CRITx = paste(CRITNAME, CRITx)) %>%
-  select(PARAMCD, SEX, VARNAME, CRITx, ORDER) %>%
-  mutate(VARNAME = paste0(VARNAME, "x")) %>%
+  ) |>
+  mutate(CRITx = paste(CRITNAME, CRITx)) |>
+  select(PARAMCD, SEX, VARNAME, CRITx, ORDER) |>
+  mutate(VARNAME = paste0(VARNAME, "x")) |>
   mutate(CRITn = as.character(4 - as.numeric(ORDER)))
 
 
 ### the threshold value will be used for the label, eg if level 2 (also level 3 will be reported as met level 2)
 ### the label on the output will be the label from the chosen threshold
-MCRITs_def4 <- MCRITs_def3 %>%
+MCRITs_def4 <- MCRITs_def3 |>
   filter(CRITn == level_threshold)
 
 
 ### convert dataframe into label_map that can be used with the a_freq_j afun function
-xlabel_map <- MCRITs_def4 %>%
-  rename(var = VARNAME, label = CRITx) %>%
+xlabel_map <- MCRITs_def4 |>
+  rename(var = VARNAME, label = CRITx) |>
   mutate(
     var = stringr::str_replace(var, "MLx", "MNx"),
     value = "Y"
-  ) %>%
+  ) |>
   select(PARAMCD, var, value, label)
 
-
 #### extend xlabel_map to include both MCRIT1 and MCRIT2 for all parameters
-params <- unique(xlabel_map %>% select(PARAMCD, var, value)) %>%
+params <- unique(xlabel_map |> select(PARAMCD, var, value)) |>
   tidyr::expand(PARAMCD, var, value)
 
-xlabel_map <- params %>%
-  left_join(., xlabel_map) %>%
+xlabel_map <- params |>
+  left_join(xlabel_map) |>
   mutate(
     label = case_when(
       is.na(label) ~ "TO BE DELETED",
@@ -154,13 +153,12 @@ xlabel_map$label_short <- stringr::str_split_i(
   1
 )
 
-
 #### extend xlabel_map to include both MCRIT1 and MCRIT2 for all parameters
-params <- unique(xlabel_map %>% select(PARAMCD, var, value)) %>%
+params <- unique(xlabel_map |> select(PARAMCD, var, value)) |>
   tidyr::expand(PARAMCD, var, value)
 
-xlabel_map <- params %>%
-  left_join(., xlabel_map) %>%
+xlabel_map <- params |>
+  left_join(xlabel_map) |>
   mutate(
     label = case_when(
       is.na(label) ~ "TO BE DELETED",
@@ -181,8 +179,14 @@ xlabel_map$label_short <- stringr::str_split_i(
 # Process Data:
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(.data[[popfl]] == "Y") %>%
+adsl <- adsl_jnj |>
+  filter(.data[[popfl]] == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+    )
+  ) |>
   select(STUDYID, USUBJID, all_of(c(popfl, trtvar)))
 
 adsl$colspan_trt <- factor(
@@ -203,9 +207,7 @@ colspan_trt_map <- create_colspan_map(
 )
 ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
-adlb_complete <- adlb_jnj
-
-adlb00 <- adlb_complete %>%
+adlb00 <- adlb_complete |>
   select(
     USUBJID,
     AVISITN,
@@ -217,8 +219,8 @@ adlb00 <- adlb_complete %>%
     TRTEMFL,
     LVOTFL,
     AVAL
-  ) %>%
-  inner_join(adsl) %>%
+  ) |>
+  inner_join(adsl) |>
   relocate(
     USUBJID,
     AVISITN,
@@ -240,9 +242,9 @@ adlb00 <- var_relabel_list(adlb00, var_labels(adlb_complete, fill = T))
 
 ### data preparation
 
-filtered_adlb_0 <- adlb00 %>%
-  filter(PARAMCD %in% unique(MCRITs_def3$PARAMCD)) %>%
-  filter(toupper(PARCAT1) == "HEMATOLOGY") %>%
+filtered_adlb_0 <- adlb00 |>
+  filter(PARAMCD %in% unique(MCRITs_def3$PARAMCD)) |>
+  filter(toupper(PARCAT1) == "HEMATOLOGY") |>
   select(
     USUBJID,
     AVISITN,
@@ -263,13 +265,13 @@ filtered_adlb_0 <- adlb00 %>%
     MCRIT2,
     ANL04FL,
     ANL05FL
-  ) %>%
+  ) |>
   inner_join(adsl)
 
 
-filtered_adlb_1 <- filtered_adlb_0 # %>%
-# ## On treatment
-# filter(ONTRTFL == "Y")
+filtered_adlb_1 <- filtered_adlb_0 |>
+  ## On treatment
+  filter(ONTRTFL == "Y")
 
 ### Note on On-treatment
 ### note: by filter ANL04FL/ANL05FL, this table is restricted to On-treatment values, per definition of ANL04FL/ANL05FL
@@ -279,13 +281,13 @@ filtered_adlb_1 <- filtered_adlb_0 # %>%
 ### as mixing worst with other period is not giving the proper selection !!!
 
 if (toupper(last_any) == "ANY") {
-  filtered_adlb_1 <- filtered_adlb_1 %>%
+  filtered_adlb_1 <- filtered_adlb_1 |>
     ## Optional : Any : ensure to have one record per subject for direction
     filter(ANL04FL == "Y" | ANL05FL == "Y")
 }
 
 if (toupper(last_any) == "LAST") {
-  filtered_adlb_1 <- filtered_adlb_1 %>%
+  filtered_adlb_1 <- filtered_adlb_1 |>
     ## Optional : last on treatment record only
     filter(LVOTFL == "Y")
 }
@@ -293,7 +295,7 @@ if (toupper(last_any) == "LAST") {
 #### DO NOT USE TRTEMFL = Y in filter, as this will remove subjects from both numerator and denominator
 #### instead : set MCRIT1MN to a non-reportable value (ie Level 0) and keep in dataset
 if (trtemfl) {
-  filtered_adlb_1 <- filtered_adlb_1 %>%
+  filtered_adlb_1 <- filtered_adlb_1 |>
     mutate(
       MCRIT1MN = case_when(
         !is.na(MCRIT1MN) & is.na(TRTEMFL) | TRTEMFL != "Y" ~ 0,
@@ -315,37 +317,39 @@ if (trtemfl) {
 }
 
 
-filtered_adlb_1 <- filtered_adlb_1 %>%
+filtered_adlb_1 <- filtered_adlb_1 |>
   mutate(
     MCRIT1MLx = case_when(
-      !is.na(MCRIT1ML) ~ paste0(
-        "(",
-        stringr::str_split_i(MCRIT1ML, stringr::fixed("("), 2)
-      ),
+      !is.na(MCRIT1ML) ~
+        paste0(
+          "(",
+          stringr::str_split_i(MCRIT1ML, stringr::fixed("("), 2)
+        ),
       TRUE ~ NA
     )
-  ) %>%
+  ) |>
   mutate(
     MCRIT1MLx = case_when(
       !is.na(MCRIT1ML) ~ paste(MCRIT1, MCRIT1MLx),
       TRUE ~ NA
     )
-  ) %>%
+  ) |>
   mutate(
     MCRIT2MLx = case_when(
-      !is.na(MCRIT2ML) ~ paste0(
-        "(",
-        stringr::str_split_i(MCRIT2ML, stringr::fixed("("), 2)
-      ),
+      !is.na(MCRIT2ML) ~
+        paste0(
+          "(",
+          stringr::str_split_i(MCRIT2ML, stringr::fixed("("), 2)
+        ),
       TRUE ~ NA
     )
-  ) %>%
+  ) |>
   mutate(
     MCRIT2MLx = case_when(
       !is.na(MCRIT2ML) ~ paste(MCRIT2, MCRIT2MLx),
       TRUE ~ NA
     )
-  ) %>%
+  ) |>
   relocate(
     USUBJID,
     AVISITN,
@@ -364,7 +368,7 @@ filtered_adlb_1 <- filtered_adlb_1 %>%
   )
 
 
-filtered_adlb_1 <- filtered_adlb_1 %>%
+filtered_adlb_1 <- filtered_adlb_1 |>
   mutate(
     MCRIT1MNx = case_when(
       MCRIT1MN >= as.numeric(level_threshold) ~ "Y",
@@ -374,44 +378,45 @@ filtered_adlb_1 <- filtered_adlb_1 %>%
       MCRIT2MN >= as.numeric(level_threshold) ~ "Y",
       !is.na(MCRIT2) ~ "N"
     )
-  ) %>%
+  ) |>
   mutate(
     MCRIT1MNx = factor(MCRIT1MNx, levels = c("Y", "N")),
     MCRIT2MNx = factor(MCRIT2MNx, levels = c("Y", "N"))
   )
 
 
-paramcd_param <- unique(filtered_adlb_1 %>% select(PARAMCD, PARAM))
+paramcd_param <- unique(filtered_adlb_1 |> select(PARAMCD, PARAM))
 
 
-xlabel_map <- xlabel_map %>%
-  right_join(., paramcd_param) %>%
+xlabel_map <- xlabel_map |>
+  right_join(paramcd_param) |>
   arrange(PARAM, var)
 
 ### to resolve a problem with HDL -- get from the data what MCRIT1 and MCRIT2 are being used
 xlabel_map_data <- unique(
-  filtered_adlb_1 %>%
-    select(PARAMCD, PARAM, MCRIT1, MCRIT2) %>%
+  filtered_adlb_1 |>
+    select(PARAMCD, PARAM, MCRIT1, MCRIT2) |>
     tidyr::pivot_longer(cols = (c("MCRIT1", "MCRIT2")))
-) %>%
+) |>
   mutate(
     label_short_data = case_when(
       is.na(value) ~ "TO BE DELETED",
       TRUE ~ value
     ),
     var = paste0(name, "MNx")
-  ) %>%
+  ) |>
   select(PARAMCD, PARAM, var, label_short_data)
 
 ## actual fix for HDL female
-xlabel_map <- xlabel_map %>%
-  right_join(., xlabel_map_data) %>%
-  arrange(PARAM, var) %>%
+xlabel_map <- xlabel_map |>
+  right_join(xlabel_map_data) |>
+  arrange(PARAM, var) |>
   ## actual fix for not including HDL female if not derived on data
   mutate(
     label = case_when(
       label_short_data == "TO BE DELETED" &
-        label != "TO BE DELETED" ~ "TO BE DELETED",
+        label != "TO BE DELETED" ~
+        "TO BE DELETED",
       TRUE ~ label
     )
   )
@@ -429,27 +434,33 @@ extra_args_rr2 <- list(
 )
 
 
-lyt <- basic_table(show_colcounts = TRUE, colcount_format = "N=xx") %>%
+lyt <- basic_table(show_colcounts = TRUE, colcount_format = "N=xx") |>
   ### first columns
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
-  ) %>%
-  split_cols_by(trtvar) %>%
-  split_cols_by("rrisk_header", nested = FALSE) %>%
+  )
+
+if (combined_colspan_trt == TRUE) {
+  lyt <- lyt |> split_cols_by(trtvar, split_fun = mysplit)
+} else {
+  lyt <- lyt |> split_cols_by(trtvar)
+}
+
+lyt <- lyt |>
+  split_cols_by("rrisk_header", nested = FALSE) |>
   split_cols_by(
     trtvar,
     labels_var = "rrisk_label",
     split_fun = remove_split_levels(ctrl_grp)
-  ) %>%
+  ) |>
   split_rows_by(
     "PARCAT3",
-    label_pos = "topleft",
-    child_labels = "visible",
-    split_label = "Laboratory Category",
-    split_fun = drop_split_levels,
-    section_div = " "
-  ) %>%
+    label_pos = "hidden",
+    child_labels = "hidden",
+    section_div = " ",
+    split_fun = drop_split_levels
+  ) |>
   split_rows_by(
     "PARAM",
     label_pos = "topleft",
@@ -460,7 +471,7 @@ lyt <- basic_table(show_colcounts = TRUE, colcount_format = "N=xx") %>%
       ", n (%)"
     ),
     split_fun = drop_split_levels
-  ) %>%
+  ) |>
   # denominators are varying per test, therefor show denom (not yet in shell)
   analyze(
     c("MCRIT1MNx", "MCRIT2MNx"),
@@ -476,7 +487,7 @@ lyt <- basic_table(show_colcounts = TRUE, colcount_format = "N=xx") %>%
     indent_mod = 0L
   )
 
-result <- build_table(lyt, filtered_adlb_1, alt_counts_df = adsl)
+result <- build_table(lyt, filtered_adlb_1, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Post-Processing:
@@ -486,8 +497,8 @@ result <- build_table(lyt, filtered_adlb_1, alt_counts_df = adsl)
 ### Issue: tests with only 1 direction (either low or high) get a line with label a_freq_j (analyze function)
 ### remove these lines here, as well as lines with label TO BE DELETED
 
-result <- result %>%
-  prune_table(prune_func = keep_rows(keep_non_null_rows)) %>%
+result <- result |>
+  prune_table(prune_func = keep_rows(keep_non_null_rows)) |>
   prune_table(prune_func = remove_rows(removerowtext = "TO BE DELETED"))
 
 ################################################################################
@@ -500,12 +511,13 @@ result <- remove_col_count(result)
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
 
-colwidth <- c(51, 27, 27, 27, 33, 35)
+
+colwidth <- c(52, 27, 27, 27, 27, 33, 33)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

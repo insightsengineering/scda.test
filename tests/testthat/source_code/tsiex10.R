@@ -1,27 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsiex10.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsiex10: Study Treatment Compliance
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      29 Jan 2024
-## Input:                     ADSL, ADEXSUM
-## Output:                    TSIEX10.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -81,16 +57,26 @@ if (combined_colspan_trt == TRUE) {
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl))
 
 # If AVISIT is not present in ADEXSUM than create 'Overall' as the Visit, which is used
 # for the filtering AVISIT records if it does exist
-adexsum <- adexsum_jnj %>%
-  mutate(VISIT = if (exists("AVISIT")) AVISIT else "Overall") %>%
-  filter(PARAMCD == "TRTCOMP" & !is.na(AVAL) & VISIT == "Overall") %>%
-  select(USUBJID, PARAMCD, AVAL, AVALCAT1)
+adexsum <- adexsum_jnj |>
+  mutate(VISIT = if (exists("AVISIT")) AVISIT else "Overall") |>
+  filter(PARAMCD == "TRTCOMP" & !is.na(AVAL) & VISIT == "Overall") |>
+  select(STUDYID, USUBJID, PARAMCD, AVAL, AVALCAT1)
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
@@ -98,10 +84,38 @@ adsl$colspan_trt <- factor(
 )
 
 # join data together
-ex <- adexsum %>% inner_join(., adsl, by = c("USUBJID"))
+ex <- adexsum |> inner_join(adsl, by = c("STUDYID", "USUBJID"))
 
 ex$AVALCAT1 <- droplevels(ex$AVALCAT1)
 ex$AVALCAT1 <- factor(ex$AVALCAT1, levels = catlevels)
+
+ex$COMP_CAT_LBL <- factor(
+  "Compliance category~[super a], n (%)",
+  levels = "Compliance category~[super a], n (%)"
+)
+
+################################################################################
+# Formats for decimal precision control
+################################################################################
+
+# manual setup example for user
+# prec <- dplyr::tibble(PARAMCD, d = 1)
+# prec$d[prec$PARAMCD == "TRTCOMP"] <- 0
+
+# alternative: use tidytlg make_precision function
+# cutoff for decimal is defined in function and if DTYPE="AVERAGE" those records excluded from precison
+
+.stats_all <- c("mean_sd", "median", "range")
+dp <- 1
+
+.formats_all <- junco:::fmt_spec_single_d(
+  d = dp,
+  stats_in = .stats_all,
+  fmt_d_def = junco_def_d_all,
+  fmt_d_in = NULL
+)
+
+fmt_details <- get_fmt_details(.formats_all, as_tibble = TRUE)
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -120,21 +134,21 @@ lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
-lyt <- lyt %>%
+lyt <- lyt |>
   analyze(
     "STUDYID",
     var_labels = "Compliance (%)~[super a]",
@@ -142,32 +156,39 @@ lyt <- lyt %>%
     extra_args = list(label = "N", .stats = "n_df"),
     indent_mod = 0L,
     show_labels = "visible"
-  ) %>%
-  analyze("AVAL", show_labels = "hidden", indent_mod = 2L, afun = function(x) {
-    list(
-      "Mean (SD)" = rcell(
-        c(mean(x), sd(x)),
-        format = jjcsformat_xx("xx.x (xx.xx)")
-      ),
-      "Median" = rcell(median(x), format = jjcsformat_xx("xx.x")),
-      "Min, max" = rcell(c(min(x), max(x)), format = jjcsformat_xx("xx., xx."))
+  ) |>
+  analyze(
+    "AVAL",
+    show_labels = "hidden",
+    indent_mod = 2L,
+    afun = a_summary,
+    extra_args = list(
+      .stats = .stats_all,
+      .formats = .formats_all,
+      .labels = c(range = "Min, max")
     )
-  }) %>%
+  ) |>
+  split_rows_by(
+    "COMP_CAT_LBL",
+    nested = FALSE,
+    split_fun = drop_split_levels,
+    label_pos = "hidden",
+    indent_mod = -1L
+  ) |>
   analyze(
     "AVALCAT1",
-    nested = FALSE,
-    var_labels = "Compliance category~[super a], n (%)",
     afun = a_freq_j,
     extra_args = list(
       denom = "n_df",
       .stats = c("count_unique_fraction")
     ),
     indent_mod = 1L,
-    show_labels = "visible"
-  ) %>%
+    show_labels = "hidden"
+  ) |>
   append_topleft("Parameter")
 
-result <- build_table(lyt, ex, alt_counts_df = adsl)
+result <- build_table(lyt, ex, alt_counts_df = adsl, round_type = "sas")
+
 
 ################################################################################
 # Add titles and footnotes:
@@ -178,6 +199,7 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
-colwidth <- c(64, 23, 23, 23, 23)
+
+colwidth <- c(62, 27, 27, 27, 27)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "portrait")

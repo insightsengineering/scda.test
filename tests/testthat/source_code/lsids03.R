@@ -1,29 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsids03.R
-## R version:                 4.2.1
-## Short Description:         Create LSIDS03: Listing of Subjects Who Were
-##                            Unblinded During the Study
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-12
-## Input:                     ADSL, ADEXSUM
-## Output:                    lsids03.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -41,6 +15,7 @@ fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01P"
 key_cols <- c("COL0", "COL1")
+sort_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:9)
 concat_sep <- " / "
 tab_titles <- list(
@@ -54,11 +29,52 @@ tab_titles <- list(
 # Process data
 ###############################################################################
 
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y" & UNBLNDFL == "Y")
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y" & UNBLNDFL == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    ),
+    SEX = factor(
+      case_when(
+        SEX == "F" ~ "Female",
+        SEX == "M" ~ "Male"
+      ),
+      levels = c("Female", "Male")
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    )
+  )
 
-adexsum <- adexsum_jnj %>%
-  filter(PARAMCD == "CUMDOSE") %>%
+adexsum <- adexsum_jnj |>
+  filter(PARAMCD == "CUMDOSE") |>
   select(STUDYID, USUBJID, PARAMCD, PARAM, AVAL)
 
 adsl_adexsum <- left_join(
@@ -70,27 +86,35 @@ adsl_adexsum <- left_join(
   )
 )
 
-lsting <- adsl_adexsum %>%
+lsting <- adsl_adexsum |>
   mutate(
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     AVAL = explicit_na(as.character(AVAL), ""),
     AVALU = case_when(
-      !is.na(AVAL) ~
-        stringr::str_extract(PARAM, "(?<=\\()([^()]*?)(?=\\)[^()]*$)"),
-      is.na(AVAL) ~
-        ""
+      !is.na(AVAL) ~ stringr::str_extract(PARAM, "(?<=\\()([^()]*?)(?=\\)[^()]*$)"),
+      is.na(AVAL) ~ ""
     ),
     EOTSTT = explicit_na(EOTSTT, ""),
     EOSSTT = explicit_na(EOSSTT, ""),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
-    COL2 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
+    COL2 = paste(AGE, SEX, RACE, sep = concat_sep),
     # Optional Column: COL3/LTVISIT
     COL3 = explicit_na(LTVISIT, ""),
-    COL4 = explicit_na(as.character(UNBLNDDY), ""),
-    COL5 = explicit_na(as.character(TRTEDY), ""),
+    # COL4 = explicit_na(as.character(UNBLNDDY), ""),
+    COL4 = ifelse(
+      is.na(UNBLNDDT),
+      "",
+      toupper(format(as.Date(UNBLNDDT), format = "%d%b%Y"))
+    ),
+    # COL5 = explicit_na(as.character(TRTEDY), ""),
+    COL5 = ifelse(
+      is.na(TRTEDT),
+      "",
+      toupper(format(as.Date(TRTEDT), format = "%d%b%Y"))
+    ),
     # Optional Column: COL6/CUMDOSE/CUMDOSU
     COL6 = paste0(AVAL, " ", AVALU),
     COL7 = explicit_na(stringi::stri_trans_totitle(UNBREAS), ""),
@@ -102,8 +126,14 @@ lsting <- adsl_adexsum %>%
       EOSSTT == "DISCONTINUED" ~ "Yes",
       EOSSTT != "DISCONTINUED" ~ "No"
     )
-  ) %>%
+  ) |>
   arrange(COL0, COL1)
+
+lsting <- lsting |>
+  mutate(
+    COL4 = ifelse(is.na(UNBLNDDY), COL4, sprintf("%s (%s)", COL4, UNBLNDDY)),
+    COL5 = ifelse(is.na(TRTEDY), COL5, sprintf("%s (%s)", COL5, TRTEDY))
+  )
 
 lsting <- var_relabel(
   lsting,
@@ -112,10 +142,10 @@ lsting <- var_relabel(
   COL2 = paste("Age (years)", "Sex", "Race", sep = concat_sep),
   # Optional Column: COL3/LTVISIT
   COL3 = "Last Visit~[super a]",
-  COL4 = "Study Day~[super b] of Unblinding",
-  COL5 = "Study Day~[super b] of Last Study Agent Administered",
+  COL4 = "Date of Unblinding (Study Day~[super b])",
+  COL5 = "Date of Last Study Agent Administered (Study Day~[super b])",
   # Optional Column: COL6/CUMDOSE/CUMDOSU
-  COL6 = "Total Dose (unit)~[super c]",
+  COL6 = "Cumulative Dose (unit)",
   COL7 = "Reason for Unblinding",
   COL8 = "Was Study Agent Discontinued?",
   COL9 = "Was Study Participation Discontinued Prematurely?"
@@ -129,6 +159,8 @@ result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
   disp_cols = disp_cols,
+  sort_cols = sort_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -141,6 +173,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 20, 67, 33, 20, 28, 12, 20, 25, 39)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(21, 13, 67, 18, 23, 33, 20, 20, 25, 39)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")
