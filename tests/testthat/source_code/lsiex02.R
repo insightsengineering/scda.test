@@ -1,29 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsiex02.R
-## R version:                 4.2.1
-## Short Description:         Create LSIEX02: Listing of Study Treatment
-##                            Batch Lot Number
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-18
-## Input:                     ADEX
-## Output:                    lsiex02.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -41,6 +15,7 @@ fileid <- write_path(opath, tblid)
 popfl <- "SAFFL"
 trtvar <- "TRT01A"
 key_cols <- c("COL0", "COL1")
+sort_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:6)
 tab_titles <- list(
   title = "Dummy Title",
@@ -53,10 +28,16 @@ tab_titles <- list(
 # Process data
 ###############################################################################
 
-adex <- adex_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y" & ADOSE > 0)
+adex <- adex_jnj |>
+  filter(!!rlang::sym(popfl) == "Y" & ADOSE > 0) |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+    )
+  )
 
-lsting <- adex %>%
+lsting <- adex |>
   mutate(
     DAEXPDT = as.Date(DAEXPDTC, format = "%Y-%m-%d"),
     DAEXPYR = ifelse(
@@ -79,7 +60,7 @@ lsting <- adex %>%
       substr(sub("T.*", "", DAEXPDTC), 9, 10),
       NA
     ),
-  ) %>%
+  ) |>
   unite(
     "DAEXPDTL",
     DAEXPDAY,
@@ -88,19 +69,20 @@ lsting <- adex %>%
     sep = "",
     na.rm = TRUE,
     remove = FALSE
-  ) %>%
+  ) |>
   mutate(
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
     # Optional Column: COL2/AVISIT
-    COL2 = explicit_na(AVISIT, ""),
+    COL2 = explicit_na(stringr::str_to_sentence(AVISIT), ""),
     # Optional Column: COL3/ASTDT
     COL3 = ifelse(!is.na(ASTDT), paste0(toupper(format(ASTDT, "%d%b%Y"))), ""),
     # Optional Column: COL4/ASTDTM
     COL4 = ifelse(!is.na(ASTDTM), substr(ASTDTM, 12, 16), ""),
     COL5 = explicit_na(EXLOT, ""),
+    # Optional Column: COL6/DAEXPDTC
     COL6 = explicit_na(DAEXPDTL, "")
-  ) %>%
+  ) |>
   arrange(
     COL0,
     COL1,
@@ -127,6 +109,7 @@ lsting <- var_relabel(
   # COL4 = "Time Dispensed",
   COL4 = "Time Administered",
   COL5 = "Batch Lot Number",
+  # Optional Column: COL6/DAEXPDTC
   COL6 = "Batch Lot Expiration Date"
 )
 
@@ -137,7 +120,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  sort_cols = sort_cols,
+  disp_cols = disp_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -150,6 +135,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(46, 63, 21, 23, 23, 65, 23)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(71, 63, 17, 23, 23, 65, 23)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

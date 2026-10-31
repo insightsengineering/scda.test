@@ -1,28 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsiex09.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsiex09: Distribution of Subjects by
-##                            Study Treatment Lot
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      29 Jan 2024
-## Input:                     ADSL, ADEX
-## Output:                    TSIEX09.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -78,12 +53,22 @@ if (combined_colspan_trt == TRUE) {
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl))
 
-adex <- adex_jnj %>%
-  select(USUBJID, ATRT, EXLOT)
+adex <- adex_jnj |>
+  select(STUDYID, USUBJID, ATRT, EXLOT)
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
@@ -91,9 +76,9 @@ adsl$colspan_trt <- factor(
 )
 
 # join data together
-ex <- adex %>%
-  inner_join(., adsl, by = c("USUBJID")) %>%
-  mutate(ATRT = stringr::str_to_sentence(ATRT)) %>%
+ex <- adex |>
+  inner_join(adsl, by = c("STUDYID", "USUBJID")) |>
+  mutate(ATRT = stringr::str_to_sentence(ATRT)) |>
   mutate(trttxt = paste0(ATRT, " lots"))
 
 ex$trttxt2 <- factor(ex$trttxt)
@@ -125,24 +110,24 @@ lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
-lyt <- lyt %>%
+lyt <- lyt |>
   # trick to get 0 for Placebo column for non Placebo lots
   # we do not want to show this split_rows group label - therefor set child_labels to hidden
-  split_rows_by("STUDYID", child_labels = "hidden") %>%
+  split_rows_by("STUDYID", child_labels = "hidden") |>
   split_rows_by(
     "trttxt2",
     split_label = "Study Treatment",
@@ -150,17 +135,18 @@ lyt <- lyt %>%
     label_pos = "topleft",
     indent_mod = 0L,
     section_div = c(" ")
-  ) %>%
+  ) |>
   analyze(
     "EXLOT",
     afun = a_freq_j,
     extra_args = extra_args1,
     indent_mod = 0L,
     show_labels = "hidden"
-  ) %>%
+  ) |>
   append_topleft("  Lot, n (%)")
 
-result <- build_table(lyt, ex, alt_counts_df = adsl)
+result <- build_table(lyt, ex, alt_counts_df = adsl, round_type = "sas")
+
 
 ################################################################################
 # Add titles and footnotes:
@@ -171,6 +157,7 @@ result <- set_titles(result, tab_titles)
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
+
 colwidth <- c(40, 21, 21, 21, 21)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "portrait")

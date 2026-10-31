@@ -1,29 +1,3 @@
-###############################################################################
-## Original Reporting Effort: Standards
-## Program Name:              lsidem01.R
-## R version:                 4.2.1
-## Short Description:         Create LSIDEM01: Listing of Demographics and
-##                            Baseline Characteristics
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      2024-01-17
-## Input:                     ADSL
-## Output:                    lsidem01.rtf
-## Remarks:
-## R-functions:
-## R-function Sample Call:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-###############################################################################
-
-###############################################################################
-# Prep environment
-###############################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -40,6 +14,7 @@ fileid <- write_path(opath, tblid)
 popfl <- "FASFL"
 trtvar <- "TRT01P"
 key_cols <- c("COL0", "COL1")
+sort_cols <- c("COL0", "COL1")
 disp_cols <- paste0("COL", 0:10)
 concat_sep <- " / "
 tab_titles <- list(
@@ -53,21 +28,75 @@ tab_titles <- list(
 # Process data
 ###############################################################################
 
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y")
+adsl <- adsl_jnj |>
+  filter(.data[[popfl]] == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    ),
+    SEX = factor(
+      case_when(SEX == "M" ~ "Male", SEX == "F" ~ "Female", TRUE ~ SEX),
+      levels = c("Male", "Female", "Intersex", "Unknown")
+    ),
+    COUNTRY = factor(
+      case_when(
+        COUNTRY == "USA" ~ "United States",
+        TRUE ~ NA_character_
+      )
+    ),
+    RACE = factor(
+      case_when(
+        RACE == "AMERICAN INDIAN OR ALASKA NATIVE" ~ "American Indian or Alaska Native",
+        RACE == "ASIAN" ~ "Asian",
+        RACE == "BLACK OR AFRICAN AMERICAN" ~ "Black or African American",
+        RACE == "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ~ "Native Hawaiian or other Pacific Islander",
+        RACE == "WHITE" ~ "White",
+        RACE == "MULTIPLE" ~ "Multiple",
+        RACE == "NOT REPORTED" ~ "Not reported",
+        RACE == "UNKNOWN" ~ "Unknown",
+        RACE == "OTHER" ~ "Other"
+      ),
+      levels = c(
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or other Pacific Islander",
+        "White",
+        "Multiple",
+        "Not reported",
+        "Unknown",
+        "Other"
+      )
+    ),
+    ETHNIC = factor(
+      case_when(
+        ETHNIC == "HISPANIC OR LATINO" ~ "Hispanic or Latino",
+        ETHNIC == "NOT HISPANIC OR LATINO" ~ "Not Hispanic or Latino",
+        ETHNIC == "NOT REPORTED" ~ "Not reported",
+        ETHNIC == "UNKNOWN" ~ "Unknown"
+      ),
+      levels = c("Hispanic or Latino", "Not Hispanic or Latino", "Not reported", "Unknown")
+    )
+  )
 
-lsting <- adsl %>%
+
+lsting <- adsl |>
   mutate(
     AGE = explicit_na(as.character(AGE), ""),
     SEX = explicit_na(SEX, ""),
-    RACE_DECODE = explicit_na(RACE_DECODE, ""),
+    RACE = explicit_na(RACE, ""),
     COL0 = explicit_na(.data[[trtvar]], ""),
     COL1 = explicit_na(USUBJID, ""),
     COL2 = explicit_na(REGION1, ""),
-    COL3 = explicit_na(COUNTRY_DECODE, ""),
+    COL3 = explicit_na(COUNTRY, ""),
     COL4 = explicit_na(toupper(format(RFICDT, "%d%b%Y")), ""),
-    COL5 = paste(AGE, SEX, RACE_DECODE, sep = concat_sep),
-    COL6 = explicit_na(ETHNIC_DECODE, ""),
+    COL5 = paste(AGE, SEX, RACE, sep = concat_sep),
+    COL6 = explicit_na(ETHNIC, ""),
     COL7 = explicit_na(
       tidytlg::roundSAS(WEIGHTBL, digits = 1, as_char = TRUE, na_char = ""),
       ""
@@ -85,7 +114,7 @@ lsting <- adsl %>%
       tidytlg::roundSAS(BSABL, digits = 2, as_char = TRUE, na_char = ""),
       ""
     ),
-  ) %>%
+  ) |>
   arrange(COL0, COL1)
 
 lsting <- var_relabel(
@@ -111,7 +140,9 @@ lsting <- var_relabel(
 result <- rlistings::as_listing(
   df = lsting,
   key_cols = key_cols,
-  disp_cols = disp_cols
+  disp_cols = disp_cols,
+  sort_cols = sort_cols,
+  round_type = "sas"
 )
 
 ###############################################################################
@@ -124,6 +155,7 @@ result <- set_titles(result, tab_titles)
 # Output listing
 ###############################################################################
 
-colwidth <- c(21, 13, 13, 67, 23, 67, 30, 13, 12, 14, 12)
 
-tt_to_tlgrtf(colwidths = colwidth, head(result, 100), file = fileid, orientation = "landscape")
+colwidth <- c(21, 63, 16, 17, 23, 67, 17, 13, 12, 14, 12)
+
+tt_to_tlgrtf(head(result, 100), file = fileid, orientation = "landscape")

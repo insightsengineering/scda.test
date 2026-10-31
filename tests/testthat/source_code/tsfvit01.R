@@ -1,32 +1,8 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsfvit01
-## R version:                 4.2.1
-## Short Description:         Program to create tsfvit01: Mean Change From Baseline
-##                            in Blood Pressure Over Time
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      30JAN2024
-## Input:                     adsl.RDS, advs.RDS
-## Output:                    tsfvit01.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep environment:
-################################################################################
-
 library(envsetup)
-library(tern)
 library(dplyr)
 library(rtables)
 library(junco)
+library(haven)
 
 ################################################################################
 # Define script level parameters:
@@ -34,328 +10,405 @@ library(junco)
 
 tblid <- "TSFVIT01"
 fileid <- write_path(opath, tblid)
-titles <- list(
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
 
+# Safety population flag (default=SAFFL).
 popfl <- "SAFFL"
+
+# Actual treatment variable (default=TRT01A).
 trtvar <- "TRT01A"
+# Actual treatment levels (required to order the columns).
+trtlev <- c("Xanomeline Low Dose", "Xanomeline High Dose", "Placebo")
+
+# Control arm name (one of the levels of the treatment variable).
 ctrl_grp <- "Placebo"
 
-
-# Note on ancova parameter
-# when ancova = TRUE
-# ancova model will be used to calculate all mean/mean change columns
-# not just those from the Difference column
-# model specification
-summ_vars <- list(arm = trtvar, covariates = NULL)
-
-# when ancova = FALSE, all mean/mean change columns will be from descriptive stats
-# for the difference column descriptive stats will be based upon two-sample t-test
-ancova <- FALSE
-
-
+# Flag to enable comparison between treatment groups (e.g., mean difference vs. control).
 comp_btw_group <- TRUE
 
-selparamcd <- c("DIABP", "SYSBP")
-# to Update the timepoints to what is relevant for your study
-# For the trial used for the shell program, the screening timepoint is the timepoint considered as baseline
-# see further, an alternative method to identify all non-unscheduled visits based upon data
-selvisit <- c("Screening", "Cycle 02", "Cycle 03", "Cycle 04")
+# Add Active Study Agent Combined column?
+combined_colspan_trt <- FALSE
 
-### as in dataset, order is important for later processing
-### not automated, hard coded approach for ease of reading
-### ideally the datasets already contain the appropriate case, to ensure units are in proper case
-sel_param <- c(
-  "Systolic Blood Pressure (mmHg)",
-  "Diastolic Blood Pressure (mmHg)"
-)
-sel_param_case <- c(
-  "Systolic blood pressure (mmHg)",
-  "Diastolic blood pressure (mmHg)"
-)
+# Vital sign parameters of interest.
+paramcd <- c("SYSBP", "DIABP")
+
+# Non-baseline visits of interest.
+nonbl_visits <- c("Cycle 02", "Cycle 03", "Cycle 04")
 
 ################################################################################
-# Process Data:
+# Process data:
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(.data[[popfl]] == "Y") %>%
-  select(
-    STUDYID,
-    USUBJID,
-    all_of(c(popfl, trtvar)),
-    SEX,
-    AGEGR1,
-    RACE,
-    ETHNIC,
-    AGE
+adsl <- adsl_jnj |>
+  select(USUBJID, all_of(c(popfl, trtvar))) |>
+  filter(
+    toupper(.data[[popfl]]) == "Y",
+    !is.na(.data[[trtvar]])
+  ) |>
+  mutate(
+    !!trtvar := ordered(.data[[trtvar]], levels = trtlev),
+  ) |>
+  create_colspan_var(
+    non_active_grp = ctrl_grp,
+    non_active_grp_span_lbl = " ",
+    active_grp_span_lbl = "Active Study Agent",
+    colspan_var = "colspan_trt",
+    trt_var = trtvar
   )
 
-adsl$colspan_trt <- factor(
-  ifelse(adsl[[trtvar]] == ctrl_grp, " ", "Active Study Agent"),
-  levels = c("Active Study Agent", " ")
-)
-
-adsl$rrisk_header <- "Difference in Mean Change (95% CI)"
-adsl$rrisk_label <- paste(adsl[[trtvar]], paste("vs", ctrl_grp))
-
-colspan_trt_map <- create_colspan_map(
-  adsl,
-  non_active_grp = ctrl_grp,
-  non_active_grp_span_lbl = " ",
-  active_grp_span_lbl = "Active Study Agent",
-  colspan_var = "colspan_trt",
-  trt_var = trtvar
-)
-
-advs00 <- advs_jnj %>%
+advs <- advs_jnj |>
   select(
     USUBJID,
+    all_of(c(popfl, trtvar)),
     AVISITN,
     AVISIT,
+    ATPT,
     PARAMCD,
     PARAM,
+    PARAMN,
     AVAL,
     BASE,
     CHG,
     starts_with("ANL"),
     ABLFL,
-    APOBLFL,
-    VSSTAT
-  ) %>%
-  inner_join(adsl)
+    APOBLFL
+  ) |>
+  filter(
+    !is.na(USUBJID),
+    (.data[[popfl]] == "Y"),
+    !is.na(.data[[trtvar]]),
+    PARAMCD %in% paramcd
+  ) |>
+  mutate(
+    !!trtvar := ordered(.data[[trtvar]], levels = trtlev),
+    ABLFL := factor(ifelse(ABLFL == "Y" & !is.na(ABLFL), "Y", "N")),
+    APOBLFL := factor(ifelse(APOBLFL == "Y" & !is.na(APOBLFL), "Y", "N")),
+    PARAMCD = factor(
+      .data$PARAMCD,
+      levels = unique(.data[["PARAMCD"]])[order(unique(.data[["PARAMN"]]))]
+    ),
+    PARAM = factor(
+      .data$PARAM,
+      levels = unique(.data[["PARAM"]])[order(unique(.data[["PARAMN"]]))]
+    ),
+    AVISIT = factor(
+      ifelse(ABLFL == "Y" & !is.na(ABLFL), "Baseline", as.character(AVISIT)),
+      levels = unique(.data[["AVISIT"]])[order(unique(.data[["AVISITN"]]))]
+    )
+  )
 
-# selection of all non-unscheduled visits from data
-visits <- advs00 %>%
-  select(AVISIT) %>%
-  filter(!grepl("UNSCHEDULED", toupper(AVISIT)))
+# Reordered nonlbl_visits
+nonbl_visits <- levels(advs$AVISIT)[levels(advs$AVISIT) %in% nonbl_visits]
 
-visits$AVISIT <- droplevels(visits$AVISIT)
-selvisit_data <- levels(visits$AVISIT)
+advs <- inner_join(adsl, advs, by = c("USUBJID", popfl, trtvar))
 
-### if preferred to get it from data, rather than hardcoded list of visits
-# selvisit <- selvisit_data
+# Safety checks on the data.
 
-## retrieve the precision of AVAL on the input dataset
-## review outcome and make updates manually if needed
-## the precision variable will be used for the parameter-based formats in layout
-
-## decimal = 4 is a cap in this derivation: if decimal precision of variable > decimal, the result will end up as decimal
-## eg if AVAL has precision of 6 for parameter x, and decimal = 4, the resulting decimal value for parameter x is 4
-
-## note that precision is on the raw values, as we are presenting mean/ci, and extra digit will be added
-## eg precision = 2 will result in mean/ci format xx.xxx (xx.xxx, xx.xxx)
-
-vs_precision <- tidytlg:::make_precision_data(
-  df = advs00,
-  decimal = 3,
-  precisionby = "PARAMCD",
-  precisionon = "AVAL"
-)
-
-### data preparation
-
-filtered_advs <- advs00 %>%
-  filter(PARAMCD %in% selparamcd) %>%
-  filter(AVISIT %in% selvisit) %>%
-  ### unique record per timepoint:
-  filter(ANL02FL == "Y" & (ABLFL == "Y" | APOBLFL == "Y"))
-
-#### perform check on unique record per subject/param/timepoint
-check_unique <- filtered_advs %>%
-  group_by(USUBJID, PARAMCD, AVISIT) %>%
-  mutate(n_recsub = n()) %>%
+advs_checks_unique <- advs |>
+  filter(ANL02FL == "Y" & (ABLFL == "Y" | APOBLFL == "Y")) |>
+  group_by(USUBJID, PARAMCD, AVISIT) |>
+  mutate(n_recsub = n()) |>
   filter(n_recsub > 1)
 
-if (nrow(check_unique) > 0) {
-  stop(
+if (nrow(advs_checks_unique) > 0) {
+  message(
     "Your input dataset needs extra attention, as some subjects have more than one record per parameter/visit"
   )
-  ### you will run into issues with fraction portion in count_denom_fraction, as count > denom, and fraction > 1 if you don't adjust your input dataset
-
-  # Possible extra derivation - just to ensure program can run without issues
-  ### Study team is responsible for adding this derivation onto ADaM dataset and ensure proper derivation rule for ANL02FL is implemented !!!!!!!!!!
-  filtered_advsx <- advs00 %>%
-    filter(PARAMCD %in% selparamcd) %>%
-    filter(AVISIT %in% selvisit) %>%
-    ### unique record per timepoint:
-    filter(ANL02FL == "Y" & (ABLFL == "Y" | APOBLFL == "Y")) %>%
-    group_by(USUBJID, PARAM, AVISIT) %>%
-    mutate(n_sub = n()) %>%
-    arrange(USUBJID, PARAM, AVISIT, ADT) %>%
-    mutate(i = vctrs::vec_group_id(ADT)) %>%
-    mutate(
-      ANL02FL = case_when(
-        n_sub == 1 ~ "Y",
-        i == 1 ~ "Y"
-      )
-    ) %>%
-    select(-c(i, n_sub)) %>%
-    ungroup()
-
-  filtered_advs <- filtered_advsx %>%
-    filter(PARAMCD %in% selparamcd) %>%
-    filter(AVISIT %in% selvisit) %>%
-    ### unique record per timepoint:
-    filter(ANL02FL == "Y" & (ABLFL == "Y" | APOBLFL == "Y"))
-
-  ## now your data should contain 1 record per subject per parameter
 }
 
-### for denominator per timepoint: all records from advs on this timepoint: ignoring anl01fl/anl02fl/param
-filtered_advs_timepoints <- unique(
-  advs00 %>%
-    filter(AVISIT %in% selvisit) %>%
-    select(USUBJID, AVISITN, AVISIT)
-) %>%
-  inner_join(adsl)
+advs_checked <- advs |>
+  filter(
+    toupper(.data[[popfl]]) == "Y",
+    toupper(ANL01FL) == "Y",
+    toupper(ANL02FL) == "Y"
+  ) |>
+  mutate(
+    flag = if_else(is.na(AVAL), 1L, 0L),
+    flag1 = if_else(toupper(APOBLFL) == "Y" & is.na(BASE), 1L, 0L)
+  )
 
-filtered_advs$PARAM <- factor(
-  as.character(filtered_advs$PARAM),
-  levels = sel_param,
-  labels = sel_param_case
+if (nrow(filter(advs_checked, flag == 1)) > 0) {
+  message("Pay attention: There are tests with missing AVAL: ")
+}
+
+if (nrow(filter(advs_checked, flag1 == 1)) > 0) {
+  message("Pay attention: There are postbaseline tests without baseline: ")
+}
+
+# Keep only records with non-missing AVAL
+advs <- filter(advs, !is.na(AVAL))
+
+# varying decimal precision ----
+# manual setup example
+prec <- dplyr::tibble(PARAMCD = unique(advs$PARAMCD), d = 1)
+prec$d[prec$PARAMCD %in% c("DIABP")] <- 2
+
+# alternative: use tidytlg make_precision function
+# DTYPE='AVERAGE' records are excluded from decimal precision
+# advs_avg <- advs |> filter(!DTYPE=="AVERAGE")
+
+# prec2 <- tidytlg:::make_precision_data(
+#   df = advs_avg,
+#   decimal = 4,
+#   precisionby = "PARAMCD",
+#   precisionon = "AVAL"
+# ) |>
+#   rename(c(d = "decimal"))
+
+.stats_all <- c("n", "mean_sd", "median_range", "diff_means_est_ci")
+# add d-based formats for all required stats onto precision dataset
+prec <- fmt_spec_df_d(
+  prec,
+  d_column = "d",
+  fmt_column = "fmt_d",
+  stats_in = .stats_all,
+  fmt_d_def = junco_def_d_all,
+  fmt_d_in = NULL
 )
 
-params <- unique(filtered_advs %>% select(PARAMCD, PARAM))
+# review d-based formats
+fmt_d_details <- lapply(prec$PARAMCD, FUN = function(x) {
+  fmt <- prec[prec$PARAMCD == x, ][["fmt_d"]][[1]]
+  get_fmt_details(
+    fmt,
+    as_tibble = TRUE
+  )
+})
+names(fmt_d_details) <- prec$PARAMCD
+# fmt_d_details
 
-filtered_advs_timepoints <- filtered_advs_timepoints %>%
-  mutate(dummy_join = 1) %>%
-  full_join(
-    params %>% mutate(dummy_join = 1),
-    relationship = "many-to-many"
-  ) %>%
-  select(-dummy_join)
-
-### identify subjects in filtered_advs_timepoints and not in filtered_advs
-
-extra_sub <- anti_join(filtered_advs_timepoints, filtered_advs)
-
-### only add these extra_sub to
-### this will ensure we still meet the one record per subject per timepoint
-### this will ensure length(x) can be used for the denominator derivation inside summarize_aval_chg_diff function
-
-filtered_advs <- bind_rows(filtered_advs, extra_sub) %>%
-  arrange(USUBJID, PARAM, AVISITN)
-
-filtered_advs <- filtered_advs %>%
-  inner_join(vs_precision, by = "PARAMCD")
-
-### important: previous actions lost the label of variables
-### in order to be able to use obj_label(filtered_advs$PARAM) in layout, need to redefine the label
-filtered_advs <- var_relabel_list(filtered_advs, var_labels(advs00, fill = T))
+# add precision specific format to advs input dataset
+advs <- advs |>
+  left_join(prec)
 
 ################################################################################
 # Define layout and build table:
 ################################################################################
 
-summ_vars <- list(arm = trtvar, covariates = NULL)
-ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
-multivars <- c("AVAL", "AVAL", "CHG")
+colspan_trt_map <- if (!is.null(ctrl_grp)) {
+  create_colspan_map(
+    advs,
+    non_active_grp = ctrl_grp,
+    non_active_grp_span_lbl = " ",
+    active_grp_span_lbl = "Active Study Agent",
+    colspan_var = "colspan_trt",
+    trt_var = trtvar
+  )
+} else {
+  tibble(
+    colspan_trt = "Active Study Agent",
+    !!trtvar := levels(advs[[trtvar]])
+  )
+}
 
-extra_args_3col <- list(
-  format_na_str = rep("NA", 3),
-  d = "decimal",
-  variables = summ_vars,
-  ref_path = ref_path,
-  ancova = ancova,
-  comp_btw_group = comp_btw_group,
-  multivars = multivars
-)
-
-lyt <- basic_table(show_colcounts = FALSE, colcount_format = "N=xx") %>%
-  ### first columns
-  split_cols_by(
-    "colspan_trt",
-    split_fun = trim_levels_to_map(map = colspan_trt_map),
-    show_colcounts = FALSE
-  ) %>%
-  split_cols_by(trtvar, show_colcounts = TRUE, colcount_format = "N=xx") %>%
-  split_rows_by(
-    "PARAM",
-    label_pos = "topleft",
-    split_label = "Blood Pressure",
-    section_div = " ",
-    split_fun = drop_split_levels
-  ) %>%
-  ## note the child_labels = hidden for AVISIT, these labels will be taken care off by
-  ## applying function summarize_aval_chg_diff further in the layout
-  split_rows_by(
-    "AVISIT",
-    label_pos = "topleft",
-    split_label = "Study Visit",
-    split_fun = drop_split_levels,
-    child_labels = "hidden"
-  ) %>%
-  ## set up a 3 column split
-  split_cols_by_multivar(
-    multivars,
-    varlabels = c(
-      "n/N (%)",
-      "Mean (95% CI)",
-      "Mean Change From Baseline (95% CI)"
-    )
-  ) %>%
-  ### restart for the rrisk_header columns - note the nested = FALSE option
-  ### also note the child_labels = "hidden" in both PARAM and AVISIT
-  split_cols_by("rrisk_header", nested = FALSE) %>%
-  split_cols_by(
-    trtvar,
-    split_fun = remove_split_levels(ctrl_grp),
-    labels_var = "rrisk_label",
-    show_colcounts = TRUE,
-    colcount_format = "N=xx"
-  ) %>%
-  ### difference columns : just 1 column & analysis needs to be done on change
-  split_cols_by_multivar(multivars[3], varlabels = c(" ")) %>%
-  ### the variable passed here in analyze is not used (STUDYID), it is a dummy var passing,
-  ### the function summarize_aval_chg_diff grabs the required vars from cols_by_multivar calls
-  analyze(
-    "STUDYID",
-    afun = a_summarize_aval_chg_diff_j,
-    extra_args = extra_args_3col
+split_combined <- if (combined_colspan_trt) {
+  # Set up levels and label for the required combined columns.
+  add_combo <- add_combo_facet(
+    "Combined",
+    label = "Combined",
+    levels = setdiff(levels(advs[[trtvar]]), ctrl_grp)
   )
 
-result <- build_table(lyt, filtered_advs, alt_counts_df = adsl)
+  # Choose if any facets need to be removed,
+  # e.g remove the combined column for placebo.
+  rm_combo_from_placebo <- cond_rm_facets(
+    facets = "Combined",
+    ancestor_pos = NA,
+    value = " ",
+    split = "colspan_trt"
+  )
+
+  make_split_fun(post = list(add_combo, rm_combo_from_placebo))
+} else {
+  NULL
+}
+
+# Common stats for time point / change from baseline to time point.
+stats <- c("n", "mean_sd", "median_range")
+formats <- junco_get_formats_from_stats(stats)
+labels <- junco_get_labels_from_stats(stats, labels_in = c(n = "N"))
+indent_mods <- c(n = 1L, mean_sd = 2L, median_range = 2L)
+
+# Dynamic label for the "Change from baseline ..." sections.
+a_chg_label <- function(x, .spl_context) {
+  last_split <- length(.spl_context$split)
+  label <- paste("Change from baseline to", .spl_context$value[last_split])
+  rtables::rcell(NULL, label = label)
+}
+
+# Difference in means parameters.
+CI_cl <- tern::control_analyze_vars()$conf_level
+a_diff_means_args <- list(
+  ref_path = c("colspan_trt", " ", trtvar, ctrl_grp),
+  conf.level = CI_cl,
+  .stats = "diff_means_est_ci",
+  .formats = "default",
+  .labels = c(
+    diff_means_est_ci = paste0(
+      "Difference in mean vs. ",
+      tolower(ctrl_grp),
+      " (",
+      tern::f_conf_level(CI_cl),
+      ")"
+    )
+  )
+)
+
+lyt <- basic_table(
+  show_colcounts = TRUE,
+  colcount_format = "N=xx",
+  top_level_section_div = " "
+) |>
+  append_topleft("Parameter") |>
+  split_cols_by(
+    "colspan_trt",
+    split_fun = trim_levels_to_map(map = colspan_trt_map)
+  ) |>
+  split_cols_by(trtvar, split_fun = split_combined) |>
+  split_rows_by(
+    "PARAMCD",
+    split_fun = keep_split_levels(paramcd),
+    labels_var = "PARAM",
+    child_labels = "visible"
+  ) |>
+  summarize_row_groups(
+    "AVAL",
+    cfun = c_summary_subset_label,
+    extra_args = list(
+      filter_expr = expression(ABLFL == "Y"),
+      .stats = stats,
+      .formats = "default",
+      formats_var = "fmt_d",
+      .labels = labels,
+      .indent_mods = indent_mods,
+      label = "Baseline"
+    )
+  ) |>
+  split_rows_by(
+    "AVISIT",
+    split_fun = keep_split_levels(nonbl_visits),
+    indent_mod = -1,
+    section_div = " ",
+  ) |>
+  analyze(
+    "AVAL",
+    afun = tern::a_summary,
+    extra_args = list(
+      .stats = stats,
+      .formats = "default",
+      .labels = labels,
+      .indent_mods = indent_mods - 1,
+      na_rm = TRUE
+    ),
+    formats_var = "fmt_d",
+    show_labels = "hidden",
+    section_div = " "
+  ) |>
+  analyze(
+    "CHG",
+    afun = a_chg_label,
+    table_names = "chg_bl_label",
+    show_labels = "hidden",
+    indent_mod = -1L
+  ) |>
+  analyze(
+    "CHG",
+    afun = tern::a_summary,
+    extra_args = list(
+      .stats = "n",
+      .formats = "default",
+      .labels = labels,
+      na_rm = TRUE # Subjects with non-missing values at both baseline and the postbaseline time point.
+    ),
+    formats_var = "fmt_d",
+    show_labels = "hidden"
+  ) |>
+  analyze(
+    "BASE",
+    afun = a_summary_subset,
+    extra_args = list(
+      filter_expr = expression(!is.na(CHG)),
+      na_rm = TRUE,
+      .stats = "mean_sd",
+      .formats = "default",
+      .labels = c(mean_sd = "Baseline mean (SD)")
+    ),
+    formats_var = "fmt_d",
+    table_names = "chg_bl_mean",
+    show_labels = "hidden",
+    indent_mod = 1L
+  ) |>
+  analyze(
+    "CHG",
+    afun = tern::a_summary,
+    extra_args = list(
+      .stats = c("mean_sd", "median_range"),
+      .formats = "default",
+      .labels = labels,
+      na_rm = TRUE
+    ),
+    formats_var = "fmt_d",
+    table_names = "chg_mm",
+    show_labels = "hidden",
+    indent_mod = 1L
+  )
+
+if (comp_btw_group) {
+  lyt <- lyt |>
+    analyze(
+      "CHG",
+      afun = a_diff_means,
+      extra_args = a_diff_means_args,
+      formats_var = "fmt_d",
+      table_names = "chg_diff_means",
+      show_labels = "hidden",
+      indent_mod = 1L
+    )
+}
+
+result <- build_table(lyt, advs, alt_counts_df = adsl, round_type = "sas")
+
+# Add an empty line after each "Screening" section.
+# Use `section_div_at_path()` as a workaround for the missing
+# `section_div` argument in `summarize_row_groups()`.
+# (Feature request: https://github.com/insightsengineering/rtables/issues/1083)
+# The path below is determined from `rtables::row_paths_summary(result)`.
+section_div_at_path(result, c("PARAMCD", "*", "@content", last(stats))) <- " "
 
 ################################################################################
 # Post-Processing:
-# - Remove the N=xx column headers for the difference vs PBO columns
+# - Adjust Combined (if displayed) columns Ns (When sequence of
+#   treatments is used, one subject receives more than on treatment. Hence,
+#   there are many rows for one unique subjects, while N should represent only
+#   unique subjects).
 ################################################################################
 
-remove_col_count2 <- function(result, string = paste("vs", ctrl_grp)) {
-  mcdf <- make_col_df(result, visible_only = FALSE)
-  mcdfsel <- mcdf %>%
-    filter(stringr::str_detect(toupper(label), toupper(string))) %>%
-    pull(path)
-
-  for (i in seq_along(mcdfsel)) {
-    facet_colcount(result, mcdfsel[[i]]) <- NA
+if (combined_colspan_trt) {
+  adsl_no_ctrl <- if (is.null(ctrl_grp)) {
+    adaper
+  } else {
+    adsl[adsl[[trtvar]] != ctrl_grp, ]
   }
-
-  return(result)
+  n_combined <- length(unique(adsl_no_ctrl$USUBJID))
+  colpath_combined <- c("colspan_trt", "Active Study Agent", trtvar, "Combined")
+  facet_colcount(result, colpath_combined) <- n_combined
 }
-
-result <- remove_col_count2(result)
 
 ################################################################################
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
 # Convert to tbl file and output table:
 ################################################################################
 
-colwidth <- c(54, 29, 54, 51, 29, 54, 47, 29, 54, 49, 51, 44)
 
-tt_to_tlgrtf(
-  colwidths = colwidth,
-  result,
-  file = fileid,
-  nosplitin = list(cols = c(trtvar, "rrisk_header")),
-  orientation = "landscape"
-)
+colwidth <- c(64, 41, 41, 41)
+
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

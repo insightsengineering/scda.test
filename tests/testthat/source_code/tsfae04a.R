@@ -1,27 +1,3 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsfae04a.R
-## R version:                 4.2.1
-## junco Version:             1.0
-## Short Description:         Program to create tsfae04a: AE table by SOC/PT and Subgroup - AEs leading to disc. of study trt.
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      23 Feb 2024
-## Input:                     ADSL, ADAE.
-## Output:                    TSFAE04a.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
@@ -36,7 +12,6 @@ library(junco)
 # - Define output ID and file location
 # - Define treatment variable used (default=TRT01A)
 # - Define population flag used (default=SAFFL)
-# - subgroup variable required from ADSL, and subgroup text you want as a prefix to appear in the table, and any subgroup unit needed
 # - Choose whether or not you want to present a combined active treatment column (default=TRUE)
 # - Choose whether or not you want to present the risk difference columns (default=TRUE)
 # - Choose which risk difference method you would like (default=Wald)
@@ -55,11 +30,6 @@ tab_titles <- list(
 
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
-
-subgrpvar <- "AGEGR1"
-subgrptxt <- "Age Group"
-subgrpunit <- "years"
-
 combined_colspan_trt <- TRUE
 risk_diff <- TRUE
 rr_method <- "wald"
@@ -88,29 +58,29 @@ if (combined_colspan_trt == TRUE) {
 # Process Data:
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   mutate(
-    subgrpdisplay = as.factor(paste0(
-      subgrptxt,
-      ": ",
-      !!as.name(subgrpvar),
-      " ",
-      subgrpunit
-    ))
-  ) %>%
-  select(
-    STUDYID,
-    USUBJID,
-    all_of(trtvar),
-    all_of(popfl),
-    all_of(subgrpvar),
-    subgrpdisplay
-  )
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  select(STUDYID, USUBJID, all_of(trtvar), all_of(popfl))
 
-adae <- adae_jnj %>%
-  filter(TRTEMFL == "Y" & AEACN == "DRUG WITHDRAWN") %>%
-  select(USUBJID, TRTEMFL, AEBODSYS, AEDECOD)
+adae <- adae_jnj |>
+  mutate(
+    AEDECOD = case_when(
+      AEDECOD == "" ~ paste0("Uncoded: ", AETERM),
+      .default = AEDECOD
+    )
+  ) |>
+  filter(TRTEMFL == "Y") |>
+  select(USUBJID, TRTEMFL, AEDECOD)
 
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
@@ -123,7 +93,7 @@ if (risk_diff == TRUE) {
 }
 
 # join data together
-ae <- left_join(adsl, adae, by = c("USUBJID"))
+ae <- adae |> right_join(adsl, by = c("USUBJID"))
 
 colspan_trt_map <- create_colspan_map(
   adsl,
@@ -139,22 +109,9 @@ colspan_trt_map <- create_colspan_map(
 ################################################################################
 
 ref_path <- c("colspan_trt", " ", "TRT01A", "Placebo")
-
-
 extra_args_rr <- list(
-  denom = "n_altdf",
-  denom_by = "subgrpdisplay",
-  riskdiff = FALSE,
-  extrablankline = TRUE,
-  .stats = c("n_altdf")
-)
-
-extra_args_rr2 <- list(
-  denom = "n_altdf",
-  denom_by = "subgrpdisplay",
-  riskdiff = TRUE,
+  method = rr_method,
   ref_path = ref_path,
-  method = "wald",
   .stats = c("count_unique_fraction")
 )
 
@@ -162,23 +119,23 @@ lyt <- basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
 if (risk_diff == TRUE) {
-  lyt <- lyt %>%
-    split_cols_by("rrisk_header", nested = FALSE) %>%
+  lyt <- lyt |>
+    split_cols_by("rrisk_header", nested = FALSE) |>
     split_cols_by(
       trtvar,
       labels_var = "rrisk_label",
@@ -186,59 +143,16 @@ if (risk_diff == TRUE) {
     )
 }
 
-lyt <- lyt %>%
-  split_rows_by(
-    "subgrpdisplay",
-    split_label = "",
-    split_fun = trim_levels_in_group("STUDYID"),
-    indent_mod = -1L,
-    section_div = c(" "),
-    page_by = TRUE
-  ) %>% # Set page_by = FALSE if you do not wish to start a new page after a new subgroup
-  summarize_row_groups(
-    "subgrpdisplay",
-    cfun = a_freq_j,
-    indent_mod = 0L,
-    extra_args = extra_args_rr
-  ) %>%
-  split_rows_by(
-    "TRTEMFL",
-    split_fun = keep_split_levels("Y"),
-    indent_mod = -1L,
-    section_div = c(" ")
-  ) %>%
-  summarize_row_groups(
-    "TRTEMFL",
-    cfun = a_freq_j,
-    indent_mod = 0L,
-    extra_args = append(
-      extra_args_rr2,
-      list(
-        label = "Subjects with >=1 AE leading to discontinuation",
-        extrablankline = TRUE
-      )
-    )
-  ) %>%
-  split_rows_by(
-    "AEBODSYS",
-    split_label = "System Organ Class",
-    split_fun = trim_levels_in_group("AEDECOD"),
-    label_pos = "topleft",
-    indent_mod = 0L,
-    section_div = c(" ")
-  ) %>%
-  summarize_row_groups(
-    "AEBODSYS",
-    cfun = a_freq_j,
-    extra_args = extra_args_rr2
-  ) %>%
-  analyze("AEDECOD", afun = a_freq_j, extra_args = extra_args_rr2) %>%
-  append_topleft("  Preferred Term, n (%)")
+lyt <- lyt |>
+  analyze(
+    "AEDECOD",
+    afun = a_freq_j,
+    extra_args = append(extra_args_rr, NULL),
+    indent_mod = 0L
+  ) |>
+  append_topleft("Preferred Term, n (%)")
 
-result <- build_table(lyt, ae, alt_counts_df = adsl)
-
-## Remove the N=xx column headers for the risk difference columns
-result <- remove_col_count(result)
+result <- build_table(lyt, ae, alt_counts_df = adsl, round_type = "sas")
 
 #########################################################################################
 # Post-Processing step to sort by descending count on chosen active treatment columns.
@@ -248,17 +162,30 @@ result <- remove_col_count(result)
 #########################################################################################
 
 if (length(adae$TRTEMFL) != 0) {
-  result <- sort_at_path(
-    result,
-    c("subgrpdisplay", "*", "TRTEMFL", "*", "AEBODSYS"),
-    scorefun = jj_complex_scorefun()
+  result <- sort_at_path(result, c("AEDECOD"), scorefun = jj_complex_scorefun())
+
+  ################################################################################
+  # Prune table to only keep those that meet x% criteria for any treatment column
+  ################################################################################
+
+  more_than_x_percent <- has_fraction_in_any_col(
+    atleast = 0.05,
+    col_names = c(
+      "Active Study Agent.Xanomeline High Dose",
+      "Active Study Agent.Xanomeline Low Dose",
+      " .Placebo"
+    )
   )
-  result <- sort_at_path(
-    result,
-    c("subgrpdisplay", "*", "TRTEMFL", "*", "AEBODSYS", "*", "AEDECOD"),
-    scorefun = jj_complex_scorefun()
-  )
+
+  result <- safe_prune_table(result, keep_rows(more_than_x_percent))
 }
+
+## Remove the N=xx column headers for the risk difference columns
+result <- remove_col_count(result)
+
+## Remove any rogue null rows
+result <- result |>
+  safe_prune_table(prune_func = keep_rows(keep_non_null_rows))
 
 ################################################################################
 # Add titles and footnotes:
@@ -270,6 +197,6 @@ result <- set_titles(result, tab_titles)
 # Convert to tbl file and output table
 ################################################################################
 
-colwidth <- c(64, 19, 21, 21, 19, 32, 31)
+colwidth <- c(52, 21, 21, 21, 19, 35, 31)
 
 tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")

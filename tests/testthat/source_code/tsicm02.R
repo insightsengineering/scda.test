@@ -1,33 +1,10 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsicm02.R
-## R version:                 4.2.1
-## junco version:             1.0
-## Short Description:         Program to create tsicm02: Concomitant Medications by
-##                            ATC Level X/Base Preferred Term - Variant 2
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      19 Jan 2024
-## Input:                     ADSL, ADCM.
-## Output:                    TSICM02.rtf
-## Remarks:                   Template R script version using rtables framework
-##
-## Modification History:
-##  Rev #:                    1
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
 library(dplyr)
 library(rtables)
 library(junco)
+library(tidyr)
+library(stringr)
 
 ################################################################################
 # Define script level parameters:
@@ -55,8 +32,9 @@ tab_titles <- list(
 trtvar <- "TRT01A"
 popfl <- "SAFFL"
 
-atcvar <- "CMLVL1"
-atclevel <- "1"
+smnvar <- "CMBASPRF"
+atcvar <- c("CMLVL1", "CMLVL2", "CMLVL3", "CMLVL4")
+atclevel <- c("1", "2", "3", "4")
 
 combined_colspan_trt <- TRUE
 
@@ -84,28 +62,54 @@ if (combined_colspan_trt == TRUE) {
 ################################################################################
 
 # Read in required data
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  filter(!!rlang::sym(popfl) == "Y") |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
   select(USUBJID, all_of(trtvar), all_of(popfl))
 
-adcm <- adcm_jnj %>%
-  filter(ONTRTFL == "Y") %>%
-  select(USUBJID, ONTRTFL, all_of(atcvar), CMBASPRF)
-
-# Convert medications to sentence case
-adcm[[atcvar]] <- as.factor(stringr::str_to_sentence(adcm[[atcvar]]))
-adcm$CMBASPRF <- as.factor(stringr::str_to_sentence(adcm$CMBASPRF))
-
+adcm <- adcm_jnj |>
+  filter(ONTRTFL == "Y") |>
+  select(USUBJID, CMTRT, ONTRTFL, all_of(atcvar), all_of(smnvar)) |>
+  mutate(
+    across(
+      all_of(atcvar),
+      ~ case_when(
+        .x == "" ~ "Uncoded",
+        .default = .x
+      )
+    ),
+    across(
+      all_of(atcvar),
+      ~ str_to_sentence(.x)
+    ),
+    !!rlang::sym(smnvar) := case_when(
+      .data[[smnvar]] == "" ~ paste0("Uncoded: ", CMTRT),
+      .default = .data[[smnvar]]
+    ),
+    across(
+      all_of(smnvar),
+      ~ str_to_sentence(.x)
+    )
+  )
 adsl$colspan_trt <- factor(
   ifelse(adsl[[trtvar]] == "Placebo", " ", "Active Study Agent"),
   levels = c("Active Study Agent", " ")
 )
 
 # join data together
-cm <- adcm %>% inner_join(., adsl, by = c("USUBJID"))
+cm <- adcm |> inner_join(adsl, by = c("USUBJID"))
 
 if (length(adcm$ONTRTFL) == 0) {
-  cm <- adcm %>% right_join(., adsl, by = c("USUBJID"))
+  cm <- adcm |> right_join(adsl, by = c("USUBJID"))
 }
 
 colspan_trt_map <- create_colspan_map(
@@ -128,22 +132,22 @@ lyt <- rtables::basic_table(
   top_level_section_div = " ",
   show_colcounts = TRUE,
   colcount_format = "N=xx"
-) %>%
+) |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
   )
 
 if (combined_colspan_trt == TRUE) {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar, split_fun = mysplit)
 } else {
-  lyt <- lyt %>%
+  lyt <- lyt |>
     split_cols_by(trtvar)
 }
 
-lyt <- lyt %>%
-  add_overall_col("Total") %>%
+lyt <- lyt |>
+  add_overall_col("Total") |>
   analyze(
     "ONTRTFL",
     afun = a_freq_j,
@@ -152,21 +156,29 @@ lyt <- lyt %>%
       extra_args_1,
       list(label = "Subjects with >=1 concomitant medication")
     )
-  ) %>%
-  split_rows_by(
-    atcvar,
-    child_labels = "hidden",
-    split_label = paste0("ATC Level ", atclevel),
-    label_pos = "topleft",
-    split_fun = trim_levels_in_group("CMBASPRF"),
-    section_div = c(" "),
-    indent_mod = 0L
-  ) %>%
-  summarize_row_groups(atcvar, cfun = a_freq_j, extra_args = extra_args_1) %>%
-  analyze("CMBASPRF", afun = a_freq_j, extra_args = (extra_args_1)) %>%
-  append_topleft("  Base Preferred Term")
+  )
 
-result <- build_table(lyt, cm, alt_counts_df = adsl)
+for (i in seq_along(atcvar)) {
+  atcvars <- atcvar[[i]]
+  lyt <- lyt |>
+    split_rows_by(
+      atcvars,
+      child_labels = "hidden",
+      split_label = paste0("ATC Level ", i),
+      label_pos = "topleft",
+      split_fun = trim_levels_in_group(smnvar),
+      section_div = c(" "),
+      indent_mod = 0L
+    ) |>
+    summarize_row_groups(atcvars, cfun = a_freq_j, extra_args = extra_args_1)
+}
+
+lyt <- lyt |>
+  analyze(smnvar, afun = a_freq_j, extra_args = (extra_args_1)) |>
+  append_topleft(paste(strrep("  ", length(atcvar)), "Base Preferred Term, n (%)"))
+
+
+result <- build_table(lyt, cm, alt_counts_df = adsl, round_type = "sas")
 
 # If there is no data remove top row and display "No data to display" text
 if (length(adcm$ONTRTFL) == 0) {
@@ -183,14 +195,24 @@ if (length(adcm$ONTRTFL) == 0) {
 #########################################################################################
 
 if (length(adcm$ONTRTFL) != 0) {
+  path_i <- c("root", atcvar[1])
+
+  for (i in seq_along(atcvar)) {
+    if (i == 1) {
+      path_i <- c("root", atcvar[i])
+    } else {
+      path_i <- c(path_i, "*", atcvar[i])
+    }
+
+    result <- sort_at_path(
+      result,
+      path_i,
+      scorefun = jj_complex_scorefun(colpath = "Total")
+    )
+  }
   result <- sort_at_path(
     result,
-    c("root", atcvar),
-    scorefun = jj_complex_scorefun(colpath = "Total")
-  )
-  result <- sort_at_path(
-    result,
-    c("root", atcvar, "*", "CMBASPRF"),
+    c(path_i, "*", smnvar), ,
     scorefun = jj_complex_scorefun(colpath = "Total")
   )
 }
@@ -201,9 +223,28 @@ if (length(adcm$ONTRTFL) != 0) {
 
 result <- set_titles(result, tab_titles)
 
+# derivation of number of rows column header takes
+cps <- col_paths(result)[[1]]
+cps <- cps[seq(from = 1, by = 2, length.out = length(cps) / 2)]
+### as showcolcounts = TRUE, 1 extra row in columns
+levels_cols <- length(cps) + 1
+
+bordmat <- junco:::make_header_bordmat(obj = result)
+if (levels_cols < length(top_left(result))) {
+  # Create extra_row(s) based on the difference between top_left length and levels_cols
+  num_extra_rows <- length(top_left(result)) - levels_cols
+  for (i in 1:num_extra_rows) {
+    extra_row <- rep(0, ncol(bordmat))
+    bordmat <- rbind(extra_row, bordmat)
+  }
+  rownames(bordmat) <- NULL
+}
+
 ################################################################################
 # Convert to tbl file and output table
 ################################################################################
+
+
 colwidth <- c(64, 21, 21, 21, 21, 23)
 
-tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
+tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, border_mat = bordmat, orientation = "landscape")

@@ -1,31 +1,5 @@
-################################################################################
-## Original Reporting Effort: Standards
-## Program Name:              tsfae20b.R
-## R version:                 4.2.1
-## Short Description:         Program to create tsfae20b: Summary of Demographic
-##                            Characteristics for Subjects With Serious
-##                            Treatment-emergent Adverse Events
-## Author:                    Johnson & Johnson Innovative Medicine
-## Date:                      17 Nov 2023
-## Input:                     adsl.rds, adae.rds
-## Output:                    tsfae20b.rtf
-## Remarks:
-##
-## Modification History:
-##  Rev #:
-##  Modified By:
-##  Reporting Effort:
-##  Date:
-##  Description:
-################################################################################
-
-################################################################################
-# Prep Environment
-################################################################################
-
 library(envsetup)
 library(tern)
-library(forcats)
 library(dplyr)
 library(rtables)
 library(junco)
@@ -35,89 +9,81 @@ library(junco)
 ################################################################################
 
 tblid <- "TSFAE20b"
-titles <- list(
+fileid <- write_path(opath, tblid)
+popfl <- "SAFFL"
+trtvar <- "TRT01A"
+tab_titles <- list(
   title = "Dummy Title",
   subtitles = NULL,
   main_footer = "Dummy Note: On-treatment is defined as ~{optional treatment-emergent}"
 )
-fileid <- write_path(opath, tblid)
-popfl <- "SAFFL"
-trtvar <- "TRT01A"
-subjFilterText <- "SAE"
-ctrl_grp <- "Placebo"
+
 
 ################################################################################
-# Process Data
-# - Sub-setting performed on a subject-level; certain tables may require a more
-#   granular, column-based sub-setting.
-# - Factor for Active Treatment spanning header added below.
-# - Additional factor reformatting added below.
+# Process data:
+# Create variables for column spanning headers:
+# - colspan_trt: Used to generate the "Active Study Agent" spanning header.
+# - COLSPAN_TOX: Set to "AEs" for all subjects.  Used along with the add_combo_levels()
+#   split function to generate separate facets for AEs & AEs with TOXGR > 3.
 ################################################################################
 
-adsl <- adsl_jnj %>%
-  filter(!!rlang::sym(popfl) == "Y") %>%
+adsl <- adsl_jnj |>
+  mutate(
+    !!rlang::sym(trtvar) := factor(
+      .data[[trtvar]],
+      levels = c(
+        "Xanomeline Low Dose",
+        "Xanomeline High Dose",
+        "Placebo"
+      )
+    )
+  ) |>
+  filter(!!rlang::sym(popfl) == "Y") |>
   create_colspan_var(
-    non_active_grp = ctrl_grp,
+    non_active_grp = "Placebo",
     non_active_grp_span_lbl = " ",
     active_grp_span_lbl = "Active Study Agent",
     colspan_var = "colspan_trt",
     trt_var = trtvar
-  ) %>%
+  ) |>
+  mutate(COLSPAN_TOX = "AEs") |>
   select(
     USUBJID,
     !!rlang::sym(popfl),
     !!rlang::sym(trtvar),
-    SEX_DECODE,
-    AGEGR1,
-    RACE_DECODE,
-    ETHNIC_DECODE,
-    colspan_trt
+    colspan_trt,
+    COLSPAN_TOX
   )
 
-# Factor reformatting (e.g., Include missing in the "Unknown" category).
-adsl$SEX_DECODE <- forcats::fct_na_value_to_level(
-  adsl$SEX_DECODE,
-  level = "Unknown"
-)
+adae <- adae_jnj |>
+  mutate(
+    AEBODSYS = case_when(
+      AEBODSYS == "" ~ "Uncoded",
+      .default = AEBODSYS
+    ),
+    AEDECOD = case_when(
+      AEDECOD == "" ~ paste0("Uncoded: ", AETERM),
+      .default = AEDECOD
+    )
+  ) |>
+  filter(TRTEMFL == "Y") |>
+  mutate(TOXGE3 = ifelse(AETOXGRN == 3 | AETOXGRN > 3, ">= 3", "< 3")) |>
+  select(USUBJID, TRTEMFL, AEBODSYS, AEDECOD, AETOXGR, TOXGE3)
 
-adsl$AGEGR1_DECODE <- forcats::fct_na_value_to_level(
-  factor(stringr::str_replace(as.character(adsl$AGEGR1), ">=", "\u2265")),
-  level = "Unknown"
-)
-
-adsl$RACE_DECODE <- forcats::fct_collapse(
-  forcats::fct_na_value_to_level(adsl$RACE_DECODE, level = "Unknown"),
-  "Not reported or unknown" = c("Not reported", "Unknown")
-)
-
-adsl$ETHNIC_DECODE <- forcats::fct_collapse(
-  forcats::fct_na_value_to_level(adsl$ETHNIC_DECODE, level = "Unknown"),
-  "Not reported or unknown" = c("Not reported", "Unknown")
-)
-
-had_ae <- adae_jnj %>%
-  filter(TRTEMFL == "Y" & AESER == "Y") %>%
-  select(USUBJID, TRTEMFL) %>%
-  distinct(USUBJID, .keep_all = TRUE)
-
-adsl <- adsl %>%
-  left_join(had_ae) %>%
-  mutate(TRTEMFL = ifelse(is.na(TRTEMFL), "N", "Y"))
-
+adae <- inner_join(adae, adsl, by = c("USUBJID"))
 
 ################################################################################
-# Define layout and build table
+# Define layout and build table:
 ################################################################################
 
 colspan_trt_map <- create_colspan_map(
   adsl,
-  non_active_grp = ctrl_grp,
+  non_active_grp = "Placebo",
   non_active_grp_span_lbl = " ",
   active_grp_span_lbl = "Active Study Agent",
   colspan_var = "colspan_trt",
   trt_var = trtvar
 )
-ref_path <- c("colspan_trt", " ", trtvar, ctrl_grp)
 
 add_active_combo <- make_split_fun(
   post = list(
@@ -135,93 +101,108 @@ add_active_combo <- make_split_fun(
   )
 )
 
-extra_args_rr <- list(
-  riskdiff = FALSE
+# Create "TOX > 3" facet.
+add_tox_levels <- make_split_fun(
+  post = list(add_combo_facet(
+    name = "TOXGR",
+    label = ">= Grade 3 AEs",
+    levels = c("AEs")
+  ))
 )
 
-extra_args_rr2 <- append(
-  extra_args_rr,
-  list(resp_var = "TRTEMFL", drop_levels = TRUE)
+extra_args1 <- list(
+  .stats = c("count_unique_fraction"),
+  subcol_split = "TOXGR",
+  subcol_var = "TOXGE3",
+  subcol_val = ">= 3"
 )
 
-lyt <- basic_table(
-  show_colcounts = TRUE,
-  colcount_format = "N=xx",
-  top_level_section_div = " "
-) %>%
-  append_topleft("Characteristic") %>%
+lyt <- basic_table(top_level_section_div = " ") |>
   split_cols_by(
     "colspan_trt",
     split_fun = trim_levels_to_map(map = colspan_trt_map)
-  ) %>%
-  split_cols_by(trtvar, split_fun = add_active_combo)
-
-lyt <- lyt %>%
+  ) |>
+  split_cols_by(
+    trtvar,
+    split_fun = add_active_combo,
+    show_colcounts = TRUE,
+    colcount_format = "N=xx"
+  ) |>
+  split_cols_by("COLSPAN_TOX", split_fun = add_tox_levels) |>
   analyze(
     "TRTEMFL",
-    afun = a_freq_j,
+    nested = FALSE,
+    afun = a_freq_subcol_j,
     extra_args = append(
-      extra_args_rr,
+      extra_args1,
       list(
-        label = paste("Subjects with >= 1", subjFilterText),
-        val = "Y",
-        .stats = c("count_unique_fraction")
+        label = "Subjects with >= 1 AE",
+        val = "Y"
       )
-    ),
-    show_labels = "hidden"
-  ) %>%
-  analyze(
-    vars = "SEX_DECODE",
-    var_labels = "Sex, n/Ns (%)",
-    show_labels = "visible",
-    afun = a_freq_resp_var_j,
-    extra_args = extra_args_rr2,
+    )
+  ) |>
+  split_rows_by(
+    "AEBODSYS",
+    split_label = "System Organ Class",
+    label_pos = "topleft",
+    split_fun = trim_levels_in_group("AEDECOD"),
+    section_div = " ",
     nested = FALSE
-  ) %>%
-  analyze(
-    vars = "AGEGR1_DECODE",
-    var_labels = "Age group (years), n/Ns (%)",
-    show_labels = "visible",
-    afun = a_freq_resp_var_j,
-    extra_args = extra_args_rr2,
-    nested = FALSE
-  ) %>%
-  analyze(
-    vars = "RACE_DECODE",
-    var_labels = "Race, n/Ns (%)",
-    show_labels = "visible",
-    afun = a_freq_resp_var_j,
-    extra_args = extra_args_rr2,
-    nested = FALSE
-  ) %>%
-  analyze(
-    vars = "ETHNIC_DECODE",
-    var_labels = "Ethnicity, n/Ns (%)",
-    show_labels = "visible",
-    afun = a_freq_resp_var_j,
-    extra_args = extra_args_rr2,
-    nested = FALSE
-  )
+  ) |>
+  summarize_row_groups(
+    "AEBODSYS",
+    cfun = a_freq_subcol_j,
+    extra_args = extra_args1
+  ) |>
+  analyze("AEDECOD", afun = a_freq_subcol_j, extra_args = extra_args1) |>
+  append_topleft(" Preferred Term, n (%)")
 
-result <- build_table(lyt, adsl)
+result <- build_table(lyt, adae, alt_counts_df = adsl, round_type = "sas")
 
 ################################################################################
 # Post-Processing:
-# Prune any categories with all zeros:
+# Sort by descending AEBODSYS/AEDECOD in combined TOXGR AE column
+# Prune table to only keep those that meet x% criteria
 ################################################################################
 
-result <- safe_prune_table(result, prune_func = count_pruner())
+result <- result |>
+  sort_at_path(
+    path = c("AEBODSYS"),
+    scorefun = cont_n_onecol("Active Study Agent.Combined.TOXGR")
+  ) |>
+  sort_at_path(
+    path = c("AEBODSYS", "*", "AEDECOD"),
+    scorefun = score_occurrences_cols("Active Study Agent.Combined.TOXGR")
+  )
+
+row_condition <- has_fraction_in_any_col(
+  atleast = .02,
+  col_names = c(
+    "Active Study Agent.Xanomeline High Dose.TOXGR",
+    "Active Study Agent.Xanomeline Low Dose.TOXGR",
+    "Active Study Agent.Combined.TOXGR",
+    " .Placebo.TOXGR"
+  )
+)
+
+result <- safe_prune_table(result, keep_rows(row_condition))
 
 ################################################################################
 # Add titles and footnotes:
 ################################################################################
 
-result <- set_titles(result, titles)
+result <- set_titles(result, tab_titles)
 
 ################################################################################
-# Convert to tbl file and output table
+# Convert to tbl file and output table:
 ################################################################################
 
-colwidth <- c(64, 27, 27, 27, 27)
 
-tt_to_tlgrtf(colwidths = colwidth, result, file = fileid, orientation = "landscape")
+colwidth <- c(64, 21, 21, 21, 21, 21, 21, 21, 21)
+
+tt_to_tlgrtf(
+  result,
+  file = fileid,
+  orientation = "landscape",
+  nosplitin = list(cols = c(trtvar))
+)
